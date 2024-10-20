@@ -5,7 +5,7 @@ import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
-import 'package:carey/src/features/start/presentation/widgets/fade_transition_widget.dart';
+import 'package:carey/src/core/widgets/fade_transition_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
