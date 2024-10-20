@@ -5,6 +5,16 @@ List<AutoRoute> get appRoutes => [
         initial: true,
         page: SplashRoute.page,
       ),
+      AutoRoute(
+        page: StartWelcomeRoute.page,
+        children: [
+          _buildCustomRoute(
+            initial: true,
+            page: WelcomeRoute.page,
+          ),
+          _buildCustomRoute(page: StartRoute.page),
+        ],
+      ),
     ];
 
 CustomRoute _buildCustomRoute({

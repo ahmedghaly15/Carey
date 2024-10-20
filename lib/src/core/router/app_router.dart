@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:carey/src/features/splash/presentation/views/splash_view.dart';
+import 'package:carey/src/features/start/presentation/views/start_view.dart';
+import 'package:carey/src/features/start/presentation/views/welcome_view.dart';
 import 'package:flutter/material.dart';
 
 part 'app_router.gr.dart';
@@ -12,4 +14,9 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => appRoutes;
+}
+
+@RoutePage(name: 'StartWelcomeRoute')
+class StartWelcome extends AutoRouter {
+  const StartWelcome({super.key});
 }

@@ -27,3 +27,60 @@ class SplashRoute extends PageRouteInfo<void> {
     },
   );
 }
+
+/// generated route for
+/// [StartView]
+class StartRoute extends PageRouteInfo<void> {
+  const StartRoute({List<PageRouteInfo>? children})
+      : super(
+          StartRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'StartRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const StartView();
+    },
+  );
+}
+
+/// generated route for
+/// [StartWelcome]
+class StartWelcomeRoute extends PageRouteInfo<void> {
+  const StartWelcomeRoute({List<PageRouteInfo>? children})
+      : super(
+          StartWelcomeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'StartWelcomeRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const StartWelcome();
+    },
+  );
+}
+
+/// generated route for
+/// [WelcomeView]
+class WelcomeRoute extends PageRouteInfo<void> {
+  const WelcomeRoute({List<PageRouteInfo>? children})
+      : super(
+          WelcomeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'WelcomeRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const WelcomeView();
+    },
+  );
+}

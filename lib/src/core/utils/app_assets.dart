@@ -33,5 +33,13 @@ class Assets {
   /// Assets for imagesSplashAndroid12
   /// assets/images/splash_android_12.png
   static const String imagesSplashAndroid12 = "assets/images/splash_android_12.png";
+
+  /// Assets for imagesStartScreenCar
+  /// assets/images/start-screen-car.png
+  static const String imagesStartScreenCar = "assets/images/start-screen-car.png";
+
+  /// Assets for imagesWelcomeScreenCar
+  /// assets/images/welcome-screen-car.jpg
+  static const String imagesWelcomeScreenCar = "assets/images/welcome-screen-car.jpg";
 }
 
