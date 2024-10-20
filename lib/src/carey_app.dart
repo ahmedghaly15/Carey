@@ -1,3 +1,9 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:carey/src/core/di/dependency_injection.dart';
+import 'package:carey/src/core/helpers/app_routes_observer.dart';
+import 'package:carey/src/core/router/app_router.dart';
+import 'package:carey/src/core/themes/app_themes.dart';
+import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class CareyApp extends StatelessWidget {
@@ -5,12 +11,16 @@ class CareyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      title: AppStrings.appTitle,
+      theme: AppThemes.lightTheme,
+      routerConfig: getIt.get<AppRouter>().config(
+            navigatorObservers: () => [
+              AppRoutesObserver(),
+              AutoRouteObserver(),
+            ],
+          ),
     );
   }
 }
