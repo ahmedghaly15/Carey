@@ -9,11 +9,48 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # Declarative routing solution, where everything needed for navigation is automatically generated
+  auto_route: ^9.2.2
+  # For Dependency Injection
+  get_it: ^8.0.0
+  # Provides collection of animated loading widgets
+  loading_animation_widget: ^1.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  # For native splash screen
+  flutter_native_splash: ^2.4.1
+  # Simplifies updating your app's launcher icon
+  icons_launcher: ^3.0.0
+  # For generating auto_route file
+  auto_route_generator: ^9.0.0
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/images/
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter/Inter_28pt-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Inter/Inter_28pt-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter/Inter_28pt-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter/Inter_28pt-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter/Inter_28pt-Bold.ttf
+          weight: 700
+
+
+flutter_assets:
+  assets_path: assets/
+  output_path: lib/src/core/utils/
+  filename: app_assets.dart
+  field_prefix: null
