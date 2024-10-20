@@ -16,6 +16,8 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   # For native splash screen
   flutter_native_splash: ^2.4.1
+  # Simplifies updating your app's launcher icon
+  icons_launcher: ^3.0.0
 
 flutter:
   uses-material-design: true
