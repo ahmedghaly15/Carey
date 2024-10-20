@@ -5,22 +5,28 @@ import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/themes/app_themes.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CareyApp extends StatelessWidget {
   const CareyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: AppStrings.appTitle,
-      theme: AppThemes.lightTheme,
-      routerConfig: getIt.get<AppRouter>().config(
-            navigatorObservers: () => [
-              AppRoutesObserver(),
-              AutoRouteObserver(),
-            ],
-          ),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        title: AppStrings.appTitle,
+        theme: AppThemes.lightTheme,
+        routerConfig: getIt.get<AppRouter>().config(
+              navigatorObservers: () => [
+                AppRoutesObserver(),
+                AutoRouteObserver(),
+              ],
+            ),
+      ),
     );
   }
 }
