@@ -9,6 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # Declarative routing solution, where everything needed for navigation is automatically generated
+  auto_route: ^9.2.2
+  # For Dependency Injection
+  get_it: ^8.0.0
 
 dev_dependencies:
   flutter_test:
@@ -18,6 +22,8 @@ dev_dependencies:
   flutter_native_splash: ^2.4.1
   # Simplifies updating your app's launcher icon
   icons_launcher: ^3.0.0
+  # For generating auto_route file
+  auto_route_generator: ^9.0.0
 
 flutter:
   uses-material-design: true
