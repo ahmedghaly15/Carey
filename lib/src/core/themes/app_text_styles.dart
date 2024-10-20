@@ -28,4 +28,8 @@ class AppTextStyles {
         fontSize: 35.sp,
         fontWeight: FontWeight.bold,
       );
+  static TextStyle get font18Regular => TextStyle(
+        fontSize: 18.sp,
+        fontWeight: FontWeight.w400,
+      );
 }

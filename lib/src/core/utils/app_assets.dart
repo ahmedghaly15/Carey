@@ -41,5 +41,13 @@ class Assets {
   /// Assets for imagesWelcomeScreenCar
   /// assets/images/welcome-screen-car.jpg
   static const String imagesWelcomeScreenCar = "assets/images/welcome-screen-car.jpg";
+
+  /// Assets for svgsFacebook
+  /// assets/svgs/facebook.svg
+  static const String svgsFacebook = "assets/svgs/facebook.svg";
+
+  /// Assets for svgsGoogle
+  /// assets/svgs/google.svg
+  static const String svgsGoogle = "assets/svgs/google.svg";
 }
 

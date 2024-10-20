@@ -9,4 +9,5 @@ class AppStrings {
   static const String startViewDescription =
       "The best car in your \n hands with Carey";
   static const String getStarted = 'Get Started';
+  static const String continueWith = 'Continue with';
 }
