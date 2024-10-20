@@ -20,7 +20,7 @@ class _WelcomeViewState extends State<WelcomeView> {
 
   void _startDelay() {
     _timer = Timer(
-      const Duration(seconds: 3),
+      const Duration(seconds: 2),
       () => _pushReplacementStartView(),
     );
   }

@@ -50,7 +50,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
   void _navigateToStartView() {
     _timer = Timer(
       const Duration(seconds: 4),
-      () => context.replaceRoute(const WelcomeRoute()),
+      () => context.replaceRoute(const StartWelcomeRoute()),
     );
   }
 
