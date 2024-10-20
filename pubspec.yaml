@@ -13,6 +13,8 @@ dependencies:
   auto_route: ^9.2.2
   # For Dependency Injection
   get_it: ^8.0.0
+  # Provides collection of animated loading widgets
+  loading_animation_widget: ^1.3.0
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +51,6 @@ flutter:
 
 flutter_assets:
   assets_path: assets/
-  output_path: lib/core/utils/
-  filename: assets.dart
+  output_path: lib/src/core/utils/
+  filename: app_assets.dart
   field_prefix: null
