@@ -1,14 +1,17 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+
+import 'package:carey/src/core/helpers/cache_keys.dart';
 import 'package:carey/src/core/helpers/extensions.dart';
+import 'package:carey/src/core/helpers/shared_pref_helper.dart';
 import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/widgets/fade_transition_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 @RoutePage()
 class SplashView extends StatefulWidget {
@@ -50,8 +53,19 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
   void _navigateToStartView() {
     _timer = Timer(
       const Duration(seconds: 4),
-      () => context.replaceRoute(const StartWelcomeRoute()),
+      () => _pushReplacementNextView(),
     );
+  }
+
+  void _pushReplacementNextView() async {
+    final isStartViewVisited =
+        await SharedPrefHelper.getBool(CacheKeys.isStartViewVisited) ?? false;
+
+    if (isStartViewVisited) {
+      context.replaceRoute(const AuthRoute());
+    } else {
+      context.replaceRoute(const StartWelcomeRoute());
+    }
   }
 
   @override
@@ -67,12 +81,18 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
     super.didChangeDependencies();
   }
 
-  void _forwardControllers() {
-    _carController.forward().then((_) {
-      if (_carController.status == AnimationStatus.completed) {
-        _loadingController.forward();
-      }
-    });
+  void _initCarPositionAnimation() {
+    _carPositionAnimation = Tween<double>(
+      begin:
+          context.screenWidth * 0.3, // Start at near the center of the screen
+      end: context.screenWidth +
+          context.screenWidth * 0.1, // Move far to the right to disappear
+    ).animate(
+      CurvedAnimation(
+        parent: _carController,
+        curve: Curves.elasticIn,
+      ),
+    );
   }
 
   void _initLoadingIndicatorPositionAnimation() {
@@ -87,18 +107,12 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
     );
   }
 
-  void _initCarPositionAnimation() {
-    _carPositionAnimation = Tween<double>(
-      begin:
-          context.screenWidth * 0.3, // Start at near the center of the screen
-      end: context.screenWidth +
-          context.screenWidth * 0.1, // Move far to the right to disappear
-    ).animate(
-      CurvedAnimation(
-        parent: _carController,
-        curve: Curves.elasticIn,
-      ),
-    );
+  void _forwardControllers() {
+    _carController.forward().then((_) {
+      if (_carController.status == AnimationStatus.completed) {
+        _loadingController.forward();
+      }
+    });
   }
 
   @override

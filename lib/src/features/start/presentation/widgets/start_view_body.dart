@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/core/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:carey/src/core/helpers/cache_keys.dart';
+import 'package:carey/src/core/helpers/shared_pref_helper.dart';
+import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
@@ -47,14 +49,17 @@ class StartViewBody extends StatelessWidget {
                   end: 18.0.w,
                   bottom: 37.h,
                 ),
-                onPressed: () {
-                  context.pushRoute(const AuthRoute());
-                },
+                onPressed: () => _pushReplacementAuthRoute(context),
               ),
             ],
           ),
         ),
       ],
     );
+  }
+
+  void _pushReplacementAuthRoute(BuildContext context) async {
+    await SharedPrefHelper.setData(CacheKeys.isStartViewVisited, true);
+    context.pushRoute(const AuthRoute());
   }
 }
