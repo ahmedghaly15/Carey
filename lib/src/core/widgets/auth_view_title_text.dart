@@ -13,7 +13,7 @@ class AuthViewTitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: AppTextStyles.poppinsFont45Medium,
+      style: AppTextStyles.poppinsFont27Medium,
     );
   }
 }

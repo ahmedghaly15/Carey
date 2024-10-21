@@ -48,6 +48,25 @@ class LoginMethodsRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [LoginView]
+class LoginRoute extends PageRouteInfo<void> {
+  const LoginRoute({List<PageRouteInfo>? children})
+      : super(
+          LoginRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'LoginRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const LoginView());
+    },
+  );
+}
+
+/// generated route for
 /// [SplashView]
 class SplashRoute extends PageRouteInfo<void> {
   const SplashRoute({List<PageRouteInfo>? children})

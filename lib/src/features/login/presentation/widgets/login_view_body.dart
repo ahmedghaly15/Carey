@@ -1,3 +1,4 @@
+import 'package:carey/src/features/login/presentation/widgets/login_via_password_button_bloc_listener.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,11 +10,10 @@ import 'package:carey/src/core/widgets/auth_custom_divider_with_text.dart';
 import 'package:carey/src/core/widgets/auth_switcher.dart';
 import 'package:carey/src/core/widgets/auth_view_title_text.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
-import 'package:carey/src/core/widgets/primary_button.dart';
-import 'package:carey/src/core/widgets/remember_me.dart';
 import 'package:carey/src/core/widgets/slide_animated_carey_icon.dart';
 import 'package:carey/src/core/widgets/social_login_icon_buttons.dart';
 import 'package:carey/src/features/login/presentation/widgets/login_form.dart';
+import 'package:carey/src/features/login/presentation/widgets/login_remember_me_bloc_builder.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
@@ -32,12 +32,9 @@ class LoginViewBody extends StatelessWidget {
             const LoginForm(),
             Container(
               margin: EdgeInsets.symmetric(vertical: 19.h),
-              child: const RememberMe(),
+              child: const LoginRememberMeBlocBuilder(),
             ),
-            PrimaryButton(
-              onPressed: () {},
-              text: AppStrings.signIn,
-            ),
+            const LoginViaPasswordButtonBlocListener(),
             TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(

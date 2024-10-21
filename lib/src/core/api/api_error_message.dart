@@ -1,0 +1,9 @@
+class ApiErrorMessage {
+  ApiErrorMessage._();
+
+  static const String timeoutError = 'Timeout. Please try again later';
+  static const String defaultError =
+      'Opps, something is wrong. Please try again later';
+  static const String noInternetConnection =
+      'No internet connection. Please check your connection and try again';
+}
