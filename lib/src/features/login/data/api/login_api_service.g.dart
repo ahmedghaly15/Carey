@@ -24,8 +24,8 @@ class _LoginApiService implements LoginApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<LoginResponse> loginViaEmailAndPassword(
-    LoginViaEmailAndPasswordRequest params, [
+  Future<LoginResponse> loginViaPassword(
+    LoginViaPasswordRequest params, [
     CancelToken? cancelToken,
   ]) async {
     final _extra = <String, dynamic>{};

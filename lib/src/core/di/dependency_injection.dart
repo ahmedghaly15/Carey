@@ -4,7 +4,7 @@ import 'package:carey/src/features/login/data/api/login_api_service.dart';
 import 'package:carey/src/features/login/data/datasources/login_remote_data_source.dart';
 import 'package:carey/src/features/login/data/repositories/login_repo_impl.dart';
 import 'package:carey/src/features/login/domain/repositories/login_repo.dart';
-import 'package:carey/src/features/login/domain/usecases/login_via_email_and_password_use_case.dart';
+import 'package:carey/src/features/login/domain/usecases/login_via_password.dart';
 import 'package:carey/src/features/login/presentation/cubit/login_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -50,13 +50,13 @@ void _setupForRepos() {
 }
 
 void _setupForUseCases() {
-  getIt.registerLazySingleton<LoginViaEmailAndPasswordUseCase>(
-    () => LoginViaEmailAndPasswordUseCase(getIt.get<LoginRepo>()),
+  getIt.registerLazySingleton<LoginViaPassword>(
+    () => LoginViaPassword(getIt.get<LoginRepo>()),
   );
 }
 
 void _setupForCubits() {
   getIt.registerFactory<LoginCubit>(
-    () => LoginCubit(getIt.get<LoginViaEmailAndPasswordUseCase>()),
+    () => LoginCubit(getIt.get<LoginViaPassword>()),
   );
 }

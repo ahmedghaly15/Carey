@@ -10,11 +10,11 @@ class LoginState<T> with _$LoginState<T> {
       TogglePasswordVisibility<T>;
   const factory LoginState.toggleRememberMe(bool rememberMe) =
       ToggleRememberMe<T>;
-  const factory LoginState.loginViaEmailAndPasswordLoading() =
-      LoginViaEmailAndPasswordLoading<T>;
-  const factory LoginState.loginViaEmailAndPasswordSuccess(
+  const factory LoginState.loginViaPasswordLoading() =
+      LoginViaPasswordLoading<T>;
+  const factory LoginState.loginViaPasswordSuccess(
     LoginResponseEntity loginEntity,
-  ) = LoginViaEmailAndPasswordSuccess<T>;
-  const factory LoginState.loginViaEmailAndPasswordError(String error) =
-      LoginViaEmailAndPasswordError<T>;
+  ) = LoginViaPasswordSuccess<T>;
+  const factory LoginState.loginViaPasswordError(String error) =
+      LoginViaPasswordError<T>;
 }

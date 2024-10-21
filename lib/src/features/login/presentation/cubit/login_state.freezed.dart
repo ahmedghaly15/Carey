@@ -21,10 +21,10 @@ mixin _$LoginState<T> {
     required TResult Function() initial,
     required TResult Function(bool obscured) togglePasswordVisibility,
     required TResult Function(bool rememberMe) toggleRememberMe,
-    required TResult Function() loginViaEmailAndPasswordLoading,
+    required TResult Function() loginViaPasswordLoading,
     required TResult Function(LoginResponseEntity loginEntity)
-        loginViaEmailAndPasswordSuccess,
-    required TResult Function(String error) loginViaEmailAndPasswordError,
+        loginViaPasswordSuccess,
+    required TResult Function(String error) loginViaPasswordError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,10 +32,9 @@ mixin _$LoginState<T> {
     TResult? Function()? initial,
     TResult? Function(bool obscured)? togglePasswordVisibility,
     TResult? Function(bool rememberMe)? toggleRememberMe,
-    TResult? Function()? loginViaEmailAndPasswordLoading,
-    TResult? Function(LoginResponseEntity loginEntity)?
-        loginViaEmailAndPasswordSuccess,
-    TResult? Function(String error)? loginViaEmailAndPasswordError,
+    TResult? Function()? loginViaPasswordLoading,
+    TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult? Function(String error)? loginViaPasswordError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,10 +42,9 @@ mixin _$LoginState<T> {
     TResult Function()? initial,
     TResult Function(bool obscured)? togglePasswordVisibility,
     TResult Function(bool rememberMe)? toggleRememberMe,
-    TResult Function()? loginViaEmailAndPasswordLoading,
-    TResult Function(LoginResponseEntity loginEntity)?
-        loginViaEmailAndPasswordSuccess,
-    TResult Function(String error)? loginViaEmailAndPasswordError,
+    TResult Function()? loginViaPasswordLoading,
+    TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult Function(String error)? loginViaPasswordError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,12 +54,12 @@ mixin _$LoginState<T> {
     required TResult Function(TogglePasswordVisibility<T> value)
         togglePasswordVisibility,
     required TResult Function(ToggleRememberMe<T> value) toggleRememberMe,
-    required TResult Function(LoginViaEmailAndPasswordLoading<T> value)
-        loginViaEmailAndPasswordLoading,
-    required TResult Function(LoginViaEmailAndPasswordSuccess<T> value)
-        loginViaEmailAndPasswordSuccess,
-    required TResult Function(LoginViaEmailAndPasswordError<T> value)
-        loginViaEmailAndPasswordError,
+    required TResult Function(LoginViaPasswordLoading<T> value)
+        loginViaPasswordLoading,
+    required TResult Function(LoginViaPasswordSuccess<T> value)
+        loginViaPasswordSuccess,
+    required TResult Function(LoginViaPasswordError<T> value)
+        loginViaPasswordError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,12 +68,11 @@ mixin _$LoginState<T> {
     TResult? Function(TogglePasswordVisibility<T> value)?
         togglePasswordVisibility,
     TResult? Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult? Function(LoginViaEmailAndPasswordLoading<T> value)?
-        loginViaEmailAndPasswordLoading,
-    TResult? Function(LoginViaEmailAndPasswordSuccess<T> value)?
-        loginViaEmailAndPasswordSuccess,
-    TResult? Function(LoginViaEmailAndPasswordError<T> value)?
-        loginViaEmailAndPasswordError,
+    TResult? Function(LoginViaPasswordLoading<T> value)?
+        loginViaPasswordLoading,
+    TResult? Function(LoginViaPasswordSuccess<T> value)?
+        loginViaPasswordSuccess,
+    TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -84,12 +81,9 @@ mixin _$LoginState<T> {
     TResult Function(TogglePasswordVisibility<T> value)?
         togglePasswordVisibility,
     TResult Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult Function(LoginViaEmailAndPasswordLoading<T> value)?
-        loginViaEmailAndPasswordLoading,
-    TResult Function(LoginViaEmailAndPasswordSuccess<T> value)?
-        loginViaEmailAndPasswordSuccess,
-    TResult Function(LoginViaEmailAndPasswordError<T> value)?
-        loginViaEmailAndPasswordError,
+    TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
+    TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
+    TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -160,10 +154,10 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function() initial,
     required TResult Function(bool obscured) togglePasswordVisibility,
     required TResult Function(bool rememberMe) toggleRememberMe,
-    required TResult Function() loginViaEmailAndPasswordLoading,
+    required TResult Function() loginViaPasswordLoading,
     required TResult Function(LoginResponseEntity loginEntity)
-        loginViaEmailAndPasswordSuccess,
-    required TResult Function(String error) loginViaEmailAndPasswordError,
+        loginViaPasswordSuccess,
+    required TResult Function(String error) loginViaPasswordError,
   }) {
     return initial();
   }
@@ -174,10 +168,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function()? initial,
     TResult? Function(bool obscured)? togglePasswordVisibility,
     TResult? Function(bool rememberMe)? toggleRememberMe,
-    TResult? Function()? loginViaEmailAndPasswordLoading,
-    TResult? Function(LoginResponseEntity loginEntity)?
-        loginViaEmailAndPasswordSuccess,
-    TResult? Function(String error)? loginViaEmailAndPasswordError,
+    TResult? Function()? loginViaPasswordLoading,
+    TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult? Function(String error)? loginViaPasswordError,
   }) {
     return initial?.call();
   }
@@ -188,10 +181,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function()? initial,
     TResult Function(bool obscured)? togglePasswordVisibility,
     TResult Function(bool rememberMe)? toggleRememberMe,
-    TResult Function()? loginViaEmailAndPasswordLoading,
-    TResult Function(LoginResponseEntity loginEntity)?
-        loginViaEmailAndPasswordSuccess,
-    TResult Function(String error)? loginViaEmailAndPasswordError,
+    TResult Function()? loginViaPasswordLoading,
+    TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult Function(String error)? loginViaPasswordError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -207,12 +199,12 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function(TogglePasswordVisibility<T> value)
         togglePasswordVisibility,
     required TResult Function(ToggleRememberMe<T> value) toggleRememberMe,
-    required TResult Function(LoginViaEmailAndPasswordLoading<T> value)
-        loginViaEmailAndPasswordLoading,
-    required TResult Function(LoginViaEmailAndPasswordSuccess<T> value)
-        loginViaEmailAndPasswordSuccess,
-    required TResult Function(LoginViaEmailAndPasswordError<T> value)
-        loginViaEmailAndPasswordError,
+    required TResult Function(LoginViaPasswordLoading<T> value)
+        loginViaPasswordLoading,
+    required TResult Function(LoginViaPasswordSuccess<T> value)
+        loginViaPasswordSuccess,
+    required TResult Function(LoginViaPasswordError<T> value)
+        loginViaPasswordError,
   }) {
     return initial(this);
   }
@@ -224,12 +216,11 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function(TogglePasswordVisibility<T> value)?
         togglePasswordVisibility,
     TResult? Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult? Function(LoginViaEmailAndPasswordLoading<T> value)?
-        loginViaEmailAndPasswordLoading,
-    TResult? Function(LoginViaEmailAndPasswordSuccess<T> value)?
-        loginViaEmailAndPasswordSuccess,
-    TResult? Function(LoginViaEmailAndPasswordError<T> value)?
-        loginViaEmailAndPasswordError,
+    TResult? Function(LoginViaPasswordLoading<T> value)?
+        loginViaPasswordLoading,
+    TResult? Function(LoginViaPasswordSuccess<T> value)?
+        loginViaPasswordSuccess,
+    TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
   }) {
     return initial?.call(this);
   }
@@ -241,12 +232,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function(TogglePasswordVisibility<T> value)?
         togglePasswordVisibility,
     TResult Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult Function(LoginViaEmailAndPasswordLoading<T> value)?
-        loginViaEmailAndPasswordLoading,
-    TResult Function(LoginViaEmailAndPasswordSuccess<T> value)?
-        loginViaEmailAndPasswordSuccess,
-    TResult Function(LoginViaEmailAndPasswordError<T> value)?
-        loginViaEmailAndPasswordError,
+    TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
+    TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
+    TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -335,10 +323,10 @@ class _$TogglePasswordVisibilityImpl<T> implements TogglePasswordVisibility<T> {
     required TResult Function() initial,
     required TResult Function(bool obscured) togglePasswordVisibility,
     required TResult Function(bool rememberMe) toggleRememberMe,
-    required TResult Function() loginViaEmailAndPasswordLoading,
+    required TResult Function() loginViaPasswordLoading,
     required TResult Function(LoginResponseEntity loginEntity)
-        loginViaEmailAndPasswordSuccess,
-    required TResult Function(String error) loginViaEmailAndPasswordError,
+        loginViaPasswordSuccess,
+    required TResult Function(String error) loginViaPasswordError,
   }) {
     return togglePasswordVisibility(obscured);
   }
@@ -349,10 +337,9 @@ class _$TogglePasswordVisibilityImpl<T> implements TogglePasswordVisibility<T> {
     TResult? Function()? initial,
     TResult? Function(bool obscured)? togglePasswordVisibility,
     TResult? Function(bool rememberMe)? toggleRememberMe,
-    TResult? Function()? loginViaEmailAndPasswordLoading,
-    TResult? Function(LoginResponseEntity loginEntity)?
-        loginViaEmailAndPasswordSuccess,
-    TResult? Function(String error)? loginViaEmailAndPasswordError,
+    TResult? Function()? loginViaPasswordLoading,
+    TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult? Function(String error)? loginViaPasswordError,
   }) {
     return togglePasswordVisibility?.call(obscured);
   }
@@ -363,10 +350,9 @@ class _$TogglePasswordVisibilityImpl<T> implements TogglePasswordVisibility<T> {
     TResult Function()? initial,
     TResult Function(bool obscured)? togglePasswordVisibility,
     TResult Function(bool rememberMe)? toggleRememberMe,
-    TResult Function()? loginViaEmailAndPasswordLoading,
-    TResult Function(LoginResponseEntity loginEntity)?
-        loginViaEmailAndPasswordSuccess,
-    TResult Function(String error)? loginViaEmailAndPasswordError,
+    TResult Function()? loginViaPasswordLoading,
+    TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult Function(String error)? loginViaPasswordError,
     required TResult orElse(),
   }) {
     if (togglePasswordVisibility != null) {
@@ -382,12 +368,12 @@ class _$TogglePasswordVisibilityImpl<T> implements TogglePasswordVisibility<T> {
     required TResult Function(TogglePasswordVisibility<T> value)
         togglePasswordVisibility,
     required TResult Function(ToggleRememberMe<T> value) toggleRememberMe,
-    required TResult Function(LoginViaEmailAndPasswordLoading<T> value)
-        loginViaEmailAndPasswordLoading,
-    required TResult Function(LoginViaEmailAndPasswordSuccess<T> value)
-        loginViaEmailAndPasswordSuccess,
-    required TResult Function(LoginViaEmailAndPasswordError<T> value)
-        loginViaEmailAndPasswordError,
+    required TResult Function(LoginViaPasswordLoading<T> value)
+        loginViaPasswordLoading,
+    required TResult Function(LoginViaPasswordSuccess<T> value)
+        loginViaPasswordSuccess,
+    required TResult Function(LoginViaPasswordError<T> value)
+        loginViaPasswordError,
   }) {
     return togglePasswordVisibility(this);
   }
@@ -399,12 +385,11 @@ class _$TogglePasswordVisibilityImpl<T> implements TogglePasswordVisibility<T> {
     TResult? Function(TogglePasswordVisibility<T> value)?
         togglePasswordVisibility,
     TResult? Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult? Function(LoginViaEmailAndPasswordLoading<T> value)?
-        loginViaEmailAndPasswordLoading,
-    TResult? Function(LoginViaEmailAndPasswordSuccess<T> value)?
-        loginViaEmailAndPasswordSuccess,
-    TResult? Function(LoginViaEmailAndPasswordError<T> value)?
-        loginViaEmailAndPasswordError,
+    TResult? Function(LoginViaPasswordLoading<T> value)?
+        loginViaPasswordLoading,
+    TResult? Function(LoginViaPasswordSuccess<T> value)?
+        loginViaPasswordSuccess,
+    TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
   }) {
     return togglePasswordVisibility?.call(this);
   }
@@ -416,12 +401,9 @@ class _$TogglePasswordVisibilityImpl<T> implements TogglePasswordVisibility<T> {
     TResult Function(TogglePasswordVisibility<T> value)?
         togglePasswordVisibility,
     TResult Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult Function(LoginViaEmailAndPasswordLoading<T> value)?
-        loginViaEmailAndPasswordLoading,
-    TResult Function(LoginViaEmailAndPasswordSuccess<T> value)?
-        loginViaEmailAndPasswordSuccess,
-    TResult Function(LoginViaEmailAndPasswordError<T> value)?
-        loginViaEmailAndPasswordError,
+    TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
+    TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
+    TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
     required TResult orElse(),
   }) {
     if (togglePasswordVisibility != null) {
@@ -517,10 +499,10 @@ class _$ToggleRememberMeImpl<T> implements ToggleRememberMe<T> {
     required TResult Function() initial,
     required TResult Function(bool obscured) togglePasswordVisibility,
     required TResult Function(bool rememberMe) toggleRememberMe,
-    required TResult Function() loginViaEmailAndPasswordLoading,
+    required TResult Function() loginViaPasswordLoading,
     required TResult Function(LoginResponseEntity loginEntity)
-        loginViaEmailAndPasswordSuccess,
-    required TResult Function(String error) loginViaEmailAndPasswordError,
+        loginViaPasswordSuccess,
+    required TResult Function(String error) loginViaPasswordError,
   }) {
     return toggleRememberMe(rememberMe);
   }
@@ -531,10 +513,9 @@ class _$ToggleRememberMeImpl<T> implements ToggleRememberMe<T> {
     TResult? Function()? initial,
     TResult? Function(bool obscured)? togglePasswordVisibility,
     TResult? Function(bool rememberMe)? toggleRememberMe,
-    TResult? Function()? loginViaEmailAndPasswordLoading,
-    TResult? Function(LoginResponseEntity loginEntity)?
-        loginViaEmailAndPasswordSuccess,
-    TResult? Function(String error)? loginViaEmailAndPasswordError,
+    TResult? Function()? loginViaPasswordLoading,
+    TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult? Function(String error)? loginViaPasswordError,
   }) {
     return toggleRememberMe?.call(rememberMe);
   }
@@ -545,10 +526,9 @@ class _$ToggleRememberMeImpl<T> implements ToggleRememberMe<T> {
     TResult Function()? initial,
     TResult Function(bool obscured)? togglePasswordVisibility,
     TResult Function(bool rememberMe)? toggleRememberMe,
-    TResult Function()? loginViaEmailAndPasswordLoading,
-    TResult Function(LoginResponseEntity loginEntity)?
-        loginViaEmailAndPasswordSuccess,
-    TResult Function(String error)? loginViaEmailAndPasswordError,
+    TResult Function()? loginViaPasswordLoading,
+    TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult Function(String error)? loginViaPasswordError,
     required TResult orElse(),
   }) {
     if (toggleRememberMe != null) {
@@ -564,12 +544,12 @@ class _$ToggleRememberMeImpl<T> implements ToggleRememberMe<T> {
     required TResult Function(TogglePasswordVisibility<T> value)
         togglePasswordVisibility,
     required TResult Function(ToggleRememberMe<T> value) toggleRememberMe,
-    required TResult Function(LoginViaEmailAndPasswordLoading<T> value)
-        loginViaEmailAndPasswordLoading,
-    required TResult Function(LoginViaEmailAndPasswordSuccess<T> value)
-        loginViaEmailAndPasswordSuccess,
-    required TResult Function(LoginViaEmailAndPasswordError<T> value)
-        loginViaEmailAndPasswordError,
+    required TResult Function(LoginViaPasswordLoading<T> value)
+        loginViaPasswordLoading,
+    required TResult Function(LoginViaPasswordSuccess<T> value)
+        loginViaPasswordSuccess,
+    required TResult Function(LoginViaPasswordError<T> value)
+        loginViaPasswordError,
   }) {
     return toggleRememberMe(this);
   }
@@ -581,12 +561,11 @@ class _$ToggleRememberMeImpl<T> implements ToggleRememberMe<T> {
     TResult? Function(TogglePasswordVisibility<T> value)?
         togglePasswordVisibility,
     TResult? Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult? Function(LoginViaEmailAndPasswordLoading<T> value)?
-        loginViaEmailAndPasswordLoading,
-    TResult? Function(LoginViaEmailAndPasswordSuccess<T> value)?
-        loginViaEmailAndPasswordSuccess,
-    TResult? Function(LoginViaEmailAndPasswordError<T> value)?
-        loginViaEmailAndPasswordError,
+    TResult? Function(LoginViaPasswordLoading<T> value)?
+        loginViaPasswordLoading,
+    TResult? Function(LoginViaPasswordSuccess<T> value)?
+        loginViaPasswordSuccess,
+    TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
   }) {
     return toggleRememberMe?.call(this);
   }
@@ -598,12 +577,9 @@ class _$ToggleRememberMeImpl<T> implements ToggleRememberMe<T> {
     TResult Function(TogglePasswordVisibility<T> value)?
         togglePasswordVisibility,
     TResult Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult Function(LoginViaEmailAndPasswordLoading<T> value)?
-        loginViaEmailAndPasswordLoading,
-    TResult Function(LoginViaEmailAndPasswordSuccess<T> value)?
-        loginViaEmailAndPasswordSuccess,
-    TResult Function(LoginViaEmailAndPasswordError<T> value)?
-        loginViaEmailAndPasswordError,
+    TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
+    TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
+    TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
     required TResult orElse(),
   }) {
     if (toggleRememberMe != null) {
@@ -627,21 +603,20 @@ abstract class ToggleRememberMe<T> implements LoginState<T> {
 }
 
 /// @nodoc
-abstract class _$$LoginViaEmailAndPasswordLoadingImplCopyWith<T, $Res> {
-  factory _$$LoginViaEmailAndPasswordLoadingImplCopyWith(
-          _$LoginViaEmailAndPasswordLoadingImpl<T> value,
-          $Res Function(_$LoginViaEmailAndPasswordLoadingImpl<T>) then) =
-      __$$LoginViaEmailAndPasswordLoadingImplCopyWithImpl<T, $Res>;
+abstract class _$$LoginViaPasswordLoadingImplCopyWith<T, $Res> {
+  factory _$$LoginViaPasswordLoadingImplCopyWith(
+          _$LoginViaPasswordLoadingImpl<T> value,
+          $Res Function(_$LoginViaPasswordLoadingImpl<T>) then) =
+      __$$LoginViaPasswordLoadingImplCopyWithImpl<T, $Res>;
 }
 
 /// @nodoc
-class __$$LoginViaEmailAndPasswordLoadingImplCopyWithImpl<T, $Res>
-    extends _$LoginStateCopyWithImpl<T, $Res,
-        _$LoginViaEmailAndPasswordLoadingImpl<T>>
-    implements _$$LoginViaEmailAndPasswordLoadingImplCopyWith<T, $Res> {
-  __$$LoginViaEmailAndPasswordLoadingImplCopyWithImpl(
-      _$LoginViaEmailAndPasswordLoadingImpl<T> _value,
-      $Res Function(_$LoginViaEmailAndPasswordLoadingImpl<T>) _then)
+class __$$LoginViaPasswordLoadingImplCopyWithImpl<T, $Res>
+    extends _$LoginStateCopyWithImpl<T, $Res, _$LoginViaPasswordLoadingImpl<T>>
+    implements _$$LoginViaPasswordLoadingImplCopyWith<T, $Res> {
+  __$$LoginViaPasswordLoadingImplCopyWithImpl(
+      _$LoginViaPasswordLoadingImpl<T> _value,
+      $Res Function(_$LoginViaPasswordLoadingImpl<T>) _then)
       : super(_value, _then);
 
   /// Create a copy of LoginState
@@ -650,20 +625,19 @@ class __$$LoginViaEmailAndPasswordLoadingImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$LoginViaEmailAndPasswordLoadingImpl<T>
-    implements LoginViaEmailAndPasswordLoading<T> {
-  const _$LoginViaEmailAndPasswordLoadingImpl();
+class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
+  const _$LoginViaPasswordLoadingImpl();
 
   @override
   String toString() {
-    return 'LoginState<$T>.loginViaEmailAndPasswordLoading()';
+    return 'LoginState<$T>.loginViaPasswordLoading()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoginViaEmailAndPasswordLoadingImpl<T>);
+            other is _$LoginViaPasswordLoadingImpl<T>);
   }
 
   @override
@@ -675,12 +649,12 @@ class _$LoginViaEmailAndPasswordLoadingImpl<T>
     required TResult Function() initial,
     required TResult Function(bool obscured) togglePasswordVisibility,
     required TResult Function(bool rememberMe) toggleRememberMe,
-    required TResult Function() loginViaEmailAndPasswordLoading,
+    required TResult Function() loginViaPasswordLoading,
     required TResult Function(LoginResponseEntity loginEntity)
-        loginViaEmailAndPasswordSuccess,
-    required TResult Function(String error) loginViaEmailAndPasswordError,
+        loginViaPasswordSuccess,
+    required TResult Function(String error) loginViaPasswordError,
   }) {
-    return loginViaEmailAndPasswordLoading();
+    return loginViaPasswordLoading();
   }
 
   @override
@@ -689,12 +663,11 @@ class _$LoginViaEmailAndPasswordLoadingImpl<T>
     TResult? Function()? initial,
     TResult? Function(bool obscured)? togglePasswordVisibility,
     TResult? Function(bool rememberMe)? toggleRememberMe,
-    TResult? Function()? loginViaEmailAndPasswordLoading,
-    TResult? Function(LoginResponseEntity loginEntity)?
-        loginViaEmailAndPasswordSuccess,
-    TResult? Function(String error)? loginViaEmailAndPasswordError,
+    TResult? Function()? loginViaPasswordLoading,
+    TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult? Function(String error)? loginViaPasswordError,
   }) {
-    return loginViaEmailAndPasswordLoading?.call();
+    return loginViaPasswordLoading?.call();
   }
 
   @override
@@ -703,14 +676,13 @@ class _$LoginViaEmailAndPasswordLoadingImpl<T>
     TResult Function()? initial,
     TResult Function(bool obscured)? togglePasswordVisibility,
     TResult Function(bool rememberMe)? toggleRememberMe,
-    TResult Function()? loginViaEmailAndPasswordLoading,
-    TResult Function(LoginResponseEntity loginEntity)?
-        loginViaEmailAndPasswordSuccess,
-    TResult Function(String error)? loginViaEmailAndPasswordError,
+    TResult Function()? loginViaPasswordLoading,
+    TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult Function(String error)? loginViaPasswordError,
     required TResult orElse(),
   }) {
-    if (loginViaEmailAndPasswordLoading != null) {
-      return loginViaEmailAndPasswordLoading();
+    if (loginViaPasswordLoading != null) {
+      return loginViaPasswordLoading();
     }
     return orElse();
   }
@@ -722,14 +694,14 @@ class _$LoginViaEmailAndPasswordLoadingImpl<T>
     required TResult Function(TogglePasswordVisibility<T> value)
         togglePasswordVisibility,
     required TResult Function(ToggleRememberMe<T> value) toggleRememberMe,
-    required TResult Function(LoginViaEmailAndPasswordLoading<T> value)
-        loginViaEmailAndPasswordLoading,
-    required TResult Function(LoginViaEmailAndPasswordSuccess<T> value)
-        loginViaEmailAndPasswordSuccess,
-    required TResult Function(LoginViaEmailAndPasswordError<T> value)
-        loginViaEmailAndPasswordError,
+    required TResult Function(LoginViaPasswordLoading<T> value)
+        loginViaPasswordLoading,
+    required TResult Function(LoginViaPasswordSuccess<T> value)
+        loginViaPasswordSuccess,
+    required TResult Function(LoginViaPasswordError<T> value)
+        loginViaPasswordError,
   }) {
-    return loginViaEmailAndPasswordLoading(this);
+    return loginViaPasswordLoading(this);
   }
 
   @override
@@ -739,14 +711,13 @@ class _$LoginViaEmailAndPasswordLoadingImpl<T>
     TResult? Function(TogglePasswordVisibility<T> value)?
         togglePasswordVisibility,
     TResult? Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult? Function(LoginViaEmailAndPasswordLoading<T> value)?
-        loginViaEmailAndPasswordLoading,
-    TResult? Function(LoginViaEmailAndPasswordSuccess<T> value)?
-        loginViaEmailAndPasswordSuccess,
-    TResult? Function(LoginViaEmailAndPasswordError<T> value)?
-        loginViaEmailAndPasswordError,
+    TResult? Function(LoginViaPasswordLoading<T> value)?
+        loginViaPasswordLoading,
+    TResult? Function(LoginViaPasswordSuccess<T> value)?
+        loginViaPasswordSuccess,
+    TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
   }) {
-    return loginViaEmailAndPasswordLoading?.call(this);
+    return loginViaPasswordLoading?.call(this);
   }
 
   @override
@@ -756,44 +727,39 @@ class _$LoginViaEmailAndPasswordLoadingImpl<T>
     TResult Function(TogglePasswordVisibility<T> value)?
         togglePasswordVisibility,
     TResult Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult Function(LoginViaEmailAndPasswordLoading<T> value)?
-        loginViaEmailAndPasswordLoading,
-    TResult Function(LoginViaEmailAndPasswordSuccess<T> value)?
-        loginViaEmailAndPasswordSuccess,
-    TResult Function(LoginViaEmailAndPasswordError<T> value)?
-        loginViaEmailAndPasswordError,
+    TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
+    TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
+    TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
     required TResult orElse(),
   }) {
-    if (loginViaEmailAndPasswordLoading != null) {
-      return loginViaEmailAndPasswordLoading(this);
+    if (loginViaPasswordLoading != null) {
+      return loginViaPasswordLoading(this);
     }
     return orElse();
   }
 }
 
-abstract class LoginViaEmailAndPasswordLoading<T> implements LoginState<T> {
-  const factory LoginViaEmailAndPasswordLoading() =
-      _$LoginViaEmailAndPasswordLoadingImpl<T>;
+abstract class LoginViaPasswordLoading<T> implements LoginState<T> {
+  const factory LoginViaPasswordLoading() = _$LoginViaPasswordLoadingImpl<T>;
 }
 
 /// @nodoc
-abstract class _$$LoginViaEmailAndPasswordSuccessImplCopyWith<T, $Res> {
-  factory _$$LoginViaEmailAndPasswordSuccessImplCopyWith(
-          _$LoginViaEmailAndPasswordSuccessImpl<T> value,
-          $Res Function(_$LoginViaEmailAndPasswordSuccessImpl<T>) then) =
-      __$$LoginViaEmailAndPasswordSuccessImplCopyWithImpl<T, $Res>;
+abstract class _$$LoginViaPasswordSuccessImplCopyWith<T, $Res> {
+  factory _$$LoginViaPasswordSuccessImplCopyWith(
+          _$LoginViaPasswordSuccessImpl<T> value,
+          $Res Function(_$LoginViaPasswordSuccessImpl<T>) then) =
+      __$$LoginViaPasswordSuccessImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({LoginResponseEntity loginEntity});
 }
 
 /// @nodoc
-class __$$LoginViaEmailAndPasswordSuccessImplCopyWithImpl<T, $Res>
-    extends _$LoginStateCopyWithImpl<T, $Res,
-        _$LoginViaEmailAndPasswordSuccessImpl<T>>
-    implements _$$LoginViaEmailAndPasswordSuccessImplCopyWith<T, $Res> {
-  __$$LoginViaEmailAndPasswordSuccessImplCopyWithImpl(
-      _$LoginViaEmailAndPasswordSuccessImpl<T> _value,
-      $Res Function(_$LoginViaEmailAndPasswordSuccessImpl<T>) _then)
+class __$$LoginViaPasswordSuccessImplCopyWithImpl<T, $Res>
+    extends _$LoginStateCopyWithImpl<T, $Res, _$LoginViaPasswordSuccessImpl<T>>
+    implements _$$LoginViaPasswordSuccessImplCopyWith<T, $Res> {
+  __$$LoginViaPasswordSuccessImplCopyWithImpl(
+      _$LoginViaPasswordSuccessImpl<T> _value,
+      $Res Function(_$LoginViaPasswordSuccessImpl<T>) _then)
       : super(_value, _then);
 
   /// Create a copy of LoginState
@@ -803,7 +769,7 @@ class __$$LoginViaEmailAndPasswordSuccessImplCopyWithImpl<T, $Res>
   $Res call({
     Object? loginEntity = null,
   }) {
-    return _then(_$LoginViaEmailAndPasswordSuccessImpl<T>(
+    return _then(_$LoginViaPasswordSuccessImpl<T>(
       null == loginEntity
           ? _value.loginEntity
           : loginEntity // ignore: cast_nullable_to_non_nullable
@@ -814,23 +780,22 @@ class __$$LoginViaEmailAndPasswordSuccessImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$LoginViaEmailAndPasswordSuccessImpl<T>
-    implements LoginViaEmailAndPasswordSuccess<T> {
-  const _$LoginViaEmailAndPasswordSuccessImpl(this.loginEntity);
+class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
+  const _$LoginViaPasswordSuccessImpl(this.loginEntity);
 
   @override
   final LoginResponseEntity loginEntity;
 
   @override
   String toString() {
-    return 'LoginState<$T>.loginViaEmailAndPasswordSuccess(loginEntity: $loginEntity)';
+    return 'LoginState<$T>.loginViaPasswordSuccess(loginEntity: $loginEntity)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoginViaEmailAndPasswordSuccessImpl<T> &&
+            other is _$LoginViaPasswordSuccessImpl<T> &&
             (identical(other.loginEntity, loginEntity) ||
                 other.loginEntity == loginEntity));
   }
@@ -843,10 +808,9 @@ class _$LoginViaEmailAndPasswordSuccessImpl<T>
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoginViaEmailAndPasswordSuccessImplCopyWith<T,
-          _$LoginViaEmailAndPasswordSuccessImpl<T>>
-      get copyWith => __$$LoginViaEmailAndPasswordSuccessImplCopyWithImpl<T,
-          _$LoginViaEmailAndPasswordSuccessImpl<T>>(this, _$identity);
+  _$$LoginViaPasswordSuccessImplCopyWith<T, _$LoginViaPasswordSuccessImpl<T>>
+      get copyWith => __$$LoginViaPasswordSuccessImplCopyWithImpl<T,
+          _$LoginViaPasswordSuccessImpl<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -854,12 +818,12 @@ class _$LoginViaEmailAndPasswordSuccessImpl<T>
     required TResult Function() initial,
     required TResult Function(bool obscured) togglePasswordVisibility,
     required TResult Function(bool rememberMe) toggleRememberMe,
-    required TResult Function() loginViaEmailAndPasswordLoading,
+    required TResult Function() loginViaPasswordLoading,
     required TResult Function(LoginResponseEntity loginEntity)
-        loginViaEmailAndPasswordSuccess,
-    required TResult Function(String error) loginViaEmailAndPasswordError,
+        loginViaPasswordSuccess,
+    required TResult Function(String error) loginViaPasswordError,
   }) {
-    return loginViaEmailAndPasswordSuccess(loginEntity);
+    return loginViaPasswordSuccess(loginEntity);
   }
 
   @override
@@ -868,12 +832,11 @@ class _$LoginViaEmailAndPasswordSuccessImpl<T>
     TResult? Function()? initial,
     TResult? Function(bool obscured)? togglePasswordVisibility,
     TResult? Function(bool rememberMe)? toggleRememberMe,
-    TResult? Function()? loginViaEmailAndPasswordLoading,
-    TResult? Function(LoginResponseEntity loginEntity)?
-        loginViaEmailAndPasswordSuccess,
-    TResult? Function(String error)? loginViaEmailAndPasswordError,
+    TResult? Function()? loginViaPasswordLoading,
+    TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult? Function(String error)? loginViaPasswordError,
   }) {
-    return loginViaEmailAndPasswordSuccess?.call(loginEntity);
+    return loginViaPasswordSuccess?.call(loginEntity);
   }
 
   @override
@@ -882,14 +845,13 @@ class _$LoginViaEmailAndPasswordSuccessImpl<T>
     TResult Function()? initial,
     TResult Function(bool obscured)? togglePasswordVisibility,
     TResult Function(bool rememberMe)? toggleRememberMe,
-    TResult Function()? loginViaEmailAndPasswordLoading,
-    TResult Function(LoginResponseEntity loginEntity)?
-        loginViaEmailAndPasswordSuccess,
-    TResult Function(String error)? loginViaEmailAndPasswordError,
+    TResult Function()? loginViaPasswordLoading,
+    TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult Function(String error)? loginViaPasswordError,
     required TResult orElse(),
   }) {
-    if (loginViaEmailAndPasswordSuccess != null) {
-      return loginViaEmailAndPasswordSuccess(loginEntity);
+    if (loginViaPasswordSuccess != null) {
+      return loginViaPasswordSuccess(loginEntity);
     }
     return orElse();
   }
@@ -901,14 +863,14 @@ class _$LoginViaEmailAndPasswordSuccessImpl<T>
     required TResult Function(TogglePasswordVisibility<T> value)
         togglePasswordVisibility,
     required TResult Function(ToggleRememberMe<T> value) toggleRememberMe,
-    required TResult Function(LoginViaEmailAndPasswordLoading<T> value)
-        loginViaEmailAndPasswordLoading,
-    required TResult Function(LoginViaEmailAndPasswordSuccess<T> value)
-        loginViaEmailAndPasswordSuccess,
-    required TResult Function(LoginViaEmailAndPasswordError<T> value)
-        loginViaEmailAndPasswordError,
+    required TResult Function(LoginViaPasswordLoading<T> value)
+        loginViaPasswordLoading,
+    required TResult Function(LoginViaPasswordSuccess<T> value)
+        loginViaPasswordSuccess,
+    required TResult Function(LoginViaPasswordError<T> value)
+        loginViaPasswordError,
   }) {
-    return loginViaEmailAndPasswordSuccess(this);
+    return loginViaPasswordSuccess(this);
   }
 
   @override
@@ -918,14 +880,13 @@ class _$LoginViaEmailAndPasswordSuccessImpl<T>
     TResult? Function(TogglePasswordVisibility<T> value)?
         togglePasswordVisibility,
     TResult? Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult? Function(LoginViaEmailAndPasswordLoading<T> value)?
-        loginViaEmailAndPasswordLoading,
-    TResult? Function(LoginViaEmailAndPasswordSuccess<T> value)?
-        loginViaEmailAndPasswordSuccess,
-    TResult? Function(LoginViaEmailAndPasswordError<T> value)?
-        loginViaEmailAndPasswordError,
+    TResult? Function(LoginViaPasswordLoading<T> value)?
+        loginViaPasswordLoading,
+    TResult? Function(LoginViaPasswordSuccess<T> value)?
+        loginViaPasswordSuccess,
+    TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
   }) {
-    return loginViaEmailAndPasswordSuccess?.call(this);
+    return loginViaPasswordSuccess?.call(this);
   }
 
   @override
@@ -935,54 +896,48 @@ class _$LoginViaEmailAndPasswordSuccessImpl<T>
     TResult Function(TogglePasswordVisibility<T> value)?
         togglePasswordVisibility,
     TResult Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult Function(LoginViaEmailAndPasswordLoading<T> value)?
-        loginViaEmailAndPasswordLoading,
-    TResult Function(LoginViaEmailAndPasswordSuccess<T> value)?
-        loginViaEmailAndPasswordSuccess,
-    TResult Function(LoginViaEmailAndPasswordError<T> value)?
-        loginViaEmailAndPasswordError,
+    TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
+    TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
+    TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
     required TResult orElse(),
   }) {
-    if (loginViaEmailAndPasswordSuccess != null) {
-      return loginViaEmailAndPasswordSuccess(this);
+    if (loginViaPasswordSuccess != null) {
+      return loginViaPasswordSuccess(this);
     }
     return orElse();
   }
 }
 
-abstract class LoginViaEmailAndPasswordSuccess<T> implements LoginState<T> {
-  const factory LoginViaEmailAndPasswordSuccess(
-          final LoginResponseEntity loginEntity) =
-      _$LoginViaEmailAndPasswordSuccessImpl<T>;
+abstract class LoginViaPasswordSuccess<T> implements LoginState<T> {
+  const factory LoginViaPasswordSuccess(final LoginResponseEntity loginEntity) =
+      _$LoginViaPasswordSuccessImpl<T>;
 
   LoginResponseEntity get loginEntity;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoginViaEmailAndPasswordSuccessImplCopyWith<T,
-          _$LoginViaEmailAndPasswordSuccessImpl<T>>
+  _$$LoginViaPasswordSuccessImplCopyWith<T, _$LoginViaPasswordSuccessImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoginViaEmailAndPasswordErrorImplCopyWith<T, $Res> {
-  factory _$$LoginViaEmailAndPasswordErrorImplCopyWith(
-          _$LoginViaEmailAndPasswordErrorImpl<T> value,
-          $Res Function(_$LoginViaEmailAndPasswordErrorImpl<T>) then) =
-      __$$LoginViaEmailAndPasswordErrorImplCopyWithImpl<T, $Res>;
+abstract class _$$LoginViaPasswordErrorImplCopyWith<T, $Res> {
+  factory _$$LoginViaPasswordErrorImplCopyWith(
+          _$LoginViaPasswordErrorImpl<T> value,
+          $Res Function(_$LoginViaPasswordErrorImpl<T>) then) =
+      __$$LoginViaPasswordErrorImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$LoginViaEmailAndPasswordErrorImplCopyWithImpl<T, $Res>
-    extends _$LoginStateCopyWithImpl<T, $Res,
-        _$LoginViaEmailAndPasswordErrorImpl<T>>
-    implements _$$LoginViaEmailAndPasswordErrorImplCopyWith<T, $Res> {
-  __$$LoginViaEmailAndPasswordErrorImplCopyWithImpl(
-      _$LoginViaEmailAndPasswordErrorImpl<T> _value,
-      $Res Function(_$LoginViaEmailAndPasswordErrorImpl<T>) _then)
+class __$$LoginViaPasswordErrorImplCopyWithImpl<T, $Res>
+    extends _$LoginStateCopyWithImpl<T, $Res, _$LoginViaPasswordErrorImpl<T>>
+    implements _$$LoginViaPasswordErrorImplCopyWith<T, $Res> {
+  __$$LoginViaPasswordErrorImplCopyWithImpl(
+      _$LoginViaPasswordErrorImpl<T> _value,
+      $Res Function(_$LoginViaPasswordErrorImpl<T>) _then)
       : super(_value, _then);
 
   /// Create a copy of LoginState
@@ -992,7 +947,7 @@ class __$$LoginViaEmailAndPasswordErrorImplCopyWithImpl<T, $Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$LoginViaEmailAndPasswordErrorImpl<T>(
+    return _then(_$LoginViaPasswordErrorImpl<T>(
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -1003,23 +958,22 @@ class __$$LoginViaEmailAndPasswordErrorImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$LoginViaEmailAndPasswordErrorImpl<T>
-    implements LoginViaEmailAndPasswordError<T> {
-  const _$LoginViaEmailAndPasswordErrorImpl(this.error);
+class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
+  const _$LoginViaPasswordErrorImpl(this.error);
 
   @override
   final String error;
 
   @override
   String toString() {
-    return 'LoginState<$T>.loginViaEmailAndPasswordError(error: $error)';
+    return 'LoginState<$T>.loginViaPasswordError(error: $error)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoginViaEmailAndPasswordErrorImpl<T> &&
+            other is _$LoginViaPasswordErrorImpl<T> &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -1031,10 +985,9 @@ class _$LoginViaEmailAndPasswordErrorImpl<T>
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoginViaEmailAndPasswordErrorImplCopyWith<T,
-          _$LoginViaEmailAndPasswordErrorImpl<T>>
-      get copyWith => __$$LoginViaEmailAndPasswordErrorImplCopyWithImpl<T,
-          _$LoginViaEmailAndPasswordErrorImpl<T>>(this, _$identity);
+  _$$LoginViaPasswordErrorImplCopyWith<T, _$LoginViaPasswordErrorImpl<T>>
+      get copyWith => __$$LoginViaPasswordErrorImplCopyWithImpl<T,
+          _$LoginViaPasswordErrorImpl<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1042,12 +995,12 @@ class _$LoginViaEmailAndPasswordErrorImpl<T>
     required TResult Function() initial,
     required TResult Function(bool obscured) togglePasswordVisibility,
     required TResult Function(bool rememberMe) toggleRememberMe,
-    required TResult Function() loginViaEmailAndPasswordLoading,
+    required TResult Function() loginViaPasswordLoading,
     required TResult Function(LoginResponseEntity loginEntity)
-        loginViaEmailAndPasswordSuccess,
-    required TResult Function(String error) loginViaEmailAndPasswordError,
+        loginViaPasswordSuccess,
+    required TResult Function(String error) loginViaPasswordError,
   }) {
-    return loginViaEmailAndPasswordError(error);
+    return loginViaPasswordError(error);
   }
 
   @override
@@ -1056,12 +1009,11 @@ class _$LoginViaEmailAndPasswordErrorImpl<T>
     TResult? Function()? initial,
     TResult? Function(bool obscured)? togglePasswordVisibility,
     TResult? Function(bool rememberMe)? toggleRememberMe,
-    TResult? Function()? loginViaEmailAndPasswordLoading,
-    TResult? Function(LoginResponseEntity loginEntity)?
-        loginViaEmailAndPasswordSuccess,
-    TResult? Function(String error)? loginViaEmailAndPasswordError,
+    TResult? Function()? loginViaPasswordLoading,
+    TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult? Function(String error)? loginViaPasswordError,
   }) {
-    return loginViaEmailAndPasswordError?.call(error);
+    return loginViaPasswordError?.call(error);
   }
 
   @override
@@ -1070,14 +1022,13 @@ class _$LoginViaEmailAndPasswordErrorImpl<T>
     TResult Function()? initial,
     TResult Function(bool obscured)? togglePasswordVisibility,
     TResult Function(bool rememberMe)? toggleRememberMe,
-    TResult Function()? loginViaEmailAndPasswordLoading,
-    TResult Function(LoginResponseEntity loginEntity)?
-        loginViaEmailAndPasswordSuccess,
-    TResult Function(String error)? loginViaEmailAndPasswordError,
+    TResult Function()? loginViaPasswordLoading,
+    TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult Function(String error)? loginViaPasswordError,
     required TResult orElse(),
   }) {
-    if (loginViaEmailAndPasswordError != null) {
-      return loginViaEmailAndPasswordError(error);
+    if (loginViaPasswordError != null) {
+      return loginViaPasswordError(error);
     }
     return orElse();
   }
@@ -1089,14 +1040,14 @@ class _$LoginViaEmailAndPasswordErrorImpl<T>
     required TResult Function(TogglePasswordVisibility<T> value)
         togglePasswordVisibility,
     required TResult Function(ToggleRememberMe<T> value) toggleRememberMe,
-    required TResult Function(LoginViaEmailAndPasswordLoading<T> value)
-        loginViaEmailAndPasswordLoading,
-    required TResult Function(LoginViaEmailAndPasswordSuccess<T> value)
-        loginViaEmailAndPasswordSuccess,
-    required TResult Function(LoginViaEmailAndPasswordError<T> value)
-        loginViaEmailAndPasswordError,
+    required TResult Function(LoginViaPasswordLoading<T> value)
+        loginViaPasswordLoading,
+    required TResult Function(LoginViaPasswordSuccess<T> value)
+        loginViaPasswordSuccess,
+    required TResult Function(LoginViaPasswordError<T> value)
+        loginViaPasswordError,
   }) {
-    return loginViaEmailAndPasswordError(this);
+    return loginViaPasswordError(this);
   }
 
   @override
@@ -1106,14 +1057,13 @@ class _$LoginViaEmailAndPasswordErrorImpl<T>
     TResult? Function(TogglePasswordVisibility<T> value)?
         togglePasswordVisibility,
     TResult? Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult? Function(LoginViaEmailAndPasswordLoading<T> value)?
-        loginViaEmailAndPasswordLoading,
-    TResult? Function(LoginViaEmailAndPasswordSuccess<T> value)?
-        loginViaEmailAndPasswordSuccess,
-    TResult? Function(LoginViaEmailAndPasswordError<T> value)?
-        loginViaEmailAndPasswordError,
+    TResult? Function(LoginViaPasswordLoading<T> value)?
+        loginViaPasswordLoading,
+    TResult? Function(LoginViaPasswordSuccess<T> value)?
+        loginViaPasswordSuccess,
+    TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
   }) {
-    return loginViaEmailAndPasswordError?.call(this);
+    return loginViaPasswordError?.call(this);
   }
 
   @override
@@ -1123,31 +1073,27 @@ class _$LoginViaEmailAndPasswordErrorImpl<T>
     TResult Function(TogglePasswordVisibility<T> value)?
         togglePasswordVisibility,
     TResult Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult Function(LoginViaEmailAndPasswordLoading<T> value)?
-        loginViaEmailAndPasswordLoading,
-    TResult Function(LoginViaEmailAndPasswordSuccess<T> value)?
-        loginViaEmailAndPasswordSuccess,
-    TResult Function(LoginViaEmailAndPasswordError<T> value)?
-        loginViaEmailAndPasswordError,
+    TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
+    TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
+    TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
     required TResult orElse(),
   }) {
-    if (loginViaEmailAndPasswordError != null) {
-      return loginViaEmailAndPasswordError(this);
+    if (loginViaPasswordError != null) {
+      return loginViaPasswordError(this);
     }
     return orElse();
   }
 }
 
-abstract class LoginViaEmailAndPasswordError<T> implements LoginState<T> {
-  const factory LoginViaEmailAndPasswordError(final String error) =
-      _$LoginViaEmailAndPasswordErrorImpl<T>;
+abstract class LoginViaPasswordError<T> implements LoginState<T> {
+  const factory LoginViaPasswordError(final String error) =
+      _$LoginViaPasswordErrorImpl<T>;
 
   String get error;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoginViaEmailAndPasswordErrorImplCopyWith<T,
-          _$LoginViaEmailAndPasswordErrorImpl<T>>
+  _$$LoginViaPasswordErrorImplCopyWith<T, _$LoginViaPasswordErrorImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
 }

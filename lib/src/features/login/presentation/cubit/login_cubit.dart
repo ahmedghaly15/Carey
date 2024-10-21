@@ -1,14 +1,14 @@
-import 'package:carey/src/features/login/data/models/login_via_email_and_password_request.dart';
-import 'package:carey/src/features/login/domain/usecases/login_via_email_and_password_use_case.dart';
+import 'package:carey/src/features/login/data/models/login_via_password_request.dart';
+import 'package:carey/src/features/login/domain/usecases/login_via_password.dart';
 import 'package:carey/src/features/login/presentation/cubit/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  final LoginViaEmailAndPasswordUseCase _loginViaEmailAndPasswordUseCase;
+  final LoginViaPassword _loginViaPassword;
 
   LoginCubit(
-    this._loginViaEmailAndPasswordUseCase,
+    this._loginViaPassword,
   ) : super(const LoginState.initial()) {
     // TODO: finish remember me logic
     _initFormAttributes();
@@ -50,18 +50,18 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginState.toggleRememberMe(rememberMe));
   }
 
-  void loginViaEmailAndPassword() async {
-    emit(const LoginState.loginViaEmailAndPasswordLoading());
-    final params = LoginViaEmailAndPasswordRequest(
+  void loginViaPassword() async {
+    emit(const LoginState.loginViaPasswordLoading());
+    final params = LoginViaPasswordRequest(
       email: emailController.text,
       password: passwordController.text,
     );
-    final result = await _loginViaEmailAndPasswordUseCase(params);
+    final result = await _loginViaPassword(params);
     result.when(
       success: (loginResponseEntity) =>
-          emit(LoginState.loginViaEmailAndPasswordSuccess(loginResponseEntity)),
+          emit(LoginState.loginViaPasswordSuccess(loginResponseEntity)),
       failure: (failure) =>
-          emit(LoginState.loginViaEmailAndPasswordError(failure.error[0])),
+          emit(LoginState.loginViaPasswordError(failure.error[0])),
     );
   }
 
