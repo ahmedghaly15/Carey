@@ -15,7 +15,7 @@ List<AutoRoute> get appRoutes => [
           _buildCustomRoute(page: StartRoute.page),
         ],
       ),
-      _buildCustomRoute(
+      AutoRoute(
         page: AuthRoute.page,
         children: [
           _buildCustomRoute(initial: true, page: LoginMethodsRoute.page),

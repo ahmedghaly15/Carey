@@ -21,6 +21,12 @@ dependencies:
   flutter_svg: ^2.0.10+1
   # Flutter plugin for reading and writing simple key-value pairs for cache
   shared_preferences: ^2.3.2
+  # Code generator (mainly used with Bloc)
+  freezed_annotation: ^2.4.4
+  # Classes and helper functions that support JSON code generation via the `json_serializable` package.
+  json_annotation: ^4.9.0
+  
+  
 
 dev_dependencies:
   flutter_test:
@@ -30,8 +36,14 @@ dev_dependencies:
   flutter_native_splash: ^2.4.1
   # Simplifies updating your app's launcher icon
   icons_launcher: ^3.0.0
+  # A build system for Dart code generation and modular compilation.
+  build_runner: ^2.4.13
   # For generating auto_route file
   auto_route_generator: ^9.0.0
+  # Code generator (mainly used with Bloc)
+  freezed: ^2.5.7
+  # Automatically generate code for converting to and from JSON by annotating Dart classes.
+  json_serializable: ^6.8.0
 
 flutter:
   uses-material-design: true
