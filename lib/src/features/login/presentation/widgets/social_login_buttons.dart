@@ -13,9 +13,7 @@ class SocialLoginButtons extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (_, index) => LoginViaSocialButton(
-        onPressed: SocialLoginMethod.socialLoginMethods[index].onPressed,
-        name: SocialLoginMethod.socialLoginMethods[index].name,
-        svgIcon: SocialLoginMethod.socialLoginMethods[index].icon,
+        method: SocialLoginMethod.socialLoginMethods[index],
       ),
       separatorBuilder: (_, __) => MySizedBox.height17,
       itemCount: SocialLoginMethod.socialLoginMethods.length,

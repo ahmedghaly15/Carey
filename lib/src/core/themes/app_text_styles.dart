@@ -42,6 +42,10 @@ class AppTextStyles {
         fontSize: 13.sp,
         fontWeight: FontWeight.w400,
       );
+  static TextStyle get font15Regular => TextStyle(
+        fontSize: 15.sp,
+        fontWeight: FontWeight.w400,
+      );
   static TextStyle get poppinsFont45Medium => TextStyle(
         fontSize: 45.sp,
         fontWeight: FontWeight.w500,
