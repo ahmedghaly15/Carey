@@ -7,4 +7,5 @@ class AppColors {
   static const Color scaffoldBackgroundLightColor = Colors.white;
   static const Color scaffoldBackgroundSecondaryColor = Color(0xFFF3F3F3);
   static const Color grey = Color(0xffDADADA);
+  static const Color closerToDark = Color(0xff303030);
 }

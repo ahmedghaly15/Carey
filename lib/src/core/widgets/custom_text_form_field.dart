@@ -67,48 +67,45 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: margin ?? EdgeInsetsDirectional.only(start: 19.w, end: 16.w),
-      child: TextFormField(
-        controller: controller,
-        autofocus: autofocus,
-        enabled: enabled,
-        selectionHeightStyle: BoxHeightStyle.strut,
-        obscureText: obscureText ?? false,
-        autofillHints: autofillHints,
-        validator: validate,
-        onChanged: onChanged,
-        onFieldSubmitted: onSubmit,
-        onEditingComplete: onEditingComplete,
-        onSaved: onSaved,
-        maxLength: maxLength,
-        focusNode: focusNode,
-        keyboardType: keyboardType,
-        cursorColor: AppColors.primaryColor,
-        textCapitalization: textCapitalization,
-        textAlign: textAlign,
-        style: AppTextStyles.font13Regular,
-        onTapOutside: (_) => FocusScope.of(context).unfocus(),
-        cursorErrorColor: Colors.white,
-        decoration: InputDecoration(
-          suffixIcon: suffixIcon,
-          prefixIcon: prefixIcon,
-          contentPadding:
-              contentPadding ?? EdgeInsets.symmetric(horizontal: 12.w),
-          disabledBorder: disabledBorder ?? _outlineInputBorder,
-          enabledBorder: enabledBorder ?? _outlineInputBorder,
-          focusedBorder: focusedBorder ?? _outlineInputBorder,
-          focusedErrorBorder: focusedErrorBorder ?? _outlineInputBorder,
-          errorBorder: errorBorder ?? _outlineInputBorder,
-          hintText: hintText ?? '',
-          hintStyle: hintStyle ??
-              AppTextStyles.font13Regular.copyWith(
-                color: AppColors.primaryColor.withOpacity(0.25),
-              ),
-          filled: true,
-          fillColor: AppColors.grey.withOpacity(0.25),
-          border: border ?? _outlineInputBorder,
-        ),
+    return TextFormField(
+      controller: controller,
+      autofocus: autofocus,
+      enabled: enabled,
+      selectionHeightStyle: BoxHeightStyle.strut,
+      obscureText: obscureText ?? false,
+      autofillHints: autofillHints,
+      validator: validate,
+      onChanged: onChanged,
+      onFieldSubmitted: onSubmit,
+      onEditingComplete: onEditingComplete,
+      onSaved: onSaved,
+      maxLength: maxLength,
+      focusNode: focusNode,
+      keyboardType: keyboardType,
+      cursorColor: AppColors.primaryColor,
+      textCapitalization: textCapitalization,
+      textAlign: textAlign,
+      style: AppTextStyles.font13Regular,
+      onTapOutside: (_) => FocusScope.of(context).unfocus(),
+      cursorErrorColor: Colors.white,
+      decoration: InputDecoration(
+        suffixIcon: suffixIcon,
+        prefixIcon: prefixIcon,
+        contentPadding:
+            contentPadding ?? EdgeInsets.symmetric(horizontal: 12.w),
+        disabledBorder: disabledBorder ?? _outlineInputBorder,
+        enabledBorder: enabledBorder ?? _outlineInputBorder,
+        focusedBorder: focusedBorder ?? _outlineInputBorder,
+        focusedErrorBorder: focusedErrorBorder ?? _outlineInputBorder,
+        errorBorder: errorBorder ?? _outlineInputBorder,
+        hintText: hintText ?? '',
+        hintStyle: hintStyle ??
+            AppTextStyles.font13Regular.copyWith(
+              color: AppColors.primaryColor.withOpacity(0.25),
+            ),
+        filled: true,
+        fillColor: AppColors.grey.withOpacity(0.25),
+        border: border ?? _outlineInputBorder,
       ),
     );
   }
