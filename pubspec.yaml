@@ -21,6 +21,8 @@ dependencies:
   flutter_svg: ^2.0.10+1
   # Flutter plugin for reading and writing simple key-value pairs for cache
   shared_preferences: ^2.3.2
+  # For state management
+  flutter_bloc: ^8.1.6
   # Code generator (mainly used with Bloc)
   freezed_annotation: ^2.4.4
   # Classes and helper functions that support JSON code generation via the `json_serializable` package.
