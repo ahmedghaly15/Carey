@@ -1,5 +1,5 @@
 import 'package:carey/src/core/helpers/extensions.dart';
-import 'package:carey/src/core/widgets/custom_loading_animation_widget.dart';
+import 'package:carey/src/core/widgets/animated_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,7 +16,7 @@ class LoadingAdaptiveDialog extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0.r),
         ),
-        content: const CustomLoadingAnimationWidget(),
+        content: const AnimatedLoadingIndicator(),
       ),
     );
   }

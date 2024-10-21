@@ -69,5 +69,9 @@ class Assets {
   /// Assets for svgsLockIcon
   /// assets/svgs/lock-icon.svg
   static const String svgsLockIcon = "assets/svgs/lock-icon.svg";
+
+  /// Assets for svgsSomethingWrong
+  /// assets/svgs/something-wrong.svg
+  static const String svgsSomethingWrong = "assets/svgs/something-wrong.svg";
 }
 
