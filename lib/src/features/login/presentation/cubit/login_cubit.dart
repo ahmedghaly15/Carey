@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(const LoginState.initial()) {
+    // TODO: finish remember me logic
     _initFormAttributes();
   }
 
@@ -31,10 +32,16 @@ class LoginCubit extends Cubit<LoginState> {
     passwordController = TextEditingController();
   }
 
-  @override
-  Future<void> close() {
-    _disposeFormAttributes();
-    return super.close();
+  bool obscuredPassword = true;
+  void togglePasswordVisibility() {
+    obscuredPassword = !obscuredPassword;
+    emit(LoginState.togglePasswordVisibility(obscuredPassword));
+  }
+
+  bool rememberMe = false;
+  void toggleRememberMe() {
+    rememberMe = !rememberMe;
+    emit(LoginState.toggleRememberMe(rememberMe));
   }
 
   void _disposeFormAttributes() {
@@ -50,5 +57,11 @@ class LoginCubit extends Cubit<LoginState> {
   void _disposeControllers() {
     emailController.dispose();
     passwordController.dispose();
+  }
+
+  @override
+  Future<void> close() {
+    _disposeFormAttributes();
+    return super.close();
   }
 }
