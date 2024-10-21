@@ -24,8 +24,7 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
     );
   }
 
-  void _loginViaPasswordListener(
-      LoginState<dynamic> state, BuildContext context) {
+  void _loginViaPasswordListener(LoginState state, BuildContext context) {
     state.whenOrNull(
       loginViaPasswordLoading: () {
         context.unfocusKeyboard();

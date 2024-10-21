@@ -17,49 +17,53 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginCubit = context.read<LoginCubit>();
-    return Form(
-      child: Column(
-        children: [
-          CustomTextFormField(
-            controller: loginCubit.emailController,
-            focusNode: loginCubit.emailFocusNode,
-            keyboardType: TextInputType.emailAddress,
-            hintText: AppStrings.email,
-            autofillHints: const [AutofillHints.email],
-            prefixSvgIcon: Assets.svgsEmailIcon,
-            onEditingComplete: () =>
-                context.requestFocus(loginCubit.passwordFocusNode),
-            validate: (String? value) =>
-                AuthValidator.validateEmailField(value),
-          ),
-          MySizedBox.height13,
-          BlocBuilder<LoginCubit, LoginState>(
-            buildWhen: (_, current) => current is TogglePasswordVisibility,
-            builder: (_, __) => CustomTextFormField(
-              controller: loginCubit.passwordController,
-              focusNode: loginCubit.passwordFocusNode,
-              keyboardType: TextInputType.visiblePassword,
-              hintText: AppStrings.password,
-              autofillHints: const [AutofillHints.password],
-              obscureText: loginCubit.obscuredPassword,
-              prefixSvgIcon: Assets.svgsLockIcon,
-              suffixIcon: IconButton(
-                onPressed: () {
-                  loginCubit.togglePasswordVisibility();
-                },
-                icon: Icon(
-                  loginCubit.obscuredPassword
-                      ? Icons.visibility_outlined
-                      : Icons.visibility_off_outlined,
-                  color: AppColors.primaryColor.withOpacity(0.7),
-                ),
-              ),
+    return BlocBuilder<LoginCubit, LoginState>(
+      buildWhen: (_, current) => current is AlwaysAutovalidateMode,
+      builder: (_, __) => Form(
+        key: loginCubit.formKey,
+        autovalidateMode: loginCubit.autovalidateMode,
+        child: Column(
+          children: [
+            CustomTextFormField(
+              controller: loginCubit.emailController,
+              focusNode: loginCubit.emailFocusNode,
+              keyboardType: TextInputType.emailAddress,
+              hintText: AppStrings.email,
+              autofillHints: const [AutofillHints.email],
+              prefixSvgIcon: Assets.svgsEmailIcon,
+              onEditingComplete: () =>
+                  context.requestFocus(loginCubit.passwordFocusNode),
               validate: (String? value) =>
-                  AuthValidator.validatePasswordField(value),
-              onSubmit: (_) {},
+                  AuthValidator.validateEmailField(value),
             ),
-          ),
-        ],
+            MySizedBox.height13,
+            BlocBuilder<LoginCubit, LoginState>(
+              buildWhen: (_, current) => current is TogglePasswordVisibility,
+              builder: (_, __) => CustomTextFormField(
+                controller: loginCubit.passwordController,
+                focusNode: loginCubit.passwordFocusNode,
+                keyboardType: TextInputType.visiblePassword,
+                hintText: AppStrings.password,
+                autofillHints: const [AutofillHints.password],
+                obscureText: loginCubit.obscuredPassword,
+                prefixSvgIcon: Assets.svgsLockIcon,
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    loginCubit.togglePasswordVisibility();
+                  },
+                  icon: Icon(
+                    loginCubit.obscuredPassword
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined,
+                    color: AppColors.primaryColor.withOpacity(0.7),
+                  ),
+                ),
+                validate: (String? value) =>
+                    AuthValidator.validatePasswordField(value),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

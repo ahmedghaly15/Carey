@@ -84,10 +84,10 @@ class CustomTextFormField extends StatelessWidget {
       focusNode: focusNode,
       keyboardType: keyboardType,
       cursorColor: AppColors.primaryColor,
+      cursorErrorColor: AppColors.primaryColor,
       textCapitalization: textCapitalization,
       textAlign: textAlign,
       style: AppTextStyles.font13Regular,
-      cursorErrorColor: Colors.white,
       decoration: InputDecoration(
         suffixIcon: suffixIcon,
         prefixIcon: prefixSvgIcon != null

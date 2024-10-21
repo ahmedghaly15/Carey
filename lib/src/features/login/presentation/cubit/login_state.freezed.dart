@@ -25,6 +25,8 @@ mixin _$LoginState<T> {
     required TResult Function(LoginResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
+    required TResult Function(AutovalidateMode autovalidateMode)
+        alwaysAutovalidateMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,8 @@ mixin _$LoginState<T> {
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
+    TResult? Function(AutovalidateMode autovalidateMode)?
+        alwaysAutovalidateMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -45,6 +49,7 @@ mixin _$LoginState<T> {
     TResult Function()? loginViaPasswordLoading,
     TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
+    TResult Function(AutovalidateMode autovalidateMode)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,6 +65,8 @@ mixin _$LoginState<T> {
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
+    required TResult Function(AlwaysAutovalidateMode<T> value)
+        alwaysAutovalidateMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +80,7 @@ mixin _$LoginState<T> {
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult? Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -84,6 +92,7 @@ mixin _$LoginState<T> {
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -158,6 +167,8 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function(LoginResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
+    required TResult Function(AutovalidateMode autovalidateMode)
+        alwaysAutovalidateMode,
   }) {
     return initial();
   }
@@ -171,6 +182,8 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
+    TResult? Function(AutovalidateMode autovalidateMode)?
+        alwaysAutovalidateMode,
   }) {
     return initial?.call();
   }
@@ -184,6 +197,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function()? loginViaPasswordLoading,
     TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
+    TResult Function(AutovalidateMode autovalidateMode)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -205,6 +219,8 @@ class _$InitialImpl<T> implements _Initial<T> {
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
+    required TResult Function(AlwaysAutovalidateMode<T> value)
+        alwaysAutovalidateMode,
   }) {
     return initial(this);
   }
@@ -221,6 +237,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult? Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
   }) {
     return initial?.call(this);
   }
@@ -235,6 +252,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -327,6 +345,8 @@ class _$TogglePasswordVisibilityImpl<T> implements TogglePasswordVisibility<T> {
     required TResult Function(LoginResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
+    required TResult Function(AutovalidateMode autovalidateMode)
+        alwaysAutovalidateMode,
   }) {
     return togglePasswordVisibility(obscured);
   }
@@ -340,6 +360,8 @@ class _$TogglePasswordVisibilityImpl<T> implements TogglePasswordVisibility<T> {
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
+    TResult? Function(AutovalidateMode autovalidateMode)?
+        alwaysAutovalidateMode,
   }) {
     return togglePasswordVisibility?.call(obscured);
   }
@@ -353,6 +375,7 @@ class _$TogglePasswordVisibilityImpl<T> implements TogglePasswordVisibility<T> {
     TResult Function()? loginViaPasswordLoading,
     TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
+    TResult Function(AutovalidateMode autovalidateMode)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (togglePasswordVisibility != null) {
@@ -374,6 +397,8 @@ class _$TogglePasswordVisibilityImpl<T> implements TogglePasswordVisibility<T> {
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
+    required TResult Function(AlwaysAutovalidateMode<T> value)
+        alwaysAutovalidateMode,
   }) {
     return togglePasswordVisibility(this);
   }
@@ -390,6 +415,7 @@ class _$TogglePasswordVisibilityImpl<T> implements TogglePasswordVisibility<T> {
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult? Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
   }) {
     return togglePasswordVisibility?.call(this);
   }
@@ -404,6 +430,7 @@ class _$TogglePasswordVisibilityImpl<T> implements TogglePasswordVisibility<T> {
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (togglePasswordVisibility != null) {
@@ -503,6 +530,8 @@ class _$ToggleRememberMeImpl<T> implements ToggleRememberMe<T> {
     required TResult Function(LoginResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
+    required TResult Function(AutovalidateMode autovalidateMode)
+        alwaysAutovalidateMode,
   }) {
     return toggleRememberMe(rememberMe);
   }
@@ -516,6 +545,8 @@ class _$ToggleRememberMeImpl<T> implements ToggleRememberMe<T> {
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
+    TResult? Function(AutovalidateMode autovalidateMode)?
+        alwaysAutovalidateMode,
   }) {
     return toggleRememberMe?.call(rememberMe);
   }
@@ -529,6 +560,7 @@ class _$ToggleRememberMeImpl<T> implements ToggleRememberMe<T> {
     TResult Function()? loginViaPasswordLoading,
     TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
+    TResult Function(AutovalidateMode autovalidateMode)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (toggleRememberMe != null) {
@@ -550,6 +582,8 @@ class _$ToggleRememberMeImpl<T> implements ToggleRememberMe<T> {
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
+    required TResult Function(AlwaysAutovalidateMode<T> value)
+        alwaysAutovalidateMode,
   }) {
     return toggleRememberMe(this);
   }
@@ -566,6 +600,7 @@ class _$ToggleRememberMeImpl<T> implements ToggleRememberMe<T> {
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult? Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
   }) {
     return toggleRememberMe?.call(this);
   }
@@ -580,6 +615,7 @@ class _$ToggleRememberMeImpl<T> implements ToggleRememberMe<T> {
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (toggleRememberMe != null) {
@@ -653,6 +689,8 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
     required TResult Function(LoginResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
+    required TResult Function(AutovalidateMode autovalidateMode)
+        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordLoading();
   }
@@ -666,6 +704,8 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
+    TResult? Function(AutovalidateMode autovalidateMode)?
+        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordLoading?.call();
   }
@@ -679,6 +719,7 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
     TResult Function()? loginViaPasswordLoading,
     TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
+    TResult Function(AutovalidateMode autovalidateMode)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (loginViaPasswordLoading != null) {
@@ -700,6 +741,8 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
+    required TResult Function(AlwaysAutovalidateMode<T> value)
+        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordLoading(this);
   }
@@ -716,6 +759,7 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult? Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
   }) {
     return loginViaPasswordLoading?.call(this);
   }
@@ -730,6 +774,7 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (loginViaPasswordLoading != null) {
@@ -822,6 +867,8 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
     required TResult Function(LoginResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
+    required TResult Function(AutovalidateMode autovalidateMode)
+        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordSuccess(loginEntity);
   }
@@ -835,6 +882,8 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
+    TResult? Function(AutovalidateMode autovalidateMode)?
+        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordSuccess?.call(loginEntity);
   }
@@ -848,6 +897,7 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
     TResult Function()? loginViaPasswordLoading,
     TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
+    TResult Function(AutovalidateMode autovalidateMode)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (loginViaPasswordSuccess != null) {
@@ -869,6 +919,8 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
+    required TResult Function(AlwaysAutovalidateMode<T> value)
+        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordSuccess(this);
   }
@@ -885,6 +937,7 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult? Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
   }) {
     return loginViaPasswordSuccess?.call(this);
   }
@@ -899,6 +952,7 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (loginViaPasswordSuccess != null) {
@@ -999,6 +1053,8 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
     required TResult Function(LoginResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
+    required TResult Function(AutovalidateMode autovalidateMode)
+        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordError(error);
   }
@@ -1012,6 +1068,8 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
+    TResult? Function(AutovalidateMode autovalidateMode)?
+        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordError?.call(error);
   }
@@ -1025,6 +1083,7 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
     TResult Function()? loginViaPasswordLoading,
     TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
+    TResult Function(AutovalidateMode autovalidateMode)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (loginViaPasswordError != null) {
@@ -1046,6 +1105,8 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
+    required TResult Function(AlwaysAutovalidateMode<T> value)
+        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordError(this);
   }
@@ -1062,6 +1123,7 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult? Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
   }) {
     return loginViaPasswordError?.call(this);
   }
@@ -1076,6 +1138,7 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (loginViaPasswordError != null) {
@@ -1095,5 +1158,193 @@ abstract class LoginViaPasswordError<T> implements LoginState<T> {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoginViaPasswordErrorImplCopyWith<T, _$LoginViaPasswordErrorImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AlwaysAutovalidateModeImplCopyWith<T, $Res> {
+  factory _$$AlwaysAutovalidateModeImplCopyWith(
+          _$AlwaysAutovalidateModeImpl<T> value,
+          $Res Function(_$AlwaysAutovalidateModeImpl<T>) then) =
+      __$$AlwaysAutovalidateModeImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({AutovalidateMode autovalidateMode});
+}
+
+/// @nodoc
+class __$$AlwaysAutovalidateModeImplCopyWithImpl<T, $Res>
+    extends _$LoginStateCopyWithImpl<T, $Res, _$AlwaysAutovalidateModeImpl<T>>
+    implements _$$AlwaysAutovalidateModeImplCopyWith<T, $Res> {
+  __$$AlwaysAutovalidateModeImplCopyWithImpl(
+      _$AlwaysAutovalidateModeImpl<T> _value,
+      $Res Function(_$AlwaysAutovalidateModeImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of LoginState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? autovalidateMode = null,
+  }) {
+    return _then(_$AlwaysAutovalidateModeImpl<T>(
+      null == autovalidateMode
+          ? _value.autovalidateMode
+          : autovalidateMode // ignore: cast_nullable_to_non_nullable
+              as AutovalidateMode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AlwaysAutovalidateModeImpl<T> implements AlwaysAutovalidateMode<T> {
+  const _$AlwaysAutovalidateModeImpl(this.autovalidateMode);
+
+  @override
+  final AutovalidateMode autovalidateMode;
+
+  @override
+  String toString() {
+    return 'LoginState<$T>.alwaysAutovalidateMode(autovalidateMode: $autovalidateMode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AlwaysAutovalidateModeImpl<T> &&
+            (identical(other.autovalidateMode, autovalidateMode) ||
+                other.autovalidateMode == autovalidateMode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, autovalidateMode);
+
+  /// Create a copy of LoginState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AlwaysAutovalidateModeImplCopyWith<T, _$AlwaysAutovalidateModeImpl<T>>
+      get copyWith => __$$AlwaysAutovalidateModeImplCopyWithImpl<T,
+          _$AlwaysAutovalidateModeImpl<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(bool obscured) togglePasswordVisibility,
+    required TResult Function(bool rememberMe) toggleRememberMe,
+    required TResult Function() loginViaPasswordLoading,
+    required TResult Function(LoginResponseEntity loginEntity)
+        loginViaPasswordSuccess,
+    required TResult Function(String error) loginViaPasswordError,
+    required TResult Function(AutovalidateMode autovalidateMode)
+        alwaysAutovalidateMode,
+  }) {
+    return alwaysAutovalidateMode(autovalidateMode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(bool obscured)? togglePasswordVisibility,
+    TResult? Function(bool rememberMe)? toggleRememberMe,
+    TResult? Function()? loginViaPasswordLoading,
+    TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult? Function(String error)? loginViaPasswordError,
+    TResult? Function(AutovalidateMode autovalidateMode)?
+        alwaysAutovalidateMode,
+  }) {
+    return alwaysAutovalidateMode?.call(autovalidateMode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(bool obscured)? togglePasswordVisibility,
+    TResult Function(bool rememberMe)? toggleRememberMe,
+    TResult Function()? loginViaPasswordLoading,
+    TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult Function(String error)? loginViaPasswordError,
+    TResult Function(AutovalidateMode autovalidateMode)? alwaysAutovalidateMode,
+    required TResult orElse(),
+  }) {
+    if (alwaysAutovalidateMode != null) {
+      return alwaysAutovalidateMode(autovalidateMode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(TogglePasswordVisibility<T> value)
+        togglePasswordVisibility,
+    required TResult Function(ToggleRememberMe<T> value) toggleRememberMe,
+    required TResult Function(LoginViaPasswordLoading<T> value)
+        loginViaPasswordLoading,
+    required TResult Function(LoginViaPasswordSuccess<T> value)
+        loginViaPasswordSuccess,
+    required TResult Function(LoginViaPasswordError<T> value)
+        loginViaPasswordError,
+    required TResult Function(AlwaysAutovalidateMode<T> value)
+        alwaysAutovalidateMode,
+  }) {
+    return alwaysAutovalidateMode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(TogglePasswordVisibility<T> value)?
+        togglePasswordVisibility,
+    TResult? Function(ToggleRememberMe<T> value)? toggleRememberMe,
+    TResult? Function(LoginViaPasswordLoading<T> value)?
+        loginViaPasswordLoading,
+    TResult? Function(LoginViaPasswordSuccess<T> value)?
+        loginViaPasswordSuccess,
+    TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult? Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
+  }) {
+    return alwaysAutovalidateMode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(TogglePasswordVisibility<T> value)?
+        togglePasswordVisibility,
+    TResult Function(ToggleRememberMe<T> value)? toggleRememberMe,
+    TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
+    TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
+    TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
+    required TResult orElse(),
+  }) {
+    if (alwaysAutovalidateMode != null) {
+      return alwaysAutovalidateMode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AlwaysAutovalidateMode<T> implements LoginState<T> {
+  const factory AlwaysAutovalidateMode(
+          final AutovalidateMode autovalidateMode) =
+      _$AlwaysAutovalidateModeImpl<T>;
+
+  AutovalidateMode get autovalidateMode;
+
+  /// Create a copy of LoginState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AlwaysAutovalidateModeImplCopyWith<T, _$AlwaysAutovalidateModeImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
 }

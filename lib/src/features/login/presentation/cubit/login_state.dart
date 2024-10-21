@@ -1,4 +1,5 @@
 import 'package:carey/src/features/login/domain/entities/login_response_entity.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'login_state.freezed.dart';
@@ -17,4 +18,7 @@ class LoginState<T> with _$LoginState<T> {
   ) = LoginViaPasswordSuccess<T>;
   const factory LoginState.loginViaPasswordError(String error) =
       LoginViaPasswordError<T>;
+  const factory LoginState.alwaysAutovalidateMode(
+    AutovalidateMode autovalidateMode,
+  ) = AlwaysAutovalidateMode<T>;
 }
