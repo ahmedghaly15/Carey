@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/core/widgets/custom_loading_animation_widget.dart';
+import 'package:carey/src/core/widgets/animated_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -150,7 +150,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
               bottom: _loadingIndicatorPositionAnimation.value,
               end: context.screenWidth *
                   0.45, // Start at near the center of the screen
-              child: const CustomLoadingAnimationWidget(),
+              child: const AnimatedLoadingIndicator(),
             ),
           ),
         ],
