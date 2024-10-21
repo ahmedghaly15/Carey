@@ -9,12 +9,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 class LoginViaSocialButton extends StatelessWidget {
   const LoginViaSocialButton({
     super.key,
-    required this.title,
+    required this.name,
     required this.svgIcon,
     required this.onPressed,
   });
 
-  final String title, svgIcon;
+  final String name, svgIcon;
   final VoidCallback onPressed;
 
   @override
@@ -33,13 +33,18 @@ class LoginViaSocialButton extends StatelessWidget {
           vertical: 14.0.h,
           horizontal: 14.0.w,
         ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusDirectional.circular(20.0.r),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(svgIcon),
-            MySizedBox.width10,
+            MySizedBox.width7,
             Text(
-              "${AppStrings.continueWith} $title",
+              name == AppStrings.google
+                  ? "${AppStrings.continueWith} $name    "
+                  : "${AppStrings.continueWith} $name",
               style: AppTextStyles.font18Regular,
             )
           ],
