@@ -5,12 +5,14 @@ class SlideAnimatedWidget extends StatefulWidget {
     super.key,
     required this.child,
     this.duration = const Duration(milliseconds: 1500),
+    this.curve = Curves.easeIn,
     this.begin,
   });
 
   final Widget child;
   final Duration duration;
   final Offset? begin;
+  final Curve curve;
 
   @override
   State<SlideAnimatedWidget> createState() => _SlideAnimatedWidgetState();
@@ -53,7 +55,7 @@ class _SlideAnimatedWidgetState extends State<SlideAnimatedWidget>
     _animation = tween.animate(
       CurvedAnimation(
         parent: _animationController,
-        curve: Curves.easeIn, // Apply fade-in effect
+        curve: widget.curve,
       ),
     );
   }

@@ -54,7 +54,7 @@ class PrimaryButton extends StatelessWidget {
             ? Colors.transparent
             : backgroundColor ?? AppColors.primaryColor,
         borderRadius: BorderRadiusDirectional.circular(
-          borderRadius?.r ?? 20.0.r,
+          borderRadius?.r ?? 30.0.r,
         ),
         boxShadow: boxShadow,
         border: isOutlined
@@ -69,7 +69,7 @@ class PrimaryButton extends StatelessWidget {
         onPressed: onPressed,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusDirectional.circular(
-            borderRadius?.r ?? 20.0.r,
+            borderRadius?.r ?? 30.0.r,
           ),
         ),
         child: child ??

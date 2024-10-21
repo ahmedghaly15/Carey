@@ -1,4 +1,5 @@
 import 'package:carey/src/core/themes/app_colors.dart';
+import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,7 +11,7 @@ class AppThemes {
         colorScheme: const ColorScheme.light(primary: AppColors.primaryColor),
         primaryColor: AppColors.primaryColor,
         useMaterial3: true,
-        fontFamily: AppStrings.fontFamily,
+        fontFamily: AppStrings.interFontFamily,
         scaffoldBackgroundColor: AppColors.scaffoldBackgroundLightColor,
         brightness: Brightness.light,
         appBarTheme: const AppBarTheme(
@@ -22,6 +23,12 @@ class AppThemes {
           ),
           iconTheme: IconThemeData(
             color: AppColors.primaryColor,
+          ),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            foregroundColor: AppColors.primaryColor,
+            textStyle: AppTextStyles.poppinsFont14SemiBold,
           ),
         ),
       );

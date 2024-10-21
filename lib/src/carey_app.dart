@@ -16,7 +16,7 @@ class CareyApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      child: MaterialApp.router(
+      builder: (_, __) => MaterialApp.router(
         debugShowCheckedModeBanner: false,
         title: AppStrings.appTitle,
         theme: AppThemes.lightTheme,

@@ -4,6 +4,6 @@ import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setupDI();
+  await setupDI();
   runApp(const CareyApp());
 }

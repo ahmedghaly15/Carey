@@ -24,7 +24,7 @@ class WelcomeViewBody extends StatelessWidget {
         ),
         PositionedDirectional(
           bottom: 50.0.h,
-          start: 10.0.r,
+          start: 16.0.w,
           child: SlideAnimatedWidget(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

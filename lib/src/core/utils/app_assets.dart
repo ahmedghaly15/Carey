@@ -10,10 +10,6 @@ class Assets {
   /// assets/fonts/Inter/Inter_28pt-Bold.ttf
   static const String fontsInterInter28ptBold = "assets/fonts/Inter/Inter_28pt-Bold.ttf";
 
-  /// Assets for fontsInterInter28ptLight
-  /// assets/fonts/Inter/Inter_28pt-Light.ttf
-  static const String fontsInterInter28ptLight = "assets/fonts/Inter/Inter_28pt-Light.ttf";
-
   /// Assets for fontsInterInter28ptMedium
   /// assets/fonts/Inter/Inter_28pt-Medium.ttf
   static const String fontsInterInter28ptMedium = "assets/fonts/Inter/Inter_28pt-Medium.ttf";
@@ -25,6 +21,22 @@ class Assets {
   /// Assets for fontsInterInter28ptSemiBold
   /// assets/fonts/Inter/Inter_28pt-SemiBold.ttf
   static const String fontsInterInter28ptSemiBold = "assets/fonts/Inter/Inter_28pt-SemiBold.ttf";
+
+  /// Assets for fontsPoppinsPoppinsBold
+  /// assets/fonts/Poppins/Poppins-Bold.ttf
+  static const String fontsPoppinsPoppinsBold = "assets/fonts/Poppins/Poppins-Bold.ttf";
+
+  /// Assets for fontsPoppinsPoppinsMedium
+  /// assets/fonts/Poppins/Poppins-Medium.ttf
+  static const String fontsPoppinsPoppinsMedium = "assets/fonts/Poppins/Poppins-Medium.ttf";
+
+  /// Assets for fontsPoppinsPoppinsRegular
+  /// assets/fonts/Poppins/Poppins-Regular.ttf
+  static const String fontsPoppinsPoppinsRegular = "assets/fonts/Poppins/Poppins-Regular.ttf";
+
+  /// Assets for fontsPoppinsPoppinsSemiBold
+  /// assets/fonts/Poppins/Poppins-SemiBold.ttf
+  static const String fontsPoppinsPoppinsSemiBold = "assets/fonts/Poppins/Poppins-SemiBold.ttf";
 
   /// Assets for imagesSplash
   /// assets/images/splash.png
@@ -41,5 +53,21 @@ class Assets {
   /// Assets for imagesWelcomeScreenCar
   /// assets/images/welcome-screen-car.jpg
   static const String imagesWelcomeScreenCar = "assets/images/welcome-screen-car.jpg";
+
+  /// Assets for svgsEmailIcon
+  /// assets/svgs/email-icon.svg
+  static const String svgsEmailIcon = "assets/svgs/email-icon.svg";
+
+  /// Assets for svgsFacebook
+  /// assets/svgs/facebook.svg
+  static const String svgsFacebook = "assets/svgs/facebook.svg";
+
+  /// Assets for svgsGoogle
+  /// assets/svgs/google.svg
+  static const String svgsGoogle = "assets/svgs/google.svg";
+
+  /// Assets for svgsLockIcon
+  /// assets/svgs/lock-icon.svg
+  static const String svgsLockIcon = "assets/svgs/lock-icon.svg";
 }
 
