@@ -19,6 +19,8 @@ dependencies:
   flutter_screenutil: ^5.9.3
   # Provides SVG rendering and widgets
   flutter_svg: ^2.0.10+1
+  # Flutter plugin for reading and writing simple key-value pairs for cache
+  shared_preferences: ^2.3.2
 
 dev_dependencies:
   flutter_test:
