@@ -4,6 +4,7 @@ import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -15,7 +16,7 @@ class CustomTextFormField extends StatelessWidget {
     this.onChanged,
     this.obscureText,
     this.suffixIcon,
-    this.prefixIcon,
+    this.prefixSvgIcon,
     this.onSubmit,
     this.autofillHints,
     this.focusNode,
@@ -45,7 +46,7 @@ class CustomTextFormField extends StatelessWidget {
   final void Function(String)? onChanged;
   final bool? obscureText;
   final Widget? suffixIcon;
-  final Widget? prefixIcon;
+  final String? prefixSvgIcon;
   final void Function(String submittedText)? onSubmit;
   final List<String>? autofillHints;
   final FocusNode? focusNode;
@@ -89,7 +90,19 @@ class CustomTextFormField extends StatelessWidget {
       cursorErrorColor: Colors.white,
       decoration: InputDecoration(
         suffixIcon: suffixIcon,
-        prefixIcon: prefixIcon,
+        prefixIcon: prefixSvgIcon != null
+            ? Container(
+                margin: EdgeInsetsDirectional.only(
+                  start: 23.w,
+                  end: 10.w,
+                  top: 22.h,
+                  bottom: 22.h,
+                ),
+                child: SvgPicture.asset(
+                  prefixSvgIcon!,
+                ),
+              )
+            : null,
         contentPadding:
             contentPadding ?? EdgeInsets.symmetric(horizontal: 12.w),
         disabledBorder: disabledBorder ?? _outlineInputBorder,

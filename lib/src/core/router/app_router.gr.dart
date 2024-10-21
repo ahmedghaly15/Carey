@@ -61,7 +61,7 @@ class LoginRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const LoginView();
+      return WrappedRoute(child: const LoginView());
     },
   );
 }
