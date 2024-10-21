@@ -11,5 +11,5 @@ _$ApiErrorModelImpl _$$ApiErrorModelImplFromJson(Map<String, dynamic> json) =>
       error:
           (json['message'] as List<dynamic>).map((e) => e as String).toList(),
       errorType: json['error'] as String?,
-      statusCode: (json['statusCode'] as num).toInt(),
+      statusCode: (json['statusCode'] as num?)?.toInt(),
     );

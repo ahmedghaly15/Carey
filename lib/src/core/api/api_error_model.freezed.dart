@@ -24,7 +24,7 @@ mixin _$ApiErrorModel {
   List<String> get error => throw _privateConstructorUsedError;
   @JsonKey(name: 'error')
   String? get errorType => throw _privateConstructorUsedError;
-  int get statusCode => throw _privateConstructorUsedError;
+  int? get statusCode => throw _privateConstructorUsedError;
 
   /// Create a copy of ApiErrorModel
   /// with the given fields replaced by the non-null parameter values.
@@ -42,7 +42,7 @@ abstract class $ApiErrorModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'message') List<String> error,
       @JsonKey(name: 'error') String? errorType,
-      int statusCode});
+      int? statusCode});
 }
 
 /// @nodoc
@@ -62,7 +62,7 @@ class _$ApiErrorModelCopyWithImpl<$Res, $Val extends ApiErrorModel>
   $Res call({
     Object? error = null,
     Object? errorType = freezed,
-    Object? statusCode = null,
+    Object? statusCode = freezed,
   }) {
     return _then(_value.copyWith(
       error: null == error
@@ -73,10 +73,10 @@ class _$ApiErrorModelCopyWithImpl<$Res, $Val extends ApiErrorModel>
           ? _value.errorType
           : errorType // ignore: cast_nullable_to_non_nullable
               as String?,
-      statusCode: null == statusCode
+      statusCode: freezed == statusCode
           ? _value.statusCode
           : statusCode // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -92,7 +92,7 @@ abstract class _$$ApiErrorModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'message') List<String> error,
       @JsonKey(name: 'error') String? errorType,
-      int statusCode});
+      int? statusCode});
 }
 
 /// @nodoc
@@ -110,7 +110,7 @@ class __$$ApiErrorModelImplCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
     Object? errorType = freezed,
-    Object? statusCode = null,
+    Object? statusCode = freezed,
   }) {
     return _then(_$ApiErrorModelImpl(
       error: null == error
@@ -121,10 +121,10 @@ class __$$ApiErrorModelImplCopyWithImpl<$Res>
           ? _value.errorType
           : errorType // ignore: cast_nullable_to_non_nullable
               as String?,
-      statusCode: null == statusCode
+      statusCode: freezed == statusCode
           ? _value.statusCode
           : statusCode // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -135,7 +135,7 @@ class _$ApiErrorModelImpl implements _ApiErrorModel {
   const _$ApiErrorModelImpl(
       {@JsonKey(name: 'message') required final List<String> error,
       @JsonKey(name: 'error') this.errorType,
-      required this.statusCode})
+      this.statusCode})
       : _error = error;
 
   factory _$ApiErrorModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -154,7 +154,7 @@ class _$ApiErrorModelImpl implements _ApiErrorModel {
   @JsonKey(name: 'error')
   final String? errorType;
   @override
-  final int statusCode;
+  final int? statusCode;
 
   @override
   String toString() {
@@ -191,7 +191,7 @@ abstract class _ApiErrorModel implements ApiErrorModel {
   const factory _ApiErrorModel(
       {@JsonKey(name: 'message') required final List<String> error,
       @JsonKey(name: 'error') final String? errorType,
-      required final int statusCode}) = _$ApiErrorModelImpl;
+      final int? statusCode}) = _$ApiErrorModelImpl;
 
   factory _ApiErrorModel.fromJson(Map<String, dynamic> json) =
       _$ApiErrorModelImpl.fromJson;
@@ -203,7 +203,7 @@ abstract class _ApiErrorModel implements ApiErrorModel {
   @JsonKey(name: 'error')
   String? get errorType;
   @override
-  int get statusCode;
+  int? get statusCode;
 
   /// Create a copy of ApiErrorModel
   /// with the given fields replaced by the non-null parameter values.
