@@ -27,15 +27,11 @@ dependencies:
   freezed_annotation: ^2.4.4
   # # Classes and helper functions that support JSON code generation via the `json_serializable` package.
   json_annotation: ^4.9.0
-  # Flutter plugin for Google Sign-In, a secure authentication system for signing in with a Google account
-  google_sign_in: ^6.2.1
   # For handling Api calls
   dio: ^5.7.0
   logger: ^2.4.0
   retrofit: ^4.4.1
   
-  
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
