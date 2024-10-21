@@ -86,7 +86,6 @@ class CustomTextFormField extends StatelessWidget {
       textCapitalization: textCapitalization,
       textAlign: textAlign,
       style: AppTextStyles.font13Regular,
-      onTapOutside: (_) => FocusScope.of(context).unfocus(),
       cursorErrorColor: Colors.white,
       decoration: InputDecoration(
         suffixIcon: suffixIcon,

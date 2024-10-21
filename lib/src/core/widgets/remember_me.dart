@@ -5,7 +5,14 @@ import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 
 class RememberMe extends StatelessWidget {
-  const RememberMe({super.key});
+  const RememberMe({
+    super.key,
+    required this.value,
+    required this.onChanged,
+  });
+
+  final bool value;
+  final void Function(bool?)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +22,9 @@ class RememberMe extends StatelessWidget {
         Transform.scale(
           scale: 1.5,
           child: Checkbox(
-            value: false,
+            value: value,
             activeColor: Colors.black,
-            onChanged: (value) {},
+            onChanged: onChanged,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(7.0.r),
             ),

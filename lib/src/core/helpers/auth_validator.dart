@@ -1,9 +1,8 @@
 import 'package:carey/src/core/helpers/auth_validator_regex.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
-import 'package:flutter/material.dart';
 
 class AuthValidator {
-  static String? validatePasswordField(BuildContext context, {String? value}) {
+  static String? validatePasswordField(String? value) {
     if (value == null || value.isEmpty) {
       return AppStrings.passwordRequired;
     } else if (value.length < 8) {
@@ -20,7 +19,7 @@ class AuthValidator {
     return null;
   }
 
-  static String? validateEmailField(BuildContext context, {String? value}) {
+  static String? validateEmailField(String? value) {
     if (value == null || value.isEmpty) {
       return AppStrings.emailRequired;
     } else if (!AuthValidatorRegex.isEmailValid(value)) {
