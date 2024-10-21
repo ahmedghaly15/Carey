@@ -34,7 +34,8 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
         context.popTop();
         context.showErrorDialog(error);
       },
-      loginViaPasswordSuccess: (_) {
+      loginViaPasswordSuccess: (_) async {
+        await context.read<LoginCubit>().handleRememberingEmailAndPassword();
         context.popTop();
         // TODO: navigate to home
       },

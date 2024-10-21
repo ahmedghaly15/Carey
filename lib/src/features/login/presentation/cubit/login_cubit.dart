@@ -1,3 +1,6 @@
+import 'package:carey/src/core/helpers/cache_keys.dart';
+import 'package:carey/src/core/helpers/extensions.dart';
+import 'package:carey/src/core/helpers/secure_storage_helper.dart';
 import 'package:carey/src/features/login/data/models/login_via_password_request.dart';
 import 'package:carey/src/features/login/domain/usecases/login_via_password.dart';
 import 'package:carey/src/features/login/presentation/cubit/login_state.dart';
@@ -11,7 +14,6 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit(
     this._loginViaPasswordUseCase,
   ) : super(const LoginState.initial()) {
-    // TODO: finish remember me logic
     _initFormAttributes();
   }
 
@@ -29,6 +31,7 @@ class LoginCubit extends Cubit<LoginState> {
     autovalidateMode = AutovalidateMode.disabled;
     _initControllers();
     _initFocusNodes();
+    _assignRememberedEmailAndPass();
   }
 
   void _initFocusNodes() {
@@ -39,6 +42,19 @@ class LoginCubit extends Cubit<LoginState> {
   void _initControllers() {
     emailController = TextEditingController();
     passwordController = TextEditingController();
+  }
+
+  void _assignRememberedEmailAndPass() async {
+    final rememberedEmail =
+        await SecureStorageHelper.getSecuredString(CacheKeys.rememberedEmail);
+    final rememberedPassword = await SecureStorageHelper.getSecuredString(
+      CacheKeys.rememberedPassword,
+    );
+
+    if (!rememberedEmail.isNullOrEmpty) {
+      emailController.text = rememberedEmail;
+      passwordController.text = rememberedPassword;
+    }
   }
 
   bool obscuredPassword = true;
@@ -82,6 +98,34 @@ class LoginCubit extends Cubit<LoginState> {
   void _alwaysAutovalidateMode() {
     autovalidateMode = AutovalidateMode.always;
     emit(const LoginState.alwaysAutovalidateMode(AutovalidateMode.always));
+  }
+
+  Future<void> handleRememberingEmailAndPassword() async {
+    if (rememberMe) {
+      await _rememberEmailAndPassword();
+    } else {
+      await _deleteRememberedEmailAndPassword();
+    }
+  }
+
+  Future<void> _rememberEmailAndPassword() async {
+    await SecureStorageHelper.setSecuredString(
+      CacheKeys.rememberedEmail,
+      emailController.text,
+    );
+    await SecureStorageHelper.setSecuredString(
+      CacheKeys.rememberedPassword,
+      passwordController.text,
+    );
+  }
+
+  Future<void> _deleteRememberedEmailAndPassword() async {
+    await SecureStorageHelper.removeSecuredData(
+      CacheKeys.rememberedEmail,
+    );
+    await SecureStorageHelper.removeSecuredData(
+      CacheKeys.rememberedPassword,
+    );
   }
 
   void _disposeFormAttributes() {
