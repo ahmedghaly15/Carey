@@ -34,3 +34,8 @@ extension ShowErrorDialog on BuildContext {
 extension PopTopMostRoute on BuildContext {
   void popTop() => Navigator.of(this, rootNavigator: true).pop();
 }
+
+extension IsNullOrEmptyString on String? {
+  /// Check if the string is null or empty
+  bool get isNullOrEmpty => this == null || this == '';
+}

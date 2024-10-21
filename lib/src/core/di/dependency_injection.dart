@@ -7,6 +7,7 @@ import 'package:carey/src/features/login/domain/repositories/login_repo.dart';
 import 'package:carey/src/features/login/domain/usecases/login_via_password.dart';
 import 'package:carey/src/features/login/presentation/cubit/login_cubit.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,6 +27,8 @@ Future<void> _setupForExternal() async {
   final SharedPreferences sharedPreferences =
       await SharedPreferences.getInstance();
   getIt.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
+  const flutterSecureStorage = FlutterSecureStorage();
+  getIt.registerLazySingleton<FlutterSecureStorage>(() => flutterSecureStorage);
 }
 
 void _setupDIForCore() {
