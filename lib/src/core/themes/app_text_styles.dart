@@ -32,4 +32,8 @@ class AppTextStyles {
         fontSize: 18.sp,
         fontWeight: FontWeight.w400,
       );
+  static TextStyle get font13Regular => TextStyle(
+        fontSize: 13.sp,
+        fontWeight: FontWeight.w400,
+      );
 }
