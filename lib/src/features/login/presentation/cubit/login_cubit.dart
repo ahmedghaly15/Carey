@@ -15,6 +15,7 @@ class LoginCubit extends Cubit<LoginState> {
     this._loginViaPasswordUseCase,
   ) : super(const LoginState.initial()) {
     _initFormAttributes();
+    _initRememberMe();
   }
 
   final CancelToken _cancelToken = CancelToken();
@@ -44,12 +45,15 @@ class LoginCubit extends Cubit<LoginState> {
     passwordController = TextEditingController();
   }
 
+  Future<String> _getRememberedPass() async =>
+      await SecureStorageHelper.getSecuredString(
+        CacheKeys.rememberedPassword,
+      );
+
   void _assignRememberedEmailAndPass() async {
     final rememberedEmail =
         await SecureStorageHelper.getSecuredString(CacheKeys.rememberedEmail);
-    final rememberedPassword = await SecureStorageHelper.getSecuredString(
-      CacheKeys.rememberedPassword,
-    );
+    final rememberedPassword = await _getRememberedPass();
 
     if (!rememberedEmail.isNullOrEmpty) {
       emailController.text = rememberedEmail;
@@ -63,9 +67,19 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginState.togglePasswordVisibility(obscuredPassword));
   }
 
-  bool rememberMe = false;
-  void toggleRememberMe() {
+  late bool rememberMe = false;
+  void toggleRememberMe() async {
     rememberMe = !rememberMe;
+    emit(LoginState.toggleRememberMe(rememberMe));
+  }
+
+  Future<void> _initRememberMe() async {
+    final rememberedPass = await _getRememberedPass();
+    if (!rememberedPass.isNullOrEmpty) {
+      rememberMe = true;
+    } else {
+      rememberMe = false;
+    }
     emit(LoginState.toggleRememberMe(rememberMe));
   }
 
