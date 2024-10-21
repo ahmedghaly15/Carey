@@ -10,6 +10,44 @@
 part of 'app_router.dart';
 
 /// generated route for
+/// [Auth]
+class AuthRoute extends PageRouteInfo<void> {
+  const AuthRoute({List<PageRouteInfo>? children})
+      : super(
+          AuthRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AuthRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const Auth();
+    },
+  );
+}
+
+/// generated route for
+/// [LoginMethodsView]
+class LoginMethodsRoute extends PageRouteInfo<void> {
+  const LoginMethodsRoute({List<PageRouteInfo>? children})
+      : super(
+          LoginMethodsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'LoginMethodsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const LoginMethodsView();
+    },
+  );
+}
+
+/// generated route for
 /// [SplashView]
 class SplashRoute extends PageRouteInfo<void> {
   const SplashRoute({List<PageRouteInfo>? children})
