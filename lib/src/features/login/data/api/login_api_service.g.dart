@@ -25,9 +25,12 @@ class _LoginApiService implements LoginApiService {
 
   @override
   Future<LoginResponse> loginViaEmailAndPassword(
-      LoginViaEmailAndPasswordRequest params) async {
+    LoginViaEmailAndPasswordRequest params, [
+    CancelToken? cancelToken,
+  ]) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(params.toJson());
@@ -41,6 +44,7 @@ class _LoginApiService implements LoginApiService {
           'auth/login',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(
             baseUrl: _combineBaseUrls(

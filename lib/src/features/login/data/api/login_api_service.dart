@@ -12,6 +12,7 @@ abstract class LoginApiService {
 
   @POST(EndPoints.login)
   Future<LoginResponse> loginViaEmailAndPassword(
-    @Body() LoginViaEmailAndPasswordRequest params,
-  );
+    @Body() LoginViaEmailAndPasswordRequest params, [
+    @CancelRequest() CancelToken? cancelToken,
+  ]);
 }
