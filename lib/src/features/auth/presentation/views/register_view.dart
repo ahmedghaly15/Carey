@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:carey/src/core/widgets/arrow_back_icon_button.dart';
+import 'package:carey/src/features/auth/presentation/cubits/register/register_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,8 +16,15 @@ class RegisterView extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<FormAttributesCubit>(
-      create: (_) => getIt.get<FormAttributesCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<FormAttributesCubit>(
+          create: (_) => getIt.get<FormAttributesCubit>(),
+        ),
+        BlocProvider<RegisterCubit>(
+          create: (_) => getIt.get<RegisterCubit>(),
+        ),
+      ],
       child: this,
     );
   }

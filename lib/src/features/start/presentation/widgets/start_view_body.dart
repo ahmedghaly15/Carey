@@ -60,6 +60,6 @@ class StartViewBody extends StatelessWidget {
 
   void _pushReplacementAuthRoute(BuildContext context) async {
     await SharedPrefHelper.setData(CacheKeys.isStartViewVisited, true);
-    context.pushRoute(const AuthRoute());
+    context.replaceRoute(const AuthRoute());
   }
 }

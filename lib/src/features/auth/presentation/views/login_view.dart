@@ -22,7 +22,9 @@ class LoginView extends StatelessWidget implements AutoRouteWrapper {
           create: (_) => getIt.get<LoginCubit>(),
         ),
         BlocProvider<FormAttributesCubit>(
-          create: (_) => getIt.get<FormAttributesCubit>(),
+          create: (_) => getIt.get<FormAttributesCubit>()
+            ..assignRememberedEmailAndPass()
+            ..initRememberMe(),
         ),
       ],
       child: this,

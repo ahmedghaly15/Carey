@@ -1,7 +1,7 @@
 import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
-import 'package:carey/src/features/auth/data/models/login_via_password_request.dart';
+import 'package:carey/src/features/auth/data/models/auth_via_password_request.dart';
 import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_state.dart';
@@ -13,7 +13,6 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formAttributesCubit = context.read<FormAttributesCubit>();
     return BlocListener<LoginCubit, LoginState>(
       listenWhen: (_, current) =>
           current is LoginViaPasswordError ||
@@ -21,17 +20,20 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
           current is LoginViaPasswordLoading,
       listener: (context, state) => _loginViaPasswordListener(state, context),
       child: PrimaryButton(
-        onPressed: () {
-          final params = LoginViaPasswordRequest(
-            email: formAttributesCubit.emailController.text.trim(),
-            password: formAttributesCubit.passwordController.text,
-          );
-          formAttributesCubit.validateFormAndExecute(
-            () => context.read<LoginCubit>().loginViaPassword(params),
-          );
-        },
+        onPressed: () => _loginViaPass(context),
         text: AppStrings.signIn,
       ),
+    );
+  }
+
+  void _loginViaPass(BuildContext context) {
+    final formAttributesCubit = context.read<FormAttributesCubit>();
+    final params = AuthViaPasswordRequest(
+      email: formAttributesCubit.emailController.text.trim(),
+      password: formAttributesCubit.passwordController.text,
+    );
+    formAttributesCubit.validateFormAndExecute(
+      () => context.read<LoginCubit>().loginViaPassword(params),
     );
   }
 

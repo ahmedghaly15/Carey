@@ -9,7 +9,6 @@ import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes
 class FormAttributesCubit extends Cubit<FormAttributesState> {
   FormAttributesCubit() : super(FormAttributesState.initial()) {
     _initFormAttributes();
-    _initRememberMe();
   }
 
   late final TextEditingController emailController;
@@ -22,7 +21,6 @@ class FormAttributesCubit extends Cubit<FormAttributesState> {
     formKey = GlobalKey<FormState>();
     _initControllers();
     _initFocusNodes();
-    _assignRememberedEmailAndPass();
   }
 
   void _initFocusNodes() {
@@ -40,7 +38,7 @@ class FormAttributesCubit extends Cubit<FormAttributesState> {
         CacheKeys.rememberedPassword,
       );
 
-  void _assignRememberedEmailAndPass() async {
+  void assignRememberedEmailAndPass() async {
     final rememberedEmail =
         await SecureStorageHelper.getSecuredString(CacheKeys.rememberedEmail);
     final rememberedPassword = await _getRememberedPass();
@@ -69,7 +67,7 @@ class FormAttributesCubit extends Cubit<FormAttributesState> {
     );
   }
 
-  Future<void> _initRememberMe() async {
+  Future<void> initRememberMe() async {
     final rememberedPass = await _getRememberedPass();
     if (!rememberedPass.isNullOrEmpty) {
       emit(

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_api_service.dart';
+part of 'register_api_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'login_api_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
-class _LoginApiService implements LoginApiService {
-  _LoginApiService(
+class _RegisterApiService implements RegisterApiService {
+  _RegisterApiService(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
@@ -24,7 +24,7 @@ class _LoginApiService implements LoginApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<LoginResponse> loginViaPassword(
+  Future<RegisterResponse> register(
     AuthViaPasswordRequest params, [
     CancelToken? cancelToken,
   ]) async {
@@ -34,14 +34,14 @@ class _LoginApiService implements LoginApiService {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(params.toJson());
-    final _options = _setStreamType<LoginResponse>(Options(
+    final _options = _setStreamType<RegisterResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'auth/login',
+          'auth/register',
           queryParameters: queryParameters,
           data: _data,
           cancelToken: cancelToken,
@@ -52,9 +52,9 @@ class _LoginApiService implements LoginApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late LoginResponse _value;
+    late RegisterResponse _value;
     try {
-      _value = LoginResponse.fromJson(_result.data!);
+      _value = RegisterResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

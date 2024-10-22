@@ -20,7 +20,7 @@ mixin _$LoginState<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loginViaPasswordLoading,
-    required TResult Function(LoginResponseEntity loginEntity)
+    required TResult Function(AuthResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
   }) =>
@@ -29,7 +29,7 @@ mixin _$LoginState<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loginViaPasswordLoading,
-    TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult? Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
   }) =>
       throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ mixin _$LoginState<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loginViaPasswordLoading,
-    TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
     required TResult orElse(),
   }) =>
@@ -138,7 +138,7 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loginViaPasswordLoading,
-    required TResult Function(LoginResponseEntity loginEntity)
+    required TResult Function(AuthResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
   }) {
@@ -150,7 +150,7 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loginViaPasswordLoading,
-    TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult? Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
   }) {
     return initial?.call();
@@ -161,7 +161,7 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loginViaPasswordLoading,
-    TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
     required TResult orElse(),
   }) {
@@ -264,7 +264,7 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loginViaPasswordLoading,
-    required TResult Function(LoginResponseEntity loginEntity)
+    required TResult Function(AuthResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
   }) {
@@ -276,7 +276,7 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loginViaPasswordLoading,
-    TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult? Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
   }) {
     return loginViaPasswordLoading?.call();
@@ -287,7 +287,7 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loginViaPasswordLoading,
-    TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
     required TResult orElse(),
   }) {
@@ -351,7 +351,7 @@ abstract class _$$LoginViaPasswordSuccessImplCopyWith<T, $Res> {
           $Res Function(_$LoginViaPasswordSuccessImpl<T>) then) =
       __$$LoginViaPasswordSuccessImplCopyWithImpl<T, $Res>;
   @useResult
-  $Res call({LoginResponseEntity loginEntity});
+  $Res call({AuthResponseEntity loginEntity});
 }
 
 /// @nodoc
@@ -374,7 +374,7 @@ class __$$LoginViaPasswordSuccessImplCopyWithImpl<T, $Res>
       null == loginEntity
           ? _value.loginEntity
           : loginEntity // ignore: cast_nullable_to_non_nullable
-              as LoginResponseEntity,
+              as AuthResponseEntity,
     ));
   }
 }
@@ -385,7 +385,7 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
   const _$LoginViaPasswordSuccessImpl(this.loginEntity);
 
   @override
-  final LoginResponseEntity loginEntity;
+  final AuthResponseEntity loginEntity;
 
   @override
   String toString() {
@@ -418,7 +418,7 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loginViaPasswordLoading,
-    required TResult Function(LoginResponseEntity loginEntity)
+    required TResult Function(AuthResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
   }) {
@@ -430,7 +430,7 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loginViaPasswordLoading,
-    TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult? Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
   }) {
     return loginViaPasswordSuccess?.call(loginEntity);
@@ -441,7 +441,7 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loginViaPasswordLoading,
-    TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
     required TResult orElse(),
   }) {
@@ -495,10 +495,10 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
 }
 
 abstract class LoginViaPasswordSuccess<T> implements LoginState<T> {
-  const factory LoginViaPasswordSuccess(final LoginResponseEntity loginEntity) =
+  const factory LoginViaPasswordSuccess(final AuthResponseEntity loginEntity) =
       _$LoginViaPasswordSuccessImpl<T>;
 
-  LoginResponseEntity get loginEntity;
+  AuthResponseEntity get loginEntity;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -580,7 +580,7 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loginViaPasswordLoading,
-    required TResult Function(LoginResponseEntity loginEntity)
+    required TResult Function(AuthResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
   }) {
@@ -592,7 +592,7 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loginViaPasswordLoading,
-    TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult? Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
   }) {
     return loginViaPasswordError?.call(error);
@@ -603,7 +603,7 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loginViaPasswordLoading,
-    TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
     required TResult orElse(),
   }) {
