@@ -26,7 +26,9 @@ class EmailTextFormField extends StatelessWidget {
       hintText: AppStrings.email,
       autofillHints: const [AutofillHints.email],
       prefixSvgIcon: Assets.svgsEmailIcon,
-      onEditingComplete: () => context.requestFocus(passFocusNode!),
+      onEditingComplete: passFocusNode == null
+          ? null
+          : () => context.requestFocus(passFocusNode!),
       validate: (String? value) => AuthValidator.validateEmailField(value),
     );
   }
