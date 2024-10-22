@@ -7,11 +7,11 @@ import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
-import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/auth/presentation/widgets/auth_custom_divider_with_text.dart';
 import 'package:carey/src/features/auth/presentation/widgets/auth_form.dart';
 import 'package:carey/src/features/auth/presentation/widgets/auth_switcher.dart';
 import 'package:carey/src/features/auth/presentation/widgets/auth_view_title_text.dart';
+import 'package:carey/src/features/auth/presentation/widgets/register/register_button_bloc_listener.dart';
 import 'package:carey/src/features/auth/presentation/widgets/remember_me_bloc_builder.dart';
 import 'package:carey/src/features/auth/presentation/widgets/social_login_icon_buttons.dart';
 
@@ -33,10 +33,7 @@ class RegisterViewBody extends StatelessWidget {
             MySizedBox.height40,
             const AuthForm(),
             const RememberMeBlocBuilder(),
-            PrimaryButton(
-              onPressed: () {},
-              text: AppStrings.signUp,
-            ),
+            const RegisterButtonBlocListener(),
             Container(
               margin: EdgeInsets.symmetric(vertical: 19.h),
               child: const AuthCustomDividerWithText(
