@@ -1,3 +1,8 @@
+import 'package:carey/src/core/helpers/cache_keys.dart';
+import 'package:carey/src/core/helpers/extensions.dart';
+import 'package:carey/src/core/helpers/secure_storage_helper.dart';
+import 'package:carey/src/features/auth/data/datasources/login_local_data_source.dart';
+import 'package:carey/src/features/auth/data/models/login_response.dart';
 import 'package:dio/dio.dart';
 
 import 'package:carey/src/core/api/dio_logger_interceptor.dart';
@@ -16,6 +21,7 @@ class DioFactory {
       _dio!
         ..options.connectTimeout = timeOut
         ..options.receiveTimeout = timeOut;
+      _addDioHeaders();
       _addDioLoggerInterceptor();
       return _dio!;
     } else {
@@ -23,7 +29,27 @@ class DioFactory {
     }
   }
 
+  static void _addDioHeaders() async {
+    final cachedUser =
+        await SecureStorageHelper.getSecuredString(CacheKeys.cachedUserData);
+
+    if (cachedUser.isNullOrEmpty == false) {
+      final LoginData userData =
+          await LoginLocalDataSource.getSecuredUserData();
+      _dio?.options.headers = {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${userData.token}',
+      };
+    }
+  }
+
   static void _addDioLoggerInterceptor() {
     _dio?.interceptors.add(DioLoggerInterceptor());
+  }
+
+  static void setTokenIntoHeadersAfterLogin(String token) {
+    _dio?.options.headers = {
+      'Authorization': 'Bearer $token',
+    };
   }
 }
