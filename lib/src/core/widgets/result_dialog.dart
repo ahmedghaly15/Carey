@@ -14,12 +14,14 @@ class ResultDialog extends StatelessWidget {
     this.content,
     this.actions,
     this.contentPadding,
+    this.actionsPadding = EdgeInsets.zero,
   });
 
   final String? contentText;
   final Widget? content;
   final List<Widget>? actions;
   final EdgeInsetsGeometry? contentPadding;
+  final EdgeInsetsGeometry? actionsPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class ResultDialog extends StatelessWidget {
       shape: AppConstants.dialogShape,
       icon: Image.asset(
         Assets.careyIcon,
-        height: context.screenHeight * 0.15,
+        height: context.screenHeight * 0.09,
       ),
       content: content ??
           Text(
@@ -42,6 +44,7 @@ class ResultDialog extends StatelessWidget {
             horizontal: 16.w,
           ),
       actions: actions ?? [const OkTextButton()],
+      actionsPadding: actionsPadding,
     );
   }
 }

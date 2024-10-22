@@ -49,13 +49,27 @@ class RegisterButtonBlocListener extends StatelessWidget {
         context.showErrorDialog(error);
       },
       registerSuccess: (_) async {
-        await context
-            .read<FormAttributesCubit>()
-            .handleRememberingEmailAndPassword();
-        context.popTop();
-
-        // TODO: move to fill user data or show him a dialog relling him that he should veify his email
+        await _handleRememberingAndShowResultDialog(context);
       },
     );
+  }
+
+  Future<void> _handleRememberingAndShowResultDialog(
+    BuildContext context,
+  ) async {
+    await context
+        .read<FormAttributesCubit>()
+        .handleRememberingEmailAndPassword();
+    context.popTop();
+    _clearFormControllers(context);
+    context.showResultDialog(
+      contentText: AppStrings.accountCreatedSuccessfully,
+    );
+  }
+
+  void _clearFormControllers(BuildContext context) {
+    final formAttributesCubit = context.read<FormAttributesCubit>();
+    formAttributesCubit.emailController.clear();
+    formAttributesCubit.passwordController.clear();
   }
 }

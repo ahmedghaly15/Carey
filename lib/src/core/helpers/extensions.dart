@@ -48,6 +48,7 @@ extension ShowResultDialog on BuildContext {
     Widget? content,
     List<Widget>? actions,
     EdgeInsetsGeometry? contentPadding,
+    EdgeInsetsGeometry? actionsPadding,
   }) async =>
       await showDialog<void>(
         context: this,
@@ -57,6 +58,7 @@ extension ShowResultDialog on BuildContext {
           content: content,
           actions: actions,
           contentPadding: contentPadding,
+          actionsPadding: actionsPadding,
         ),
       );
 }
