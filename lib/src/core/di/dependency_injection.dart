@@ -1,11 +1,12 @@
 import 'package:carey/src/core/api/dio_factory.dart';
 import 'package:carey/src/core/router/app_router.dart';
-import 'package:carey/src/features/login/data/api/login_api_service.dart';
-import 'package:carey/src/features/login/data/datasources/login_remote_data_source.dart';
-import 'package:carey/src/features/login/data/repositories/login_repo_impl.dart';
-import 'package:carey/src/features/login/domain/repositories/login_repo.dart';
-import 'package:carey/src/features/login/domain/usecases/login_via_password.dart';
-import 'package:carey/src/features/login/presentation/cubit/login_cubit.dart';
+import 'package:carey/src/features/auth/data/apis/login_api_service.dart';
+import 'package:carey/src/features/auth/data/datasources/login_remote_data_source.dart';
+import 'package:carey/src/features/auth/data/repositories/login_repo_impl.dart';
+import 'package:carey/src/features/auth/domain/repositories/login_repo.dart';
+import 'package:carey/src/features/auth/domain/usecases/login_via_password.dart';
+import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
+import 'package:carey/src/features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -59,7 +60,10 @@ void _setupForUseCases() {
 }
 
 void _setupForCubits() {
-  getIt.registerFactory<LoginCubit>(
+  getIt.registerLazySingleton<LoginCubit>(
     () => LoginCubit(getIt.get<LoginViaPassword>()),
+  );
+  getIt.registerFactory<FormAttributesCubit>(
+    () => FormAttributesCubit(),
   );
 }

@@ -139,7 +139,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
               child: FadeTransitionWidget(
                 child: Image.asset(
                   Assets.careyIcon,
-                  height: 83.h,
+                  height: 93.h,
                 ),
               ),
             ),
