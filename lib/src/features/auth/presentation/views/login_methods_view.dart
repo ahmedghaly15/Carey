@@ -6,10 +6,10 @@ import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
-import 'package:carey/src/features/auth/presentation/widgets/auth_custom_divider_with_text.dart';
-import 'package:carey/src/features/auth/presentation/widgets/auth_switcher.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/core/widgets/slide_animated_carey_icon.dart';
+import 'package:carey/src/features/auth/presentation/widgets/auth_custom_divider_with_text.dart';
+import 'package:carey/src/features/auth/presentation/widgets/auth_switcher.dart';
 import 'package:carey/src/features/auth/presentation/widgets/login/social_login_buttons.dart';
 
 @RoutePage()
@@ -36,13 +36,14 @@ class LoginMethodsView extends StatelessWidget {
               ),
               const AuthCustomDividerWithText(text: AppStrings.or),
               PrimaryButton(
-                onPressed: () => context.pushRoute(const LoginRoute()),
+                onPressed: () => context.replaceRoute(LoginRoute()),
                 text: AppStrings.signInWithPassword,
                 margin: EdgeInsets.only(top: 38.h, bottom: 24.h),
               ),
               AuthSwitcher(
                 margin: EdgeInsetsDirectional.only(start: 53.w, end: 55.w),
-                onPressed: () {},
+                onPressed: () => context
+                    .replaceRoute(RegisterRoute(isPushedFromLogin: false)),
                 question: AppStrings.dontHaveAnAccount,
                 buttonText: AppStrings.signUp,
               ),

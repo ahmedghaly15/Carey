@@ -49,10 +49,17 @@ class LoginMethodsRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [LoginView]
-class LoginRoute extends PageRouteInfo<void> {
-  const LoginRoute({List<PageRouteInfo>? children})
-      : super(
+class LoginRoute extends PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({
+    Key? key,
+    bool isPushedFromRegister = false,
+    List<PageRouteInfo>? children,
+  }) : super(
           LoginRoute.name,
+          args: LoginRouteArgs(
+            key: key,
+            isPushedFromRegister: isPushedFromRegister,
+          ),
           initialChildren: children,
         );
 
@@ -61,9 +68,79 @@ class LoginRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return WrappedRoute(child: const LoginView());
+      final args =
+          data.argsAs<LoginRouteArgs>(orElse: () => const LoginRouteArgs());
+      return WrappedRoute(
+          child: LoginView(
+        key: args.key,
+        isPushedFromRegister: args.isPushedFromRegister,
+      ));
     },
   );
+}
+
+class LoginRouteArgs {
+  const LoginRouteArgs({
+    this.key,
+    this.isPushedFromRegister = false,
+  });
+
+  final Key? key;
+
+  final bool isPushedFromRegister;
+
+  @override
+  String toString() {
+    return 'LoginRouteArgs{key: $key, isPushedFromRegister: $isPushedFromRegister}';
+  }
+}
+
+/// generated route for
+/// [RegisterView]
+class RegisterRoute extends PageRouteInfo<RegisterRouteArgs> {
+  RegisterRoute({
+    Key? key,
+    bool isPushedFromLogin = true,
+    List<PageRouteInfo>? children,
+  }) : super(
+          RegisterRoute.name,
+          args: RegisterRouteArgs(
+            key: key,
+            isPushedFromLogin: isPushedFromLogin,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'RegisterRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<RegisterRouteArgs>(
+          orElse: () => const RegisterRouteArgs());
+      return WrappedRoute(
+          child: RegisterView(
+        key: args.key,
+        isPushedFromLogin: args.isPushedFromLogin,
+      ));
+    },
+  );
+}
+
+class RegisterRouteArgs {
+  const RegisterRouteArgs({
+    this.key,
+    this.isPushedFromLogin = true,
+  });
+
+  final Key? key;
+
+  final bool isPushedFromLogin;
+
+  @override
+  String toString() {
+    return 'RegisterRouteArgs{key: $key, isPushedFromLogin: $isPushedFromLogin}';
+  }
 }
 
 /// generated route for
