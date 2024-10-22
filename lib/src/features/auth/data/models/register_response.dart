@@ -4,7 +4,21 @@ import 'package:json_annotation/json_annotation.dart';
 part 'register_response.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class RegisterResponse {}
+class RegisterResponse {
+  final String message;
+  final RegisterData data;
+  final int statusCode;
+
+  RegisterResponse({
+    required this.message,
+    required this.data,
+    required this.statusCode,
+  });
+
+  factory RegisterResponse.fromJson(Map<String, dynamic> json) =>
+      _$RegisterResponseFromJson(json);
+  Map<String, dynamic> toJson() => _$RegisterResponseToJson(this);
+}
 
 @JsonSerializable(explicitToJson: true)
 class RegisterData {
