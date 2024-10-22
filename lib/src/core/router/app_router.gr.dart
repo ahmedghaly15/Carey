@@ -10,6 +10,25 @@
 part of 'app_router.dart';
 
 /// generated route for
+/// [AccountSetupView]
+class AccountSetupRoute extends PageRouteInfo<void> {
+  const AccountSetupRoute({List<PageRouteInfo>? children})
+      : super(
+          AccountSetupRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AccountSetupRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const AccountSetupView());
+    },
+  );
+}
+
+/// generated route for
 /// [Auth]
 class AuthRoute extends PageRouteInfo<void> {
   const AuthRoute({List<PageRouteInfo>? children})

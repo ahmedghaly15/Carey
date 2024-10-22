@@ -21,6 +21,7 @@ List<AutoRoute> get appRoutes => [
           AutoRoute(initial: true, page: LoginMethodsRoute.page),
           _buildCustomRoute(page: LoginRoute.page),
           _buildCustomRoute(page: RegisterRoute.page),
+          _buildCustomRoute(page: AccountSetupRoute.page),
         ],
       ),
     ];
