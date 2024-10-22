@@ -1,8 +1,9 @@
-import 'package:carey/src/features/auth/data/models/login_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-LoginData? currentUserData;
+import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
+
+AuthResponseEntity? currentUserData;
 bool isUserLoggedIn = false;
 bool isCurrentUserAccountSet = false;
 
