@@ -12,8 +12,8 @@ class SlideAnimatedCareyIcon extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 40.h),
       child: SlideAnimatedWidget(
-        curve: Curves.fastLinearToSlowEaseIn,
-        duration: const Duration(seconds: 3),
+        curve: Curves.linear,
+        duration: const Duration(milliseconds: 1500),
         begin: const Offset(-1, 0),
         child: Image.asset(Assets.careyIcon),
       ),

@@ -7,8 +7,8 @@ import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes
 import 'package:carey/src/features/auth/presentation/widgets/email_text_form_field.dart';
 import 'package:carey/src/features/auth/presentation/widgets/pass_text_form_field.dart';
 
-class LoginForm extends StatelessWidget {
-  const LoginForm({super.key});
+class AuthForm extends StatelessWidget {
+  const AuthForm({super.key});
 
   @override
   Widget build(BuildContext context) {

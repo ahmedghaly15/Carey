@@ -1,7 +1,9 @@
-import 'package:carey/src/core/helpers/extensions.dart';
-import 'package:carey/src/core/widgets/animated_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:carey/src/core/helpers/extensions.dart';
+import 'package:carey/src/core/utils/app_constants.dart';
+import 'package:carey/src/core/widgets/animated_loading_indicator.dart';
 
 class LoadingAdaptiveDialog extends StatelessWidget {
   const LoadingAdaptiveDialog({super.key});
@@ -13,9 +15,7 @@ class LoadingAdaptiveDialog extends StatelessWidget {
       child: AlertDialog.adaptive(
         backgroundColor: Colors.white,
         contentPadding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0.r),
-        ),
+        shape: AppConstants.dialogShape,
         content: const AnimatedLoadingIndicator(),
       ),
     );

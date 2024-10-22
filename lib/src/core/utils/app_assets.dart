@@ -54,6 +54,10 @@ class Assets {
   /// assets/images/welcome-screen-car.jpg
   static const String imagesWelcomeScreenCar = "assets/images/welcome-screen-car.jpg";
 
+  /// Assets for svgsArrowBackIcon
+  /// assets/svgs/arrow-back-icon.svg
+  static const String svgsArrowBackIcon = "assets/svgs/arrow-back-icon.svg";
+
   /// Assets for svgsEmailIcon
   /// assets/svgs/email-icon.svg
   static const String svgsEmailIcon = "assets/svgs/email-icon.svg";

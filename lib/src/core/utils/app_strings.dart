@@ -38,4 +38,7 @@ class AppStrings {
       'Password must contain at least one special character';
   static const String emailRequired = 'Email is required';
   static const String emailInvalid = 'Email is invalid';
+  static const String createYourAccount = 'Create your account';
+  static const String accountCreatedSuccessfully =
+      'Account created successfully. Please check your email to activate your account.';
 }

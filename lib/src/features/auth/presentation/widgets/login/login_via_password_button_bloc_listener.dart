@@ -1,9 +1,10 @@
 import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
+
 import 'package:carey/src/features/auth/data/datasources/login_local_data_source.dart';
-import 'package:carey/src/features/auth/data/models/login_via_password_request.dart';
-import 'package:carey/src/features/auth/domain/entities/login_response_entity.dart';
+import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
+import 'package:carey/src/features/auth/data/models/auth_via_password_request.dart';
 import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_state.dart';
@@ -15,7 +16,6 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formAttributesCubit = context.read<FormAttributesCubit>();
     return BlocListener<LoginCubit, LoginState>(
       listenWhen: (_, current) =>
           current is LoginViaPasswordError ||
@@ -23,17 +23,20 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
           current is LoginViaPasswordLoading,
       listener: (context, state) => _loginViaPasswordListener(state, context),
       child: PrimaryButton(
-        onPressed: () {
-          final params = LoginViaPasswordRequest(
-            email: formAttributesCubit.emailController.text.trim(),
-            password: formAttributesCubit.passwordController.text,
-          );
-          formAttributesCubit.validateFormAndExecute(
-            () => context.read<LoginCubit>().loginViaPassword(params),
-          );
-        },
+        onPressed: () => _loginViaPass(context),
         text: AppStrings.signIn,
       ),
+    );
+  }
+
+  void _loginViaPass(BuildContext context) {
+    final formAttributesCubit = context.read<FormAttributesCubit>();
+    final params = AuthViaPasswordRequest(
+      email: formAttributesCubit.emailController.text.trim(),
+      password: formAttributesCubit.passwordController.text,
+    );
+    formAttributesCubit.validateFormAndExecute(
+      () => context.read<LoginCubit>().loginViaPassword(params),
     );
   }
 
@@ -47,8 +50,8 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
         context.popTop();
         context.showErrorDialog(error);
       },
-      loginViaPasswordSuccess: (loginEntity) async {
-        await _handleRememberMeAndSecureUserData(context, loginEntity);
+      loginViaPasswordSuccess: (authEntity) async {
+        await _handleRememberMeAndSecureUserData(context, authEntity);
         // TODO: navigate to home
       },
     );
@@ -56,14 +59,14 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
 
   Future<void> _handleRememberMeAndSecureUserData(
     BuildContext context,
-    LoginResponseEntity loginEntity,
+    AuthResponseEntity authEntity,
   ) async {
     await context
         .read<FormAttributesCubit>()
         .handleRememberingEmailAndPassword();
     context.popTop();
     await LoginLocalDataSource.secureUserDataAndSetTokenIntoHeaders(
-      loginEntity.userData,
+      authEntity.token,
     );
   }
 }
