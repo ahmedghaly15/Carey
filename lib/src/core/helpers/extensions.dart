@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:carey/src/core/widgets/custom_error_adaptive_dialog.dart';
 import 'package:carey/src/core/widgets/loading_adaptive_dialog.dart';
-import 'package:flutter/material.dart';
+import 'package:carey/src/core/widgets/result_dialog.dart';
 
 extension MediaQueryUtils on BuildContext {
   double get screenHeight => MediaQuery.sizeOf(this).height;
@@ -38,4 +40,23 @@ extension PopTopMostRoute on BuildContext {
 extension IsNullOrEmptyString on String? {
   /// Check if the string is null or empty
   bool get isNullOrEmpty => this == null || this == '';
+}
+
+extension ShowResultDialog on BuildContext {
+  Future<void> showResultDialog({
+    String? contentText,
+    Widget? content,
+    List<Widget>? actions,
+    EdgeInsetsGeometry? contentPadding,
+  }) async =>
+      await showDialog<void>(
+        context: this,
+        barrierDismissible: true,
+        builder: (_) => ResultDialog(
+          contentText: contentText,
+          content: content,
+          actions: actions,
+          contentPadding: contentPadding,
+        ),
+      );
 }
