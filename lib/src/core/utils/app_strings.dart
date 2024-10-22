@@ -41,4 +41,11 @@ class AppStrings {
   static const String createYourAccount = 'Create your account';
   static const String accountCreatedSuccessfully =
       'Account created successfully. Please check your email to activate your account.';
+  static const String fillYourProfile = 'Fill Your Profile';
+  static const String fullName = 'Full Name';
+  static const String nickName = 'Nick Name';
+  static const String phone = 'Phone';
+  static const String address = 'Address';
+  static const String gender = 'Gender';
+  static const String continueWord = 'Continue';
 }

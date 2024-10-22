@@ -58,6 +58,10 @@ class Assets {
   /// assets/svgs/arrow-back-icon.svg
   static const String svgsArrowBackIcon = "assets/svgs/arrow-back-icon.svg";
 
+  /// Assets for svgsDefaultUserImage
+  /// assets/svgs/default-user-image.svg
+  static const String svgsDefaultUserImage = "assets/svgs/default-user-image.svg";
+
   /// Assets for svgsEmailIcon
   /// assets/svgs/email-icon.svg
   static const String svgsEmailIcon = "assets/svgs/email-icon.svg";
