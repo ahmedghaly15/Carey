@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,8 +13,15 @@ class LoginView extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<LoginCubit>(
-      create: (_) => getIt.get<LoginCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<LoginCubit>(
+          create: (_) => getIt.get<LoginCubit>(),
+        ),
+        BlocProvider<FormAttributesCubit>(
+          create: (_) => getIt.get<FormAttributesCubit>(),
+        ),
+      ],
       child: this,
     );
   }
