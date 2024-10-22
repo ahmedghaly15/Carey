@@ -1,4 +1,5 @@
 import 'package:carey/src/core/helpers/extensions.dart';
+import 'package:carey/src/features/auth/data/models/auth_via_password_request.dart';
 import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,9 +21,20 @@ class RegisterButtonBlocListener extends StatelessWidget {
           current is RegisterSuccess,
       listener: (context, state) => _registerListener(state, context),
       child: PrimaryButton(
-        onPressed: () {},
+        onPressed: () => _register(context),
         text: AppStrings.signUp,
       ),
+    );
+  }
+
+  void _register(BuildContext context) {
+    final formAttributesCubit = context.read<FormAttributesCubit>();
+    final params = AuthViaPasswordRequest(
+      email: formAttributesCubit.emailController.text.trim(),
+      password: formAttributesCubit.passwordController.text,
+    );
+    formAttributesCubit.validateFormAndExecute(
+      () => context.read<RegisterCubit>().register(params),
     );
   }
 
@@ -41,6 +53,7 @@ class RegisterButtonBlocListener extends StatelessWidget {
             .read<FormAttributesCubit>()
             .handleRememberingEmailAndPassword();
         context.popTop();
+
         // TODO: move to fill user data or show him a dialog relling him that he should veify his email
       },
     );

@@ -13,7 +13,6 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formAttributesCubit = context.read<FormAttributesCubit>();
     return BlocListener<LoginCubit, LoginState>(
       listenWhen: (_, current) =>
           current is LoginViaPasswordError ||
@@ -21,17 +20,20 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
           current is LoginViaPasswordLoading,
       listener: (context, state) => _loginViaPasswordListener(state, context),
       child: PrimaryButton(
-        onPressed: () {
-          final params = AuthViaPasswordRequest(
-            email: formAttributesCubit.emailController.text.trim(),
-            password: formAttributesCubit.passwordController.text,
-          );
-          formAttributesCubit.validateFormAndExecute(
-            () => context.read<LoginCubit>().loginViaPassword(params),
-          );
-        },
+        onPressed: () => _loginViaPass(context),
         text: AppStrings.signIn,
       ),
+    );
+  }
+
+  void _loginViaPass(BuildContext context) {
+    final formAttributesCubit = context.read<FormAttributesCubit>();
+    final params = AuthViaPasswordRequest(
+      email: formAttributesCubit.emailController.text.trim(),
+      password: formAttributesCubit.passwordController.text,
+    );
+    formAttributesCubit.validateFormAndExecute(
+      () => context.read<LoginCubit>().loginViaPassword(params),
     );
   }
 
