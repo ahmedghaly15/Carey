@@ -19,80 +19,56 @@ mixin _$LoginState<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool obscured) togglePasswordVisibility,
-    required TResult Function(bool rememberMe) toggleRememberMe,
     required TResult Function() loginViaPasswordLoading,
     required TResult Function(LoginResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
-    required TResult Function(AutovalidateMode autovalidateMode)
-        alwaysAutovalidateMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool obscured)? togglePasswordVisibility,
-    TResult? Function(bool rememberMe)? toggleRememberMe,
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
-    TResult? Function(AutovalidateMode autovalidateMode)?
-        alwaysAutovalidateMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool obscured)? togglePasswordVisibility,
-    TResult Function(bool rememberMe)? toggleRememberMe,
     TResult Function()? loginViaPasswordLoading,
     TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
-    TResult Function(AutovalidateMode autovalidateMode)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial<T> value) initial,
-    required TResult Function(TogglePasswordVisibility<T> value)
-        togglePasswordVisibility,
-    required TResult Function(ToggleRememberMe<T> value) toggleRememberMe,
     required TResult Function(LoginViaPasswordLoading<T> value)
         loginViaPasswordLoading,
     required TResult Function(LoginViaPasswordSuccess<T> value)
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
-    required TResult Function(AlwaysAutovalidateMode<T> value)
-        alwaysAutovalidateMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(TogglePasswordVisibility<T> value)?
-        togglePasswordVisibility,
-    TResult? Function(ToggleRememberMe<T> value)? toggleRememberMe,
     TResult? Function(LoginViaPasswordLoading<T> value)?
         loginViaPasswordLoading,
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
-    TResult? Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial<T> value)? initial,
-    TResult Function(TogglePasswordVisibility<T> value)?
-        togglePasswordVisibility,
-    TResult Function(ToggleRememberMe<T> value)? toggleRememberMe,
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
-    TResult Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -161,14 +137,10 @@ class _$InitialImpl<T> implements _Initial<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool obscured) togglePasswordVisibility,
-    required TResult Function(bool rememberMe) toggleRememberMe,
     required TResult Function() loginViaPasswordLoading,
     required TResult Function(LoginResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
-    required TResult Function(AutovalidateMode autovalidateMode)
-        alwaysAutovalidateMode,
   }) {
     return initial();
   }
@@ -177,13 +149,9 @@ class _$InitialImpl<T> implements _Initial<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool obscured)? togglePasswordVisibility,
-    TResult? Function(bool rememberMe)? toggleRememberMe,
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
-    TResult? Function(AutovalidateMode autovalidateMode)?
-        alwaysAutovalidateMode,
   }) {
     return initial?.call();
   }
@@ -192,12 +160,9 @@ class _$InitialImpl<T> implements _Initial<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool obscured)? togglePasswordVisibility,
-    TResult Function(bool rememberMe)? toggleRememberMe,
     TResult Function()? loginViaPasswordLoading,
     TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
-    TResult Function(AutovalidateMode autovalidateMode)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -210,17 +175,12 @@ class _$InitialImpl<T> implements _Initial<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial<T> value) initial,
-    required TResult Function(TogglePasswordVisibility<T> value)
-        togglePasswordVisibility,
-    required TResult Function(ToggleRememberMe<T> value) toggleRememberMe,
     required TResult Function(LoginViaPasswordLoading<T> value)
         loginViaPasswordLoading,
     required TResult Function(LoginViaPasswordSuccess<T> value)
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
-    required TResult Function(AlwaysAutovalidateMode<T> value)
-        alwaysAutovalidateMode,
   }) {
     return initial(this);
   }
@@ -229,15 +189,11 @@ class _$InitialImpl<T> implements _Initial<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(TogglePasswordVisibility<T> value)?
-        togglePasswordVisibility,
-    TResult? Function(ToggleRememberMe<T> value)? toggleRememberMe,
     TResult? Function(LoginViaPasswordLoading<T> value)?
         loginViaPasswordLoading,
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
-    TResult? Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
   }) {
     return initial?.call(this);
   }
@@ -246,13 +202,9 @@ class _$InitialImpl<T> implements _Initial<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial<T> value)? initial,
-    TResult Function(TogglePasswordVisibility<T> value)?
-        togglePasswordVisibility,
-    TResult Function(ToggleRememberMe<T> value)? toggleRememberMe,
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
-    TResult Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -264,378 +216,6 @@ class _$InitialImpl<T> implements _Initial<T> {
 
 abstract class _Initial<T> implements LoginState<T> {
   const factory _Initial() = _$InitialImpl<T>;
-}
-
-/// @nodoc
-abstract class _$$TogglePasswordVisibilityImplCopyWith<T, $Res> {
-  factory _$$TogglePasswordVisibilityImplCopyWith(
-          _$TogglePasswordVisibilityImpl<T> value,
-          $Res Function(_$TogglePasswordVisibilityImpl<T>) then) =
-      __$$TogglePasswordVisibilityImplCopyWithImpl<T, $Res>;
-  @useResult
-  $Res call({bool obscured});
-}
-
-/// @nodoc
-class __$$TogglePasswordVisibilityImplCopyWithImpl<T, $Res>
-    extends _$LoginStateCopyWithImpl<T, $Res, _$TogglePasswordVisibilityImpl<T>>
-    implements _$$TogglePasswordVisibilityImplCopyWith<T, $Res> {
-  __$$TogglePasswordVisibilityImplCopyWithImpl(
-      _$TogglePasswordVisibilityImpl<T> _value,
-      $Res Function(_$TogglePasswordVisibilityImpl<T>) _then)
-      : super(_value, _then);
-
-  /// Create a copy of LoginState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? obscured = null,
-  }) {
-    return _then(_$TogglePasswordVisibilityImpl<T>(
-      null == obscured
-          ? _value.obscured
-          : obscured // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$TogglePasswordVisibilityImpl<T> implements TogglePasswordVisibility<T> {
-  const _$TogglePasswordVisibilityImpl(this.obscured);
-
-  @override
-  final bool obscured;
-
-  @override
-  String toString() {
-    return 'LoginState<$T>.togglePasswordVisibility(obscured: $obscured)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TogglePasswordVisibilityImpl<T> &&
-            (identical(other.obscured, obscured) ||
-                other.obscured == obscured));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, obscured);
-
-  /// Create a copy of LoginState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TogglePasswordVisibilityImplCopyWith<T, _$TogglePasswordVisibilityImpl<T>>
-      get copyWith => __$$TogglePasswordVisibilityImplCopyWithImpl<T,
-          _$TogglePasswordVisibilityImpl<T>>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(bool obscured) togglePasswordVisibility,
-    required TResult Function(bool rememberMe) toggleRememberMe,
-    required TResult Function() loginViaPasswordLoading,
-    required TResult Function(LoginResponseEntity loginEntity)
-        loginViaPasswordSuccess,
-    required TResult Function(String error) loginViaPasswordError,
-    required TResult Function(AutovalidateMode autovalidateMode)
-        alwaysAutovalidateMode,
-  }) {
-    return togglePasswordVisibility(obscured);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(bool obscured)? togglePasswordVisibility,
-    TResult? Function(bool rememberMe)? toggleRememberMe,
-    TResult? Function()? loginViaPasswordLoading,
-    TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
-    TResult? Function(String error)? loginViaPasswordError,
-    TResult? Function(AutovalidateMode autovalidateMode)?
-        alwaysAutovalidateMode,
-  }) {
-    return togglePasswordVisibility?.call(obscured);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(bool obscured)? togglePasswordVisibility,
-    TResult Function(bool rememberMe)? toggleRememberMe,
-    TResult Function()? loginViaPasswordLoading,
-    TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
-    TResult Function(String error)? loginViaPasswordError,
-    TResult Function(AutovalidateMode autovalidateMode)? alwaysAutovalidateMode,
-    required TResult orElse(),
-  }) {
-    if (togglePasswordVisibility != null) {
-      return togglePasswordVisibility(obscured);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(TogglePasswordVisibility<T> value)
-        togglePasswordVisibility,
-    required TResult Function(ToggleRememberMe<T> value) toggleRememberMe,
-    required TResult Function(LoginViaPasswordLoading<T> value)
-        loginViaPasswordLoading,
-    required TResult Function(LoginViaPasswordSuccess<T> value)
-        loginViaPasswordSuccess,
-    required TResult Function(LoginViaPasswordError<T> value)
-        loginViaPasswordError,
-    required TResult Function(AlwaysAutovalidateMode<T> value)
-        alwaysAutovalidateMode,
-  }) {
-    return togglePasswordVisibility(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(TogglePasswordVisibility<T> value)?
-        togglePasswordVisibility,
-    TResult? Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult? Function(LoginViaPasswordLoading<T> value)?
-        loginViaPasswordLoading,
-    TResult? Function(LoginViaPasswordSuccess<T> value)?
-        loginViaPasswordSuccess,
-    TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
-    TResult? Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
-  }) {
-    return togglePasswordVisibility?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(TogglePasswordVisibility<T> value)?
-        togglePasswordVisibility,
-    TResult Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
-    TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
-    TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
-    TResult Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
-    required TResult orElse(),
-  }) {
-    if (togglePasswordVisibility != null) {
-      return togglePasswordVisibility(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class TogglePasswordVisibility<T> implements LoginState<T> {
-  const factory TogglePasswordVisibility(final bool obscured) =
-      _$TogglePasswordVisibilityImpl<T>;
-
-  bool get obscured;
-
-  /// Create a copy of LoginState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TogglePasswordVisibilityImplCopyWith<T, _$TogglePasswordVisibilityImpl<T>>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ToggleRememberMeImplCopyWith<T, $Res> {
-  factory _$$ToggleRememberMeImplCopyWith(_$ToggleRememberMeImpl<T> value,
-          $Res Function(_$ToggleRememberMeImpl<T>) then) =
-      __$$ToggleRememberMeImplCopyWithImpl<T, $Res>;
-  @useResult
-  $Res call({bool rememberMe});
-}
-
-/// @nodoc
-class __$$ToggleRememberMeImplCopyWithImpl<T, $Res>
-    extends _$LoginStateCopyWithImpl<T, $Res, _$ToggleRememberMeImpl<T>>
-    implements _$$ToggleRememberMeImplCopyWith<T, $Res> {
-  __$$ToggleRememberMeImplCopyWithImpl(_$ToggleRememberMeImpl<T> _value,
-      $Res Function(_$ToggleRememberMeImpl<T>) _then)
-      : super(_value, _then);
-
-  /// Create a copy of LoginState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? rememberMe = null,
-  }) {
-    return _then(_$ToggleRememberMeImpl<T>(
-      null == rememberMe
-          ? _value.rememberMe
-          : rememberMe // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ToggleRememberMeImpl<T> implements ToggleRememberMe<T> {
-  const _$ToggleRememberMeImpl(this.rememberMe);
-
-  @override
-  final bool rememberMe;
-
-  @override
-  String toString() {
-    return 'LoginState<$T>.toggleRememberMe(rememberMe: $rememberMe)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ToggleRememberMeImpl<T> &&
-            (identical(other.rememberMe, rememberMe) ||
-                other.rememberMe == rememberMe));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, rememberMe);
-
-  /// Create a copy of LoginState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ToggleRememberMeImplCopyWith<T, _$ToggleRememberMeImpl<T>> get copyWith =>
-      __$$ToggleRememberMeImplCopyWithImpl<T, _$ToggleRememberMeImpl<T>>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(bool obscured) togglePasswordVisibility,
-    required TResult Function(bool rememberMe) toggleRememberMe,
-    required TResult Function() loginViaPasswordLoading,
-    required TResult Function(LoginResponseEntity loginEntity)
-        loginViaPasswordSuccess,
-    required TResult Function(String error) loginViaPasswordError,
-    required TResult Function(AutovalidateMode autovalidateMode)
-        alwaysAutovalidateMode,
-  }) {
-    return toggleRememberMe(rememberMe);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(bool obscured)? togglePasswordVisibility,
-    TResult? Function(bool rememberMe)? toggleRememberMe,
-    TResult? Function()? loginViaPasswordLoading,
-    TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
-    TResult? Function(String error)? loginViaPasswordError,
-    TResult? Function(AutovalidateMode autovalidateMode)?
-        alwaysAutovalidateMode,
-  }) {
-    return toggleRememberMe?.call(rememberMe);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(bool obscured)? togglePasswordVisibility,
-    TResult Function(bool rememberMe)? toggleRememberMe,
-    TResult Function()? loginViaPasswordLoading,
-    TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
-    TResult Function(String error)? loginViaPasswordError,
-    TResult Function(AutovalidateMode autovalidateMode)? alwaysAutovalidateMode,
-    required TResult orElse(),
-  }) {
-    if (toggleRememberMe != null) {
-      return toggleRememberMe(rememberMe);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(TogglePasswordVisibility<T> value)
-        togglePasswordVisibility,
-    required TResult Function(ToggleRememberMe<T> value) toggleRememberMe,
-    required TResult Function(LoginViaPasswordLoading<T> value)
-        loginViaPasswordLoading,
-    required TResult Function(LoginViaPasswordSuccess<T> value)
-        loginViaPasswordSuccess,
-    required TResult Function(LoginViaPasswordError<T> value)
-        loginViaPasswordError,
-    required TResult Function(AlwaysAutovalidateMode<T> value)
-        alwaysAutovalidateMode,
-  }) {
-    return toggleRememberMe(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(TogglePasswordVisibility<T> value)?
-        togglePasswordVisibility,
-    TResult? Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult? Function(LoginViaPasswordLoading<T> value)?
-        loginViaPasswordLoading,
-    TResult? Function(LoginViaPasswordSuccess<T> value)?
-        loginViaPasswordSuccess,
-    TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
-    TResult? Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
-  }) {
-    return toggleRememberMe?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(TogglePasswordVisibility<T> value)?
-        togglePasswordVisibility,
-    TResult Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
-    TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
-    TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
-    TResult Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
-    required TResult orElse(),
-  }) {
-    if (toggleRememberMe != null) {
-      return toggleRememberMe(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ToggleRememberMe<T> implements LoginState<T> {
-  const factory ToggleRememberMe(final bool rememberMe) =
-      _$ToggleRememberMeImpl<T>;
-
-  bool get rememberMe;
-
-  /// Create a copy of LoginState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ToggleRememberMeImplCopyWith<T, _$ToggleRememberMeImpl<T>> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -683,14 +263,10 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool obscured) togglePasswordVisibility,
-    required TResult Function(bool rememberMe) toggleRememberMe,
     required TResult Function() loginViaPasswordLoading,
     required TResult Function(LoginResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
-    required TResult Function(AutovalidateMode autovalidateMode)
-        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordLoading();
   }
@@ -699,13 +275,9 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool obscured)? togglePasswordVisibility,
-    TResult? Function(bool rememberMe)? toggleRememberMe,
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
-    TResult? Function(AutovalidateMode autovalidateMode)?
-        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordLoading?.call();
   }
@@ -714,12 +286,9 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool obscured)? togglePasswordVisibility,
-    TResult Function(bool rememberMe)? toggleRememberMe,
     TResult Function()? loginViaPasswordLoading,
     TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
-    TResult Function(AutovalidateMode autovalidateMode)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (loginViaPasswordLoading != null) {
@@ -732,17 +301,12 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial<T> value) initial,
-    required TResult Function(TogglePasswordVisibility<T> value)
-        togglePasswordVisibility,
-    required TResult Function(ToggleRememberMe<T> value) toggleRememberMe,
     required TResult Function(LoginViaPasswordLoading<T> value)
         loginViaPasswordLoading,
     required TResult Function(LoginViaPasswordSuccess<T> value)
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
-    required TResult Function(AlwaysAutovalidateMode<T> value)
-        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordLoading(this);
   }
@@ -751,15 +315,11 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(TogglePasswordVisibility<T> value)?
-        togglePasswordVisibility,
-    TResult? Function(ToggleRememberMe<T> value)? toggleRememberMe,
     TResult? Function(LoginViaPasswordLoading<T> value)?
         loginViaPasswordLoading,
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
-    TResult? Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
   }) {
     return loginViaPasswordLoading?.call(this);
   }
@@ -768,13 +328,9 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial<T> value)? initial,
-    TResult Function(TogglePasswordVisibility<T> value)?
-        togglePasswordVisibility,
-    TResult Function(ToggleRememberMe<T> value)? toggleRememberMe,
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
-    TResult Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (loginViaPasswordLoading != null) {
@@ -861,14 +417,10 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool obscured) togglePasswordVisibility,
-    required TResult Function(bool rememberMe) toggleRememberMe,
     required TResult Function() loginViaPasswordLoading,
     required TResult Function(LoginResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
-    required TResult Function(AutovalidateMode autovalidateMode)
-        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordSuccess(loginEntity);
   }
@@ -877,13 +429,9 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool obscured)? togglePasswordVisibility,
-    TResult? Function(bool rememberMe)? toggleRememberMe,
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
-    TResult? Function(AutovalidateMode autovalidateMode)?
-        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordSuccess?.call(loginEntity);
   }
@@ -892,12 +440,9 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool obscured)? togglePasswordVisibility,
-    TResult Function(bool rememberMe)? toggleRememberMe,
     TResult Function()? loginViaPasswordLoading,
     TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
-    TResult Function(AutovalidateMode autovalidateMode)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (loginViaPasswordSuccess != null) {
@@ -910,17 +455,12 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial<T> value) initial,
-    required TResult Function(TogglePasswordVisibility<T> value)
-        togglePasswordVisibility,
-    required TResult Function(ToggleRememberMe<T> value) toggleRememberMe,
     required TResult Function(LoginViaPasswordLoading<T> value)
         loginViaPasswordLoading,
     required TResult Function(LoginViaPasswordSuccess<T> value)
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
-    required TResult Function(AlwaysAutovalidateMode<T> value)
-        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordSuccess(this);
   }
@@ -929,15 +469,11 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(TogglePasswordVisibility<T> value)?
-        togglePasswordVisibility,
-    TResult? Function(ToggleRememberMe<T> value)? toggleRememberMe,
     TResult? Function(LoginViaPasswordLoading<T> value)?
         loginViaPasswordLoading,
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
-    TResult? Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
   }) {
     return loginViaPasswordSuccess?.call(this);
   }
@@ -946,13 +482,9 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial<T> value)? initial,
-    TResult Function(TogglePasswordVisibility<T> value)?
-        togglePasswordVisibility,
-    TResult Function(ToggleRememberMe<T> value)? toggleRememberMe,
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
-    TResult Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (loginViaPasswordSuccess != null) {
@@ -1047,14 +579,10 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool obscured) togglePasswordVisibility,
-    required TResult Function(bool rememberMe) toggleRememberMe,
     required TResult Function() loginViaPasswordLoading,
     required TResult Function(LoginResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
-    required TResult Function(AutovalidateMode autovalidateMode)
-        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordError(error);
   }
@@ -1063,13 +591,9 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool obscured)? togglePasswordVisibility,
-    TResult? Function(bool rememberMe)? toggleRememberMe,
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
-    TResult? Function(AutovalidateMode autovalidateMode)?
-        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordError?.call(error);
   }
@@ -1078,12 +602,9 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool obscured)? togglePasswordVisibility,
-    TResult Function(bool rememberMe)? toggleRememberMe,
     TResult Function()? loginViaPasswordLoading,
     TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
-    TResult Function(AutovalidateMode autovalidateMode)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (loginViaPasswordError != null) {
@@ -1096,17 +617,12 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial<T> value) initial,
-    required TResult Function(TogglePasswordVisibility<T> value)
-        togglePasswordVisibility,
-    required TResult Function(ToggleRememberMe<T> value) toggleRememberMe,
     required TResult Function(LoginViaPasswordLoading<T> value)
         loginViaPasswordLoading,
     required TResult Function(LoginViaPasswordSuccess<T> value)
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
-    required TResult Function(AlwaysAutovalidateMode<T> value)
-        alwaysAutovalidateMode,
   }) {
     return loginViaPasswordError(this);
   }
@@ -1115,15 +631,11 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(TogglePasswordVisibility<T> value)?
-        togglePasswordVisibility,
-    TResult? Function(ToggleRememberMe<T> value)? toggleRememberMe,
     TResult? Function(LoginViaPasswordLoading<T> value)?
         loginViaPasswordLoading,
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
-    TResult? Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
   }) {
     return loginViaPasswordError?.call(this);
   }
@@ -1132,13 +644,9 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial<T> value)? initial,
-    TResult Function(TogglePasswordVisibility<T> value)?
-        togglePasswordVisibility,
-    TResult Function(ToggleRememberMe<T> value)? toggleRememberMe,
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
-    TResult Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
     required TResult orElse(),
   }) {
     if (loginViaPasswordError != null) {
@@ -1158,193 +666,5 @@ abstract class LoginViaPasswordError<T> implements LoginState<T> {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoginViaPasswordErrorImplCopyWith<T, _$LoginViaPasswordErrorImpl<T>>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$AlwaysAutovalidateModeImplCopyWith<T, $Res> {
-  factory _$$AlwaysAutovalidateModeImplCopyWith(
-          _$AlwaysAutovalidateModeImpl<T> value,
-          $Res Function(_$AlwaysAutovalidateModeImpl<T>) then) =
-      __$$AlwaysAutovalidateModeImplCopyWithImpl<T, $Res>;
-  @useResult
-  $Res call({AutovalidateMode autovalidateMode});
-}
-
-/// @nodoc
-class __$$AlwaysAutovalidateModeImplCopyWithImpl<T, $Res>
-    extends _$LoginStateCopyWithImpl<T, $Res, _$AlwaysAutovalidateModeImpl<T>>
-    implements _$$AlwaysAutovalidateModeImplCopyWith<T, $Res> {
-  __$$AlwaysAutovalidateModeImplCopyWithImpl(
-      _$AlwaysAutovalidateModeImpl<T> _value,
-      $Res Function(_$AlwaysAutovalidateModeImpl<T>) _then)
-      : super(_value, _then);
-
-  /// Create a copy of LoginState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? autovalidateMode = null,
-  }) {
-    return _then(_$AlwaysAutovalidateModeImpl<T>(
-      null == autovalidateMode
-          ? _value.autovalidateMode
-          : autovalidateMode // ignore: cast_nullable_to_non_nullable
-              as AutovalidateMode,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$AlwaysAutovalidateModeImpl<T> implements AlwaysAutovalidateMode<T> {
-  const _$AlwaysAutovalidateModeImpl(this.autovalidateMode);
-
-  @override
-  final AutovalidateMode autovalidateMode;
-
-  @override
-  String toString() {
-    return 'LoginState<$T>.alwaysAutovalidateMode(autovalidateMode: $autovalidateMode)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AlwaysAutovalidateModeImpl<T> &&
-            (identical(other.autovalidateMode, autovalidateMode) ||
-                other.autovalidateMode == autovalidateMode));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, autovalidateMode);
-
-  /// Create a copy of LoginState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AlwaysAutovalidateModeImplCopyWith<T, _$AlwaysAutovalidateModeImpl<T>>
-      get copyWith => __$$AlwaysAutovalidateModeImplCopyWithImpl<T,
-          _$AlwaysAutovalidateModeImpl<T>>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(bool obscured) togglePasswordVisibility,
-    required TResult Function(bool rememberMe) toggleRememberMe,
-    required TResult Function() loginViaPasswordLoading,
-    required TResult Function(LoginResponseEntity loginEntity)
-        loginViaPasswordSuccess,
-    required TResult Function(String error) loginViaPasswordError,
-    required TResult Function(AutovalidateMode autovalidateMode)
-        alwaysAutovalidateMode,
-  }) {
-    return alwaysAutovalidateMode(autovalidateMode);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(bool obscured)? togglePasswordVisibility,
-    TResult? Function(bool rememberMe)? toggleRememberMe,
-    TResult? Function()? loginViaPasswordLoading,
-    TResult? Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
-    TResult? Function(String error)? loginViaPasswordError,
-    TResult? Function(AutovalidateMode autovalidateMode)?
-        alwaysAutovalidateMode,
-  }) {
-    return alwaysAutovalidateMode?.call(autovalidateMode);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(bool obscured)? togglePasswordVisibility,
-    TResult Function(bool rememberMe)? toggleRememberMe,
-    TResult Function()? loginViaPasswordLoading,
-    TResult Function(LoginResponseEntity loginEntity)? loginViaPasswordSuccess,
-    TResult Function(String error)? loginViaPasswordError,
-    TResult Function(AutovalidateMode autovalidateMode)? alwaysAutovalidateMode,
-    required TResult orElse(),
-  }) {
-    if (alwaysAutovalidateMode != null) {
-      return alwaysAutovalidateMode(autovalidateMode);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(TogglePasswordVisibility<T> value)
-        togglePasswordVisibility,
-    required TResult Function(ToggleRememberMe<T> value) toggleRememberMe,
-    required TResult Function(LoginViaPasswordLoading<T> value)
-        loginViaPasswordLoading,
-    required TResult Function(LoginViaPasswordSuccess<T> value)
-        loginViaPasswordSuccess,
-    required TResult Function(LoginViaPasswordError<T> value)
-        loginViaPasswordError,
-    required TResult Function(AlwaysAutovalidateMode<T> value)
-        alwaysAutovalidateMode,
-  }) {
-    return alwaysAutovalidateMode(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(TogglePasswordVisibility<T> value)?
-        togglePasswordVisibility,
-    TResult? Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult? Function(LoginViaPasswordLoading<T> value)?
-        loginViaPasswordLoading,
-    TResult? Function(LoginViaPasswordSuccess<T> value)?
-        loginViaPasswordSuccess,
-    TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
-    TResult? Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
-  }) {
-    return alwaysAutovalidateMode?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(TogglePasswordVisibility<T> value)?
-        togglePasswordVisibility,
-    TResult Function(ToggleRememberMe<T> value)? toggleRememberMe,
-    TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
-    TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
-    TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
-    TResult Function(AlwaysAutovalidateMode<T> value)? alwaysAutovalidateMode,
-    required TResult orElse(),
-  }) {
-    if (alwaysAutovalidateMode != null) {
-      return alwaysAutovalidateMode(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AlwaysAutovalidateMode<T> implements LoginState<T> {
-  const factory AlwaysAutovalidateMode(
-          final AutovalidateMode autovalidateMode) =
-      _$AlwaysAutovalidateModeImpl<T>;
-
-  AutovalidateMode get autovalidateMode;
-
-  /// Create a copy of LoginState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AlwaysAutovalidateModeImplCopyWith<T, _$AlwaysAutovalidateModeImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
 }
