@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:carey/src/core/api/dio_factory.dart';
 import 'package:carey/src/core/helpers/cache_keys.dart';
 import 'package:carey/src/core/helpers/secure_storage_helper.dart';
-import 'package:carey/src/features/auth/data/models/login_response.dart';
+import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
 
-class LoginLocalDataSource {
-  LoginLocalDataSource._();
+class AuthLocalDataSource {
+  AuthLocalDataSource._();
 
-  static Future<void> _secureUserData(LoginData userData) async {
+  static Future<void> _secureUserData(AuthResponseEntity userData) async {
     await SecureStorageHelper.setSecuredString(
       CacheKeys.cachedUserData,
       json.encode(userData.toJson()),
@@ -16,17 +16,17 @@ class LoginLocalDataSource {
   }
 
   static Future<void> secureUserDataAndSetTokenIntoHeaders(
-    LoginData userData,
+    AuthResponseEntity userData,
   ) async {
     await _secureUserData(userData);
     DioFactory.setTokenIntoHeadersAfterLogin(userData.token);
   }
 
-  static Future<LoginData> getSecuredUserData() async {
+  static Future<AuthResponseEntity> getSecuredUserData() async {
     final cachedUserData = await SecureStorageHelper.getSecuredString(
       CacheKeys.cachedUserData,
     );
-    final userData = LoginData.fromJson(json.decode(cachedUserData));
+    final userData = AuthResponseEntity.fromJson(json.decode(cachedUserData));
     return userData;
   }
 }
