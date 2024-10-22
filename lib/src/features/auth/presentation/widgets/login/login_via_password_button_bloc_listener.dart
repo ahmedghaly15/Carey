@@ -1,12 +1,15 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
+import 'package:carey/src/features/auth/data/datasources/auth_local_data_source.dart';
 import 'package:carey/src/features/auth/data/models/auth_via_password_request.dart';
+import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
 import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_state.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginViaPasswordButtonBlocListener extends StatelessWidget {
   const LoginViaPasswordButtonBlocListener({super.key});
@@ -47,13 +50,23 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
         context.popTop();
         context.showErrorDialog(error);
       },
-      loginViaPasswordSuccess: (_) async {
-        await context
-            .read<FormAttributesCubit>()
-            .handleRememberingEmailAndPassword();
-        context.popTop();
+      loginViaPasswordSuccess: (authEntity) async {
+        await _handleRememberMeAndSecureUserData(context, authEntity);
         // TODO: navigate to home
       },
+    );
+  }
+
+  Future<void> _handleRememberMeAndSecureUserData(
+    BuildContext context,
+    AuthResponseEntity authEntity,
+  ) async {
+    await context
+        .read<FormAttributesCubit>()
+        .handleRememberingEmailAndPassword();
+    context.popTop();
+    await AuthLocalDataSource.secureUserDataAndSetTokenIntoHeaders(
+      authEntity,
     );
   }
 }

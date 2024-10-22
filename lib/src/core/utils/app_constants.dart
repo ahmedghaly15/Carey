@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
+
+AuthResponseEntity? currentUserData;
+bool isUserLoggedIn = false;
+bool isCurrentUserAccountSet = false;
+
 class AppConstants {
   AppConstants._();
 
