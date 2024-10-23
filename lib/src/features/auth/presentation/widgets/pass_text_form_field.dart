@@ -1,4 +1,4 @@
-import 'package:carey/src/core/helpers/auth_validator.dart';
+import 'package:carey/src/core/helpers/text_form_validator.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
@@ -38,7 +38,8 @@ class PassTextFormField extends StatelessWidget {
           color: AppColors.primaryColor.withOpacity(0.7),
         ),
       ),
-      validate: (String? value) => AuthValidator.validatePasswordField(value),
+      validate: (String? value) =>
+          TextFormValidator.validatePasswordField(value),
     );
   }
 }

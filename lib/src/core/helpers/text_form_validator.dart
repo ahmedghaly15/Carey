@@ -1,11 +1,12 @@
 import 'package:carey/src/core/helpers/auth_validator_regex.dart';
+import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 
-class AuthValidator {
+class TextFormValidator {
   static String? validatePasswordField(String? value) {
-    if (value == null || value.isEmpty) {
+    if (value.isNullOrEmpty) {
       return AppStrings.passwordRequired;
-    } else if (value.length < 8) {
+    } else if (value!.length < 8) {
       return AppStrings.passwordInvalidLength;
     } else if (!AuthValidatorRegex.passwordHasCapitalCharacter(value)) {
       return AppStrings.passwordContainsUppercase;
@@ -20,10 +21,17 @@ class AuthValidator {
   }
 
   static String? validateEmailField(String? value) {
-    if (value == null || value.isEmpty) {
+    if (value.isNullOrEmpty) {
       return AppStrings.emailRequired;
-    } else if (!AuthValidatorRegex.isEmailValid(value)) {
+    } else if (!AuthValidatorRegex.isEmailValid(value!)) {
       return AppStrings.emailInvalid;
+    }
+    return null;
+  }
+
+  static String? validateField(String? value, {required String fieldName}) {
+    if (value.isNullOrEmpty) {
+      return '$fieldName ${AppStrings.isRequired}';
     }
     return null;
   }

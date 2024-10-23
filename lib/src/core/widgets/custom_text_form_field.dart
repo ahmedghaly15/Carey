@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
+import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -104,29 +105,20 @@ class CustomTextFormField extends StatelessWidget {
               )
             : null,
         contentPadding:
-            contentPadding ?? EdgeInsets.symmetric(horizontal: 12.w),
-        disabledBorder: disabledBorder ?? _outlineInputBorder,
-        enabledBorder: enabledBorder ?? _outlineInputBorder,
-        focusedBorder: focusedBorder ?? _outlineInputBorder,
-        focusedErrorBorder: focusedErrorBorder ?? _outlineInputBorder,
-        errorBorder: errorBorder ?? _outlineInputBorder,
+            contentPadding ?? AppConstants.textFormFieldHorizontalPadding,
+        disabledBorder:
+            disabledBorder ?? AppConstants.textFormFieldOutlineBorder,
+        enabledBorder: enabledBorder ?? AppConstants.textFormFieldOutlineBorder,
+        focusedBorder: focusedBorder ?? AppConstants.textFormFieldOutlineBorder,
+        focusedErrorBorder:
+            focusedErrorBorder ?? AppConstants.textFormFieldOutlineBorder,
+        errorBorder: errorBorder ?? AppConstants.textFormFieldOutlineBorder,
         hintText: hintText ?? '',
-        hintStyle: hintStyle ??
-            AppTextStyles.font13Regular.copyWith(
-              color: AppColors.primaryColor.withOpacity(0.25),
-            ),
+        hintStyle: hintStyle ?? AppTextStyles.hintTextStyle,
         filled: true,
-        fillColor: AppColors.grey.withOpacity(0.25),
-        border: border ?? _outlineInputBorder,
+        fillColor: AppColors.textFormFieldFillColor,
+        border: border ?? AppConstants.textFormFieldOutlineBorder,
       ),
     );
   }
-
-  OutlineInputBorder get _outlineInputBorder => OutlineInputBorder(
-        borderRadius: BorderRadius.circular(20.r),
-        borderSide: BorderSide(
-          color: AppColors.primaryColor.withOpacity(0.1),
-          width: 1.w,
-        ),
-      );
 }

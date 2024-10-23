@@ -1,4 +1,4 @@
-import 'package:carey/src/core/helpers/auth_validator.dart';
+import 'package:carey/src/core/helpers/text_form_validator.dart';
 import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
@@ -29,7 +29,7 @@ class EmailTextFormField extends StatelessWidget {
       onEditingComplete: passFocusNode == null
           ? null
           : () => context.requestFocus(passFocusNode!),
-      validate: (String? value) => AuthValidator.validateEmailField(value),
+      validate: (String? value) => TextFormValidator.validateEmailField(value),
     );
   }
 }
