@@ -48,4 +48,7 @@ class AppStrings {
   static const String address = 'Address';
   static const String gender = 'Gender';
   static const String continueWord = 'Continue';
+  static const String isRequired = 'is required';
+  static const String male = 'Male';
+  static const String female = 'Female';
 }

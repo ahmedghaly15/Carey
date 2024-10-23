@@ -21,7 +21,9 @@ class AppThemes {
             statusBarBrightness: Brightness.light,
             statusBarIconBrightness: Brightness.dark,
           ),
-          titleTextStyle: AppTextStyles.poppinsFont25Medium,
+          titleTextStyle: AppTextStyles.poppinsFont25Medium.copyWith(
+            color: Colors.black,
+          ),
           iconTheme: const IconThemeData(
             color: AppColors.primaryColor,
           ),
