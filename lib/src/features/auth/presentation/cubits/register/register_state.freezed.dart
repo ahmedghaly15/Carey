@@ -20,7 +20,7 @@ mixin _$RegisterState<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() registerLoading,
-    required TResult Function(AuthResponseEntity authEntity) registerSuccess,
+    required TResult Function() registerSuccess,
     required TResult Function(String error) registerError,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$RegisterState<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? registerLoading,
-    TResult? Function(AuthResponseEntity authEntity)? registerSuccess,
+    TResult? Function()? registerSuccess,
     TResult? Function(String error)? registerError,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$RegisterState<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? registerLoading,
-    TResult Function(AuthResponseEntity authEntity)? registerSuccess,
+    TResult Function()? registerSuccess,
     TResult Function(String error)? registerError,
     required TResult orElse(),
   }) =>
@@ -132,7 +132,7 @@ class _$InitialImpl<T> implements Initial<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() registerLoading,
-    required TResult Function(AuthResponseEntity authEntity) registerSuccess,
+    required TResult Function() registerSuccess,
     required TResult Function(String error) registerError,
   }) {
     return initial();
@@ -143,7 +143,7 @@ class _$InitialImpl<T> implements Initial<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? registerLoading,
-    TResult? Function(AuthResponseEntity authEntity)? registerSuccess,
+    TResult? Function()? registerSuccess,
     TResult? Function(String error)? registerError,
   }) {
     return initial?.call();
@@ -154,7 +154,7 @@ class _$InitialImpl<T> implements Initial<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? registerLoading,
-    TResult Function(AuthResponseEntity authEntity)? registerSuccess,
+    TResult Function()? registerSuccess,
     TResult Function(String error)? registerError,
     required TResult orElse(),
   }) {
@@ -249,7 +249,7 @@ class _$RegisterLoadingImpl<T> implements RegisterLoading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() registerLoading,
-    required TResult Function(AuthResponseEntity authEntity) registerSuccess,
+    required TResult Function() registerSuccess,
     required TResult Function(String error) registerError,
   }) {
     return registerLoading();
@@ -260,7 +260,7 @@ class _$RegisterLoadingImpl<T> implements RegisterLoading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? registerLoading,
-    TResult? Function(AuthResponseEntity authEntity)? registerSuccess,
+    TResult? Function()? registerSuccess,
     TResult? Function(String error)? registerError,
   }) {
     return registerLoading?.call();
@@ -271,7 +271,7 @@ class _$RegisterLoadingImpl<T> implements RegisterLoading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? registerLoading,
-    TResult Function(AuthResponseEntity authEntity)? registerSuccess,
+    TResult Function()? registerSuccess,
     TResult Function(String error)? registerError,
     required TResult orElse(),
   }) {
@@ -328,8 +328,6 @@ abstract class _$$RegisterSuccessImplCopyWith<T, $Res> {
   factory _$$RegisterSuccessImplCopyWith(_$RegisterSuccessImpl<T> value,
           $Res Function(_$RegisterSuccessImpl<T>) then) =
       __$$RegisterSuccessImplCopyWithImpl<T, $Res>;
-  @useResult
-  $Res call({AuthResponseEntity authEntity});
 }
 
 /// @nodoc
@@ -342,63 +340,36 @@ class __$$RegisterSuccessImplCopyWithImpl<T, $Res>
 
   /// Create a copy of RegisterState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? authEntity = null,
-  }) {
-    return _then(_$RegisterSuccessImpl<T>(
-      null == authEntity
-          ? _value.authEntity
-          : authEntity // ignore: cast_nullable_to_non_nullable
-              as AuthResponseEntity,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$RegisterSuccessImpl<T> implements RegisterSuccess<T> {
-  const _$RegisterSuccessImpl(this.authEntity);
-
-  @override
-  final AuthResponseEntity authEntity;
+  const _$RegisterSuccessImpl();
 
   @override
   String toString() {
-    return 'RegisterState<$T>.registerSuccess(authEntity: $authEntity)';
+    return 'RegisterState<$T>.registerSuccess()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RegisterSuccessImpl<T> &&
-            (identical(other.authEntity, authEntity) ||
-                other.authEntity == authEntity));
+        (other.runtimeType == runtimeType && other is _$RegisterSuccessImpl<T>);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, authEntity);
-
-  /// Create a copy of RegisterState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RegisterSuccessImplCopyWith<T, _$RegisterSuccessImpl<T>> get copyWith =>
-      __$$RegisterSuccessImplCopyWithImpl<T, _$RegisterSuccessImpl<T>>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() registerLoading,
-    required TResult Function(AuthResponseEntity authEntity) registerSuccess,
+    required TResult Function() registerSuccess,
     required TResult Function(String error) registerError,
   }) {
-    return registerSuccess(authEntity);
+    return registerSuccess();
   }
 
   @override
@@ -406,10 +377,10 @@ class _$RegisterSuccessImpl<T> implements RegisterSuccess<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? registerLoading,
-    TResult? Function(AuthResponseEntity authEntity)? registerSuccess,
+    TResult? Function()? registerSuccess,
     TResult? Function(String error)? registerError,
   }) {
-    return registerSuccess?.call(authEntity);
+    return registerSuccess?.call();
   }
 
   @override
@@ -417,12 +388,12 @@ class _$RegisterSuccessImpl<T> implements RegisterSuccess<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? registerLoading,
-    TResult Function(AuthResponseEntity authEntity)? registerSuccess,
+    TResult Function()? registerSuccess,
     TResult Function(String error)? registerError,
     required TResult orElse(),
   }) {
     if (registerSuccess != null) {
-      return registerSuccess(authEntity);
+      return registerSuccess();
     }
     return orElse();
   }
@@ -466,16 +437,7 @@ class _$RegisterSuccessImpl<T> implements RegisterSuccess<T> {
 }
 
 abstract class RegisterSuccess<T> implements RegisterState<T> {
-  const factory RegisterSuccess(final AuthResponseEntity authEntity) =
-      _$RegisterSuccessImpl<T>;
-
-  AuthResponseEntity get authEntity;
-
-  /// Create a copy of RegisterState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RegisterSuccessImplCopyWith<T, _$RegisterSuccessImpl<T>> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory RegisterSuccess() = _$RegisterSuccessImpl<T>;
 }
 
 /// @nodoc
@@ -549,7 +511,7 @@ class _$RegisterErrorImpl<T> implements RegisterError<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() registerLoading,
-    required TResult Function(AuthResponseEntity authEntity) registerSuccess,
+    required TResult Function() registerSuccess,
     required TResult Function(String error) registerError,
   }) {
     return registerError(error);
@@ -560,7 +522,7 @@ class _$RegisterErrorImpl<T> implements RegisterError<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? registerLoading,
-    TResult? Function(AuthResponseEntity authEntity)? registerSuccess,
+    TResult? Function()? registerSuccess,
     TResult? Function(String error)? registerError,
   }) {
     return registerError?.call(error);
@@ -571,7 +533,7 @@ class _$RegisterErrorImpl<T> implements RegisterError<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? registerLoading,
-    TResult Function(AuthResponseEntity authEntity)? registerSuccess,
+    TResult Function()? registerSuccess,
     TResult Function(String error)? registerError,
     required TResult orElse(),
   }) {
