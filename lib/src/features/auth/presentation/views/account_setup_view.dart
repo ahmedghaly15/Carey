@@ -1,8 +1,16 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/core/di/dependency_injection.dart';
-import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:carey/src/core/di/dependency_injection.dart';
+import 'package:carey/src/core/utils/app_constants.dart';
+import 'package:carey/src/core/utils/app_strings.dart';
+import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
+import 'package:carey/src/core/widgets/primary_button.dart';
+import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
+import 'package:carey/src/features/auth/presentation/widgets/account_setup/account_image.dart';
+import 'package:carey/src/features/auth/presentation/widgets/account_setup/account_setup_form.dart';
 
 @RoutePage()
 class AccountSetupView extends StatelessWidget implements AutoRouteWrapper {
@@ -18,6 +26,35 @@ class AccountSetupView extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          const CustomSliverAppBar(titleText: AppStrings.fillYourProfile),
+          SliverToBoxAdapter(
+            child: Container(
+              alignment: Alignment.center,
+              margin: EdgeInsets.symmetric(vertical: 36.h),
+              child: const AccountImage(),
+            ),
+          ),
+          const SliverToBoxAdapter(child: AccountSetupForm()),
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Column(
+              children: [
+                const Spacer(),
+                PrimaryButton(
+                  margin: AppConstants.screenHorizontalPadding.add(
+                    EdgeInsets.symmetric(vertical: 40.h),
+                  ),
+                  onPressed: () {},
+                  text: AppStrings.continueWord,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
