@@ -87,7 +87,10 @@ void _setupForCubits() {
     () => FormAttributesCubit(),
   );
   getIt.registerLazySingleton<LoginCubit>(
-    () => LoginCubit(getIt.get<LoginViaPassword>()),
+    () => LoginCubit(
+      getIt.get<LoginViaPassword>(),
+      getIt.get<GoogleSignIn>(),
+    ),
   );
   getIt.registerLazySingleton<RegisterCubit>(
     () => RegisterCubit(getIt.get<RegisterRepo>()),
