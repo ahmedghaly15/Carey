@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:carey/src/core/helpers/extensions.dart';
+import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/auth/data/datasources/auth_local_data_source.dart';
@@ -51,22 +53,32 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
         context.showErrorDialog(error);
       },
       loginViaPasswordSuccess: (authEntity) async {
-        await _handleRememberMeAndSecureUserData(context, authEntity);
-        // TODO: navigate to home
+        context.popTop();
+        await _rememberMeAndSecureUserData(context, authEntity);
+        // Either Home screen or AccountSetup screen
+        _goNextView(authEntity.user.fullName, context);
       },
     );
   }
 
-  Future<void> _handleRememberMeAndSecureUserData(
+  Future<void> _rememberMeAndSecureUserData(
     BuildContext context,
     AuthResponseEntity authEntity,
   ) async {
     await context
         .read<FormAttributesCubit>()
         .handleRememberingEmailAndPassword();
-    context.popTop();
-    await AuthLocalDataSource.secureUserDataAndSetTokenIntoHeaders(
+    await AuthLocalDataSource.setAndSecureUserDataAndSetTokenIntoHeaders(
       authEntity,
     );
+  }
+
+  void _goNextView(String? fullName, BuildContext context) {
+    if (fullName.isNullOrEmpty) {
+      // User hasn't filled his profile before
+      context.replaceRoute(const AccountSetupRoute());
+    } else {
+      // User has filled his profile before
+    }
   }
 }

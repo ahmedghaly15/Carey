@@ -3,22 +3,24 @@ import 'dart:convert';
 import 'package:carey/src/core/api/dio_factory.dart';
 import 'package:carey/src/core/helpers/cache_keys.dart';
 import 'package:carey/src/core/helpers/secure_storage_helper.dart';
+import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
 
 class AuthLocalDataSource {
   AuthLocalDataSource._();
 
-  static Future<void> _secureUserData(AuthResponseEntity userData) async {
+  static Future<void> secureUserData(AuthResponseEntity userData) async {
     await SecureStorageHelper.setSecuredString(
       CacheKeys.cachedUserData,
       json.encode(userData.toJson()),
     );
   }
 
-  static Future<void> secureUserDataAndSetTokenIntoHeaders(
+  static Future<void> setAndSecureUserDataAndSetTokenIntoHeaders(
     AuthResponseEntity userData,
   ) async {
-    await _secureUserData(userData);
+    currentUserData = userData;
+    await secureUserData(userData);
     DioFactory.setTokenIntoHeadersAfterLogin(userData.token);
   }
 
