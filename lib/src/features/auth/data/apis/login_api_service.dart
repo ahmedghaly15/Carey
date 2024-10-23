@@ -15,4 +15,14 @@ abstract class LoginApiService {
     @Body() AuthViaPasswordRequest params, [
     @CancelRequest() CancelToken? cancelToken,
   ]);
+
+  @GET(EndPoints.googleSignIn)
+  Future<void> googleSignIn([
+    @CancelRequest() CancelToken? cancelToken,
+  ]);
+
+  @GET(EndPoints.facebookSignIn)
+  Future<void> facebookSignIn([
+    @CancelRequest() CancelToken? cancelToken,
+  ]);
 }
