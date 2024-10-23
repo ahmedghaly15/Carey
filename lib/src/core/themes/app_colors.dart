@@ -8,4 +8,5 @@ class AppColors {
   static const Color scaffoldBackgroundSecondaryColor = Color(0xFFF3F3F3);
   static const Color grey = Color(0xffDADADA);
   static const Color closerToDark = Color(0xff303030);
+  static Color get textFormFieldFillColor => grey.withOpacity(0.25);
 }

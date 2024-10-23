@@ -11,7 +11,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupDI();
   Bloc.observer = MyBlocObserver();
-  await checkIfUserIsLoggedIn();
-  await checkIfCurrentUserAccountSet();
+  await Future.wait([
+    checkIfUserIsLoggedIn(),
+    checkIfCurrentUserAccountSet(),
+  ]);
   runApp(const CareyApp());
 }

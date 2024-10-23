@@ -8,6 +8,7 @@ import 'package:carey/src/features/auth/data/repositories/login_repo_impl.dart';
 import 'package:carey/src/features/auth/data/repositories/register_repo.dart';
 import 'package:carey/src/features/auth/domain/repositories/login_repo.dart';
 import 'package:carey/src/features/auth/domain/usecases/login_via_password.dart';
+import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/register/register_cubit.dart';
@@ -82,4 +83,5 @@ void _setupForCubits() {
   getIt.registerLazySingleton<RegisterCubit>(
     () => RegisterCubit(getIt.get<RegisterRepo>()),
   );
+  getIt.registerFactory<AccountSetupCubit>(() => AccountSetupCubit());
 }
