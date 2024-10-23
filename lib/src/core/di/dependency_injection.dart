@@ -10,7 +10,6 @@ import 'package:carey/src/core/api/dio_factory.dart';
 import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/features/auth/data/apis/login_api_service.dart';
 import 'package:carey/src/features/auth/data/apis/register_api_service.dart';
-import 'package:carey/src/features/auth/data/datasources/login_remote_data_source.dart';
 import 'package:carey/src/features/auth/data/repositories/login_repo_impl.dart';
 import 'package:carey/src/features/auth/data/repositories/register_repo.dart';
 import 'package:carey/src/features/auth/domain/repositories/login_repo.dart';
@@ -26,7 +25,6 @@ Future<void> setupDI() async {
   await _setupForExternal();
   _setupDIForCore();
   _setupForApiServices();
-  _setupForRemoteDataSources();
   _setupForRepos();
   _setupForUseCases();
   _setupForCubits();
@@ -55,15 +53,9 @@ void _setupForApiServices() {
   );
 }
 
-void _setupForRemoteDataSources() {
-  getIt.registerLazySingleton<LoginRemoteDataSource>(
-    () => LoginRemoteDataSourceImpl(getIt.get<LoginApiService>()),
-  );
-}
-
 void _setupForRepos() {
   getIt.registerLazySingleton<LoginRepo>(
-    () => LoginRepoImpl(getIt.get<LoginRemoteDataSource>()),
+    () => LoginRepoImpl(getIt.get<LoginApiService>()),
   );
   getIt.registerLazySingleton<RegisterRepo>(
     () => RegisterRepo(getIt.get<RegisterApiService>()),
