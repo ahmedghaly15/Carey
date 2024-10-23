@@ -8,4 +8,10 @@ abstract class LoginRepo {
     AuthViaPasswordRequest params, [
     CancelToken? cancelToken,
   ]);
+  Future<ApiResult<void>> googleSignIn([
+    CancelToken? cancelToken,
+  ]);
+  Future<ApiResult<void>> facebookSignIn([
+    CancelToken? cancelToken,
+  ]);
 }

@@ -23,6 +23,9 @@ mixin _$LoginState<T> {
     required TResult Function(AuthResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
+    required TResult Function() socialLoginLoading,
+    required TResult Function() socialLoginSuccess,
+    required TResult Function(String error) socialLoginError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,6 +34,9 @@ mixin _$LoginState<T> {
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
+    TResult? Function()? socialLoginLoading,
+    TResult? Function()? socialLoginSuccess,
+    TResult? Function(String error)? socialLoginError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,6 +45,9 @@ mixin _$LoginState<T> {
     TResult Function()? loginViaPasswordLoading,
     TResult Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
+    TResult Function()? socialLoginLoading,
+    TResult Function()? socialLoginSuccess,
+    TResult Function(String error)? socialLoginError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +60,9 @@ mixin _$LoginState<T> {
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
+    required TResult Function(SocialLoginLoading<T> value) socialLoginLoading,
+    required TResult Function(SocialLoginSuccess<T> value) socialLoginSuccess,
+    required TResult Function(SocialLoginError<T> value) socialLoginError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +73,9 @@ mixin _$LoginState<T> {
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult? Function(SocialLoginLoading<T> value)? socialLoginLoading,
+    TResult? Function(SocialLoginSuccess<T> value)? socialLoginSuccess,
+    TResult? Function(SocialLoginError<T> value)? socialLoginError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +84,9 @@ mixin _$LoginState<T> {
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult Function(SocialLoginLoading<T> value)? socialLoginLoading,
+    TResult Function(SocialLoginSuccess<T> value)? socialLoginSuccess,
+    TResult Function(SocialLoginError<T> value)? socialLoginError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,6 +159,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function(AuthResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
+    required TResult Function() socialLoginLoading,
+    required TResult Function() socialLoginSuccess,
+    required TResult Function(String error) socialLoginError,
   }) {
     return initial();
   }
@@ -152,6 +173,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
+    TResult? Function()? socialLoginLoading,
+    TResult? Function()? socialLoginSuccess,
+    TResult? Function(String error)? socialLoginError,
   }) {
     return initial?.call();
   }
@@ -163,6 +187,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function()? loginViaPasswordLoading,
     TResult Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
+    TResult Function()? socialLoginLoading,
+    TResult Function()? socialLoginSuccess,
+    TResult Function(String error)? socialLoginError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -181,6 +208,9 @@ class _$InitialImpl<T> implements _Initial<T> {
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
+    required TResult Function(SocialLoginLoading<T> value) socialLoginLoading,
+    required TResult Function(SocialLoginSuccess<T> value) socialLoginSuccess,
+    required TResult Function(SocialLoginError<T> value) socialLoginError,
   }) {
     return initial(this);
   }
@@ -194,6 +224,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult? Function(SocialLoginLoading<T> value)? socialLoginLoading,
+    TResult? Function(SocialLoginSuccess<T> value)? socialLoginSuccess,
+    TResult? Function(SocialLoginError<T> value)? socialLoginError,
   }) {
     return initial?.call(this);
   }
@@ -205,6 +238,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult Function(SocialLoginLoading<T> value)? socialLoginLoading,
+    TResult Function(SocialLoginSuccess<T> value)? socialLoginSuccess,
+    TResult Function(SocialLoginError<T> value)? socialLoginError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -267,6 +303,9 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
     required TResult Function(AuthResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
+    required TResult Function() socialLoginLoading,
+    required TResult Function() socialLoginSuccess,
+    required TResult Function(String error) socialLoginError,
   }) {
     return loginViaPasswordLoading();
   }
@@ -278,6 +317,9 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
+    TResult? Function()? socialLoginLoading,
+    TResult? Function()? socialLoginSuccess,
+    TResult? Function(String error)? socialLoginError,
   }) {
     return loginViaPasswordLoading?.call();
   }
@@ -289,6 +331,9 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
     TResult Function()? loginViaPasswordLoading,
     TResult Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
+    TResult Function()? socialLoginLoading,
+    TResult Function()? socialLoginSuccess,
+    TResult Function(String error)? socialLoginError,
     required TResult orElse(),
   }) {
     if (loginViaPasswordLoading != null) {
@@ -307,6 +352,9 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
+    required TResult Function(SocialLoginLoading<T> value) socialLoginLoading,
+    required TResult Function(SocialLoginSuccess<T> value) socialLoginSuccess,
+    required TResult Function(SocialLoginError<T> value) socialLoginError,
   }) {
     return loginViaPasswordLoading(this);
   }
@@ -320,6 +368,9 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult? Function(SocialLoginLoading<T> value)? socialLoginLoading,
+    TResult? Function(SocialLoginSuccess<T> value)? socialLoginSuccess,
+    TResult? Function(SocialLoginError<T> value)? socialLoginError,
   }) {
     return loginViaPasswordLoading?.call(this);
   }
@@ -331,6 +382,9 @@ class _$LoginViaPasswordLoadingImpl<T> implements LoginViaPasswordLoading<T> {
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult Function(SocialLoginLoading<T> value)? socialLoginLoading,
+    TResult Function(SocialLoginSuccess<T> value)? socialLoginSuccess,
+    TResult Function(SocialLoginError<T> value)? socialLoginError,
     required TResult orElse(),
   }) {
     if (loginViaPasswordLoading != null) {
@@ -433,6 +487,9 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
     required TResult Function(AuthResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
+    required TResult Function() socialLoginLoading,
+    required TResult Function() socialLoginSuccess,
+    required TResult Function(String error) socialLoginError,
   }) {
     return loginViaPasswordSuccess(loginEntity);
   }
@@ -444,6 +501,9 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
+    TResult? Function()? socialLoginLoading,
+    TResult? Function()? socialLoginSuccess,
+    TResult? Function(String error)? socialLoginError,
   }) {
     return loginViaPasswordSuccess?.call(loginEntity);
   }
@@ -455,6 +515,9 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
     TResult Function()? loginViaPasswordLoading,
     TResult Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
+    TResult Function()? socialLoginLoading,
+    TResult Function()? socialLoginSuccess,
+    TResult Function(String error)? socialLoginError,
     required TResult orElse(),
   }) {
     if (loginViaPasswordSuccess != null) {
@@ -473,6 +536,9 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
+    required TResult Function(SocialLoginLoading<T> value) socialLoginLoading,
+    required TResult Function(SocialLoginSuccess<T> value) socialLoginSuccess,
+    required TResult Function(SocialLoginError<T> value) socialLoginError,
   }) {
     return loginViaPasswordSuccess(this);
   }
@@ -486,6 +552,9 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult? Function(SocialLoginLoading<T> value)? socialLoginLoading,
+    TResult? Function(SocialLoginSuccess<T> value)? socialLoginSuccess,
+    TResult? Function(SocialLoginError<T> value)? socialLoginError,
   }) {
     return loginViaPasswordSuccess?.call(this);
   }
@@ -497,6 +566,9 @@ class _$LoginViaPasswordSuccessImpl<T> implements LoginViaPasswordSuccess<T> {
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult Function(SocialLoginLoading<T> value)? socialLoginLoading,
+    TResult Function(SocialLoginSuccess<T> value)? socialLoginSuccess,
+    TResult Function(SocialLoginError<T> value)? socialLoginError,
     required TResult orElse(),
   }) {
     if (loginViaPasswordSuccess != null) {
@@ -595,6 +667,9 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
     required TResult Function(AuthResponseEntity loginEntity)
         loginViaPasswordSuccess,
     required TResult Function(String error) loginViaPasswordError,
+    required TResult Function() socialLoginLoading,
+    required TResult Function() socialLoginSuccess,
+    required TResult Function(String error) socialLoginError,
   }) {
     return loginViaPasswordError(error);
   }
@@ -606,6 +681,9 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
     TResult? Function()? loginViaPasswordLoading,
     TResult? Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult? Function(String error)? loginViaPasswordError,
+    TResult? Function()? socialLoginLoading,
+    TResult? Function()? socialLoginSuccess,
+    TResult? Function(String error)? socialLoginError,
   }) {
     return loginViaPasswordError?.call(error);
   }
@@ -617,6 +695,9 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
     TResult Function()? loginViaPasswordLoading,
     TResult Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
     TResult Function(String error)? loginViaPasswordError,
+    TResult Function()? socialLoginLoading,
+    TResult Function()? socialLoginSuccess,
+    TResult Function(String error)? socialLoginError,
     required TResult orElse(),
   }) {
     if (loginViaPasswordError != null) {
@@ -635,6 +716,9 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
         loginViaPasswordSuccess,
     required TResult Function(LoginViaPasswordError<T> value)
         loginViaPasswordError,
+    required TResult Function(SocialLoginLoading<T> value) socialLoginLoading,
+    required TResult Function(SocialLoginSuccess<T> value) socialLoginSuccess,
+    required TResult Function(SocialLoginError<T> value) socialLoginError,
   }) {
     return loginViaPasswordError(this);
   }
@@ -648,6 +732,9 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
     TResult? Function(LoginViaPasswordSuccess<T> value)?
         loginViaPasswordSuccess,
     TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult? Function(SocialLoginLoading<T> value)? socialLoginLoading,
+    TResult? Function(SocialLoginSuccess<T> value)? socialLoginSuccess,
+    TResult? Function(SocialLoginError<T> value)? socialLoginError,
   }) {
     return loginViaPasswordError?.call(this);
   }
@@ -659,6 +746,9 @@ class _$LoginViaPasswordErrorImpl<T> implements LoginViaPasswordError<T> {
     TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
     TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
     TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult Function(SocialLoginLoading<T> value)? socialLoginLoading,
+    TResult Function(SocialLoginSuccess<T> value)? socialLoginSuccess,
+    TResult Function(SocialLoginError<T> value)? socialLoginError,
     required TResult orElse(),
   }) {
     if (loginViaPasswordError != null) {
@@ -679,4 +769,466 @@ abstract class LoginViaPasswordError<T> implements LoginState<T> {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoginViaPasswordErrorImplCopyWith<T, _$LoginViaPasswordErrorImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SocialLoginLoadingImplCopyWith<T, $Res> {
+  factory _$$SocialLoginLoadingImplCopyWith(_$SocialLoginLoadingImpl<T> value,
+          $Res Function(_$SocialLoginLoadingImpl<T>) then) =
+      __$$SocialLoginLoadingImplCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class __$$SocialLoginLoadingImplCopyWithImpl<T, $Res>
+    extends _$LoginStateCopyWithImpl<T, $Res, _$SocialLoginLoadingImpl<T>>
+    implements _$$SocialLoginLoadingImplCopyWith<T, $Res> {
+  __$$SocialLoginLoadingImplCopyWithImpl(_$SocialLoginLoadingImpl<T> _value,
+      $Res Function(_$SocialLoginLoadingImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of LoginState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$SocialLoginLoadingImpl<T> implements SocialLoginLoading<T> {
+  const _$SocialLoginLoadingImpl();
+
+  @override
+  String toString() {
+    return 'LoginState<$T>.socialLoginLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SocialLoginLoadingImpl<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loginViaPasswordLoading,
+    required TResult Function(AuthResponseEntity loginEntity)
+        loginViaPasswordSuccess,
+    required TResult Function(String error) loginViaPasswordError,
+    required TResult Function() socialLoginLoading,
+    required TResult Function() socialLoginSuccess,
+    required TResult Function(String error) socialLoginError,
+  }) {
+    return socialLoginLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loginViaPasswordLoading,
+    TResult? Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult? Function(String error)? loginViaPasswordError,
+    TResult? Function()? socialLoginLoading,
+    TResult? Function()? socialLoginSuccess,
+    TResult? Function(String error)? socialLoginError,
+  }) {
+    return socialLoginLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loginViaPasswordLoading,
+    TResult Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult Function(String error)? loginViaPasswordError,
+    TResult Function()? socialLoginLoading,
+    TResult Function()? socialLoginSuccess,
+    TResult Function(String error)? socialLoginError,
+    required TResult orElse(),
+  }) {
+    if (socialLoginLoading != null) {
+      return socialLoginLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(LoginViaPasswordLoading<T> value)
+        loginViaPasswordLoading,
+    required TResult Function(LoginViaPasswordSuccess<T> value)
+        loginViaPasswordSuccess,
+    required TResult Function(LoginViaPasswordError<T> value)
+        loginViaPasswordError,
+    required TResult Function(SocialLoginLoading<T> value) socialLoginLoading,
+    required TResult Function(SocialLoginSuccess<T> value) socialLoginSuccess,
+    required TResult Function(SocialLoginError<T> value) socialLoginError,
+  }) {
+    return socialLoginLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(LoginViaPasswordLoading<T> value)?
+        loginViaPasswordLoading,
+    TResult? Function(LoginViaPasswordSuccess<T> value)?
+        loginViaPasswordSuccess,
+    TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult? Function(SocialLoginLoading<T> value)? socialLoginLoading,
+    TResult? Function(SocialLoginSuccess<T> value)? socialLoginSuccess,
+    TResult? Function(SocialLoginError<T> value)? socialLoginError,
+  }) {
+    return socialLoginLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
+    TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
+    TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult Function(SocialLoginLoading<T> value)? socialLoginLoading,
+    TResult Function(SocialLoginSuccess<T> value)? socialLoginSuccess,
+    TResult Function(SocialLoginError<T> value)? socialLoginError,
+    required TResult orElse(),
+  }) {
+    if (socialLoginLoading != null) {
+      return socialLoginLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SocialLoginLoading<T> implements LoginState<T> {
+  const factory SocialLoginLoading() = _$SocialLoginLoadingImpl<T>;
+}
+
+/// @nodoc
+abstract class _$$SocialLoginSuccessImplCopyWith<T, $Res> {
+  factory _$$SocialLoginSuccessImplCopyWith(_$SocialLoginSuccessImpl<T> value,
+          $Res Function(_$SocialLoginSuccessImpl<T>) then) =
+      __$$SocialLoginSuccessImplCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class __$$SocialLoginSuccessImplCopyWithImpl<T, $Res>
+    extends _$LoginStateCopyWithImpl<T, $Res, _$SocialLoginSuccessImpl<T>>
+    implements _$$SocialLoginSuccessImplCopyWith<T, $Res> {
+  __$$SocialLoginSuccessImplCopyWithImpl(_$SocialLoginSuccessImpl<T> _value,
+      $Res Function(_$SocialLoginSuccessImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of LoginState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$SocialLoginSuccessImpl<T> implements SocialLoginSuccess<T> {
+  const _$SocialLoginSuccessImpl();
+
+  @override
+  String toString() {
+    return 'LoginState<$T>.socialLoginSuccess()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SocialLoginSuccessImpl<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loginViaPasswordLoading,
+    required TResult Function(AuthResponseEntity loginEntity)
+        loginViaPasswordSuccess,
+    required TResult Function(String error) loginViaPasswordError,
+    required TResult Function() socialLoginLoading,
+    required TResult Function() socialLoginSuccess,
+    required TResult Function(String error) socialLoginError,
+  }) {
+    return socialLoginSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loginViaPasswordLoading,
+    TResult? Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult? Function(String error)? loginViaPasswordError,
+    TResult? Function()? socialLoginLoading,
+    TResult? Function()? socialLoginSuccess,
+    TResult? Function(String error)? socialLoginError,
+  }) {
+    return socialLoginSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loginViaPasswordLoading,
+    TResult Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult Function(String error)? loginViaPasswordError,
+    TResult Function()? socialLoginLoading,
+    TResult Function()? socialLoginSuccess,
+    TResult Function(String error)? socialLoginError,
+    required TResult orElse(),
+  }) {
+    if (socialLoginSuccess != null) {
+      return socialLoginSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(LoginViaPasswordLoading<T> value)
+        loginViaPasswordLoading,
+    required TResult Function(LoginViaPasswordSuccess<T> value)
+        loginViaPasswordSuccess,
+    required TResult Function(LoginViaPasswordError<T> value)
+        loginViaPasswordError,
+    required TResult Function(SocialLoginLoading<T> value) socialLoginLoading,
+    required TResult Function(SocialLoginSuccess<T> value) socialLoginSuccess,
+    required TResult Function(SocialLoginError<T> value) socialLoginError,
+  }) {
+    return socialLoginSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(LoginViaPasswordLoading<T> value)?
+        loginViaPasswordLoading,
+    TResult? Function(LoginViaPasswordSuccess<T> value)?
+        loginViaPasswordSuccess,
+    TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult? Function(SocialLoginLoading<T> value)? socialLoginLoading,
+    TResult? Function(SocialLoginSuccess<T> value)? socialLoginSuccess,
+    TResult? Function(SocialLoginError<T> value)? socialLoginError,
+  }) {
+    return socialLoginSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
+    TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
+    TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult Function(SocialLoginLoading<T> value)? socialLoginLoading,
+    TResult Function(SocialLoginSuccess<T> value)? socialLoginSuccess,
+    TResult Function(SocialLoginError<T> value)? socialLoginError,
+    required TResult orElse(),
+  }) {
+    if (socialLoginSuccess != null) {
+      return socialLoginSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SocialLoginSuccess<T> implements LoginState<T> {
+  const factory SocialLoginSuccess() = _$SocialLoginSuccessImpl<T>;
+}
+
+/// @nodoc
+abstract class _$$SocialLoginErrorImplCopyWith<T, $Res> {
+  factory _$$SocialLoginErrorImplCopyWith(_$SocialLoginErrorImpl<T> value,
+          $Res Function(_$SocialLoginErrorImpl<T>) then) =
+      __$$SocialLoginErrorImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({String error});
+}
+
+/// @nodoc
+class __$$SocialLoginErrorImplCopyWithImpl<T, $Res>
+    extends _$LoginStateCopyWithImpl<T, $Res, _$SocialLoginErrorImpl<T>>
+    implements _$$SocialLoginErrorImplCopyWith<T, $Res> {
+  __$$SocialLoginErrorImplCopyWithImpl(_$SocialLoginErrorImpl<T> _value,
+      $Res Function(_$SocialLoginErrorImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of LoginState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$SocialLoginErrorImpl<T>(
+      null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SocialLoginErrorImpl<T> implements SocialLoginError<T> {
+  const _$SocialLoginErrorImpl(this.error);
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'LoginState<$T>.socialLoginError(error: $error)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SocialLoginErrorImpl<T> &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  /// Create a copy of LoginState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SocialLoginErrorImplCopyWith<T, _$SocialLoginErrorImpl<T>> get copyWith =>
+      __$$SocialLoginErrorImplCopyWithImpl<T, _$SocialLoginErrorImpl<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loginViaPasswordLoading,
+    required TResult Function(AuthResponseEntity loginEntity)
+        loginViaPasswordSuccess,
+    required TResult Function(String error) loginViaPasswordError,
+    required TResult Function() socialLoginLoading,
+    required TResult Function() socialLoginSuccess,
+    required TResult Function(String error) socialLoginError,
+  }) {
+    return socialLoginError(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loginViaPasswordLoading,
+    TResult? Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult? Function(String error)? loginViaPasswordError,
+    TResult? Function()? socialLoginLoading,
+    TResult? Function()? socialLoginSuccess,
+    TResult? Function(String error)? socialLoginError,
+  }) {
+    return socialLoginError?.call(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loginViaPasswordLoading,
+    TResult Function(AuthResponseEntity loginEntity)? loginViaPasswordSuccess,
+    TResult Function(String error)? loginViaPasswordError,
+    TResult Function()? socialLoginLoading,
+    TResult Function()? socialLoginSuccess,
+    TResult Function(String error)? socialLoginError,
+    required TResult orElse(),
+  }) {
+    if (socialLoginError != null) {
+      return socialLoginError(error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(LoginViaPasswordLoading<T> value)
+        loginViaPasswordLoading,
+    required TResult Function(LoginViaPasswordSuccess<T> value)
+        loginViaPasswordSuccess,
+    required TResult Function(LoginViaPasswordError<T> value)
+        loginViaPasswordError,
+    required TResult Function(SocialLoginLoading<T> value) socialLoginLoading,
+    required TResult Function(SocialLoginSuccess<T> value) socialLoginSuccess,
+    required TResult Function(SocialLoginError<T> value) socialLoginError,
+  }) {
+    return socialLoginError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(LoginViaPasswordLoading<T> value)?
+        loginViaPasswordLoading,
+    TResult? Function(LoginViaPasswordSuccess<T> value)?
+        loginViaPasswordSuccess,
+    TResult? Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult? Function(SocialLoginLoading<T> value)? socialLoginLoading,
+    TResult? Function(SocialLoginSuccess<T> value)? socialLoginSuccess,
+    TResult? Function(SocialLoginError<T> value)? socialLoginError,
+  }) {
+    return socialLoginError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(LoginViaPasswordLoading<T> value)? loginViaPasswordLoading,
+    TResult Function(LoginViaPasswordSuccess<T> value)? loginViaPasswordSuccess,
+    TResult Function(LoginViaPasswordError<T> value)? loginViaPasswordError,
+    TResult Function(SocialLoginLoading<T> value)? socialLoginLoading,
+    TResult Function(SocialLoginSuccess<T> value)? socialLoginSuccess,
+    TResult Function(SocialLoginError<T> value)? socialLoginError,
+    required TResult orElse(),
+  }) {
+    if (socialLoginError != null) {
+      return socialLoginError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SocialLoginError<T> implements LoginState<T> {
+  const factory SocialLoginError(final String error) =
+      _$SocialLoginErrorImpl<T>;
+
+  String get error;
+
+  /// Create a copy of LoginState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SocialLoginErrorImplCopyWith<T, _$SocialLoginErrorImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }

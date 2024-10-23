@@ -7,3 +7,7 @@ abstract class BaseUseCase<Type, Params, CancelRequest extends CancelToken?> {
     CancelRequest? cancelToken,
   ]);
 }
+
+class NoParams {
+  const NoParams();
+}

@@ -14,7 +14,7 @@ class _AccountSetupApiService implements AccountSetupApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://carey-production.up.railway.app/';
+    baseUrl ??= 'http://192.168.1.7:3000/';
   }
 
   final Dio _dio;
