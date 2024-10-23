@@ -5,4 +5,6 @@ class EndPoints {
   static const String auth = 'auth/';
   static const String login = '${auth}login';
   static const String register = '${auth}register';
+  static const String users = 'users/';
+  static const String updateProfile = '${users}update-my-profile';
 }

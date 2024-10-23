@@ -4,13 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:carey/src/core/di/dependency_injection.dart';
-import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
-import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
 import 'package:carey/src/features/auth/presentation/widgets/account_setup/account_image.dart';
 import 'package:carey/src/features/auth/presentation/widgets/account_setup/account_setup_form.dart';
+import 'package:carey/src/features/auth/presentation/widgets/account_setup/fill_profile_continue_bloc_listener.dart';
 
 @RoutePage()
 class AccountSetupView extends StatelessWidget implements AutoRouteWrapper {
@@ -29,7 +28,10 @@ class AccountSetupView extends StatelessWidget implements AutoRouteWrapper {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          const CustomSliverAppBar(titleText: AppStrings.fillYourProfile),
+          const CustomSliverAppBar(
+            hasLeading: false,
+            titleText: AppStrings.fillYourProfile,
+          ),
           SliverToBoxAdapter(
             child: Container(
               alignment: Alignment.center,
@@ -38,18 +40,12 @@ class AccountSetupView extends StatelessWidget implements AutoRouteWrapper {
             ),
           ),
           const SliverToBoxAdapter(child: AccountSetupForm()),
-          SliverFillRemaining(
+          const SliverFillRemaining(
             hasScrollBody: false,
             child: Column(
               children: [
-                const Spacer(),
-                PrimaryButton(
-                  margin: AppConstants.screenHorizontalPadding.add(
-                    EdgeInsets.symmetric(vertical: 40.h),
-                  ),
-                  onPressed: () {},
-                  text: AppStrings.continueWord,
-                ),
+                Spacer(),
+                FillProfileContinueBlocListener(),
               ],
             ),
           ),

@@ -16,7 +16,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(const RegisterState.registerLoading());
     final result = await _registerRepo.register(params, _cancelToken);
     result.when(
-      success: (authEntity) => emit(RegisterState.registerSuccess(authEntity)),
+      success: (_) => emit(const RegisterState.registerSuccess()),
       failure: (failure) => emit(RegisterState.registerError(failure.error[0])),
     );
   }

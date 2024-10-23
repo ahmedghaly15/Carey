@@ -1,9 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:carey/src/core/helpers/extensions.dart';
-import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/auth/data/models/auth_via_password_request.dart';
@@ -23,10 +21,7 @@ class RegisterButtonBlocListener extends StatelessWidget {
           current is RegisterSuccess,
       listener: (context, state) => _registerListener(state, context),
       child: PrimaryButton(
-        onPressed: () {
-          context.pushRoute(const AccountSetupRoute());
-          // _register(context);
-        },
+        onPressed: () => _register(context),
         text: AppStrings.signUp,
       ),
     );
@@ -53,7 +48,7 @@ class RegisterButtonBlocListener extends StatelessWidget {
         context.popTop();
         context.showErrorDialog(error);
       },
-      registerSuccess: (_) async {
+      registerSuccess: () async {
         await _handleRememberingAndShowResultDialog(context);
       },
     );

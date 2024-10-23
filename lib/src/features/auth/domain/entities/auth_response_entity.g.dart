@@ -6,14 +6,16 @@ part of 'auth_response_entity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AuthResponseEntity _$AuthResponseEntityFromJson(Map<String, dynamic> json) =>
-    AuthResponseEntity(
+_$AuthResponseEntityImpl _$$AuthResponseEntityImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AuthResponseEntityImpl(
       user: CareyUser.fromJson(json['user'] as Map<String, dynamic>),
       token: json['token'] as String,
     );
 
-Map<String, dynamic> _$AuthResponseEntityToJson(AuthResponseEntity instance) =>
+Map<String, dynamic> _$$AuthResponseEntityImplToJson(
+        _$AuthResponseEntityImpl instance) =>
     <String, dynamic>{
-      'user': instance.user,
+      'user': instance.user.toJson(),
       'token': instance.token,
     };

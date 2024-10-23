@@ -51,4 +51,6 @@ class AppStrings {
   static const String isRequired = 'is required';
   static const String male = 'Male';
   static const String female = 'Female';
+  static const String profileUpdatedSuccessfully =
+      'Profile has been updated successfully';
 }
