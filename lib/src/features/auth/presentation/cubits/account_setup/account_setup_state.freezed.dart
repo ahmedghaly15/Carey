@@ -17,7 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AccountSetupState {
   AccountSetupStateStatus get status => throw _privateConstructorUsedError;
+  AuthResponseEntity? get currentUserData => throw _privateConstructorUsedError;
   AutovalidateMode get autovalidateMode => throw _privateConstructorUsedError;
+  String? get error => throw _privateConstructorUsedError;
 
   /// Create a copy of AccountSetupState
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +35,12 @@ abstract class $AccountSetupStateCopyWith<$Res> {
       _$AccountSetupStateCopyWithImpl<$Res, AccountSetupState>;
   @useResult
   $Res call(
-      {AccountSetupStateStatus status, AutovalidateMode autovalidateMode});
+      {AccountSetupStateStatus status,
+      AuthResponseEntity? currentUserData,
+      AutovalidateMode autovalidateMode,
+      String? error});
+
+  $AuthResponseEntityCopyWith<$Res>? get currentUserData;
 }
 
 /// @nodoc
@@ -52,18 +59,42 @@ class _$AccountSetupStateCopyWithImpl<$Res, $Val extends AccountSetupState>
   @override
   $Res call({
     Object? status = null,
+    Object? currentUserData = freezed,
     Object? autovalidateMode = null,
+    Object? error = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as AccountSetupStateStatus,
+      currentUserData: freezed == currentUserData
+          ? _value.currentUserData
+          : currentUserData // ignore: cast_nullable_to_non_nullable
+              as AuthResponseEntity?,
       autovalidateMode: null == autovalidateMode
           ? _value.autovalidateMode
           : autovalidateMode // ignore: cast_nullable_to_non_nullable
               as AutovalidateMode,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
+  }
+
+  /// Create a copy of AccountSetupState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AuthResponseEntityCopyWith<$Res>? get currentUserData {
+    if (_value.currentUserData == null) {
+      return null;
+    }
+
+    return $AuthResponseEntityCopyWith<$Res>(_value.currentUserData!, (value) {
+      return _then(_value.copyWith(currentUserData: value) as $Val);
+    });
   }
 }
 
@@ -76,7 +107,13 @@ abstract class _$$AccountSetupStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {AccountSetupStateStatus status, AutovalidateMode autovalidateMode});
+      {AccountSetupStateStatus status,
+      AuthResponseEntity? currentUserData,
+      AutovalidateMode autovalidateMode,
+      String? error});
+
+  @override
+  $AuthResponseEntityCopyWith<$Res>? get currentUserData;
 }
 
 /// @nodoc
@@ -93,17 +130,27 @@ class __$$AccountSetupStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
+    Object? currentUserData = freezed,
     Object? autovalidateMode = null,
+    Object? error = freezed,
   }) {
     return _then(_$AccountSetupStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as AccountSetupStateStatus,
+      currentUserData: freezed == currentUserData
+          ? _value.currentUserData
+          : currentUserData // ignore: cast_nullable_to_non_nullable
+              as AuthResponseEntity?,
       autovalidateMode: null == autovalidateMode
           ? _value.autovalidateMode
           : autovalidateMode // ignore: cast_nullable_to_non_nullable
               as AutovalidateMode,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -113,17 +160,23 @@ class __$$AccountSetupStateImplCopyWithImpl<$Res>
 class _$AccountSetupStateImpl implements _AccountSetupState {
   const _$AccountSetupStateImpl(
       {required this.status,
-      this.autovalidateMode = AutovalidateMode.disabled});
+      this.currentUserData,
+      this.autovalidateMode = AutovalidateMode.disabled,
+      this.error});
 
   @override
   final AccountSetupStateStatus status;
   @override
+  final AuthResponseEntity? currentUserData;
+  @override
   @JsonKey()
   final AutovalidateMode autovalidateMode;
+  @override
+  final String? error;
 
   @override
   String toString() {
-    return 'AccountSetupState(status: $status, autovalidateMode: $autovalidateMode)';
+    return 'AccountSetupState(status: $status, currentUserData: $currentUserData, autovalidateMode: $autovalidateMode, error: $error)';
   }
 
   @override
@@ -132,12 +185,16 @@ class _$AccountSetupStateImpl implements _AccountSetupState {
         (other.runtimeType == runtimeType &&
             other is _$AccountSetupStateImpl &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.currentUserData, currentUserData) ||
+                other.currentUserData == currentUserData) &&
             (identical(other.autovalidateMode, autovalidateMode) ||
-                other.autovalidateMode == autovalidateMode));
+                other.autovalidateMode == autovalidateMode) &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, autovalidateMode);
+  int get hashCode => Object.hash(
+      runtimeType, status, currentUserData, autovalidateMode, error);
 
   /// Create a copy of AccountSetupState
   /// with the given fields replaced by the non-null parameter values.
@@ -152,12 +209,18 @@ class _$AccountSetupStateImpl implements _AccountSetupState {
 abstract class _AccountSetupState implements AccountSetupState {
   const factory _AccountSetupState(
       {required final AccountSetupStateStatus status,
-      final AutovalidateMode autovalidateMode}) = _$AccountSetupStateImpl;
+      final AuthResponseEntity? currentUserData,
+      final AutovalidateMode autovalidateMode,
+      final String? error}) = _$AccountSetupStateImpl;
 
   @override
   AccountSetupStateStatus get status;
   @override
+  AuthResponseEntity? get currentUserData;
+  @override
   AutovalidateMode get autovalidateMode;
+  @override
+  String? get error;
 
   /// Create a copy of AccountSetupState
   /// with the given fields replaced by the non-null parameter values.
