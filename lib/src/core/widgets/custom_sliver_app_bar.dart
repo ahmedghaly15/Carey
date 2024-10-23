@@ -1,5 +1,6 @@
-import 'package:carey/src/core/widgets/arrow_back_icon_button.dart';
 import 'package:flutter/material.dart';
+
+import 'package:carey/src/core/widgets/arrow_back_icon_button.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
   const CustomSliverAppBar({
