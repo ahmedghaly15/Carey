@@ -6,7 +6,18 @@ part of 'carey_user.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CareyUser _$CareyUserFromJson(Map<String, dynamic> json) => CareyUser(
+UserRole _$UserRoleFromJson(Map<String, dynamic> json) => UserRole(
+      id: (json['id'] as num).toInt(),
+      name: json['name'] as String,
+    );
+
+Map<String, dynamic> _$UserRoleToJson(UserRole instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+    };
+
+_$CareyUserImpl _$$CareyUserImplFromJson(Map<String, dynamic> json) =>
+    _$CareyUserImpl(
       id: (json['id'] as num).toInt(),
       email: json['email'] as String,
       role: json['role'] == null
@@ -27,10 +38,11 @@ CareyUser _$CareyUserFromJson(Map<String, dynamic> json) => CareyUser(
       phoneVerified: json['phoneVerified'] as bool?,
     );
 
-Map<String, dynamic> _$CareyUserToJson(CareyUser instance) => <String, dynamic>{
+Map<String, dynamic> _$$CareyUserImplToJson(_$CareyUserImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'email': instance.email,
-      'role': instance.role,
+      'role': instance.role?.toJson(),
       'password': instance.password,
       'fullName': instance.fullName,
       'nickName': instance.nickName,
@@ -44,14 +56,4 @@ Map<String, dynamic> _$CareyUserToJson(CareyUser instance) => <String, dynamic>{
       'LoginAppId': instance.loginAppId,
       'emailVerified': instance.emailVerified,
       'phoneVerified': instance.phoneVerified,
-    };
-
-UserRole _$UserRoleFromJson(Map<String, dynamic> json) => UserRole(
-      id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-    );
-
-Map<String, dynamic> _$UserRoleToJson(UserRole instance) => <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
     };

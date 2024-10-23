@@ -352,6 +352,8 @@ abstract class _$$LoginViaPasswordSuccessImplCopyWith<T, $Res> {
       __$$LoginViaPasswordSuccessImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({AuthResponseEntity loginEntity});
+
+  $AuthResponseEntityCopyWith<$Res> get loginEntity;
 }
 
 /// @nodoc
@@ -376,6 +378,16 @@ class __$$LoginViaPasswordSuccessImplCopyWithImpl<T, $Res>
           : loginEntity // ignore: cast_nullable_to_non_nullable
               as AuthResponseEntity,
     ));
+  }
+
+  /// Create a copy of LoginState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AuthResponseEntityCopyWith<$Res> get loginEntity {
+    return $AuthResponseEntityCopyWith<$Res>(_value.loginEntity, (value) {
+      return _then(_value.copyWith(loginEntity: value));
+    });
   }
 }
 

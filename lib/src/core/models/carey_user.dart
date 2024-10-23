@@ -1,48 +1,32 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'carey_user.freezed.dart';
 part 'carey_user.g.dart';
 
-@JsonSerializable()
-class CareyUser {
-  final int id;
-  final String email;
-  final UserRole? role;
-  final String? password,
-      fullName,
-      nickName,
-      phone,
-      address,
-      pinCode,
-      picture,
-      gender,
-      createdAt,
-      updatedAt;
-  @JsonKey(name: 'LoginAppId')
-  final String? loginAppId;
-  final bool? emailVerified, phoneVerified;
-
-  const CareyUser({
-    required this.id,
-    required this.email,
-    required this.role,
-    this.password,
-    this.fullName,
-    this.nickName,
-    this.phone,
-    this.address,
-    this.pinCode,
-    this.picture,
-    this.gender,
-    this.createdAt,
-    this.updatedAt,
-    this.loginAppId,
-    this.emailVerified,
-    this.phoneVerified,
-  });
+@freezed
+class CareyUser with _$CareyUser {
+  @JsonSerializable(explicitToJson: true)
+  const factory CareyUser({
+    required int id,
+    required String email,
+    UserRole? role,
+    String? password,
+    String? fullName,
+    String? nickName,
+    String? phone,
+    String? address,
+    String? pinCode,
+    String? picture,
+    String? gender,
+    String? createdAt,
+    String? updatedAt,
+    @JsonKey(name: 'LoginAppId') String? loginAppId,
+    bool? emailVerified,
+    bool? phoneVerified,
+  }) = _CareyUser;
 
   factory CareyUser.fromJson(Map<String, dynamic> json) =>
       _$CareyUserFromJson(json);
-  Map<String, dynamic> toJson() => _$CareyUserToJson(this);
 }
 
 @JsonSerializable()
