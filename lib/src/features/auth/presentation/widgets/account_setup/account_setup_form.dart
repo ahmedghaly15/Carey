@@ -32,6 +32,7 @@ class AccountSetupForm extends StatelessWidget {
               CustomTextFormField(
                 controller: accountSetupCubit.fullNameController,
                 focusNode: accountSetupCubit.fullNameFocusNode,
+                textCapitalization: TextCapitalization.words,
                 hintText: AppStrings.fullName,
                 autofillHints: const [AutofillHints.name],
                 onEditingComplete: () => context.requestFocus(
@@ -56,6 +57,7 @@ class AccountSetupForm extends StatelessWidget {
               CustomTextFormField(
                 controller: accountSetupCubit.addressController,
                 focusNode: accountSetupCubit.addressFocusNode,
+                textCapitalization: TextCapitalization.words,
                 keyboardType: TextInputType.streetAddress,
                 hintText: AppStrings.address,
                 autofillHints: const [AutofillHints.addressCityAndState],
@@ -67,7 +69,10 @@ class AccountSetupForm extends StatelessWidget {
               ),
               MySizedBox.height16,
               InternationalPhoneNumberInput(
-                onInputChanged: (phoneNumber) {},
+                onInputChanged: (phoneNumber) {
+                  accountSetupCubit.updatePhoneNumber(phoneNumber.phoneNumber!);
+                },
+                // initialValue: PhoneNumber(isoCode: 'EG'), TODO: handle initial value
                 selectorConfig: const SelectorConfig(
                   selectorType: PhoneInputSelectorType.DIALOG,
                   showFlags: true,
@@ -88,7 +93,6 @@ class AccountSetupForm extends StatelessWidget {
                   hintText: AppStrings.phone,
                   hintStyle: AppTextStyles.hintTextStyle,
                 ),
-                textFieldController: accountSetupCubit.phoneController,
                 focusNode: accountSetupCubit.phoneFocusNode,
                 autofillHints: const [AutofillHints.telephoneNumber],
                 autoValidateMode: state.autovalidateMode,
@@ -98,9 +102,6 @@ class AccountSetupForm extends StatelessWidget {
                   value,
                   fieldName: AppStrings.phone,
                 ),
-                onFieldSubmitted: (_) => context.requestFocus(
-                  accountSetupCubit.genderFocusNode,
-                ),
               ),
               MySizedBox.height16,
               DropdownButtonFormField<String>(
@@ -108,7 +109,6 @@ class AccountSetupForm extends StatelessWidget {
                   AppStrings.gender,
                   style: AppTextStyles.hintTextStyle,
                 ),
-                focusNode: accountSetupCubit.genderFocusNode,
                 autovalidateMode: state.autovalidateMode,
                 items: AppConstants.genderDropdownItems,
                 decoration: InputDecoration(
@@ -126,7 +126,7 @@ class AccountSetupForm extends StatelessWidget {
                 style: AppTextStyles.font13Regular.copyWith(
                   color: Colors.black,
                 ),
-                onChanged: (_) {},
+                onChanged: (gender) => accountSetupCubit.updateGender(gender!),
                 validator: (value) => TextFormValidator.validateField(
                   value,
                   fieldName: AppStrings.gender,
