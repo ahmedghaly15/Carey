@@ -11,7 +11,6 @@ import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_text_form_field.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
-import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_state.dart';
 
 class AccountSetupForm extends StatelessWidget {
   const AccountSetupForm({super.key});
@@ -21,12 +20,11 @@ class AccountSetupForm extends StatelessWidget {
     final accountSetupCubit = context.read<AccountSetupCubit>();
     return Padding(
       padding: AppConstants.screenHorizontalPadding,
-      child: BlocBuilder<AccountSetupCubit, AccountSetupState>(
-        buildWhen: (_, current) =>
-            current.autovalidateMode != AutovalidateMode.disabled,
+      child: BlocBuilder<AccountSetupCubit, AutovalidateMode>(
+        buildWhen: (_, current) => current != AutovalidateMode.disabled,
         builder: (_, state) => Form(
           key: accountSetupCubit.formKey,
-          autovalidateMode: state.autovalidateMode,
+          autovalidateMode: state,
           child: Column(
             children: [
               CustomTextFormField(
@@ -95,7 +93,7 @@ class AccountSetupForm extends StatelessWidget {
                 ),
                 focusNode: accountSetupCubit.phoneFocusNode,
                 autofillHints: const [AutofillHints.telephoneNumber],
-                autoValidateMode: state.autovalidateMode,
+                autoValidateMode: state,
                 ignoreBlank: false,
                 formatInput: true,
                 validator: (value) => TextFormValidator.validateField(
@@ -109,7 +107,7 @@ class AccountSetupForm extends StatelessWidget {
                   AppStrings.gender,
                   style: AppTextStyles.hintTextStyle,
                 ),
-                autovalidateMode: state.autovalidateMode,
+                autovalidateMode: state,
                 items: AppConstants.genderDropdownItems,
                 decoration: InputDecoration(
                   filled: true,
