@@ -9,8 +9,8 @@ import 'package:carey/src/core/utils/functions/check_if_user_is_logged_in.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await setupDI();
   Bloc.observer = MyBlocObserver();
+  await setupDI();
   await Future.wait([
     checkIfUserIsLoggedIn(),
     checkIfCurrentUserAccountSet(),
