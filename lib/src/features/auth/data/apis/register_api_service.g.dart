@@ -41,7 +41,7 @@ class _RegisterApiService implements RegisterApiService {
     )
         .compose(
           _dio.options,
-          'auth/register',
+          'http://192.168.1.7:3000/auth/register',
           queryParameters: queryParameters,
           data: _data,
           cancelToken: cancelToken,

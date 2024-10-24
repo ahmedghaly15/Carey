@@ -35,6 +35,8 @@ dependencies:
   flutter_secure_storage: ^9.2.2
   # A simple and customizable phone number input widget
   intl_phone_number_input: ^0.7.4
+  # For launching a URL
+  url_launcher: ^6.3.0
   
 dev_dependencies:
   flutter_test:

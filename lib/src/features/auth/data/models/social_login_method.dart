@@ -1,5 +1,7 @@
+import 'package:carey/src/core/api/end_points.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
+import 'package:carey/src/core/utils/functions/launch_this_url.dart';
 import 'package:flutter/material.dart';
 
 class SocialLoginMethod {
@@ -22,7 +24,7 @@ class SocialLoginMethod {
     SocialLoginMethod(
       name: AppStrings.google,
       svgIcon: Assets.svgsGoogle,
-      onPressed: () {},
+      onPressed: () => launchThisUrl(EndPoints.googleSignIn),
     ),
   ];
 }

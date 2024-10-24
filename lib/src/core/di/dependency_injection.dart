@@ -1,7 +1,5 @@
 import 'package:carey/src/features/auth/data/apis/account_setup_api_service.dart';
 import 'package:carey/src/features/auth/data/repositories/account_setup_repo.dart';
-import 'package:carey/src/features/auth/domain/usecases/facebook_sign_in.dart';
-import 'package:carey/src/features/auth/domain/usecases/google_sign_in.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -74,12 +72,6 @@ void _setupForUseCases() {
   getIt.registerLazySingleton<UpdateProfile>(
     () => UpdateProfile(getIt.get<AccountSetupRepo>()),
   );
-  getIt.registerLazySingleton<GoogleSignIn>(
-    () => GoogleSignIn(getIt.get<LoginRepo>()),
-  );
-  getIt.registerLazySingleton<FacebookSignIn>(
-    () => FacebookSignIn(getIt.get<LoginRepo>()),
-  );
 }
 
 void _setupForCubits() {
@@ -87,10 +79,7 @@ void _setupForCubits() {
     () => FormAttributesCubit(),
   );
   getIt.registerLazySingleton<LoginCubit>(
-    () => LoginCubit(
-      getIt.get<LoginViaPassword>(),
-      getIt.get<GoogleSignIn>(),
-    ),
+    () => LoginCubit(getIt.get<LoginViaPassword>()),
   );
   getIt.registerLazySingleton<RegisterCubit>(
     () => RegisterCubit(getIt.get<RegisterRepo>()),
