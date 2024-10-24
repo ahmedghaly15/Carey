@@ -37,6 +37,8 @@ dependencies:
   intl_phone_number_input: ^0.7.4
   # For launching a URL
   url_launcher: ^6.3.0
+  # Provides local authentication via biometrics
+  local_auth: ^2.3.0
   
 dev_dependencies:
   flutter_test:
