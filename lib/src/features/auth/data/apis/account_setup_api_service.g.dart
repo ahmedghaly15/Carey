@@ -14,7 +14,7 @@ class _AccountSetupApiService implements AccountSetupApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'http://192.168.1.7:3000/';
+    baseUrl ??= 'https://carey-production.up.railway.app/';
   }
 
   final Dio _dio;
@@ -41,7 +41,7 @@ class _AccountSetupApiService implements AccountSetupApiService {
     )
         .compose(
           _dio.options,
-          'http://192.168.1.7:3000/users/update-my-profile',
+          'https://carey-production.up.railway.app/users/update-my-profile',
           queryParameters: queryParameters,
           data: _data,
           cancelToken: cancelToken,

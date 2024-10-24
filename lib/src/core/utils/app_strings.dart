@@ -61,4 +61,7 @@ class AppStrings {
   static const String skip = 'Skip';
   static const String scanYourFingerprint =
       'Scan your fingerprint to authenticate';
+  static const String congratulations = 'Congratulations!';
+  static const String yourAccountIsReady =
+      'Your account is ready to use.\nYou will be redirected to the home in a few seconds.....';
 }

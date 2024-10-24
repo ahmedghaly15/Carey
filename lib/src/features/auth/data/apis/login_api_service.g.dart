@@ -14,7 +14,7 @@ class _LoginApiService implements LoginApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'http://192.168.1.7:3000/';
+    baseUrl ??= 'https://carey-production.up.railway.app/';
   }
 
   final Dio _dio;
@@ -41,7 +41,7 @@ class _LoginApiService implements LoginApiService {
     )
         .compose(
           _dio.options,
-          'http://192.168.1.7:3000/auth/login',
+          'https://carey-production.up.railway.app/auth/login',
           queryParameters: queryParameters,
           data: _data,
           cancelToken: cancelToken,

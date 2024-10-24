@@ -44,20 +44,27 @@ extension IsNullOrEmptyString on String? {
 
 extension ShowResultDialog on BuildContext {
   Future<void> showResultDialog({
+    String? titleText,
+    Widget? titleWidget,
     String? contentText,
     Widget? content,
     List<Widget>? actions,
     EdgeInsetsGeometry? contentPadding,
     EdgeInsetsGeometry? actionsPadding,
+    bool hasOkButtonInActions = true,
+    bool barrierDismissible = true,
   }) async =>
       await showDialog<void>(
         context: this,
-        barrierDismissible: true,
+        barrierDismissible: barrierDismissible,
         builder: (_) => ResultDialog(
+          titleText: titleText,
+          titleWidget: titleWidget,
           contentText: contentText,
           content: content,
-          actions: actions,
           contentPadding: contentPadding,
+          actions: actions,
+          hasOkButtonInActions: hasOkButtonInActions,
           actionsPadding: actionsPadding,
         ),
       );
