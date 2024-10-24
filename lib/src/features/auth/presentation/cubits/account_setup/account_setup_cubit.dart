@@ -1,6 +1,3 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/core/router/app_router.dart';
-import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,16 +17,9 @@ class AccountSetupCubit extends Cubit<AutovalidateMode> {
   late final FocusNode addressFocusNode;
   late final FocusNode phoneFocusNode;
 
-  void continueToSetFingerprint(
-    BuildContext context, {
-    required UpdateProfileParams updateProfileParams,
-  }) {
+  void continueToSetFingerprint(VoidCallback continueCallback) {
     if (formKey.currentState!.validate()) {
-      context.pushRoute(
-        SetFingerprintRoute(
-          updateProfileParams: updateProfileParams,
-        ),
-      );
+      continueCallback();
     } else {
       emit(AutovalidateMode.always);
     }

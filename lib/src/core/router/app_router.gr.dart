@@ -163,6 +163,53 @@ class RegisterRouteArgs {
 }
 
 /// generated route for
+/// [SetFingerprintView]
+class SetFingerprintRoute extends PageRouteInfo<SetFingerprintRouteArgs> {
+  SetFingerprintRoute({
+    Key? key,
+    required UpdateProfileParams updateProfileParams,
+    List<PageRouteInfo>? children,
+  }) : super(
+          SetFingerprintRoute.name,
+          args: SetFingerprintRouteArgs(
+            key: key,
+            updateProfileParams: updateProfileParams,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'SetFingerprintRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<SetFingerprintRouteArgs>();
+      return WrappedRoute(
+          child: SetFingerprintView(
+        key: args.key,
+        updateProfileParams: args.updateProfileParams,
+      ));
+    },
+  );
+}
+
+class SetFingerprintRouteArgs {
+  const SetFingerprintRouteArgs({
+    this.key,
+    required this.updateProfileParams,
+  });
+
+  final Key? key;
+
+  final UpdateProfileParams updateProfileParams;
+
+  @override
+  String toString() {
+    return 'SetFingerprintRouteArgs{key: $key, updateProfileParams: $updateProfileParams}';
+  }
+}
+
+/// generated route for
 /// [SplashView]
 class SplashRoute extends PageRouteInfo<void> {
   const SplashRoute({List<PageRouteInfo>? children})
