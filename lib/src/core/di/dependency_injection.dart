@@ -1,5 +1,7 @@
+import 'package:carey/src/core/services/local_auth.dart';
 import 'package:carey/src/features/auth/data/apis/account_setup_api_service.dart';
 import 'package:carey/src/features/auth/data/repositories/account_setup_repo.dart';
+import 'package:carey/src/features/auth/data/repositories/set_fingerprint_repo.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
 import 'package:dio/dio.dart';
@@ -44,6 +46,9 @@ Future<void> _setupForExternal() async {
 
 void _setupDIForCore() {
   getIt.registerSingleton<AppRouter>(AppRouter());
+  getIt.registerCachedFactory<LocalAuth>(
+    () => LocalAuth(getIt.get<LocalAuthentication>()),
+  );
 }
 
 void _setupForApiServices() {
@@ -66,6 +71,9 @@ void _setupForRepos() {
   );
   getIt.registerLazySingleton<AccountSetupRepo>(
     () => AccountSetupRepo(getIt.get<AccountSetupApiService>()),
+  );
+  getIt.registerLazySingleton<SetFingerprintRepo>(
+    () => SetFingerprintRepo(getIt.get<LocalAuth>()),
   );
 }
 
@@ -92,6 +100,9 @@ void _setupForCubits() {
     () => AccountSetupCubit(),
   );
   getIt.registerLazySingleton<SetFingerprintCubit>(
-    () => SetFingerprintCubit(getIt.get<UpdateProfile>()),
+    () => SetFingerprintCubit(
+      updateProfileUseCase: getIt.get<UpdateProfile>(),
+      fingerprintRepo: getIt.get<SetFingerprintRepo>(),
+    ),
   );
 }

@@ -55,8 +55,10 @@ class AppStrings {
       'Profile has been updated successfully';
   static const String setYourFingerprint = 'Set Your Fingerprint';
   static const String addFingerprint =
-      'Add a fingerprint to make your account more secure.';
+      'Add a fingerprint or face ID to make your account more secure.';
   static const String pleasePutYourFingerprint =
-      'Please put your finger on the fingerprint scanner to get started.';
+      'Please put your finger on the fingerprint scanner or scan your face to get started.';
   static const String skip = 'Skip';
+  static const String scanYourFingerprint =
+      'Scan your fingerprint to authenticate';
 }

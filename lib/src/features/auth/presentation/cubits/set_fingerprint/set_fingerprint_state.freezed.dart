@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SetFingerprintState {
   SetFingerprintStateStatus get status => throw _privateConstructorUsedError;
   AuthResponseEntity? get currentUserData => throw _privateConstructorUsedError;
+  bool get fingerprintAuthenticated => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
 
   /// Create a copy of SetFingerprintState
@@ -36,6 +37,7 @@ abstract class $SetFingerprintStateCopyWith<$Res> {
   $Res call(
       {SetFingerprintStateStatus status,
       AuthResponseEntity? currentUserData,
+      bool fingerprintAuthenticated,
       String? error});
 
   $AuthResponseEntityCopyWith<$Res>? get currentUserData;
@@ -58,6 +60,7 @@ class _$SetFingerprintStateCopyWithImpl<$Res, $Val extends SetFingerprintState>
   $Res call({
     Object? status = null,
     Object? currentUserData = freezed,
+    Object? fingerprintAuthenticated = null,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -69,6 +72,10 @@ class _$SetFingerprintStateCopyWithImpl<$Res, $Val extends SetFingerprintState>
           ? _value.currentUserData
           : currentUserData // ignore: cast_nullable_to_non_nullable
               as AuthResponseEntity?,
+      fingerprintAuthenticated: null == fingerprintAuthenticated
+          ? _value.fingerprintAuthenticated
+          : fingerprintAuthenticated // ignore: cast_nullable_to_non_nullable
+              as bool,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -102,6 +109,7 @@ abstract class _$$SetFingerprintStateImplCopyWith<$Res>
   $Res call(
       {SetFingerprintStateStatus status,
       AuthResponseEntity? currentUserData,
+      bool fingerprintAuthenticated,
       String? error});
 
   @override
@@ -123,6 +131,7 @@ class __$$SetFingerprintStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? currentUserData = freezed,
+    Object? fingerprintAuthenticated = null,
     Object? error = freezed,
   }) {
     return _then(_$SetFingerprintStateImpl(
@@ -134,6 +143,10 @@ class __$$SetFingerprintStateImplCopyWithImpl<$Res>
           ? _value.currentUserData
           : currentUserData // ignore: cast_nullable_to_non_nullable
               as AuthResponseEntity?,
+      fingerprintAuthenticated: null == fingerprintAuthenticated
+          ? _value.fingerprintAuthenticated
+          : fingerprintAuthenticated // ignore: cast_nullable_to_non_nullable
+              as bool,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -146,18 +159,24 @@ class __$$SetFingerprintStateImplCopyWithImpl<$Res>
 
 class _$SetFingerprintStateImpl implements _SetFingerprintState {
   const _$SetFingerprintStateImpl(
-      {required this.status, this.currentUserData, this.error});
+      {required this.status,
+      this.currentUserData,
+      this.fingerprintAuthenticated = false,
+      this.error});
 
   @override
   final SetFingerprintStateStatus status;
   @override
   final AuthResponseEntity? currentUserData;
   @override
+  @JsonKey()
+  final bool fingerprintAuthenticated;
+  @override
   final String? error;
 
   @override
   String toString() {
-    return 'SetFingerprintState(status: $status, currentUserData: $currentUserData, error: $error)';
+    return 'SetFingerprintState(status: $status, currentUserData: $currentUserData, fingerprintAuthenticated: $fingerprintAuthenticated, error: $error)';
   }
 
   @override
@@ -168,11 +187,15 @@ class _$SetFingerprintStateImpl implements _SetFingerprintState {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.currentUserData, currentUserData) ||
                 other.currentUserData == currentUserData) &&
+            (identical(
+                    other.fingerprintAuthenticated, fingerprintAuthenticated) ||
+                other.fingerprintAuthenticated == fingerprintAuthenticated) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, currentUserData, error);
+  int get hashCode => Object.hash(
+      runtimeType, status, currentUserData, fingerprintAuthenticated, error);
 
   /// Create a copy of SetFingerprintState
   /// with the given fields replaced by the non-null parameter values.
@@ -188,12 +211,15 @@ abstract class _SetFingerprintState implements SetFingerprintState {
   const factory _SetFingerprintState(
       {required final SetFingerprintStateStatus status,
       final AuthResponseEntity? currentUserData,
+      final bool fingerprintAuthenticated,
       final String? error}) = _$SetFingerprintStateImpl;
 
   @override
   SetFingerprintStateStatus get status;
   @override
   AuthResponseEntity? get currentUserData;
+  @override
+  bool get fingerprintAuthenticated;
   @override
   String? get error;
 

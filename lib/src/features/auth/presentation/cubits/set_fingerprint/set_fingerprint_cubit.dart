@@ -1,3 +1,4 @@
+import 'package:carey/src/features/auth/data/repositories/set_fingerprint_repo.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,11 +9,13 @@ import 'package:carey/src/features/auth/domain/usecases/update_profile.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/set_fingerprint_state.dart';
 
 class SetFingerprintCubit extends Cubit<SetFingerprintState> {
-  final UpdateProfile _updateProfileUseCase;
+  final SetFingerprintRepo fingerprintRepo;
+  final UpdateProfile updateProfileUseCase;
 
-  SetFingerprintCubit(
-    this._updateProfileUseCase,
-  ) : super(SetFingerprintState.initial());
+  SetFingerprintCubit({
+    required this.updateProfileUseCase,
+    required this.fingerprintRepo,
+  }) : super(SetFingerprintState.initial());
 
   final CancelToken _cancelToken = CancelToken();
 
@@ -22,7 +25,7 @@ class SetFingerprintCubit extends Cubit<SetFingerprintState> {
         status: SetFingerprintStateStatus.updateProfileLoading,
       ),
     );
-    final result = await _updateProfileUseCase(
+    final result = await updateProfileUseCase(
       params,
       _cancelToken,
     );
@@ -58,6 +61,25 @@ class SetFingerprintCubit extends Cubit<SetFingerprintState> {
       ),
     );
     await AuthLocalDataSource.secureUserData(currentUserData!);
+  }
+
+  void setFingerprint() async {
+    emit(
+      state.copyWith(
+        status: SetFingerprintStateStatus.setFingerprintLoading,
+      ),
+    );
+    final result = await fingerprintRepo.authenticateFingerprint();
+    result.when(
+      success: (fingerprintAuthenticated) => emit(state.copyWith(
+        status: SetFingerprintStateStatus.setFingerprintSuccess,
+        fingerprintAuthenticated: fingerprintAuthenticated,
+      )),
+      failure: (failure) => emit(state.copyWith(
+        status: SetFingerprintStateStatus.setFingerprintError,
+        error: failure.error[0],
+      )),
+    );
   }
 
   @override
