@@ -74,6 +74,10 @@ class Assets {
   /// assets/svgs/facebook.svg
   static const String svgsFacebook = "assets/svgs/facebook.svg";
 
+  /// Assets for svgsFingerprint
+  /// assets/svgs/fingerprint.svg
+  static const String svgsFingerprint = "assets/svgs/fingerprint.svg";
+
   /// Assets for svgsGoogle
   /// assets/svgs/google.svg
   static const String svgsGoogle = "assets/svgs/google.svg";
