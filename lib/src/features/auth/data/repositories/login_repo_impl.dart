@@ -33,22 +33,4 @@ class LoginRepoImpl implements LoginRepo {
     );
     return loginResponseEntity;
   }
-
-  @override
-  Future<ApiResult<void>> googleSignIn([
-    CancelToken? cancelToken,
-  ]) {
-    return executeAndHandleErrors<void>(
-      () async => await _loginApiService.googleSignIn(),
-    );
-  }
-
-  @override
-  Future<ApiResult<void>> facebookSignIn([
-    CancelToken? cancelToken,
-  ]) {
-    return executeAndHandleErrors<void>(
-      () async => await _loginApiService.facebookSignIn(),
-    );
-  }
 }

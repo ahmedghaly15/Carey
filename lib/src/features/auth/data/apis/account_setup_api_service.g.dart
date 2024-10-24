@@ -41,7 +41,7 @@ class _AccountSetupApiService implements AccountSetupApiService {
     )
         .compose(
           _dio.options,
-          'users/update-my-profile',
+          'http://192.168.1.7:3000/users/update-my-profile',
           queryParameters: queryParameters,
           data: _data,
           cancelToken: cancelToken,
