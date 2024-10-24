@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -36,7 +37,12 @@ class LoginMethodsView extends StatelessWidget {
               ),
               const AuthCustomDividerWithText(text: AppStrings.or),
               PrimaryButton(
-                onPressed: () => context.replaceRoute(LoginRoute()),
+                onPressed: () {
+                  // context.replaceRoute(LoginRoute());
+                  context.pushRoute(SetFingerprintRoute(
+                    updateProfileParams: UpdateProfileParams(),
+                  ));
+                },
                 text: AppStrings.signInWithPassword,
                 margin: EdgeInsets.only(top: 38.h, bottom: 24.h),
               ),
