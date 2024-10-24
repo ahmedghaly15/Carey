@@ -15,30 +15,6 @@ class FillProfileContinue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return BlocListener<SetFingerprintCubit, AccountSetupState>(
-    // listenWhen: (_, current) =>
-    //     current.status == SetFingerprintStateStatus.updateProfileLoading ||
-    //     current.status == SetFingerprintStateStatus.updateProfileSuccess ||
-    //     current.status == SetFingerprintStateStatus.updateProfileError,
-    // listener: (context, state) {
-    //   switch (state.status) {
-    //     case SetFingerprintStateStatus.updateProfileLoading:
-    //       context.unfocusKeyboard();
-    //       context.showLoadingDialog();
-    //       break;
-    //     // return;
-    //     case SetFingerprintStateStatus.updateProfileSuccess:
-    //       context.popTop();
-    //       // TODO: navigate to home
-    //       break;
-    //     case SetFingerprintStateStatus.updateProfileError:
-    //       context.popTop();
-    //       context.showErrorDialog(state.error!);
-    //       break;
-    //     default:
-    //       return;
-    //   }
-    // },
     final accountSetupCubit = context.read<AccountSetupCubit>();
     final updateProfileParams = UpdateProfileParams(
       fullName: accountSetupCubit.fullNameController.text.trim(),

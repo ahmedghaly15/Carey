@@ -9,6 +9,9 @@ enum SetFingerprintStateStatus {
   updateProfileLoading,
   updateProfileSuccess,
   updateProfileError,
+  setFingerprintLoading,
+  setFingerprintSuccess,
+  setFingerprintError,
 }
 
 @freezed
@@ -16,6 +19,7 @@ class SetFingerprintState with _$SetFingerprintState {
   const factory SetFingerprintState({
     required SetFingerprintStateStatus status,
     AuthResponseEntity? currentUserData,
+    @Default(false) bool fingerprintAuthenticated,
     String? error,
   }) = _SetFingerprintState;
 
