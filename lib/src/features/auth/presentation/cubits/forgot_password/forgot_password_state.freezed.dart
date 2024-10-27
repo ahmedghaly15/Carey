@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ForgotPasswordState {
   ForgotPasswordStateStatus get status => throw _privateConstructorUsedError;
   int get selectedContactDetailsIndex => throw _privateConstructorUsedError;
+  GetAccountByEmailEntity? get getAccountByEmailEntity =>
+      throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
 
   /// Create a copy of ForgotPasswordState
@@ -36,6 +38,7 @@ abstract class $ForgotPasswordStateCopyWith<$Res> {
   $Res call(
       {ForgotPasswordStateStatus status,
       int selectedContactDetailsIndex,
+      GetAccountByEmailEntity? getAccountByEmailEntity,
       String? error});
 }
 
@@ -56,6 +59,7 @@ class _$ForgotPasswordStateCopyWithImpl<$Res, $Val extends ForgotPasswordState>
   $Res call({
     Object? status = null,
     Object? selectedContactDetailsIndex = null,
+    Object? getAccountByEmailEntity = freezed,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -67,6 +71,10 @@ class _$ForgotPasswordStateCopyWithImpl<$Res, $Val extends ForgotPasswordState>
           ? _value.selectedContactDetailsIndex
           : selectedContactDetailsIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      getAccountByEmailEntity: freezed == getAccountByEmailEntity
+          ? _value.getAccountByEmailEntity
+          : getAccountByEmailEntity // ignore: cast_nullable_to_non_nullable
+              as GetAccountByEmailEntity?,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -86,6 +94,7 @@ abstract class _$$ForgotPasswordStateImplCopyWith<$Res>
   $Res call(
       {ForgotPasswordStateStatus status,
       int selectedContactDetailsIndex,
+      GetAccountByEmailEntity? getAccountByEmailEntity,
       String? error});
 }
 
@@ -104,6 +113,7 @@ class __$$ForgotPasswordStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? selectedContactDetailsIndex = null,
+    Object? getAccountByEmailEntity = freezed,
     Object? error = freezed,
   }) {
     return _then(_$ForgotPasswordStateImpl(
@@ -115,6 +125,10 @@ class __$$ForgotPasswordStateImplCopyWithImpl<$Res>
           ? _value.selectedContactDetailsIndex
           : selectedContactDetailsIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      getAccountByEmailEntity: freezed == getAccountByEmailEntity
+          ? _value.getAccountByEmailEntity
+          : getAccountByEmailEntity // ignore: cast_nullable_to_non_nullable
+              as GetAccountByEmailEntity?,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -127,7 +141,10 @@ class __$$ForgotPasswordStateImplCopyWithImpl<$Res>
 
 class _$ForgotPasswordStateImpl implements _ForgotPasswordState {
   const _$ForgotPasswordStateImpl(
-      {required this.status, this.selectedContactDetailsIndex = 0, this.error});
+      {required this.status,
+      this.selectedContactDetailsIndex = 0,
+      this.getAccountByEmailEntity,
+      this.error});
 
   @override
   final ForgotPasswordStateStatus status;
@@ -135,11 +152,13 @@ class _$ForgotPasswordStateImpl implements _ForgotPasswordState {
   @JsonKey()
   final int selectedContactDetailsIndex;
   @override
+  final GetAccountByEmailEntity? getAccountByEmailEntity;
+  @override
   final String? error;
 
   @override
   String toString() {
-    return 'ForgotPasswordState(status: $status, selectedContactDetailsIndex: $selectedContactDetailsIndex, error: $error)';
+    return 'ForgotPasswordState(status: $status, selectedContactDetailsIndex: $selectedContactDetailsIndex, getAccountByEmailEntity: $getAccountByEmailEntity, error: $error)';
   }
 
   @override
@@ -152,12 +171,15 @@ class _$ForgotPasswordStateImpl implements _ForgotPasswordState {
                     selectedContactDetailsIndex) ||
                 other.selectedContactDetailsIndex ==
                     selectedContactDetailsIndex) &&
+            (identical(
+                    other.getAccountByEmailEntity, getAccountByEmailEntity) ||
+                other.getAccountByEmailEntity == getAccountByEmailEntity) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, status, selectedContactDetailsIndex, error);
+  int get hashCode => Object.hash(runtimeType, status,
+      selectedContactDetailsIndex, getAccountByEmailEntity, error);
 
   /// Create a copy of ForgotPasswordState
   /// with the given fields replaced by the non-null parameter values.
@@ -173,12 +195,15 @@ abstract class _ForgotPasswordState implements ForgotPasswordState {
   const factory _ForgotPasswordState(
       {required final ForgotPasswordStateStatus status,
       final int selectedContactDetailsIndex,
+      final GetAccountByEmailEntity? getAccountByEmailEntity,
       final String? error}) = _$ForgotPasswordStateImpl;
 
   @override
   ForgotPasswordStateStatus get status;
   @override
   int get selectedContactDetailsIndex;
+  @override
+  GetAccountByEmailEntity? get getAccountByEmailEntity;
   @override
   String? get error;
 
