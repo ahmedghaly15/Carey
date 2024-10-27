@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
 import 'package:carey/src/features/auth/presentation/views/account_setup_view.dart';
+import 'package:carey/src/features/auth/presentation/views/forgot_password_view.dart';
 import 'package:carey/src/features/auth/presentation/views/login_methods_view.dart';
 import 'package:carey/src/features/auth/presentation/views/login_view.dart';
 import 'package:carey/src/features/auth/presentation/views/register_view.dart';

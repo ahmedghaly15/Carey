@@ -48,6 +48,53 @@ class AuthRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ForgotPasswordView]
+class ForgotPasswordRoute extends PageRouteInfo<ForgotPasswordRouteArgs> {
+  ForgotPasswordRoute({
+    Key? key,
+    required String email,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ForgotPasswordRoute.name,
+          args: ForgotPasswordRouteArgs(
+            key: key,
+            email: email,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ForgotPasswordRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ForgotPasswordRouteArgs>();
+      return WrappedRoute(
+          child: ForgotPasswordView(
+        key: args.key,
+        email: args.email,
+      ));
+    },
+  );
+}
+
+class ForgotPasswordRouteArgs {
+  const ForgotPasswordRouteArgs({
+    this.key,
+    required this.email,
+  });
+
+  final Key? key;
+
+  final String email;
+
+  @override
+  String toString() {
+    return 'ForgotPasswordRouteArgs{key: $key, email: $email}';
+  }
+}
+
+/// generated route for
 /// [LoginMethodsView]
 class LoginMethodsRoute extends PageRouteInfo<void> {
   const LoginMethodsRoute({List<PageRouteInfo>? children})
