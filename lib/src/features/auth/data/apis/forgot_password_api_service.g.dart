@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'register_api_service.dart';
+part of 'forgot_password_api_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'register_api_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
-class _RegisterApiService implements RegisterApiService {
-  _RegisterApiService(
+class _ForgotPasswordApiService implements ForgotPasswordApiService {
+  _ForgotPasswordApiService(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
@@ -24,8 +24,8 @@ class _RegisterApiService implements RegisterApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<RegisterResponse> register(
-    AuthViaPasswordRequest params, [
+  Future<LoginResponse> getAccountByEmail(
+    GetAccountByEmailParams params, [
     CancelToken? cancelToken,
   ]) async {
     final _extra = <String, dynamic>{};
@@ -34,14 +34,14 @@ class _RegisterApiService implements RegisterApiService {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(params.toJson());
-    final _options = _setStreamType<RegisterResponse>(Options(
-      method: 'POST',
+    final _options = _setStreamType<LoginResponse>(Options(
+      method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'auth/register',
+          'users/get-account',
           queryParameters: queryParameters,
           data: _data,
           cancelToken: cancelToken,
@@ -52,9 +52,9 @@ class _RegisterApiService implements RegisterApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late RegisterResponse _value;
+    late LoginResponse _value;
     try {
-      _value = RegisterResponse.fromJson(_result.data!);
+      _value = LoginResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
