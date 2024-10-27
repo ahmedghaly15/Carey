@@ -1,10 +1,11 @@
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
-import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
 import 'package:carey/src/features/auth/data/models/contact_details.dart';
+import 'package:carey/src/features/auth/presentation/cubits/forgot_password/forgot_password_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -12,23 +13,32 @@ class ContactDetailsItem extends StatelessWidget {
   const ContactDetailsItem({
     super.key,
     required this.contact,
+    required this.isSelected,
+    required this.index,
   });
 
   final ContactDetails contact;
+  final bool isSelected;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
       decoration: BoxDecoration(
         color: AppColors.grey.withOpacity(0.25),
         borderRadius: BorderRadius.circular(10.r),
         border: Border.all(
-          color: Colors.black.withOpacity(0.1),
-          width: 1.w,
+          color: isSelected
+              ? AppColors.primaryColor
+              : Colors.black.withOpacity(0.1),
+          width: isSelected ? 2.5.w : 1.w,
         ),
       ),
       child: MaterialButton(
-        onPressed: () {},
+        onPressed: () => context
+            .read<ForgotPasswordCubit>()
+            .updateSelectedContactDetails(index),
         padding: EdgeInsets.symmetric(
           vertical: 34.h,
           horizontal: 26.w,
@@ -42,7 +52,7 @@ class ContactDetailsItem extends StatelessWidget {
             CircleAvatar(
               radius: 31.r,
               backgroundColor: AppColors.colorD9D9D9,
-              child: SvgPicture.asset(Assets.svgsSmsIcon),
+              child: SvgPicture.asset(contact.icon),
             ),
             MySizedBox.width27,
             Expanded(

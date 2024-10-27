@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/features/auth/presentation/widgets/forgot_password/contact_details_list.dart';
+import 'package:carey/src/features/auth/presentation/widgets/forgot_password/contact_details_list_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -53,7 +53,8 @@ class ForgotPasswordView extends StatelessWidget implements AutoRouteWrapper {
               padding: AppConstants.screenHorizontalPadding.add(
                 EdgeInsets.symmetric(vertical: 24.h),
               ),
-              sliver: const SliverToBoxAdapter(child: ContactDetailsList()),
+              sliver: const SliverToBoxAdapter(
+                  child: ContactDetailsListBlocBuilder()),
             ),
             SliverFillRemaining(
               hasScrollBody: false,
