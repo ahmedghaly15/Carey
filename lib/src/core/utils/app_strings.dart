@@ -64,4 +64,10 @@ class AppStrings {
   static const String congratulations = 'Congratulations!';
   static const String yourAccountIsReady =
       'Your account is ready to use.\nYou will be redirected to the home in a few seconds.....';
+  static const String forgotPassword = 'Forgot Password';
+  static const String selectWhichContactDetails =
+      'Select which contact details should we use to reset your password';
+  static const String via = 'Via';
+  static const String sms = 'SMS';
+  static const String writeYourEmailFirst = 'Write your email first, please';
 }

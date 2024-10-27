@@ -9,4 +9,5 @@ class AppColors {
   static const Color grey = Color(0xffDADADA);
   static const Color closerToDark = Color(0xff303030);
   static Color get textFormFieldFillColor => grey.withOpacity(0.25);
+  static const Color colorD9D9D9 = Color(0xffD9D9D9);
 }

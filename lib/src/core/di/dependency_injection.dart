@@ -4,6 +4,7 @@ import 'package:carey/src/features/auth/data/repositories/account_setup_repo.dar
 import 'package:carey/src/features/auth/data/repositories/set_fingerprint_repo.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
+import 'package:carey/src/features/auth/presentation/cubits/forgot_password/forgot_password_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -104,5 +105,8 @@ void _setupForCubits() {
       updateProfileUseCase: getIt.get<UpdateProfile>(),
       fingerprintRepo: getIt.get<SetFingerprintRepo>(),
     ),
+  );
+  getIt.registerLazySingleton<ForgotPasswordCubit>(
+    () => ForgotPasswordCubit(),
   );
 }

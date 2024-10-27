@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:carey/src/core/helpers/extensions.dart';
+import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carey/src/core/router/app_router.dart';
@@ -15,6 +17,7 @@ import 'package:carey/src/features/auth/presentation/widgets/auth_view_title_tex
 import 'package:carey/src/features/auth/presentation/widgets/login/login_via_password_button_bloc_listener.dart';
 import 'package:carey/src/features/auth/presentation/widgets/remember_me_bloc_builder.dart';
 import 'package:carey/src/features/auth/presentation/widgets/social_login_icon_buttons.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key, this.isPushedFromRegister = false});
@@ -36,7 +39,7 @@ class LoginViewBody extends StatelessWidget {
             const RememberMeBlocBuilder(),
             const LoginViaPasswordButtonBlocListener(),
             TextButton(
-              onPressed: () {},
+              onPressed: () => _forgotPassOnPressed(context),
               style: TextButton.styleFrom(
                 foregroundColor: AppColors.primaryColor,
                 textStyle: AppTextStyles.font15Regular,
@@ -61,5 +64,14 @@ class LoginViewBody extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _forgotPassOnPressed(BuildContext context) {
+    final email = context.read<FormAttributesCubit>().emailController.text;
+    if (email.isEmpty) {
+      context.showErrorDialog(AppStrings.writeYourEmailFirst);
+    } else {
+      context.pushRoute(ForgotPasswordRoute(email: email));
+    }
   }
 }
