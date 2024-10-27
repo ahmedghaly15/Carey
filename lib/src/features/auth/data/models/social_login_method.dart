@@ -19,7 +19,7 @@ class SocialLoginMethod {
     SocialLoginMethod(
       name: AppStrings.facebook,
       svgIcon: Assets.svgsFacebook,
-      onPressed: () {},
+      onPressed: () => launchThisUrl(EndPoints.facebookSignIn),
     ),
     SocialLoginMethod(
       name: AppStrings.google,

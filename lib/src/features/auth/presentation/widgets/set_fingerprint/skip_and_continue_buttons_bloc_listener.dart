@@ -1,4 +1,6 @@
 import 'package:carey/src/core/helpers/extensions.dart';
+import 'package:carey/src/core/themes/app_text_styles.dart';
+import 'package:carey/src/core/widgets/animated_loading_indicator.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/set_fingerprint_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/set_fingerprint_state.dart';
 import 'package:flutter/material.dart';
@@ -21,35 +23,8 @@ class SkipAndContinueButtonsBlocListener extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<SetFingerprintCubit, SetFingerprintState>(
-      listenWhen: (_, current) =>
-          current.status == SetFingerprintStateStatus.setFingerprintError ||
-          current.status == SetFingerprintStateStatus.setFingerprintSuccess ||
-          current.status == SetFingerprintStateStatus.updateProfileLoading ||
-          current.status == SetFingerprintStateStatus.updateProfileSuccess ||
-          current.status == SetFingerprintStateStatus.updateProfileError,
-      listener: (context, state) {
-        switch (state.status) {
-          case SetFingerprintStateStatus.updateProfileLoading:
-            context.showLoadingDialog();
-            break;
-          case SetFingerprintStateStatus.setFingerprintSuccess:
-            context
-                .read<SetFingerprintCubit>()
-                .updateProfile(updateProfileParams);
-            break;
-          case SetFingerprintStateStatus.updateProfileSuccess:
-            context.popTop();
-            // TODO: navigate to home
-            break;
-          case SetFingerprintStateStatus.updateProfileError:
-          case SetFingerprintStateStatus.setFingerprintError:
-            context.popTop();
-            context.showErrorDialog(state.error!);
-            break;
-          default:
-            return;
-        }
-      },
+      listenWhen: (_, current) => _listenWhen(current),
+      listener: (context, state) => _listener(state, context),
       child: Row(
         children: [
           Expanded(
@@ -77,5 +52,77 @@ class SkipAndContinueButtonsBlocListener extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _listener(SetFingerprintState state, BuildContext context) {
+    switch (state.status) {
+      case SetFingerprintStateStatus.setFingerprintSuccess:
+        _showSuccessDialogAndExecute(
+          context,
+          afterShowingSuccessDialog: () => context
+              .read<SetFingerprintCubit>()
+              .updateProfile(updateProfileParams),
+        );
+        break;
+      case SetFingerprintStateStatus.setFingerprintError:
+        context.showErrorDialog(state.error!);
+        break;
+      case SetFingerprintStateStatus.updateProfileLoading:
+        context.showLoadingDialog();
+        break;
+      case SetFingerprintStateStatus.updateProfileSuccess:
+        _showSuccessDialogAndExecute(
+          context,
+          afterShowingSuccessDialog: () {
+            // TODO: use pushAndPopUntil => pop until the name is AuthRoute and go home
+          },
+        );
+        break;
+      case SetFingerprintStateStatus.updateProfileError:
+        context.popTop();
+        context.showErrorDialog(state.error!);
+        break;
+
+      default:
+        context.showLoadingDialog();
+    }
+  }
+
+  void _showSuccessDialogAndExecute(
+    BuildContext context, {
+    required VoidCallback afterShowingSuccessDialog,
+  }) {
+    context.showResultDialog(
+      barrierDismissible: false,
+      hasOkButtonInActions: false,
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            AppStrings.yourAccountIsReady,
+            style: AppTextStyles.poppinsFont14RegularDarkGrey,
+            textAlign: TextAlign.center,
+          ),
+          MySizedBox.height8,
+          const AnimatedLoadingIndicator(),
+        ],
+      ),
+    );
+    Future.delayed(
+      const Duration(seconds: 3),
+      () {
+        context.popTop();
+        afterShowingSuccessDialog();
+      },
+    );
+  }
+
+  bool _listenWhen(SetFingerprintState current) {
+    return current.status == SetFingerprintStateStatus.setFingerprintError ||
+        current.status == SetFingerprintStateStatus.setFingerprintSuccess ||
+        current.status == SetFingerprintStateStatus.updateProfileLoading ||
+        current.status == SetFingerprintStateStatus.updateProfileSuccess ||
+        current.status == SetFingerprintStateStatus.updateProfileError;
   }
 }

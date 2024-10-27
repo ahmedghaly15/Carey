@@ -89,5 +89,9 @@ class Assets {
   /// Assets for svgsSomethingWrong
   /// assets/svgs/something-wrong.svg
   static const String svgsSomethingWrong = "assets/svgs/something-wrong.svg";
+
+  /// Assets for svgsSuccessDialogImage
+  /// assets/svgs/success-dialog-image.svg
+  static const String svgsSuccessDialogImage = "assets/svgs/success-dialog-image.svg";
 }
 
