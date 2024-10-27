@@ -70,4 +70,5 @@ class AppStrings {
   static const String via = 'Via';
   static const String sms = 'SMS';
   static const String writeYourEmailFirst = 'Write your email first, please';
+  static const String tryAgain = 'Try Again';
 }
