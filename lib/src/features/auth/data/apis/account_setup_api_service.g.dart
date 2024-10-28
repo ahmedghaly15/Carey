@@ -41,7 +41,7 @@ class _AccountSetupApiService implements AccountSetupApiService {
     )
         .compose(
           _dio.options,
-          'https://carey-production.up.railway.app/users/update-my-profile',
+          'users/update-my-profile',
           queryParameters: queryParameters,
           data: _data,
           cancelToken: cancelToken,

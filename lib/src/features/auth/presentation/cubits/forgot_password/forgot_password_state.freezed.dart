@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ForgotPasswordState {
   ForgotPasswordStateStatus get status => throw _privateConstructorUsedError;
   int get selectedContactDetailsIndex => throw _privateConstructorUsedError;
+  List<ContactDetails>? get contactDetails =>
+      throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
 
   /// Create a copy of ForgotPasswordState
@@ -36,6 +38,7 @@ abstract class $ForgotPasswordStateCopyWith<$Res> {
   $Res call(
       {ForgotPasswordStateStatus status,
       int selectedContactDetailsIndex,
+      List<ContactDetails>? contactDetails,
       String? error});
 }
 
@@ -56,6 +59,7 @@ class _$ForgotPasswordStateCopyWithImpl<$Res, $Val extends ForgotPasswordState>
   $Res call({
     Object? status = null,
     Object? selectedContactDetailsIndex = null,
+    Object? contactDetails = freezed,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -67,6 +71,10 @@ class _$ForgotPasswordStateCopyWithImpl<$Res, $Val extends ForgotPasswordState>
           ? _value.selectedContactDetailsIndex
           : selectedContactDetailsIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      contactDetails: freezed == contactDetails
+          ? _value.contactDetails
+          : contactDetails // ignore: cast_nullable_to_non_nullable
+              as List<ContactDetails>?,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -86,6 +94,7 @@ abstract class _$$ForgotPasswordStateImplCopyWith<$Res>
   $Res call(
       {ForgotPasswordStateStatus status,
       int selectedContactDetailsIndex,
+      List<ContactDetails>? contactDetails,
       String? error});
 }
 
@@ -104,6 +113,7 @@ class __$$ForgotPasswordStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? selectedContactDetailsIndex = null,
+    Object? contactDetails = freezed,
     Object? error = freezed,
   }) {
     return _then(_$ForgotPasswordStateImpl(
@@ -115,6 +125,10 @@ class __$$ForgotPasswordStateImplCopyWithImpl<$Res>
           ? _value.selectedContactDetailsIndex
           : selectedContactDetailsIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      contactDetails: freezed == contactDetails
+          ? _value._contactDetails
+          : contactDetails // ignore: cast_nullable_to_non_nullable
+              as List<ContactDetails>?,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -127,19 +141,33 @@ class __$$ForgotPasswordStateImplCopyWithImpl<$Res>
 
 class _$ForgotPasswordStateImpl implements _ForgotPasswordState {
   const _$ForgotPasswordStateImpl(
-      {required this.status, this.selectedContactDetailsIndex = 0, this.error});
+      {required this.status,
+      this.selectedContactDetailsIndex = 0,
+      final List<ContactDetails>? contactDetails,
+      this.error})
+      : _contactDetails = contactDetails;
 
   @override
   final ForgotPasswordStateStatus status;
   @override
   @JsonKey()
   final int selectedContactDetailsIndex;
+  final List<ContactDetails>? _contactDetails;
+  @override
+  List<ContactDetails>? get contactDetails {
+    final value = _contactDetails;
+    if (value == null) return null;
+    if (_contactDetails is EqualUnmodifiableListView) return _contactDetails;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? error;
 
   @override
   String toString() {
-    return 'ForgotPasswordState(status: $status, selectedContactDetailsIndex: $selectedContactDetailsIndex, error: $error)';
+    return 'ForgotPasswordState(status: $status, selectedContactDetailsIndex: $selectedContactDetailsIndex, contactDetails: $contactDetails, error: $error)';
   }
 
   @override
@@ -152,12 +180,18 @@ class _$ForgotPasswordStateImpl implements _ForgotPasswordState {
                     selectedContactDetailsIndex) ||
                 other.selectedContactDetailsIndex ==
                     selectedContactDetailsIndex) &&
+            const DeepCollectionEquality()
+                .equals(other._contactDetails, _contactDetails) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, status, selectedContactDetailsIndex, error);
+  int get hashCode => Object.hash(
+      runtimeType,
+      status,
+      selectedContactDetailsIndex,
+      const DeepCollectionEquality().hash(_contactDetails),
+      error);
 
   /// Create a copy of ForgotPasswordState
   /// with the given fields replaced by the non-null parameter values.
@@ -173,12 +207,15 @@ abstract class _ForgotPasswordState implements ForgotPasswordState {
   const factory _ForgotPasswordState(
       {required final ForgotPasswordStateStatus status,
       final int selectedContactDetailsIndex,
+      final List<ContactDetails>? contactDetails,
       final String? error}) = _$ForgotPasswordStateImpl;
 
   @override
   ForgotPasswordStateStatus get status;
   @override
   int get selectedContactDetailsIndex;
+  @override
+  List<ContactDetails>? get contactDetails;
   @override
   String? get error;
 

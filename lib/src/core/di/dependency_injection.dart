@@ -1,6 +1,8 @@
 import 'package:carey/src/core/services/local_auth.dart';
 import 'package:carey/src/features/auth/data/apis/account_setup_api_service.dart';
+import 'package:carey/src/features/auth/data/apis/forgot_password_api_service.dart';
 import 'package:carey/src/features/auth/data/repositories/account_setup_repo.dart';
+import 'package:carey/src/features/auth/data/repositories/forgot_password_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/set_fingerprint_repo.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
@@ -61,6 +63,9 @@ void _setupForApiServices() {
   getIt.registerLazySingleton<AccountSetupApiService>(
     () => AccountSetupApiService(dio),
   );
+  getIt.registerLazySingleton<ForgotPasswordApiService>(
+    () => ForgotPasswordApiService(dio),
+  );
 }
 
 void _setupForRepos() {
@@ -75,6 +80,9 @@ void _setupForRepos() {
   );
   getIt.registerLazySingleton<SetFingerprintRepo>(
     () => SetFingerprintRepo(getIt.get<LocalAuth>()),
+  );
+  getIt.registerLazySingleton<ForgotPasswordRepo>(
+    () => ForgotPasswordRepo(getIt.get<ForgotPasswordApiService>()),
   );
 }
 
@@ -91,22 +99,22 @@ void _setupForCubits() {
   getIt.registerFactory<FormAttributesCubit>(
     () => FormAttributesCubit(),
   );
-  getIt.registerLazySingleton<LoginCubit>(
+  getIt.registerFactory<LoginCubit>(
     () => LoginCubit(getIt.get<LoginViaPassword>()),
   );
-  getIt.registerLazySingleton<RegisterCubit>(
+  getIt.registerFactory<RegisterCubit>(
     () => RegisterCubit(getIt.get<RegisterRepo>()),
   );
   getIt.registerFactory<AccountSetupCubit>(
     () => AccountSetupCubit(),
   );
-  getIt.registerLazySingleton<SetFingerprintCubit>(
+  getIt.registerFactory<SetFingerprintCubit>(
     () => SetFingerprintCubit(
       updateProfileUseCase: getIt.get<UpdateProfile>(),
       fingerprintRepo: getIt.get<SetFingerprintRepo>(),
     ),
   );
-  getIt.registerLazySingleton<ForgotPasswordCubit>(
-    () => ForgotPasswordCubit(),
+  getIt.registerFactory<ForgotPasswordCubit>(
+    () => ForgotPasswordCubit(getIt.get<ForgotPasswordRepo>()),
   );
 }

@@ -23,7 +23,7 @@ class LoginResponse {
 @JsonSerializable(explicitToJson: true)
 class LoginData {
   final CareyUser user;
-  final String token;
+  final String? token;
 
   const LoginData({
     required this.user,

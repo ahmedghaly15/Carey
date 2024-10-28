@@ -41,7 +41,7 @@ class _LoginApiService implements LoginApiService {
     )
         .compose(
           _dio.options,
-          'https://carey-production.up.railway.app/auth/login',
+          'auth/login',
           queryParameters: queryParameters,
           data: _data,
           cancelToken: cancelToken,

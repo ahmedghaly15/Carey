@@ -3,7 +3,6 @@ import 'package:dio/dio.dart';
 import 'package:carey/src/core/api/api_result.dart';
 import 'package:carey/src/core/utils/functions/execute_and_handle_errors.dart';
 import 'package:carey/src/features/auth/data/apis/register_api_service.dart';
-import 'package:carey/src/features/auth/data/mapper/auth_mapper.dart';
 import 'package:carey/src/features/auth/data/models/auth_via_password_request.dart';
 import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
 
@@ -29,7 +28,7 @@ class RegisterRepo {
       params,
       cancelToken,
     );
-    final authResponseEntity = AuthMapper.toAuthEntity(
+    final authResponseEntity = AuthResponseEntity.toAuthEntity(
       user: registerResponse.data.newUser,
       token: registerResponse.data.token,
     );
