@@ -1,12 +1,15 @@
 import 'package:carey/src/core/services/local_auth.dart';
 import 'package:carey/src/features/auth/data/apis/account_setup_api_service.dart';
 import 'package:carey/src/features/auth/data/apis/forgot_password_api_service.dart';
+import 'package:carey/src/features/auth/data/apis/pin_code_verification_api_service.dart';
 import 'package:carey/src/features/auth/data/repositories/account_setup_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/forgot_password_repo.dart';
+import 'package:carey/src/features/auth/data/repositories/pin_code_verification_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/set_fingerprint_repo.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/forgot_password/forgot_password_cubit.dart';
+import 'package:carey/src/features/auth/presentation/cubits/pin_code_verification/pin_code_verification_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -66,6 +69,9 @@ void _setupForApiServices() {
   getIt.registerLazySingleton<ForgotPasswordApiService>(
     () => ForgotPasswordApiService(dio),
   );
+  getIt.registerLazySingleton<PinCodeVerificationApiService>(
+    () => PinCodeVerificationApiService(dio),
+  );
 }
 
 void _setupForRepos() {
@@ -83,6 +89,9 @@ void _setupForRepos() {
   );
   getIt.registerLazySingleton<ForgotPasswordRepo>(
     () => ForgotPasswordRepo(getIt.get<ForgotPasswordApiService>()),
+  );
+  getIt.registerLazySingleton<PinCodeVerificationRepo>(
+    () => PinCodeVerificationRepo(getIt.get<PinCodeVerificationApiService>()),
   );
 }
 
@@ -116,5 +125,8 @@ void _setupForCubits() {
   );
   getIt.registerFactory<ForgotPasswordCubit>(
     () => ForgotPasswordCubit(getIt.get<ForgotPasswordRepo>()),
+  );
+  getIt.registerFactory<PinCodeVerificationCubit>(
+    () => PinCodeVerificationCubit(getIt.get<PinCodeVerificationRepo>()),
   );
 }

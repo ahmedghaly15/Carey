@@ -1,4 +1,6 @@
+import 'package:carey/src/features/auth/presentation/cubits/pin_code_verification/pin_code_verification_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pinput/pinput.dart';
 
@@ -10,9 +12,10 @@ class PinCodePinPut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pinVerificationCubit = context.read<PinCodeVerificationCubit>();
     return Pinput(
       autofocus: true,
-      // controller: controller,
+      controller: pinVerificationCubit.pinController,
       pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
       showCursor: true,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -38,7 +41,7 @@ class PinCodePinPut extends StatelessWidget {
           ),
         ),
       ),
-      // onCompleted: (onCompleted),
+      onCompleted: (_) => pinVerificationCubit.verifyPin(),
       length: 6,
     );
   }
