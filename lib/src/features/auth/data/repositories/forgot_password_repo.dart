@@ -1,3 +1,4 @@
+import 'package:carey/src/features/auth/data/models/send_pin_params.dart';
 import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
 import 'package:dio/dio.dart';
 
@@ -43,5 +44,17 @@ class ForgotPasswordRepo {
       ),
     ];
     return contactDetails;
+  }
+
+  Future<ApiResult<void>> sendMailPin(SendPinParams params) {
+    return executeAndHandleErrors<void>(
+      () async => await _apiService.sendMailPin(params),
+    );
+  }
+
+  Future<ApiResult<void>> sendSmsPin(SendPinParams params) {
+    return executeAndHandleErrors<void>(
+      () async => await _apiService.sendSmsPin(params),
+    );
   }
 }

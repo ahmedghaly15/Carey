@@ -1,3 +1,4 @@
+import 'package:carey/src/features/auth/data/models/send_pin_params.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -15,6 +16,18 @@ abstract class ForgotPasswordApiService {
   @GET(EndPoints.getAccountByEmail)
   Future<LoginResponse> getAccountByEmail(
     @Body() GetAccountByEmailParams params, [
+    @CancelRequest() CancelToken? cancelToken,
+  ]);
+
+  @POST(EndPoints.sendMailPin)
+  Future<void> sendMailPin(
+    @Body() SendPinParams params, [
+    @CancelRequest() CancelToken? cancelToken,
+  ]);
+
+  @POST(EndPoints.sendSmsPin)
+  Future<void> sendSmsPin(
+    @Body() SendPinParams params, [
     @CancelRequest() CancelToken? cancelToken,
   ]);
 }
