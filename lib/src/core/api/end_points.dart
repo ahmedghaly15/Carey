@@ -13,4 +13,5 @@ class EndPoints {
   static const String getAccountByEmail = '${users}get-account';
   static const String sendMailPin = '${users}send-mail-pin';
   static const String sendSmsPin = '${users}send-sms-pin';
+  static const String updatePassword = '${users}update-password';
 }

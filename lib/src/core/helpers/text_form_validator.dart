@@ -35,4 +35,14 @@ class TextFormValidator {
     }
     return null;
   }
+
+  static String? validateConfirmPass({
+    required String pass,
+    required String confirmPass,
+  }) {
+    if (pass != confirmPass) {
+      return AppStrings.passwordsDoNotMatch;
+    }
+    return null;
+  }
 }

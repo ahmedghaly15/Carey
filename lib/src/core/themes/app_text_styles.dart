@@ -88,4 +88,8 @@ class AppTextStyles {
         fontSize: 16.sp,
         fontWeight: FontWeight.w400,
       );
+  static TextStyle get font16Medium => TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w500,
+      );
 }
