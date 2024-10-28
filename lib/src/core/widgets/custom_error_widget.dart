@@ -24,7 +24,7 @@ class CustomErrorWidget extends StatelessWidget {
       children: [
         SvgPicture.asset(Assets.svgsSomethingWrong),
         Container(
-          margin: EdgeInsets.symmetric(vertical: 16.h),
+          margin: EdgeInsets.symmetric(vertical: 16.h, horizontal: 24.w),
           child: Text(
             error,
             style: AppTextStyles.font18Regular,

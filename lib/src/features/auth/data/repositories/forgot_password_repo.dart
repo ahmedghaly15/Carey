@@ -1,8 +1,12 @@
 import 'package:carey/src/core/api/api_result.dart';
+import 'package:carey/src/core/utils/app_assets.dart';
+import 'package:carey/src/core/utils/app_constants.dart';
+import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/utils/functions/execute_and_handle_errors.dart';
 import 'package:carey/src/features/auth/data/apis/forgot_password_api_service.dart';
+import 'package:carey/src/features/auth/data/models/contact_details.dart';
 import 'package:carey/src/features/auth/data/models/get_account_by_email_params.dart';
-import 'package:carey/src/features/auth/domain/entities/get_account_by_email_entity.dart';
+import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
 import 'package:dio/dio.dart';
 
 class ForgotPasswordRepo {
@@ -10,22 +14,36 @@ class ForgotPasswordRepo {
 
   ForgotPasswordRepo(this._apiService);
 
-  Future<ApiResult<GetAccountByEmailEntity>> getAccountByEmail(
+  Future<ApiResult<List<ContactDetails>>> getAccountByEmail(
     GetAccountByEmailParams params, [
     CancelToken? cancelToken,
   ]) {
-    return executeAndHandleErrors<GetAccountByEmailEntity>(
-      () async => await _getAccountAndMapToEntity(params, cancelToken),
+    return executeAndHandleErrors<List<ContactDetails>>(
+      () async => await _getAccountAndReturnContactDetails(params, cancelToken),
     );
   }
 
-  Future<GetAccountByEmailEntity> _getAccountAndMapToEntity(
+  Future<List<ContactDetails>> _getAccountAndReturnContactDetails(
     GetAccountByEmailParams params, [
     CancelToken? cancelToken,
   ]) async {
     final response = await _apiService.getAccountByEmail(params, cancelToken);
-    final getAccountByEmailEntity =
-        GetAccountByEmailEntity.toGetAccountByEmailEntity(response);
-    return getAccountByEmailEntity;
+    currentUserData = AuthResponseEntity(
+      user: response.data.user,
+      token: response.data.token,
+    );
+    final List<ContactDetails> contactDetails = [
+      ContactDetails(
+        name: AppStrings.sms,
+        icon: Assets.svgsSmsIcon,
+        contact: response.data.user.phone,
+      ),
+      ContactDetails(
+        name: AppStrings.email,
+        icon: Assets.svgsEmailIcon,
+        contact: response.data.user.email,
+      ),
+    ];
+    return contactDetails;
   }
 }
