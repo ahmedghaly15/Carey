@@ -3,6 +3,7 @@ import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/functions/execute_and_handle_errors.dart';
 import 'package:carey/src/features/auth/data/apis/pin_code_verification_api_service.dart';
 import 'package:carey/src/features/auth/data/models/pin_code_verification_params.dart';
+import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
 import 'package:dio/dio.dart';
 
 class PinCodeVerificationRepo {
@@ -10,16 +11,28 @@ class PinCodeVerificationRepo {
 
   PinCodeVerificationRepo(this._apiService);
 
-  Future<ApiResult<void>> verifyPin(
+  Future<ApiResult<AuthResponseEntity>> verifyPin(
     PinCodeVerificationParams params, [
     CancelToken? cancelToken,
   ]) {
-    return executeAndHandleErrors<void>(
-      () async => await _apiService.verifyPin(
-        currentUserData!.user.id,
-        params,
-        cancelToken,
-      ),
+    return executeAndHandleErrors<AuthResponseEntity>(
+      () async => await _verifyPinAndGetUserToken(params, cancelToken),
     );
+  }
+
+  Future<AuthResponseEntity> _verifyPinAndGetUserToken(
+    PinCodeVerificationParams params,
+    CancelToken? cancelToken,
+  ) async {
+    final result = await _apiService.verifyPin(
+      currentUserData!.user.id,
+      params,
+      cancelToken,
+    );
+    final authResponseEntity = AuthResponseEntity.toAuthEntity(
+      user: result.data.user,
+      token: result.data.token,
+    );
+    return authResponseEntity;
   }
 }
