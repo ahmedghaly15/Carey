@@ -15,7 +15,8 @@ class ContactDetailsListBlocBuilder extends StatelessWidget {
     return BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
       buildWhen: (_, current) =>
           current.status ==
-          ForgotPasswordStateStatus.updateSelectedContactDetails,
+              ForgotPasswordStateStatus.updateSelectedContactDetails ||
+          current.status == ForgotPasswordStateStatus.getAccountByEmailSuccess,
       builder: (_, state) => Wrap(
         spacing: 23.h,
         runSpacing: 23.w,
@@ -25,7 +26,7 @@ class ContactDetailsListBlocBuilder extends StatelessWidget {
         children: List.generate(
           AppConstants.forgotPassContactDetails.length,
           (index) => ContactDetailsItem(
-            contact: AppConstants.forgotPassContactDetails[index],
+            contact: state.contactDetails![index],
             index: index,
             isSelected: state.selectedContactDetailsIndex == index,
           ),
