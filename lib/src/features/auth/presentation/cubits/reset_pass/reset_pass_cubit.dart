@@ -1,3 +1,5 @@
+import 'package:carey/src/core/helpers/remember_me_helper.dart';
+import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/features/auth/data/models/update_pass_params.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_password.dart';
 import 'package:carey/src/features/auth/presentation/cubits/reset_pass/reset_pass_state.dart';
@@ -47,6 +49,35 @@ class ResetPassCubit extends Cubit<ResetPassState> {
     if (formKey.currentState!.validate()) {
       _resetPass();
     }
+  }
+
+  void togglePassVisibility() {
+    emit(state.copyWith(
+      status: ResetPassStateStatus.togglePasswordVisibility,
+      isPasswordObscured: !state.isPasswordObscured,
+    ));
+  }
+
+  void toggleConfirmPassVisibility() {
+    emit(state.copyWith(
+      status: ResetPassStateStatus.toggleConfirmPassVisibility,
+      isConfirmPassObscured: !state.isConfirmPassObscured,
+    ));
+  }
+
+  void toggleRememberMe() {
+    emit(state.copyWith(
+      status: ResetPassStateStatus.toggleRememberMe,
+      rememberMe: !state.rememberMe,
+    ));
+  }
+
+  Future<void> handleRememberingEmailAndPassword() async {
+    await RememberMeHelper.handleRememberingEmailAndPassword(
+      isRemembered: state.rememberMe,
+      emailValue: currentUserData!.user.email,
+      passwordValue: passController.text,
+    );
   }
 
   void _disposeControllers() {
