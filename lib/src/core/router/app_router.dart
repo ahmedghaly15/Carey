@@ -4,6 +4,7 @@ import 'package:carey/src/features/auth/presentation/views/account_setup_view.da
 import 'package:carey/src/features/auth/presentation/views/forgot_password_view.dart';
 import 'package:carey/src/features/auth/presentation/views/login_methods_view.dart';
 import 'package:carey/src/features/auth/presentation/views/login_view.dart';
+import 'package:carey/src/features/auth/presentation/views/pin_code_verification_view.dart';
 import 'package:carey/src/features/auth/presentation/views/register_view.dart';
 import 'package:carey/src/features/auth/presentation/views/set_fingerprint_view.dart';
 import 'package:carey/src/features/splash/presentation/views/splash_view.dart';

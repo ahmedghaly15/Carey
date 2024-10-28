@@ -162,6 +162,25 @@ class LoginRouteArgs {
 }
 
 /// generated route for
+/// [PinCodeVerificationView]
+class PinCodeVerificationRoute extends PageRouteInfo<void> {
+  const PinCodeVerificationRoute({List<PageRouteInfo>? children})
+      : super(
+          PinCodeVerificationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PinCodeVerificationRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const PinCodeVerificationView();
+    },
+  );
+}
+
+/// generated route for
 /// [RegisterView]
 class RegisterRoute extends PageRouteInfo<RegisterRouteArgs> {
   RegisterRoute({

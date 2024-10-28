@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:carey/src/core/helpers/extensions.dart';
+import 'package:carey/src/core/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,6 +27,7 @@ class ForgotPassContinueBlocListener extends StatelessWidget {
             context.popTop();
             context.showResultDialog(
               contentText: AppStrings.pinCodeHasBeenSent,
+              okButtonOnPressed: () => _resultDialogOkButtonOnPressed(context),
             );
             break;
           case ForgotPasswordStateStatus.sendPinError:
@@ -43,6 +46,13 @@ class ForgotPassContinueBlocListener extends StatelessWidget {
         text: AppStrings.continueWord,
       ),
     );
+  }
+
+  void _resultDialogOkButtonOnPressed(BuildContext context) {
+    context.popTop();
+    Future.delayed(const Duration(milliseconds: 200), () {
+      context.pushRoute(const PinCodeVerificationRoute());
+    });
   }
 
   bool _listenWhen(ForgotPasswordState current) {
