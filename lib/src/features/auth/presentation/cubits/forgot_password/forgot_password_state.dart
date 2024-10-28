@@ -9,6 +9,9 @@ enum ForgotPasswordStateStatus {
   getAccountByEmailLoading,
   getAccountByEmailSuccess,
   getAccountByEmailError,
+  sendPinLoading,
+  sendPinSuccess,
+  sendPinError,
 }
 
 @freezed

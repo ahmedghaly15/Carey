@@ -1,5 +1,7 @@
 import 'package:carey/src/core/helpers/extensions.dart';
+import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/features/auth/data/models/get_account_by_email_params.dart';
+import 'package:carey/src/features/auth/data/models/send_pin_params.dart';
 import 'package:carey/src/features/auth/data/repositories/forgot_password_repo.dart';
 import 'package:carey/src/features/auth/presentation/cubits/forgot_password/forgot_password_state.dart';
 import 'package:dio/dio.dart';
@@ -41,6 +43,22 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
       )),
       failure: (failure) => emit(state.copyWith(
         status: ForgotPasswordStateStatus.getAccountByEmailError,
+        error: failure.error[0],
+      )),
+    );
+  }
+
+  void sendPin() async {
+    emit(state.copyWith(status: ForgotPasswordStateStatus.sendPinLoading));
+    final params = SendPinParams(userId: currentUserData!.user.id);
+    final result = state.selectedContactDetailsIndex == 0
+        ? await _forgotPasswordRepo.sendSmsPin(params)
+        : await _forgotPasswordRepo.sendMailPin(params);
+    result.when(
+      success: (_) => emit(
+          state.copyWith(status: ForgotPasswordStateStatus.sendPinSuccess)),
+      failure: (failure) => emit(state.copyWith(
+        status: ForgotPasswordStateStatus.sendPinError,
         error: failure.error[0],
       )),
     );
