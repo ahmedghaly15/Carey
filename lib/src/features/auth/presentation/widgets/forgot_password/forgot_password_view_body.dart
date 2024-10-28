@@ -50,7 +50,11 @@ class ForgotPasswordViewBody extends StatelessWidget {
                   margin: AppConstants.screenHorizontalPadding.add(
                     EdgeInsets.only(bottom: 24.h),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    print(
+                      currentUserData.toString(),
+                    );
+                  },
                   text: AppStrings.continueWord,
                 ),
               ],

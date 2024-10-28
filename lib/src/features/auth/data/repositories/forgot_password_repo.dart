@@ -1,7 +1,9 @@
+import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
 import 'package:dio/dio.dart';
 
 import 'package:carey/src/core/api/api_result.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
+import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/utils/functions/execute_and_handle_errors.dart';
 import 'package:carey/src/features/auth/data/apis/forgot_password_api_service.dart';
@@ -27,6 +29,7 @@ class ForgotPasswordRepo {
     CancelToken? cancelToken,
   ]) async {
     final response = await _apiService.getAccountByEmail(params, cancelToken);
+    currentUserData = AuthResponseEntity.toAuthEntity(user: response.data.user);
     final List<ContactDetails> contactDetails = [
       ContactDetails(
         name: AppStrings.sms,
