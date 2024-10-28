@@ -18,6 +18,7 @@ class ResultDialog extends StatelessWidget {
     this.titleText,
     this.titleWidget,
     this.hasOkButtonInActions = true,
+    this.okButtonOnPressed,
   });
 
   final String? contentText;
@@ -28,6 +29,7 @@ class ResultDialog extends StatelessWidget {
   final List<Widget>? actions;
   final EdgeInsetsGeometry? contentPadding;
   final EdgeInsetsGeometry? actionsPadding;
+  final VoidCallback? okButtonOnPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +57,13 @@ class ResultDialog extends StatelessWidget {
             vertical: 24.h,
             horizontal: 16.w,
           ),
-      actions: hasOkButtonInActions ? [const OkTextButton()] : actions,
+      actions: hasOkButtonInActions
+          ? [
+              OkTextButton(
+                onPressed: okButtonOnPressed,
+              ),
+            ]
+          : actions,
       actionsPadding: actionsPadding,
     );
   }
