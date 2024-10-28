@@ -27,8 +27,13 @@ class ForgotPassContinueBlocListener extends StatelessWidget {
             context.popTop();
             context.showResultDialog(
               contentText:
-                  '${AppStrings.pinCodeHasBeenSent}. ${AppStrings.checkYourInbox}',
-              okButtonOnPressed: () => _resultDialogOkButtonOnPressed(context),
+                  '${AppStrings.pinCodeHasBeenSentTo}. ${AppStrings.checkYourInbox}',
+              okButtonOnPressed: () => _resultDialogOkButtonOnPressed(
+                context: context,
+                contact: state
+                    .contactDetails![state.selectedContactDetailsIndex]
+                    .contact!,
+              ),
             );
             break;
           case ForgotPasswordStateStatus.sendPinError:
@@ -49,10 +54,13 @@ class ForgotPassContinueBlocListener extends StatelessWidget {
     );
   }
 
-  void _resultDialogOkButtonOnPressed(BuildContext context) {
+  void _resultDialogOkButtonOnPressed({
+    required BuildContext context,
+    required String contact,
+  }) {
     context.popTop();
     Future.delayed(const Duration(milliseconds: 200), () {
-      context.pushRoute(PinCodeVerificationRoute());
+      context.pushRoute(PinCodeVerificationRoute(contact: contact));
     });
   }
 

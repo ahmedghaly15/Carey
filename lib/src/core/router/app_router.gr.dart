@@ -167,13 +167,13 @@ class PinCodeVerificationRoute
     extends PageRouteInfo<PinCodeVerificationRouteArgs> {
   PinCodeVerificationRoute({
     Key? key,
-    String contactType = AppStrings.email,
+    required String contact,
     List<PageRouteInfo>? children,
   }) : super(
           PinCodeVerificationRoute.name,
           args: PinCodeVerificationRouteArgs(
             key: key,
-            contactType: contactType,
+            contact: contact,
           ),
           initialChildren: children,
         );
@@ -183,12 +183,12 @@ class PinCodeVerificationRoute
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<PinCodeVerificationRouteArgs>(
-          orElse: () => const PinCodeVerificationRouteArgs());
-      return PinCodeVerificationView(
+      final args = data.argsAs<PinCodeVerificationRouteArgs>();
+      return WrappedRoute(
+          child: PinCodeVerificationView(
         key: args.key,
-        contactType: args.contactType,
-      );
+        contact: args.contact,
+      ));
     },
   );
 }
@@ -196,16 +196,16 @@ class PinCodeVerificationRoute
 class PinCodeVerificationRouteArgs {
   const PinCodeVerificationRouteArgs({
     this.key,
-    this.contactType = AppStrings.email,
+    required this.contact,
   });
 
   final Key? key;
 
-  final String contactType;
+  final String contact;
 
   @override
   String toString() {
-    return 'PinCodeVerificationRouteArgs{key: $key, contactType: $contactType}';
+    return 'PinCodeVerificationRouteArgs{key: $key, contact: $contact}';
   }
 }
 
