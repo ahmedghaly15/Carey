@@ -39,9 +39,11 @@ class ContactDetailsItem extends StatelessWidget {
         ),
       ),
       child: MaterialButton(
-        onPressed: () => context
-            .read<ForgotPasswordCubit>()
-            .updateSelectedContactDetails(index),
+        onPressed: contact.contact.isNullOrEmpty
+            ? null
+            : () => context
+                .read<ForgotPasswordCubit>()
+                .updateSelectedContactDetails(index),
         padding: EdgeInsets.symmetric(
           vertical: 34.h,
           horizontal: 26.w,
@@ -83,10 +85,10 @@ class ContactDetailsItem extends StatelessWidget {
   }
 
   String _contactText() {
-    return _isEmail(contact.contact!)
-        ? _maskEmail(contact.contact!)
-        : (contact.contact.isNullOrEmpty
-            ? AppStrings.youDontHavePhoneNumber
+    return contact.contact.isNullOrEmpty
+        ? AppStrings.youDontHavePhoneNumber
+        : (_isEmail(contact.contact!)
+            ? _maskEmail(contact.contact!)
             : _maskPhoneNumber(contact.contact!));
   }
 

@@ -114,7 +114,7 @@ void _setupForCubits() {
       fingerprintRepo: getIt.get<SetFingerprintRepo>(),
     ),
   );
-  getIt.registerLazySingleton<ForgotPasswordCubit>(
+  getIt.registerFactory<ForgotPasswordCubit>(
     () => ForgotPasswordCubit(getIt.get<ForgotPasswordRepo>()),
   );
 }

@@ -70,7 +70,8 @@ class AccountSetupForm extends StatelessWidget {
                 onInputChanged: (phoneNumber) {
                   accountSetupCubit.updatePhoneNumber(phoneNumber.phoneNumber!);
                 },
-                // initialValue: PhoneNumber(isoCode: 'EG'), TODO: handle initial value
+                initialValue:
+                    PhoneNumber(isoCode: 'EG'), // TODO: handle initial value
                 selectorConfig: const SelectorConfig(
                   selectorType: PhoneInputSelectorType.DIALOG,
                   showFlags: true,

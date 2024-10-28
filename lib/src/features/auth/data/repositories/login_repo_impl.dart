@@ -29,7 +29,7 @@ class LoginRepoImpl implements LoginRepo {
     final loginResponse = await _loginApiService.loginViaPassword(params);
     final loginResponseEntity = AuthMapper.toAuthEntity(
       user: loginResponse.data.user,
-      token: loginResponse.data.token,
+      token: loginResponse.data.token!,
     );
     return loginResponseEntity;
   }
