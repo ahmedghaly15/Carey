@@ -1,4 +1,4 @@
-import 'package:carey/src/features/auth/domain/entities/get_account_by_email_entity.dart';
+import 'package:carey/src/features/auth/data/models/contact_details.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'forgot_password_state.freezed.dart';
@@ -16,7 +16,7 @@ class ForgotPasswordState with _$ForgotPasswordState {
   const factory ForgotPasswordState({
     required ForgotPasswordStateStatus status,
     @Default(0) int selectedContactDetailsIndex,
-    GetAccountByEmailEntity? getAccountByEmailEntity,
+    List<ContactDetails>? contactDetails,
     String? error,
   }) = _ForgotPasswordState;
 

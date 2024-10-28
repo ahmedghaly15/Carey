@@ -1,3 +1,4 @@
+import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/features/auth/data/models/get_account_by_email_params.dart';
 import 'package:carey/src/features/auth/data/repositories/forgot_password_repo.dart';
 import 'package:carey/src/features/auth/presentation/cubits/forgot_password/forgot_password_state.dart';
@@ -32,9 +33,11 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
     final result =
         await _forgotPasswordRepo.getAccountByEmail(params, _cancelToken);
     result.when(
-      success: (getAccountByEmailEntity) => emit(state.copyWith(
+      success: (contactDetails) => emit(state.copyWith(
         status: ForgotPasswordStateStatus.getAccountByEmailSuccess,
-        getAccountByEmailEntity: getAccountByEmailEntity,
+        contactDetails: contactDetails,
+        selectedContactDetailsIndex:
+            contactDetails[0].contact.isNullOrEmpty ? 1 : 0,
       )),
       failure: (failure) => emit(state.copyWith(
         status: ForgotPasswordStateStatus.getAccountByEmailError,
