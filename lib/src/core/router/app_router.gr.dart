@@ -271,7 +271,7 @@ class ResetPasswordRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const ResetPasswordView();
+      return WrappedRoute(child: const ResetPasswordView());
     },
   );
 }

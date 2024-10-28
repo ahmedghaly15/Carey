@@ -78,4 +78,7 @@ class AppStrings {
   static const String ok = 'Ok';
   static const String verification = 'Verification';
   static const String verify = 'Verify';
+  static const String resetPassword = 'Reset Password';
+  static const String createYourNewPassword = 'Create your new password';
+  static const String passwordsDoNotMatch = 'Passwords do not match';
 }
