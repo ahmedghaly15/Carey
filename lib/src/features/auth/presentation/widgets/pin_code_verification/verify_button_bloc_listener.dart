@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:carey/src/core/api/dio_factory.dart';
 import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/router/app_router.dart';
-import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/auth/presentation/cubits/pin_code_verification/pin_code_verification_cubit.dart';
@@ -28,8 +28,8 @@ class VerifyButtonBlocListener extends StatelessWidget {
             context.popTop();
             context.showErrorDialog(error);
           },
-          verifySuccess: (authResponseEntity) {
-            currentUserData = authResponseEntity;
+          verifySuccess: (token) {
+            DioFactory.setTokenIntoHeaders(token);
             context.popTop();
             Future.delayed(const Duration(milliseconds: 200), () {
               context.pushRoute(const ResetPasswordRoute());
