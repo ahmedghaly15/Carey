@@ -7,8 +7,8 @@ import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
-import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/auth/presentation/widgets/forgot_password/contact_details_list_bloc_builder.dart';
+import 'package:carey/src/features/auth/presentation/widgets/forgot_password/forgot_pass_continue_bloc_listener.dart';
 
 class ForgotPasswordViewBody extends StatelessWidget {
   const ForgotPasswordViewBody({super.key});
@@ -41,22 +41,12 @@ class ForgotPasswordViewBody extends StatelessWidget {
               child: ContactDetailsListBlocBuilder(),
             ),
           ),
-          SliverFillRemaining(
+          const SliverFillRemaining(
             hasScrollBody: false,
             child: Column(
               children: [
-                const Spacer(),
-                PrimaryButton(
-                  margin: AppConstants.screenHorizontalPadding.add(
-                    EdgeInsets.only(bottom: 24.h),
-                  ),
-                  onPressed: () {
-                    print(
-                      currentUserData.toString(),
-                    );
-                  },
-                  text: AppStrings.continueWord,
-                ),
+                Spacer(),
+                ForgotPassContinueBlocListener(),
               ],
             ),
           ),

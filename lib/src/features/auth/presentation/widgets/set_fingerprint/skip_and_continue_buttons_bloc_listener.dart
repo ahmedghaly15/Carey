@@ -90,6 +90,7 @@ class SkipAndContinueButtonsBlocListener extends StatelessWidget {
     context.showResultDialog(
       barrierDismissible: false,
       hasOkButtonInActions: false,
+      titleText: AppStrings.congratulations,
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
