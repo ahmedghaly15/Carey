@@ -72,4 +72,6 @@ class AppStrings {
   static const String writeYourEmailFirst = 'Write your email first, please';
   static const String tryAgain = 'Try Again';
   static const String youDontHavePhoneNumber = 'You don\'t have a phone number';
+  static const String pinCodeHasBeenSent =
+      'PIN code has been sent. Check your inbox, please';
 }
