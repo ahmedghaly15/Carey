@@ -86,6 +86,10 @@ class Assets {
   /// assets/svgs/lock-icon.svg
   static const String svgsLockIcon = "assets/svgs/lock-icon.svg";
 
+  /// Assets for svgsResetPassImage
+  /// assets/svgs/reset-pass-image.svg
+  static const String svgsResetPassImage = "assets/svgs/reset-pass-image.svg";
+
   /// Assets for svgsSmsIcon
   /// assets/svgs/sms-icon.svg
   static const String svgsSmsIcon = "assets/svgs/sms-icon.svg";
