@@ -21,7 +21,8 @@ class PinCodeVerificationCubit extends Cubit<PinCodeVerificationState> {
     final params = PinCodeVerificationParams(pin: pinController.text);
     final result = await _repo.verifyPin(params, _cancelToken);
     result.when(
-      success: (_) => emit(const PinCodeVerificationState.verifySuccess()),
+      success: (authResponseEntity) =>
+          emit(PinCodeVerificationState.verifySuccess(authResponseEntity)),
       failure: (failure) =>
           emit(PinCodeVerificationState.verifyError(failure.error[0])),
     );

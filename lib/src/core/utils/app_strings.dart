@@ -73,9 +73,9 @@ class AppStrings {
   static const String tryAgain = 'Try Again';
   static const String youDontHavePhoneNumber = 'You don\'t have a phone number';
   static const String pinCodeHasBeenSent = 'PIN code has been sent';
+  static const String pinCodeHasBeenSentTo = 'PIN code has been sent to';
   static const String checkYourInbox = 'Check your inbox, please';
   static const String ok = 'Ok';
   static const String verification = 'Verification';
-  static const String checkYour = 'Check your';
   static const String verify = 'Verify';
 }

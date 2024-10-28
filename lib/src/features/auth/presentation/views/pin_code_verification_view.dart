@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:carey/src/core/di/dependency_injection.dart';
+import 'package:carey/src/core/helpers/text_mask_maker.dart';
 import 'package:carey/src/features/auth/presentation/cubits/pin_code_verification/pin_code_verification_cubit.dart';
 import 'package:carey/src/features/auth/presentation/widgets/pin_code_verification/verify_button_bloc_listener.dart';
 import 'package:flutter/material.dart';
@@ -17,10 +18,10 @@ class PinCodeVerificationView extends StatelessWidget
     implements AutoRouteWrapper {
   const PinCodeVerificationView({
     super.key,
-    this.contactType = AppStrings.email,
+    required this.contact,
   });
 
-  final String contactType;
+  final String contact;
 
   @override
   Widget wrappedRoute(BuildContext context) {
@@ -44,9 +45,11 @@ class PinCodeVerificationView extends StatelessWidget
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Spacer(),
-                  Text(
-                    '${AppStrings.pinCodeHasBeenSent}. ${AppStrings.checkYour} $contactType',
-                    style: AppTextStyles.font16Regular,
+                  FittedBox(
+                    child: Text(
+                      '${AppStrings.pinCodeHasBeenSentTo} ${TextMaskMaker.maskText(contact)}',
+                      style: AppTextStyles.font16Regular,
+                    ),
                   ),
                   MySizedBox.height53,
                   const PinCodePinPut(),
