@@ -14,7 +14,10 @@ class AccountSetupRepo {
     CancelToken? cancelToken,
   ]) {
     return executeAndHandleErrors<void>(
-      () async => _accountSetupApiService.updateProfile(params, cancelToken),
+      () async => await _accountSetupApiService.updateProfile(
+        params,
+        cancelToken,
+      ),
     );
   }
 }

@@ -99,16 +99,16 @@ void _setupForCubits() {
   getIt.registerFactory<FormAttributesCubit>(
     () => FormAttributesCubit(),
   );
-  getIt.registerLazySingleton<LoginCubit>(
+  getIt.registerFactory<LoginCubit>(
     () => LoginCubit(getIt.get<LoginViaPassword>()),
   );
-  getIt.registerLazySingleton<RegisterCubit>(
+  getIt.registerFactory<RegisterCubit>(
     () => RegisterCubit(getIt.get<RegisterRepo>()),
   );
   getIt.registerFactory<AccountSetupCubit>(
     () => AccountSetupCubit(),
   );
-  getIt.registerLazySingleton<SetFingerprintCubit>(
+  getIt.registerFactory<SetFingerprintCubit>(
     () => SetFingerprintCubit(
       updateProfileUseCase: getIt.get<UpdateProfile>(),
       fingerprintRepo: getIt.get<SetFingerprintRepo>(),

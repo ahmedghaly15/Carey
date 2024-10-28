@@ -57,12 +57,7 @@ class SkipAndContinueButtonsBlocListener extends StatelessWidget {
   void _listener(SetFingerprintState state, BuildContext context) {
     switch (state.status) {
       case SetFingerprintStateStatus.setFingerprintSuccess:
-        _showSuccessDialogAndExecute(
-          context,
-          afterShowingSuccessDialog: () => context
-              .read<SetFingerprintCubit>()
-              .updateProfile(updateProfileParams),
-        );
+        context.read<SetFingerprintCubit>().updateProfile(updateProfileParams);
         break;
       case SetFingerprintStateStatus.setFingerprintError:
         context.showErrorDialog(state.error!);
@@ -71,6 +66,7 @@ class SkipAndContinueButtonsBlocListener extends StatelessWidget {
         context.showLoadingDialog();
         break;
       case SetFingerprintStateStatus.updateProfileSuccess:
+        context.popTop();
         _showSuccessDialogAndExecute(
           context,
           afterShowingSuccessDialog: () {
