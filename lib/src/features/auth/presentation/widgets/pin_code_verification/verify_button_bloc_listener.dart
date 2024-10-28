@@ -1,8 +1,11 @@
-import 'package:carey/src/core/helpers/extensions.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:carey/src/core/helpers/extensions.dart';
+import 'package:carey/src/core/router/app_router.dart';
+import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/auth/presentation/cubits/pin_code_verification/pin_code_verification_cubit.dart';
@@ -25,10 +28,11 @@ class VerifyButtonBlocListener extends StatelessWidget {
             context.popTop();
             context.showErrorDialog(error);
           },
-          verifySuccess: () {
+          verifySuccess: (authResponseEntity) {
+            currentUserData = authResponseEntity;
             context.popTop();
             Future.delayed(const Duration(milliseconds: 200), () {
-              // TODO: navigate to reset password screen
+              context.pushRoute(const ResetPasswordRoute());
             });
           },
         );
