@@ -20,7 +20,8 @@ mixin _$PinCodeVerificationState<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() verifyLoading,
-    required TResult Function() verifySuccess,
+    required TResult Function(AuthResponseEntity authResponseEntity)
+        verifySuccess,
     required TResult Function(String error) verifyError,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +29,7 @@ mixin _$PinCodeVerificationState<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? verifyLoading,
-    TResult? Function()? verifySuccess,
+    TResult? Function(AuthResponseEntity authResponseEntity)? verifySuccess,
     TResult? Function(String error)? verifyError,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +37,7 @@ mixin _$PinCodeVerificationState<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? verifyLoading,
-    TResult Function()? verifySuccess,
+    TResult Function(AuthResponseEntity authResponseEntity)? verifySuccess,
     TResult Function(String error)? verifyError,
     required TResult orElse(),
   }) =>
@@ -134,7 +135,8 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() verifyLoading,
-    required TResult Function() verifySuccess,
+    required TResult Function(AuthResponseEntity authResponseEntity)
+        verifySuccess,
     required TResult Function(String error) verifyError,
   }) {
     return initial();
@@ -145,7 +147,7 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? verifyLoading,
-    TResult? Function()? verifySuccess,
+    TResult? Function(AuthResponseEntity authResponseEntity)? verifySuccess,
     TResult? Function(String error)? verifyError,
   }) {
     return initial?.call();
@@ -156,7 +158,7 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? verifyLoading,
-    TResult Function()? verifySuccess,
+    TResult Function(AuthResponseEntity authResponseEntity)? verifySuccess,
     TResult Function(String error)? verifyError,
     required TResult orElse(),
   }) {
@@ -252,7 +254,8 @@ class _$VerifyLoadingImpl<T> implements VerifyLoading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() verifyLoading,
-    required TResult Function() verifySuccess,
+    required TResult Function(AuthResponseEntity authResponseEntity)
+        verifySuccess,
     required TResult Function(String error) verifyError,
   }) {
     return verifyLoading();
@@ -263,7 +266,7 @@ class _$VerifyLoadingImpl<T> implements VerifyLoading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? verifyLoading,
-    TResult? Function()? verifySuccess,
+    TResult? Function(AuthResponseEntity authResponseEntity)? verifySuccess,
     TResult? Function(String error)? verifyError,
   }) {
     return verifyLoading?.call();
@@ -274,7 +277,7 @@ class _$VerifyLoadingImpl<T> implements VerifyLoading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? verifyLoading,
-    TResult Function()? verifySuccess,
+    TResult Function(AuthResponseEntity authResponseEntity)? verifySuccess,
     TResult Function(String error)? verifyError,
     required TResult orElse(),
   }) {
@@ -331,6 +334,10 @@ abstract class _$$VerifySuccessImplCopyWith<T, $Res> {
   factory _$$VerifySuccessImplCopyWith(_$VerifySuccessImpl<T> value,
           $Res Function(_$VerifySuccessImpl<T>) then) =
       __$$VerifySuccessImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({AuthResponseEntity authResponseEntity});
+
+  $AuthResponseEntityCopyWith<$Res> get authResponseEntity;
 }
 
 /// @nodoc
@@ -344,36 +351,75 @@ class __$$VerifySuccessImplCopyWithImpl<T, $Res>
 
   /// Create a copy of PinCodeVerificationState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? authResponseEntity = null,
+  }) {
+    return _then(_$VerifySuccessImpl<T>(
+      null == authResponseEntity
+          ? _value.authResponseEntity
+          : authResponseEntity // ignore: cast_nullable_to_non_nullable
+              as AuthResponseEntity,
+    ));
+  }
+
+  /// Create a copy of PinCodeVerificationState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AuthResponseEntityCopyWith<$Res> get authResponseEntity {
+    return $AuthResponseEntityCopyWith<$Res>(_value.authResponseEntity,
+        (value) {
+      return _then(_value.copyWith(authResponseEntity: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$VerifySuccessImpl<T> implements VerifySuccess<T> {
-  const _$VerifySuccessImpl();
+  const _$VerifySuccessImpl(this.authResponseEntity);
+
+  @override
+  final AuthResponseEntity authResponseEntity;
 
   @override
   String toString() {
-    return 'PinCodeVerificationState<$T>.verifySuccess()';
+    return 'PinCodeVerificationState<$T>.verifySuccess(authResponseEntity: $authResponseEntity)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$VerifySuccessImpl<T>);
+        (other.runtimeType == runtimeType &&
+            other is _$VerifySuccessImpl<T> &&
+            (identical(other.authResponseEntity, authResponseEntity) ||
+                other.authResponseEntity == authResponseEntity));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, authResponseEntity);
+
+  /// Create a copy of PinCodeVerificationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$VerifySuccessImplCopyWith<T, _$VerifySuccessImpl<T>> get copyWith =>
+      __$$VerifySuccessImplCopyWithImpl<T, _$VerifySuccessImpl<T>>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() verifyLoading,
-    required TResult Function() verifySuccess,
+    required TResult Function(AuthResponseEntity authResponseEntity)
+        verifySuccess,
     required TResult Function(String error) verifyError,
   }) {
-    return verifySuccess();
+    return verifySuccess(authResponseEntity);
   }
 
   @override
@@ -381,10 +427,10 @@ class _$VerifySuccessImpl<T> implements VerifySuccess<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? verifyLoading,
-    TResult? Function()? verifySuccess,
+    TResult? Function(AuthResponseEntity authResponseEntity)? verifySuccess,
     TResult? Function(String error)? verifyError,
   }) {
-    return verifySuccess?.call();
+    return verifySuccess?.call(authResponseEntity);
   }
 
   @override
@@ -392,12 +438,12 @@ class _$VerifySuccessImpl<T> implements VerifySuccess<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? verifyLoading,
-    TResult Function()? verifySuccess,
+    TResult Function(AuthResponseEntity authResponseEntity)? verifySuccess,
     TResult Function(String error)? verifyError,
     required TResult orElse(),
   }) {
     if (verifySuccess != null) {
-      return verifySuccess();
+      return verifySuccess(authResponseEntity);
     }
     return orElse();
   }
@@ -441,7 +487,16 @@ class _$VerifySuccessImpl<T> implements VerifySuccess<T> {
 }
 
 abstract class VerifySuccess<T> implements PinCodeVerificationState<T> {
-  const factory VerifySuccess() = _$VerifySuccessImpl<T>;
+  const factory VerifySuccess(final AuthResponseEntity authResponseEntity) =
+      _$VerifySuccessImpl<T>;
+
+  AuthResponseEntity get authResponseEntity;
+
+  /// Create a copy of PinCodeVerificationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$VerifySuccessImplCopyWith<T, _$VerifySuccessImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -515,7 +570,8 @@ class _$VerifyErrorImpl<T> implements VerifyError<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() verifyLoading,
-    required TResult Function() verifySuccess,
+    required TResult Function(AuthResponseEntity authResponseEntity)
+        verifySuccess,
     required TResult Function(String error) verifyError,
   }) {
     return verifyError(error);
@@ -526,7 +582,7 @@ class _$VerifyErrorImpl<T> implements VerifyError<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? verifyLoading,
-    TResult? Function()? verifySuccess,
+    TResult? Function(AuthResponseEntity authResponseEntity)? verifySuccess,
     TResult? Function(String error)? verifyError,
   }) {
     return verifyError?.call(error);
@@ -537,7 +593,7 @@ class _$VerifyErrorImpl<T> implements VerifyError<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? verifyLoading,
-    TResult Function()? verifySuccess,
+    TResult Function(AuthResponseEntity authResponseEntity)? verifySuccess,
     TResult Function(String error)? verifyError,
     required TResult orElse(),
   }) {

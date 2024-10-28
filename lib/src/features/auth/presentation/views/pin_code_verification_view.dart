@@ -46,7 +46,7 @@ class PinCodeVerificationView extends StatelessWidget
                 children: [
                   const Spacer(),
                   Text(
-                    '${AppStrings.pinCodeHasBeenSentTo}: ${TextMaskMaker.maskText(contact)}',
+                    '${AppStrings.pinCodeHasBeenSentTo} ${TextMaskMaker.maskText(contact)}',
                     style: AppTextStyles.font16Regular,
                   ),
                   MySizedBox.height53,
