@@ -1,3 +1,4 @@
+import 'package:carey/src/core/helpers/text_mask_maker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -88,23 +89,9 @@ class ContactDetailsItem extends StatelessWidget {
     return contact.contact.isNullOrEmpty
         ? AppStrings.youDontHavePhoneNumber
         : (_isEmail(contact.contact!)
-            ? _maskEmail(contact.contact!)
-            : _maskPhoneNumber(contact.contact!));
+            ? TextMaskMaker.maskEmail(contact.contact!)
+            : TextMaskMaker.maskPhoneNumber(contact.contact!));
   }
 
   bool _isEmail(String text) => AuthValidatorRegex.isEmailValid(text);
-
-  String _maskPhoneNumber(String phoneNumber) {
-    if (phoneNumber.length < 5) return phoneNumber; // Ensuring minimum length
-    return '${phoneNumber.substring(0, 5)}*****${phoneNumber.substring(phoneNumber.length - 2)}';
-  }
-
-  String _maskEmail(String email) {
-    final parts = email.split('@');
-    final namePart = parts[0];
-    final domainPart = parts[1];
-    final visiblePart =
-        '${namePart.substring(0, 4)}*****${namePart.substring(namePart.length - 2)}'; // Show first 4 characters
-    return '$visiblePart@$domainPart';
-  }
 }
