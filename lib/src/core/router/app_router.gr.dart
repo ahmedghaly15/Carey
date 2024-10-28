@@ -163,10 +163,18 @@ class LoginRouteArgs {
 
 /// generated route for
 /// [PinCodeVerificationView]
-class PinCodeVerificationRoute extends PageRouteInfo<void> {
-  const PinCodeVerificationRoute({List<PageRouteInfo>? children})
-      : super(
+class PinCodeVerificationRoute
+    extends PageRouteInfo<PinCodeVerificationRouteArgs> {
+  PinCodeVerificationRoute({
+    Key? key,
+    String contactType = AppStrings.email,
+    List<PageRouteInfo>? children,
+  }) : super(
           PinCodeVerificationRoute.name,
+          args: PinCodeVerificationRouteArgs(
+            key: key,
+            contactType: contactType,
+          ),
           initialChildren: children,
         );
 
@@ -175,9 +183,30 @@ class PinCodeVerificationRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const PinCodeVerificationView();
+      final args = data.argsAs<PinCodeVerificationRouteArgs>(
+          orElse: () => const PinCodeVerificationRouteArgs());
+      return PinCodeVerificationView(
+        key: args.key,
+        contactType: args.contactType,
+      );
     },
   );
+}
+
+class PinCodeVerificationRouteArgs {
+  const PinCodeVerificationRouteArgs({
+    this.key,
+    this.contactType = AppStrings.email,
+  });
+
+  final Key? key;
+
+  final String contactType;
+
+  @override
+  String toString() {
+    return 'PinCodeVerificationRouteArgs{key: $key, contactType: $contactType}';
+  }
 }
 
 /// generated route for

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
 import 'package:carey/src/features/auth/presentation/views/account_setup_view.dart';
 import 'package:carey/src/features/auth/presentation/views/forgot_password_view.dart';
