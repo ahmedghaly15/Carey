@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:carey/src/features/auth/presentation/views/reset_password_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';

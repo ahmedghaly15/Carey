@@ -258,6 +258,25 @@ class RegisterRouteArgs {
 }
 
 /// generated route for
+/// [ResetPasswordView]
+class ResetPasswordRoute extends PageRouteInfo<void> {
+  const ResetPasswordRoute({List<PageRouteInfo>? children})
+      : super(
+          ResetPasswordRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ResetPasswordRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ResetPasswordView();
+    },
+  );
+}
+
+/// generated route for
 /// [SetFingerprintView]
 class SetFingerprintRoute extends PageRouteInfo<SetFingerprintRouteArgs> {
   SetFingerprintRoute({
