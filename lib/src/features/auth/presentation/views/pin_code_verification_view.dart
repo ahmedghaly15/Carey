@@ -45,9 +45,11 @@ class PinCodeVerificationView extends StatelessWidget
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Spacer(),
-                  Text(
-                    '${AppStrings.pinCodeHasBeenSentTo} ${TextMaskMaker.maskText(contact)}',
-                    style: AppTextStyles.font16Regular,
+                  FittedBox(
+                    child: Text(
+                      '${AppStrings.pinCodeHasBeenSentTo} ${TextMaskMaker.maskText(contact)}',
+                      style: AppTextStyles.font16Regular,
+                    ),
                   ),
                   MySizedBox.height53,
                   const PinCodePinPut(),
