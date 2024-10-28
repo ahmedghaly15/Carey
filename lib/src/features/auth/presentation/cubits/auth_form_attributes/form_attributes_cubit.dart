@@ -34,7 +34,6 @@ class FormAttributesCubit extends Cubit<FormAttributesState> {
 
   void assignRememberedEmailAndPass() async {
     final rememberedEmail = await RememberMeHelper.getRememberedEmail();
-
     final rememberedPassword = await RememberMeHelper.getRememberedPass();
 
     if (!rememberedEmail.isNullOrEmpty) {
@@ -98,14 +97,11 @@ class FormAttributesCubit extends Cubit<FormAttributesState> {
   }
 
   Future<void> handleRememberingEmailAndPassword() async {
-    if (state.rememberMe) {
-      await RememberMeHelper.rememberEmailAndPassword(
-        emailValue: emailController.text.trim(),
-        passwordValue: passwordController.text,
-      );
-    } else {
-      await RememberMeHelper.deleteRememberedEmailAndPassword();
-    }
+    await RememberMeHelper.handleRememberingEmailAndPassword(
+      isRemembered: state.rememberMe,
+      emailValue: emailController.text.trim(),
+      passwordValue: passwordController.text.trim(),
+    );
   }
 
   void _disposeFormAttributes() {

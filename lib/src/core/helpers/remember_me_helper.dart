@@ -12,7 +12,22 @@ class RememberMeHelper {
   static Future<String?> getRememberedEmail() async =>
       await SecureStorageHelper.getSecuredString(CacheKeys.rememberedEmail);
 
-  static Future<void> rememberEmailAndPassword({
+  static Future<void> handleRememberingEmailAndPassword({
+    required bool isRemembered,
+    required String emailValue,
+    required String passwordValue,
+  }) async {
+    if (isRemembered) {
+      await _rememberEmailAndPassword(
+        emailValue: emailValue,
+        passwordValue: passwordValue,
+      );
+    } else {
+      await _deleteRememberedEmailAndPassword();
+    }
+  }
+
+  static Future<void> _rememberEmailAndPassword({
     required String emailValue,
     required String passwordValue,
   }) async {
@@ -26,7 +41,7 @@ class RememberMeHelper {
     );
   }
 
-  static Future<void> deleteRememberedEmailAndPassword() async {
+  static Future<void> _deleteRememberedEmailAndPassword() async {
     await SecureStorageHelper.removeSecuredData(
       CacheKeys.rememberedEmail,
     );
