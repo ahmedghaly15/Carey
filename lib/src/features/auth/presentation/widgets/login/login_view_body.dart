@@ -11,11 +11,11 @@ import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
 import 'package:carey/src/features/auth/presentation/widgets/auth_custom_divider_with_text.dart';
-import 'package:carey/src/features/auth/presentation/widgets/auth_form.dart';
+import 'package:carey/src/features/auth/presentation/widgets/auth_form_bloc_selector.dart';
 import 'package:carey/src/features/auth/presentation/widgets/auth_switcher.dart';
 import 'package:carey/src/features/auth/presentation/widgets/auth_view_title_text.dart';
 import 'package:carey/src/features/auth/presentation/widgets/login/login_via_password_button_bloc_listener.dart';
-import 'package:carey/src/features/auth/presentation/widgets/remember_me_bloc_builder.dart';
+import 'package:carey/src/features/auth/presentation/widgets/auth_remember_me_bloc_selector.dart';
 import 'package:carey/src/features/auth/presentation/widgets/social_login_icon_buttons.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,8 +35,8 @@ class LoginViewBody extends StatelessWidget {
             Image.asset(Assets.careyIcon),
             const AuthViewTitleText(title: AppStrings.loginToYourAccount),
             MySizedBox.height40,
-            const AuthForm(),
-            const RememberMeBlocBuilder(),
+            const AuthFormBlocSelector(),
+            const AuthRememberMeBlocSelector(),
             const LoginViaPasswordButtonBlocListener(),
             TextButton(
               onPressed: () => _forgotPassOnPressed(context),
@@ -54,16 +54,18 @@ class LoginViewBody extends StatelessWidget {
             AuthSwitcher(
               buttonText: AppStrings.signUp,
               question: AppStrings.dontHaveAnAccount,
-              onPressed: () {
-                isPushedFromRegister
-                    ? context.maybePop()
-                    : context.pushRoute(RegisterRoute());
-              },
+              onPressed: () => _pushRegisterOrPop(context),
             ),
           ],
         ),
       ),
     );
+  }
+
+  void _pushRegisterOrPop(BuildContext context) {
+    isPushedFromRegister
+        ? context.maybePop()
+        : context.pushRoute(RegisterRoute());
   }
 
   void _forgotPassOnPressed(BuildContext context) {
