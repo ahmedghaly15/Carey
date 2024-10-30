@@ -5,14 +5,12 @@ import 'package:carey/src/core/utils/functions/execute_and_handle_errors.dart';
 import 'package:carey/src/features/auth/data/apis/login_api_service.dart';
 import 'package:carey/src/features/auth/data/models/auth_via_password_request.dart';
 import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
-import 'package:carey/src/features/auth/domain/repositories/login_repo.dart';
 
-class LoginRepoImpl implements LoginRepo {
+class LoginRepo {
   final LoginApiService _loginApiService;
 
-  LoginRepoImpl(this._loginApiService);
+  LoginRepo(this._loginApiService);
 
-  @override
   Future<ApiResult<AuthResponseEntity>> loginViaPassword(
     AuthViaPasswordRequest params, [
     CancelToken? cancelToken,
