@@ -15,13 +15,11 @@ import 'package:carey/src/features/auth/data/apis/register_api_service.dart';
 import 'package:carey/src/features/auth/data/apis/reset_pass_api_service.dart';
 import 'package:carey/src/features/auth/data/repositories/account_setup_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/forgot_password_repo.dart';
-import 'package:carey/src/features/auth/data/repositories/login_repo_impl.dart';
+import 'package:carey/src/features/auth/data/repositories/login_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/pin_code_verification_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/register_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/reset_pass_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/set_fingerprint_repo.dart';
-import 'package:carey/src/features/auth/domain/repositories/login_repo.dart';
-import 'package:carey/src/features/auth/domain/usecases/login_via_password.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_password.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
@@ -83,7 +81,7 @@ void _setupForApiServices() {
 
 void _setupForRepos() {
   getIt.registerLazySingleton<LoginRepo>(
-    () => LoginRepoImpl(getIt.get<LoginApiService>()),
+    () => LoginRepo(getIt.get<LoginApiService>()),
   );
   getIt.registerLazySingleton<RegisterRepo>(
     () => RegisterRepo(getIt.get<RegisterApiService>()),
@@ -106,9 +104,6 @@ void _setupForRepos() {
 }
 
 void _setupForUseCases() {
-  getIt.registerLazySingleton<LoginViaPassword>(
-    () => LoginViaPassword(getIt.get<LoginRepo>()),
-  );
   getIt.registerLazySingleton<UpdateProfile>(
     () => UpdateProfile(getIt.get<AccountSetupRepo>()),
   );
@@ -122,7 +117,7 @@ void _setupForCubits() {
     () => FormAttributesCubit(),
   );
   getIt.registerFactory<LoginCubit>(
-    () => LoginCubit(getIt.get<LoginViaPassword>()),
+    () => LoginCubit(getIt.get<LoginRepo>()),
   );
   getIt.registerFactory<RegisterCubit>(
     () => RegisterCubit(getIt.get<RegisterRepo>()),
