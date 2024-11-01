@@ -20,11 +20,12 @@ class AccountSetupForm extends StatelessWidget {
     final accountSetupCubit = context.read<AccountSetupCubit>();
     return Padding(
       padding: AppConstants.screenHorizontalPadding,
-      child: BlocBuilder<AccountSetupCubit, AutovalidateMode>(
-        buildWhen: (_, current) => current != AutovalidateMode.disabled,
-        builder: (_, state) => Form(
+      child:
+          BlocSelector<AccountSetupCubit, AutovalidateMode, AutovalidateMode>(
+        selector: (state) => state,
+        builder: (_, autovalidateMode) => Form(
           key: accountSetupCubit.formKey,
-          autovalidateMode: state,
+          autovalidateMode: autovalidateMode,
           child: Column(
             children: [
               CustomTextFormField(
@@ -94,7 +95,7 @@ class AccountSetupForm extends StatelessWidget {
                 ),
                 focusNode: accountSetupCubit.phoneFocusNode,
                 autofillHints: const [AutofillHints.telephoneNumber],
-                autoValidateMode: state,
+                autoValidateMode: autovalidateMode,
                 ignoreBlank: false,
                 formatInput: true,
                 validator: (value) => TextFormValidator.validateField(
@@ -108,7 +109,7 @@ class AccountSetupForm extends StatelessWidget {
                   AppStrings.gender,
                   style: AppTextStyles.hintTextStyle,
                 ),
-                autovalidateMode: state,
+                autovalidateMode: autovalidateMode,
                 items: AppConstants.genderDropdownItems,
                 decoration: InputDecoration(
                   filled: true,
