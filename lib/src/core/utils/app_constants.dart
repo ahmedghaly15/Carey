@@ -51,4 +51,5 @@ class AppConstants {
       icon: Assets.svgsEmailIcon,
     ),
   ];
+  static const String defaultCountryCode = 'EG';
 }
