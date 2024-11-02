@@ -9,7 +9,21 @@ import 'package:geolocator/geolocator.dart';
 String? countryCode;
 
 class LocationService {
-  static const int locationCacheDurationDays = 30; // Cache duration in days
+  static const int _locationCacheDurationDays = 30; // Cache duration in days
+
+  static Future<void> getAndCacheCountryCode() async {
+    final cachedLocation = await _retrieveCachedCountryCode();
+
+    // Check if we have a valid cached location that's not expired
+    if (cachedLocation != null && !_isCacheExpired(cachedLocation.timestamp)) {
+      countryCode = cachedLocation.countryCode;
+      debugPrint('Using cached country code: $countryCode');
+      return;
+    }
+
+    // If cache is expired or doesn't exist, get new location
+    await _refreshCountryCode(cachedLocation);
+  }
 
   static Future<String> _getCountryCode() async {
     try {
@@ -49,27 +63,15 @@ class LocationService {
     );
   }
 
-  Future<void> getAndCacheCountryCode() async {
-    final cachedLocation = await _retrieveCachedCountryCode();
-
-    // Check if we have a valid cached location that's not expired
-    if (cachedLocation != null && !_isCacheExpired(cachedLocation.timestamp)) {
-      countryCode = cachedLocation.countryCode;
-      debugPrint('Using cached country code: $countryCode');
-      return;
-    }
-
-    // If cache is expired or doesn't exist, get new location
-    await _refreshCountryCode(cachedLocation);
-  }
-
-  bool _isCacheExpired(DateTime timestamp) {
+  static bool _isCacheExpired(DateTime timestamp) {
     final now = DateTime.now();
     final difference = now.difference(timestamp).inDays;
-    return difference >= locationCacheDurationDays;
+    return difference >= _locationCacheDurationDays;
   }
 
-  Future<void> _refreshCountryCode(CachedLocation? cachedLocation) async {
+  static Future<void> _refreshCountryCode(
+    CachedLocation? cachedLocation,
+  ) async {
     try {
       final currentCountryCode = await LocationService._getCountryCode();
       await _cacheCountryCode(currentCountryCode);
@@ -86,7 +88,7 @@ class LocationService {
     }
   }
 
-  Future<void> _cacheCountryCode(String countryCode) async {
+  static Future<void> _cacheCountryCode(String countryCode) async {
     debugPrint('********* CACHING COUNTRY CODE: $countryCode *************');
     await Future.wait([
       SharedPrefHelper.setData(CacheKeys.countryCode, countryCode),
