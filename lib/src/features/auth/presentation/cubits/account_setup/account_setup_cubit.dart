@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:carey/src/core/router/app_router.dart';
+import 'package:carey/src/core/services/location_service.dart';
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
+import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AccountSetupCubit extends Cubit<AutovalidateMode> {
-  AccountSetupCubit() : super(AutovalidateMode.disabled) {
+class AccountSetupCubit extends Cubit<AccountSetupState> {
+  AccountSetupCubit() : super(AccountSetupState.initial()) {
     _initFormAttributes();
   }
 
@@ -20,6 +22,14 @@ class AccountSetupCubit extends Cubit<AutovalidateMode> {
   late final FocusNode addressFocusNode;
   late final FocusNode phoneFocusNode;
 
+  void getCountryCode() async {
+    final countryCode = await LocationService.getAndCacheCountryCode();
+    emit(state.copyWith(
+      status: AccountSetupStateStatus.getCountryCode,
+      countryCode: countryCode,
+    ));
+  }
+
   void continueToSetFingerprint(BuildContext context) {
     if (formKey.currentState!.validate()) {
       final updateProfileParams = UpdateProfileParams(
@@ -33,7 +43,10 @@ class AccountSetupCubit extends Cubit<AutovalidateMode> {
         SetFingerprintRoute(updateProfileParams: updateProfileParams),
       );
     } else {
-      emit(AutovalidateMode.always);
+      emit(state.copyWith(
+        status: AccountSetupStateStatus.alwaysAutovalidateMode,
+        autovalidateMode: AutovalidateMode.always,
+      ));
     }
   }
 
