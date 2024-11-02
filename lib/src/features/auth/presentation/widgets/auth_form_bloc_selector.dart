@@ -27,11 +27,10 @@ class AuthFormBlocSelector extends StatelessWidget {
               passFocusNode: formAttributesCubit.passwordFocusNode,
             ),
             MySizedBox.height13,
-            BlocBuilder<FormAttributesCubit, FormAttributesState>(
-              buildWhen: (previous, current) =>
-                  previous.isPasswordObscured != current.isPasswordObscured,
-              builder: (_, state) => PassTextFormField(
-                obscureText: state.isPasswordObscured,
+            BlocSelector<FormAttributesCubit, FormAttributesState, bool>(
+              selector: (state) => state.isPasswordObscured,
+              builder: (_, isPasswordObscured) => PassTextFormField(
+                obscureText: isPasswordObscured,
                 controller: formAttributesCubit.passwordController,
                 focusNode: formAttributesCubit.passwordFocusNode,
                 passVisibilityOnTap: () =>

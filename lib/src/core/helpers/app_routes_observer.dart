@@ -1,62 +1,54 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/foundation.dart';
+import 'package:carey/src/core/helpers/colorful_log_printer.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 class AppRoutesObserver extends AutoRouterObserver {
+  final _logger = Logger(
+    printer: ColorfulPrinter(type: ColorfulLogPrinterColor.pink),
+  );
+
   @override
   void didPush(Route route, Route? previousRoute) {
-    if (kDebugMode) {
-      log('Previous route: ${previousRoute?.settings.name}');
-      log('New route pushed: ${route.settings.name}');
-      log('================================================');
-    }
+    _logger.i('Previous route: ${previousRoute?.settings.name}');
+    _logger.i('New route pushed: ${route.settings.name}');
+    _logger.i('================================================');
     super.didPush(route, previousRoute);
   }
 
   @override
   void didPop(Route route, Route? previousRoute) {
-    if (kDebugMode) {
-      log('Route Popped : ${route.settings.name}');
-      log('================================================');
-    }
+    _logger.i('Route Popped : ${route.settings.name}');
+    _logger.i('================================================');
     super.didPop(route, previousRoute);
   }
 
   @override
   void didRemove(Route route, Route? previousRoute) {
-    if (kDebugMode) {
-      log('Route Removed : ${route.settings.name}');
-      log('================================================');
-    }
+    _logger.i('Route Removed : ${route.settings.name}');
+    _logger.i('================================================');
     super.didRemove(route, previousRoute);
   }
 
   @override
   void didReplace({Route? newRoute, Route? oldRoute}) {
-    if (kDebugMode) {
-      log('OldRoute : ${oldRoute!.settings.name} was replaced by ${newRoute!.settings.name}');
-      log('================================================');
-    }
+    _logger.i(
+        'OldRoute : ${oldRoute!.settings.name} was replaced by ${newRoute!.settings.name}');
+    _logger.i('================================================');
     super.didReplace(newRoute: newRoute, oldRoute: oldRoute);
   }
 
   @override
   void didInitTabRoute(TabPageRoute route, TabPageRoute? previousRoute) {
-    if (kDebugMode) {
-      debugPrint('Tab route visited: ${route.name}');
-      log('================================================');
-    }
+    _logger.i('Tab route visited: ${route.name}');
+    _logger.i('================================================');
     super.didInitTabRoute(route, previousRoute);
   }
 
   @override
   void didChangeTabRoute(TabPageRoute route, TabPageRoute previousRoute) {
-    if (kDebugMode) {
-      debugPrint('Tab route re-visited: ${route.name}');
-      log('================================================');
-    }
+    _logger.i('Tab route re-visited: ${route.name}');
+    _logger.i('================================================');
     super.didChangeTabRoute(route, previousRoute);
   }
 }

@@ -54,7 +54,7 @@ class LoginViewBody extends StatelessWidget {
             AuthSwitcher(
               buttonText: AppStrings.signUp,
               question: AppStrings.dontHaveAnAccount,
-              onPressed: () => _pushRegisterOrPop(context),
+              onPressed: () => _pushRegisterRouteOrPop(context),
             ),
           ],
         ),
@@ -62,7 +62,7 @@ class LoginViewBody extends StatelessWidget {
     );
   }
 
-  void _pushRegisterOrPop(BuildContext context) {
+  void _pushRegisterRouteOrPop(BuildContext context) {
     isPushedFromRegister
         ? context.maybePop()
         : context.pushRoute(RegisterRoute());
