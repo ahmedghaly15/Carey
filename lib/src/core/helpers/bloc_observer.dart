@@ -1,8 +1,9 @@
+import 'package:carey/src/core/helpers/colorful_log_printer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 
 class MyBlocObserver extends BlocObserver {
-  final Logger _logger = Logger();
+  final Logger _logger = Logger(printer: ColorfulPrinter());
 
   @override
   void onCreate(BlocBase bloc) {
