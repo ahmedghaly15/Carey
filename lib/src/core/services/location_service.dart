@@ -1,10 +1,12 @@
-import 'package:carey/src/core/helpers/cache_keys.dart';
-import 'package:carey/src/core/helpers/shared_pref_helper.dart';
-import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+
+import 'package:carey/src/core/helpers/cache_keys.dart';
+import 'package:carey/src/core/helpers/extensions.dart';
+import 'package:carey/src/core/helpers/shared_pref_helper.dart';
+import 'package:carey/src/core/utils/app_constants.dart';
 
 String? countryCode;
 
@@ -54,13 +56,18 @@ class LocationService {
   }
 
   static Future<CachedLocation?> _retrieveCachedCountryCode() async {
-    final code = await SharedPrefHelper.getString(CacheKeys.countryCode);
-    final timestamp =
+    final cachedCountryCode =
+        await SharedPrefHelper.getString(CacheKeys.countryCode);
+    final timestampStr =
         await SharedPrefHelper.getString(CacheKeys.countryCodeTimestamp);
-    return CachedLocation(
-      countryCode: code,
-      timestamp: DateTime.parse(timestamp),
-    );
+
+    if (!timestampStr.isNullOrEmpty) {
+      return CachedLocation(
+        countryCode: cachedCountryCode,
+        timestamp: DateTime.parse(timestampStr),
+      );
+    }
+    return null;
   }
 
   static bool _isCacheExpired(DateTime timestamp) {
