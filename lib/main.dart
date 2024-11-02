@@ -1,4 +1,3 @@
-import 'package:carey/src/core/services/location_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +14,6 @@ void main() async {
   await Future.wait([
     checkIfUserIsLoggedIn(),
     checkIfCurrentUserAccountSet(),
-    LocationService.getAndCacheCountryCode(),
   ]);
   runApp(const CareyApp());
 }

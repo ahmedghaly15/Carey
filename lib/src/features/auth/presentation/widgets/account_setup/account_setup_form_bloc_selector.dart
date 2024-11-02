@@ -1,4 +1,3 @@
-import 'package:carey/src/core/services/location_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
@@ -12,9 +11,10 @@ import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_text_form_field.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
+import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_state.dart';
 
-class AccountSetupForm extends StatelessWidget {
-  const AccountSetupForm({super.key});
+class AccountSetupFormBlocSelector extends StatelessWidget {
+  const AccountSetupFormBlocSelector({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,8 @@ class AccountSetupForm extends StatelessWidget {
     return Padding(
       padding: AppConstants.screenHorizontalPadding,
       child:
-          BlocSelector<AccountSetupCubit, AutovalidateMode, AutovalidateMode>(
-        selector: (state) => state,
+          BlocSelector<AccountSetupCubit, AccountSetupState, AutovalidateMode>(
+        selector: (state) => state.autovalidateMode,
         builder: (_, autovalidateMode) => Form(
           key: accountSetupCubit.formKey,
           autovalidateMode: autovalidateMode,
@@ -68,39 +68,44 @@ class AccountSetupForm extends StatelessWidget {
                     fieldName: AppStrings.address),
               ),
               MySizedBox.height16,
-              InternationalPhoneNumberInput(
-                onInputChanged: (phoneNumber) {
-                  accountSetupCubit.updatePhoneNumber(phoneNumber.phoneNumber!);
-                },
-                initialValue: PhoneNumber(isoCode: countryCode),
-                selectorConfig: const SelectorConfig(
-                  selectorType: PhoneInputSelectorType.DIALOG,
-                  showFlags: true,
-                  useEmoji: true,
-                  trailingSpace: false,
-                  setSelectorButtonAsPrefixIcon: false,
-                ),
-                inputDecoration: InputDecoration(
-                  filled: true,
-                  fillColor: AppColors.textFormFieldFillColor,
-                  border: AppConstants.textFormFieldOutlineBorder,
-                  enabledBorder: AppConstants.textFormFieldOutlineBorder,
-                  focusedBorder: AppConstants.textFormFieldOutlineBorder,
-                  errorBorder: AppConstants.textFormFieldOutlineBorder,
-                  focusedErrorBorder: AppConstants.textFormFieldOutlineBorder,
-                  disabledBorder: AppConstants.textFormFieldOutlineBorder,
-                  contentPadding: AppConstants.textFormFieldHorizontalPadding,
-                  hintText: AppStrings.phone,
-                  hintStyle: AppTextStyles.hintTextStyle,
-                ),
-                focusNode: accountSetupCubit.phoneFocusNode,
-                autofillHints: const [AutofillHints.telephoneNumber],
-                autoValidateMode: autovalidateMode,
-                ignoreBlank: false,
-                formatInput: true,
-                validator: (value) => TextFormValidator.validateField(
-                  value,
-                  fieldName: AppStrings.phone,
+              BlocSelector<AccountSetupCubit, AccountSetupState, String>(
+                selector: (state) => state.countryCode,
+                builder: (context, countryCode) =>
+                    InternationalPhoneNumberInput(
+                  onInputChanged: (phoneNumber) {
+                    accountSetupCubit
+                        .updatePhoneNumber(phoneNumber.phoneNumber!);
+                  },
+                  initialValue: PhoneNumber(isoCode: countryCode),
+                  selectorConfig: const SelectorConfig(
+                    selectorType: PhoneInputSelectorType.DIALOG,
+                    showFlags: true,
+                    useEmoji: true,
+                    trailingSpace: false,
+                    setSelectorButtonAsPrefixIcon: false,
+                  ),
+                  inputDecoration: InputDecoration(
+                    filled: true,
+                    fillColor: AppColors.textFormFieldFillColor,
+                    border: AppConstants.textFormFieldOutlineBorder,
+                    enabledBorder: AppConstants.textFormFieldOutlineBorder,
+                    focusedBorder: AppConstants.textFormFieldOutlineBorder,
+                    errorBorder: AppConstants.textFormFieldOutlineBorder,
+                    focusedErrorBorder: AppConstants.textFormFieldOutlineBorder,
+                    disabledBorder: AppConstants.textFormFieldOutlineBorder,
+                    contentPadding: AppConstants.textFormFieldHorizontalPadding,
+                    hintText: AppStrings.phone,
+                    hintStyle: AppTextStyles.hintTextStyle,
+                  ),
+                  focusNode: accountSetupCubit.phoneFocusNode,
+                  autofillHints: const [AutofillHints.telephoneNumber],
+                  autoValidateMode: autovalidateMode,
+                  ignoreBlank: false,
+                  formatInput: true,
+                  validator: (value) => TextFormValidator.validateField(
+                    value,
+                    fieldName: AppStrings.phone,
+                  ),
                 ),
               ),
               MySizedBox.height16,
