@@ -4,12 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class AnimatedLoadingIndicator extends StatelessWidget {
-  const AnimatedLoadingIndicator({super.key});
+  const AnimatedLoadingIndicator({
+    super.key,
+    this.color = AppColors.primaryColor,
+  });
+
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     return LoadingAnimationWidget.discreteCircle(
-      color: AppColors.primaryColor,
+      color: color,
       size: context.screenHeight * 0.04,
     );
   }

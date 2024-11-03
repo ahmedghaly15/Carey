@@ -8,7 +8,7 @@ import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
 import 'package:carey/src/features/auth/presentation/widgets/set_fingerprint/set_fingerprint_view_body.dart';
 import 'package:carey/src/core/di/dependency_injection.dart';
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
-import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/set_fingerprint_cubit.dart';
+import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_cubit.dart';
 
 @RoutePage()
 class SetFingerprintView extends StatelessWidget implements AutoRouteWrapper {
@@ -21,8 +21,8 @@ class SetFingerprintView extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<SetFingerprintCubit>(
-      create: (_) => getIt.get<SetFingerprintCubit>(),
+    return BlocProvider<BiometricCubit>(
+      create: (_) => getIt.get<BiometricCubit>(),
       child: this,
     );
   }

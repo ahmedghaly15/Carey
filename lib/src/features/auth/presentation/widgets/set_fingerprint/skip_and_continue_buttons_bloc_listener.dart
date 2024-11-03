@@ -1,16 +1,15 @@
-import 'package:carey/src/core/helpers/extensions.dart';
-import 'package:carey/src/core/themes/app_text_styles.dart';
-import 'package:carey/src/core/widgets/animated_loading_indicator.dart';
-import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/set_fingerprint_cubit.dart';
-import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/set_fingerprint_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_cubit.dart';
+import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_state.dart';
+import 'package:carey/src/features/auth/presentation/widgets/set_fingerprint/create_biometric_adaptive_dialog.dart';
 
 class SkipAndContinueButtonsBlocListener extends StatelessWidget {
   const SkipAndContinueButtonsBlocListener({
@@ -22,7 +21,7 @@ class SkipAndContinueButtonsBlocListener extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<SetFingerprintCubit, SetFingerprintState>(
+    return BlocListener<BiometricCubit, BiometricState>(
       listenWhen: (_, current) => _listenWhen(current),
       listener: (context, state) => _listener(state, context),
       child: Row(
@@ -32,7 +31,7 @@ class SkipAndContinueButtonsBlocListener extends StatelessWidget {
               margin: EdgeInsets.zero,
               backgroundColor: AppColors.grey.withOpacity(0.76),
               onPressed: () => context
-                  .read<SetFingerprintCubit>()
+                  .read<BiometricCubit>()
                   .updateProfile(updateProfileParams),
               text: AppStrings.skip,
               textColor: Colors.black,
@@ -44,7 +43,7 @@ class SkipAndContinueButtonsBlocListener extends StatelessWidget {
             child: PrimaryButton(
               margin: EdgeInsets.zero,
               onPressed: () =>
-                  context.read<SetFingerprintCubit>().setFingerprint(),
+                  context.read<BiometricCubit>().setLocalBiometric(),
               text: AppStrings.continueWord,
               borderRadius: 12,
             ),
@@ -54,27 +53,22 @@ class SkipAndContinueButtonsBlocListener extends StatelessWidget {
     );
   }
 
-  void _listener(SetFingerprintState state, BuildContext context) {
+  void _listener(BiometricState state, BuildContext context) {
     switch (state.status) {
-      case SetFingerprintStateStatus.setFingerprintSuccess:
-        context.read<SetFingerprintCubit>().updateProfile(updateProfileParams);
+      case BiometricStateStatus.setLocalBiometricSuccess:
+        context.read<BiometricCubit>().updateProfile(updateProfileParams);
         break;
-      case SetFingerprintStateStatus.setFingerprintError:
+      case BiometricStateStatus.setLocalBiometricError:
         context.showErrorDialog(state.error!);
         break;
-      case SetFingerprintStateStatus.updateProfileLoading:
+      case BiometricStateStatus.updateProfileLoading:
         context.showLoadingDialog();
         break;
-      case SetFingerprintStateStatus.updateProfileSuccess:
+      case BiometricStateStatus.updateProfileSuccess:
         context.popTop();
-        _showSuccessDialogAndExecute(
-          context,
-          afterShowingSuccessDialog: () {
-            // TODO: use pushAndPopUntil => pop until the name is AuthRoute and go home
-          },
-        );
+        _showConfirmWithPasswordDialog(context);
         break;
-      case SetFingerprintStateStatus.updateProfileError:
+      case BiometricStateStatus.updateProfileError:
         context.popTop();
         context.showErrorDialog(state.error!);
         break;
@@ -83,42 +77,22 @@ class SkipAndContinueButtonsBlocListener extends StatelessWidget {
     }
   }
 
-  void _showSuccessDialogAndExecute(
-    BuildContext context, {
-    required VoidCallback afterShowingSuccessDialog,
-  }) {
+  void _showConfirmWithPasswordDialog(BuildContext context) {
     context.showResultDialog(
       barrierDismissible: false,
       hasOkButtonInActions: false,
-      titleText: AppStrings.congratulations,
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            AppStrings.yourAccountIsReady,
-            style: AppTextStyles.poppinsFont14RegularDarkGrey,
-            textAlign: TextAlign.center,
-          ),
-          MySizedBox.height8,
-          const AnimatedLoadingIndicator(),
-        ],
+      dialog: BlocProvider.value(
+        value: context.read<BiometricCubit>(),
+        child: const CreateBiometricAdaptiveDialog(),
       ),
-    );
-    Future.delayed(
-      const Duration(seconds: 3),
-      () {
-        context.popTop();
-        afterShowingSuccessDialog();
-      },
     );
   }
 
-  bool _listenWhen(SetFingerprintState current) {
-    return current.status == SetFingerprintStateStatus.setFingerprintError ||
-        current.status == SetFingerprintStateStatus.setFingerprintSuccess ||
-        current.status == SetFingerprintStateStatus.updateProfileLoading ||
-        current.status == SetFingerprintStateStatus.updateProfileSuccess ||
-        current.status == SetFingerprintStateStatus.updateProfileError;
+  bool _listenWhen(BiometricState current) {
+    return current.status == BiometricStateStatus.setLocalBiometricError ||
+        current.status == BiometricStateStatus.setLocalBiometricSuccess ||
+        current.status == BiometricStateStatus.updateProfileLoading ||
+        current.status == BiometricStateStatus.updateProfileSuccess ||
+        current.status == BiometricStateStatus.updateProfileError;
   }
 }

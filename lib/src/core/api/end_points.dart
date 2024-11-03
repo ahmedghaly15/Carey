@@ -10,6 +10,7 @@ class EndPoints {
   static const String updateProfile = '${users}update-my-profile';
   static const String googleSignIn = '${auth}google';
   static const String facebookSignIn = '${auth}facebook';
+  static const String createBiometric = '${users}create-biometric';
   static const String getAccountByEmail = '${users}get-account';
   static const String sendMailPin = '${users}send-mail-pin';
   static const String sendSmsPin = '${users}send-sms-pin';

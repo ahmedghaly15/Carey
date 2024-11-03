@@ -53,21 +53,23 @@ extension ShowResultDialog on BuildContext {
     EdgeInsetsGeometry actionsPadding = EdgeInsets.zero,
     bool hasOkButtonInActions = true,
     bool barrierDismissible = true,
+    Widget? dialog,
     VoidCallback? okButtonOnPressed,
   }) async =>
       await showDialog<void>(
         context: this,
         barrierDismissible: barrierDismissible,
-        builder: (_) => ResultDialog(
-          titleText: titleText,
-          titleWidget: titleWidget,
-          contentText: contentText,
-          content: content,
-          contentPadding: contentPadding,
-          actions: actions,
-          hasOkButtonInActions: hasOkButtonInActions,
-          okButtonOnPressed: okButtonOnPressed,
-          actionsPadding: actionsPadding,
-        ),
+        builder: (_) =>
+            dialog ??
+            ResultDialog(
+              titleText: titleText,
+              titleWidget: titleWidget,
+              contentText: contentText,
+              content: content,
+              contentPadding: contentPadding,
+              actions: actions,
+              hasOkButtonInActions: hasOkButtonInActions,
+              actionsPadding: actionsPadding,
+            ),
       );
 }
