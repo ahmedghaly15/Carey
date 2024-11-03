@@ -48,6 +48,53 @@ class AuthRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ForgotPasswordView]
+class ForgotPasswordRoute extends PageRouteInfo<ForgotPasswordRouteArgs> {
+  ForgotPasswordRoute({
+    Key? key,
+    required String email,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ForgotPasswordRoute.name,
+          args: ForgotPasswordRouteArgs(
+            key: key,
+            email: email,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ForgotPasswordRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ForgotPasswordRouteArgs>();
+      return WrappedRoute(
+          child: ForgotPasswordView(
+        key: args.key,
+        email: args.email,
+      ));
+    },
+  );
+}
+
+class ForgotPasswordRouteArgs {
+  const ForgotPasswordRouteArgs({
+    this.key,
+    required this.email,
+  });
+
+  final Key? key;
+
+  final String email;
+
+  @override
+  String toString() {
+    return 'ForgotPasswordRouteArgs{key: $key, email: $email}';
+  }
+}
+
+/// generated route for
 /// [LoginMethodsView]
 class LoginMethodsRoute extends PageRouteInfo<void> {
   const LoginMethodsRoute({List<PageRouteInfo>? children})
@@ -115,6 +162,54 @@ class LoginRouteArgs {
 }
 
 /// generated route for
+/// [PinCodeVerificationView]
+class PinCodeVerificationRoute
+    extends PageRouteInfo<PinCodeVerificationRouteArgs> {
+  PinCodeVerificationRoute({
+    Key? key,
+    required String contact,
+    List<PageRouteInfo>? children,
+  }) : super(
+          PinCodeVerificationRoute.name,
+          args: PinCodeVerificationRouteArgs(
+            key: key,
+            contact: contact,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'PinCodeVerificationRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<PinCodeVerificationRouteArgs>();
+      return WrappedRoute(
+          child: PinCodeVerificationView(
+        key: args.key,
+        contact: args.contact,
+      ));
+    },
+  );
+}
+
+class PinCodeVerificationRouteArgs {
+  const PinCodeVerificationRouteArgs({
+    this.key,
+    required this.contact,
+  });
+
+  final Key? key;
+
+  final String contact;
+
+  @override
+  String toString() {
+    return 'PinCodeVerificationRouteArgs{key: $key, contact: $contact}';
+  }
+}
+
+/// generated route for
 /// [RegisterView]
 class RegisterRoute extends PageRouteInfo<RegisterRouteArgs> {
   RegisterRoute({
@@ -160,6 +255,25 @@ class RegisterRouteArgs {
   String toString() {
     return 'RegisterRouteArgs{key: $key, isPushedFromLogin: $isPushedFromLogin}';
   }
+}
+
+/// generated route for
+/// [ResetPasswordView]
+class ResetPasswordRoute extends PageRouteInfo<void> {
+  const ResetPasswordRoute({List<PageRouteInfo>? children})
+      : super(
+          ResetPasswordRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ResetPasswordRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const ResetPasswordView());
+    },
+  );
 }
 
 /// generated route for

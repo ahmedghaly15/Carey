@@ -7,18 +7,18 @@ import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes
 import 'package:carey/src/features/auth/presentation/widgets/email_text_form_field.dart';
 import 'package:carey/src/features/auth/presentation/widgets/pass_text_form_field.dart';
 
-class AuthForm extends StatelessWidget {
-  const AuthForm({super.key});
+class AuthFormBlocSelector extends StatelessWidget {
+  const AuthFormBlocSelector({super.key});
 
   @override
   Widget build(BuildContext context) {
     final formAttributesCubit = context.read<FormAttributesCubit>();
-    return BlocBuilder<FormAttributesCubit, FormAttributesState>(
-      buildWhen: (_, current) =>
-          current.autovalidateMode != AutovalidateMode.disabled,
-      builder: (_, state) => Form(
+    return BlocSelector<FormAttributesCubit, FormAttributesState,
+        AutovalidateMode>(
+      selector: (state) => state.autovalidateMode,
+      builder: (_, autovalidateMode) => Form(
         key: formAttributesCubit.formKey,
-        autovalidateMode: state.autovalidateMode,
+        autovalidateMode: autovalidateMode,
         child: Column(
           children: [
             EmailTextFormField(
@@ -27,11 +27,10 @@ class AuthForm extends StatelessWidget {
               passFocusNode: formAttributesCubit.passwordFocusNode,
             ),
             MySizedBox.height13,
-            BlocBuilder<FormAttributesCubit, FormAttributesState>(
-              buildWhen: (previous, current) =>
-                  previous.isPasswordObscured != current.isPasswordObscured,
-              builder: (_, state) => PassTextFormField(
-                obscureText: state.isPasswordObscured,
+            BlocSelector<FormAttributesCubit, FormAttributesState, bool>(
+              selector: (state) => state.isPasswordObscured,
+              builder: (_, isPasswordObscured) => PassTextFormField(
+                obscureText: isPasswordObscured,
                 controller: formAttributesCubit.passwordController,
                 focusNode: formAttributesCubit.passwordFocusNode,
                 passVisibilityOnTap: () =>

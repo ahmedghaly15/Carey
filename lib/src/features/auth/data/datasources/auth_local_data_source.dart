@@ -21,7 +21,7 @@ class AuthLocalDataSource {
   ) async {
     currentUserData = userData;
     await secureUserData(userData);
-    DioFactory.setTokenIntoHeadersAfterLogin(userData.token);
+    DioFactory.setTokenIntoHeaders(userData.token);
   }
 
   static Future<AuthResponseEntity> getSecuredUserData() async {

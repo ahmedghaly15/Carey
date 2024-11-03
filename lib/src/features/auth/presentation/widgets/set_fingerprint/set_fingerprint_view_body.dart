@@ -33,7 +33,8 @@ class SetFingerprintViewBody extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         SkipAndContinueButtonsBlocListener(
-            updateProfileParams: updateProfileParams,),
+          updateProfileParams: updateProfileParams,
+        ),
       ],
     );
   }

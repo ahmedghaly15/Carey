@@ -41,7 +41,7 @@ class _RegisterApiService implements RegisterApiService {
     )
         .compose(
           _dio.options,
-          'https://carey-production.up.railway.app/auth/register',
+          'auth/register',
           queryParameters: queryParameters,
           data: _data,
           cancelToken: cancelToken,

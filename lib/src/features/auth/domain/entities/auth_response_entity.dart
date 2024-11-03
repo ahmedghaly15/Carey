@@ -14,4 +14,10 @@ class AuthResponseEntity with _$AuthResponseEntity {
 
   factory AuthResponseEntity.fromJson(Map<String, dynamic> json) =>
       _$AuthResponseEntityFromJson(json);
+
+  factory AuthResponseEntity.toAuthEntity({
+    required CareyUser user,
+    String? token,
+  }) =>
+      AuthResponseEntity(user: user, token: token ?? '');
 }

@@ -15,16 +15,19 @@ class RegisterButtonBlocListener extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<RegisterCubit, RegisterState>(
-      listenWhen: (_, current) =>
-          current is RegisterLoading ||
-          current is RegisterError ||
-          current is RegisterSuccess,
-      listener: (context, state) => _registerListener(state, context),
+      listenWhen: (_, current) => _listenWhen(current),
+      listener: (context, state) => _listener(state, context),
       child: PrimaryButton(
         onPressed: () => _register(context),
         text: AppStrings.signUp,
       ),
     );
+  }
+
+  bool _listenWhen(RegisterState<dynamic> current) {
+    return current is RegisterLoading ||
+        current is RegisterError ||
+        current is RegisterSuccess;
   }
 
   void _register(BuildContext context) {
@@ -38,20 +41,24 @@ class RegisterButtonBlocListener extends StatelessWidget {
     );
   }
 
-  void _registerListener(RegisterState<dynamic> state, BuildContext context) {
+  void _listener(RegisterState<dynamic> state, BuildContext context) {
     state.whenOrNull(
-      registerLoading: () {
-        context.unfocusKeyboard();
-        context.showLoadingDialog();
-      },
-      registerError: (error) {
-        context.popTop();
-        context.showErrorDialog(error);
-      },
+      registerLoading: () => _registerLoading(context),
+      registerError: (error) => _registerError(context, error),
       registerSuccess: () async {
         await _handleRememberingAndShowResultDialog(context);
       },
     );
+  }
+
+  void _registerError(BuildContext context, String error) {
+    context.popTop();
+    context.showErrorDialog(error);
+  }
+
+  void _registerLoading(BuildContext context) {
+    context.unfocusKeyboard();
+    context.showLoadingDialog();
   }
 
   Future<void> _handleRememberingAndShowResultDialog(

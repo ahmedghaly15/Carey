@@ -90,6 +90,7 @@ class CustomTextFormField extends StatelessWidget {
       textAlign: textAlign,
       style: AppTextStyles.font13Regular,
       decoration: InputDecoration(
+        suffixIconColor: AppColors.primaryColor,
         suffixIcon: suffixIcon,
         prefixIcon: prefixSvgIcon != null
             ? Container(

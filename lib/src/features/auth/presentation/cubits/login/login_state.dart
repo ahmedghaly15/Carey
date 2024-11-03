@@ -14,7 +14,4 @@ class LoginState<T> with _$LoginState<T> {
   ) = LoginViaPasswordSuccess<T>;
   const factory LoginState.loginViaPasswordError(String error) =
       LoginViaPasswordError<T>;
-  const factory LoginState.socialLoginLoading() = SocialLoginLoading<T>;
-  const factory LoginState.socialLoginSuccess() = SocialLoginSuccess<T>;
-  const factory LoginState.socialLoginError(String error) = SocialLoginError<T>;
 }

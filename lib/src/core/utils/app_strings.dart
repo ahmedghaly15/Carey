@@ -69,4 +69,23 @@ class AppStrings {
   static const String somethingWentWrong = 'Something went wrong';
   static const String success = 'Success';
   static const String warning = 'Warning';
+  static const String forgotPassword = 'Forgot Password';
+  static const String selectWhichContactDetails =
+      'Select which contact details should we use to reset your password';
+  static const String via = 'Via';
+  static const String sms = 'SMS';
+  static const String writeYourEmailFirst = 'Write your email first, please';
+  static const String tryAgain = 'Try Again';
+  static const String youDontHavePhoneNumber = 'You don\'t have a phone number';
+  static const String pinCodeHasBeenSent = 'PIN code has been sent';
+  static const String pinCodeHasBeenSentTo = 'PIN code has been sent to';
+  static const String checkYourInbox = 'Check your inbox, please';
+  static const String ok = 'Ok';
+  static const String verification = 'Verification';
+  static const String verify = 'Verify';
+  static const String resetPassword = 'Reset Password';
+  static const String createYourNewPassword = 'Create your new password';
+  static const String passwordsDoNotMatch = 'Passwords do not match';
+  static const String passChangedSuccessfully =
+      'Password changed successfully. Please login';
 }

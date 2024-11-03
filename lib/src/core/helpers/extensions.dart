@@ -50,10 +50,11 @@ extension ShowResultDialog on BuildContext {
     Widget? content,
     List<Widget>? actions,
     EdgeInsetsGeometry? contentPadding,
-    EdgeInsetsGeometry? actionsPadding,
+    EdgeInsetsGeometry actionsPadding = EdgeInsets.zero,
     bool hasOkButtonInActions = true,
     bool barrierDismissible = true,
     Widget? dialog,
+    VoidCallback? okButtonOnPressed,
   }) async =>
       await showDialog<void>(
         context: this,

@@ -72,7 +72,6 @@ class SkipAndContinueButtonsBlocListener extends StatelessWidget {
         context.popTop();
         context.showErrorDialog(state.error!);
         break;
-
       default:
         context.showLoadingDialog();
     }

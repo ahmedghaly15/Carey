@@ -21,7 +21,7 @@ class CustomSliverAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      title: titleWidget ?? Text(titleText ?? ''),
+      title: titleWidget ?? (titleText != null ? Text(titleText!) : null),
       leading: hasLeading ? leading ?? const ArrowBackIconButton() : null,
       actions: actions,
     );

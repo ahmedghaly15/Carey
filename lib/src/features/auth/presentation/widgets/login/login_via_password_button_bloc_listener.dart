@@ -19,16 +19,19 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
-      listenWhen: (_, current) =>
-          current is LoginViaPasswordError ||
-          current is LoginViaPasswordSuccess ||
-          current is LoginViaPasswordLoading,
-      listener: (context, state) => _loginViaPasswordListener(state, context),
+      listenWhen: (_, current) => _listenWhen(current),
+      listener: (context, state) => _listener(state, context),
       child: PrimaryButton(
         onPressed: () => _loginViaPass(context),
         text: AppStrings.signIn,
       ),
     );
+  }
+
+  bool _listenWhen(LoginState<dynamic> current) {
+    return current is LoginViaPasswordError ||
+        current is LoginViaPasswordSuccess ||
+        current is LoginViaPasswordLoading;
   }
 
   void _loginViaPass(BuildContext context) {
@@ -42,23 +45,34 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
     );
   }
 
-  void _loginViaPasswordListener(LoginState state, BuildContext context) {
+  void _listener(LoginState state, BuildContext context) {
     state.whenOrNull(
-      loginViaPasswordLoading: () {
-        context.unfocusKeyboard();
-        context.showLoadingDialog();
-      },
-      loginViaPasswordError: (error) {
-        context.popTop();
-        context.showErrorDialog(error);
-      },
+      loginViaPasswordLoading: () => _loginViaPasswordLoading(context),
+      loginViaPasswordError: (error) => _loginViaPasswordError(context, error),
       loginViaPasswordSuccess: (authEntity) async {
-        context.popTop();
-        await _rememberMeAndSecureUserData(context, authEntity);
-        // Either Home screen or AccountSetup screen
-        _goNextView(authEntity.user.fullName, context);
+        await _loginViaPasswordSuccess(context, authEntity);
       },
     );
+  }
+
+  Future<void> _loginViaPasswordSuccess(
+    BuildContext context,
+    AuthResponseEntity authEntity,
+  ) async {
+    context.popTop();
+    await _rememberMeAndSecureUserData(context, authEntity);
+    // Either Home screen or AccountSetup screen
+    _goNextView(authEntity.user.fullName, context);
+  }
+
+  void _loginViaPasswordError(BuildContext context, String error) {
+    context.popTop();
+    context.showErrorDialog(error);
+  }
+
+  void _loginViaPasswordLoading(BuildContext context) {
+    context.unfocusKeyboard();
+    context.showLoadingDialog();
   }
 
   Future<void> _rememberMeAndSecureUserData(

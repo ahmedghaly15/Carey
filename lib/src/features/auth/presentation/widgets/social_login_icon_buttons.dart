@@ -16,6 +16,7 @@ class SocialLoginIconButtons extends StatelessWidget {
           method: SocialLoginMethod.socialLoginMethods[index],
           index: index,
         ),
+        growable: false,
       ),
     );
   }
