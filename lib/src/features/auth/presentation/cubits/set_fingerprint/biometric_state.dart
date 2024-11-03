@@ -15,6 +15,7 @@ enum BiometricStateStatus {
   createBiometricLoading,
   createBiometricSuccess,
   createBiometricError,
+  togglePasswordVisibility,
 }
 
 @freezed
@@ -24,6 +25,7 @@ class BiometricState with _$BiometricState {
     AuthResponseEntity? currentUserData,
     @Default(false) bool fingerprintAuthenticated,
     String? error,
+    @Default(true) bool isPasswordObscured,
   }) = _BiometricState;
 
   factory BiometricState.initial() => const BiometricState(

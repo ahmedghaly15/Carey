@@ -11,9 +11,11 @@ class AuthViewTitleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: AppTextStyles.poppinsFont27Medium,
+    return FittedBox(
+      child: Text(
+        title,
+        style: AppTextStyles.poppinsFont27Medium,
+      ),
     );
   }
 }

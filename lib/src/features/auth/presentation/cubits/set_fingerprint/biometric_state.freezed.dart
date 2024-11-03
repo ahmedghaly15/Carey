@@ -20,6 +20,7 @@ mixin _$BiometricState {
   AuthResponseEntity? get currentUserData => throw _privateConstructorUsedError;
   bool get fingerprintAuthenticated => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
+  bool get isPasswordObscured => throw _privateConstructorUsedError;
 
   /// Create a copy of BiometricState
   /// with the given fields replaced by the non-null parameter values.
@@ -38,7 +39,8 @@ abstract class $BiometricStateCopyWith<$Res> {
       {BiometricStateStatus status,
       AuthResponseEntity? currentUserData,
       bool fingerprintAuthenticated,
-      String? error});
+      String? error,
+      bool isPasswordObscured});
 
   $AuthResponseEntityCopyWith<$Res>? get currentUserData;
 }
@@ -62,6 +64,7 @@ class _$BiometricStateCopyWithImpl<$Res, $Val extends BiometricState>
     Object? currentUserData = freezed,
     Object? fingerprintAuthenticated = null,
     Object? error = freezed,
+    Object? isPasswordObscured = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -80,6 +83,10 @@ class _$BiometricStateCopyWithImpl<$Res, $Val extends BiometricState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
+      isPasswordObscured: null == isPasswordObscured
+          ? _value.isPasswordObscured
+          : isPasswordObscured // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -110,7 +117,8 @@ abstract class _$$BiometricStateImplCopyWith<$Res>
       {BiometricStateStatus status,
       AuthResponseEntity? currentUserData,
       bool fingerprintAuthenticated,
-      String? error});
+      String? error,
+      bool isPasswordObscured});
 
   @override
   $AuthResponseEntityCopyWith<$Res>? get currentUserData;
@@ -133,6 +141,7 @@ class __$$BiometricStateImplCopyWithImpl<$Res>
     Object? currentUserData = freezed,
     Object? fingerprintAuthenticated = null,
     Object? error = freezed,
+    Object? isPasswordObscured = null,
   }) {
     return _then(_$BiometricStateImpl(
       status: null == status
@@ -151,6 +160,10 @@ class __$$BiometricStateImplCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
+      isPasswordObscured: null == isPasswordObscured
+          ? _value.isPasswordObscured
+          : isPasswordObscured // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -162,7 +175,8 @@ class _$BiometricStateImpl implements _BiometricState {
       {required this.status,
       this.currentUserData,
       this.fingerprintAuthenticated = false,
-      this.error});
+      this.error,
+      this.isPasswordObscured = true});
 
   @override
   final BiometricStateStatus status;
@@ -173,10 +187,13 @@ class _$BiometricStateImpl implements _BiometricState {
   final bool fingerprintAuthenticated;
   @override
   final String? error;
+  @override
+  @JsonKey()
+  final bool isPasswordObscured;
 
   @override
   String toString() {
-    return 'BiometricState(status: $status, currentUserData: $currentUserData, fingerprintAuthenticated: $fingerprintAuthenticated, error: $error)';
+    return 'BiometricState(status: $status, currentUserData: $currentUserData, fingerprintAuthenticated: $fingerprintAuthenticated, error: $error, isPasswordObscured: $isPasswordObscured)';
   }
 
   @override
@@ -190,12 +207,14 @@ class _$BiometricStateImpl implements _BiometricState {
             (identical(
                     other.fingerprintAuthenticated, fingerprintAuthenticated) ||
                 other.fingerprintAuthenticated == fingerprintAuthenticated) &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.isPasswordObscured, isPasswordObscured) ||
+                other.isPasswordObscured == isPasswordObscured));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, status, currentUserData, fingerprintAuthenticated, error);
+  int get hashCode => Object.hash(runtimeType, status, currentUserData,
+      fingerprintAuthenticated, error, isPasswordObscured);
 
   /// Create a copy of BiometricState
   /// with the given fields replaced by the non-null parameter values.
@@ -212,7 +231,8 @@ abstract class _BiometricState implements BiometricState {
       {required final BiometricStateStatus status,
       final AuthResponseEntity? currentUserData,
       final bool fingerprintAuthenticated,
-      final String? error}) = _$BiometricStateImpl;
+      final String? error,
+      final bool isPasswordObscured}) = _$BiometricStateImpl;
 
   @override
   BiometricStateStatus get status;
@@ -222,6 +242,8 @@ abstract class _BiometricState implements BiometricState {
   bool get fingerprintAuthenticated;
   @override
   String? get error;
+  @override
+  bool get isPasswordObscured;
 
   /// Create a copy of BiometricState
   /// with the given fields replaced by the non-null parameter values.
