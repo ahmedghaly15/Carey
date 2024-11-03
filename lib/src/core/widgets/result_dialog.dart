@@ -38,11 +38,13 @@ class ResultDialog extends StatelessWidget {
       icon: SvgPicture.asset(
         Assets.svgsSuccessDialogImage,
       ),
-      title: titleWidget ??
-          Text(
-            titleText ?? AppStrings.congratulations,
-            style: AppTextStyles.poppinsFont20SemiBold,
-          ),
+      title: FittedBox(
+        child: titleWidget ??
+            Text(
+              titleText ?? AppStrings.congratulations,
+              style: AppTextStyles.poppinsFont20SemiBold,
+            ),
+      ),
       content: content ??
           Text(
             contentText!,
