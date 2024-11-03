@@ -39,6 +39,8 @@ dependencies:
   url_launcher: ^6.3.0
   # Provides local authentication via biometrics
   local_auth: ^2.3.0
+  # Display toasts in flutter with elegant design and animations
+  cherry_toast: ^1.11.0
   
 dev_dependencies:
   flutter_test:
