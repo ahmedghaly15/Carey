@@ -16,7 +16,7 @@ class ForgotPasswordRepo {
 
   ForgotPasswordRepo(this._apiService);
 
-  Future<ApiResult<List<ContactDetails>>> getAccountByEmail(
+  Future<ApiResult<List<ContactDetails>>> getForgotPassContactDetails(
     GetAccountByEmailParams params, [
     CancelToken? cancelToken,
   ]) {
@@ -46,15 +46,21 @@ class ForgotPasswordRepo {
     return contactDetails;
   }
 
-  Future<ApiResult<void>> sendMailPin(SendPinParams params) {
+  Future<ApiResult<void>> sendMailPin(
+    SendPinParams params, [
+    CancelToken? cancelToken,
+  ]) {
     return executeAndHandleErrors<void>(
-      () async => await _apiService.sendMailPin(params),
+      () async => await _apiService.sendMailPin(params, cancelToken),
     );
   }
 
-  Future<ApiResult<void>> sendSmsPin(SendPinParams params) {
+  Future<ApiResult<void>> sendSmsPin(
+    SendPinParams params, [
+    CancelToken? cancelToken,
+  ]) {
     return executeAndHandleErrors<void>(
-      () async => await _apiService.sendSmsPin(params),
+      () async => await _apiService.sendSmsPin(params, cancelToken),
     );
   }
 }

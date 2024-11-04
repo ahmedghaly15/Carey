@@ -23,8 +23,9 @@ class ForgotPasswordErrorView extends StatelessWidget {
           hasScrollBody: false,
           child: CustomErrorWidget(
             error: error,
-            tryAgainOnPressed: () =>
-                context.read<ForgotPasswordCubit>().getAccountByEmail(email),
+            tryAgainOnPressed: () => context
+                .read<ForgotPasswordCubit>()
+                .getForgotPassContactDetails(email),
           ),
         ),
       ],

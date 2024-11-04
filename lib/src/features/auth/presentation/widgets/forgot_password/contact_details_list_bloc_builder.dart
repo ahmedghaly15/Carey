@@ -12,20 +12,17 @@ class ContactDetailsListBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
-      buildWhen: (_, current) =>
-          current.status ==
-              ForgotPasswordStateStatus.updateSelectedContactDetails ||
-          current.status == ForgotPasswordStateStatus.getAccountByEmailSuccess,
-      builder: (_, state) => Wrap(
-        spacing: 23.h,
-        runSpacing: 23.w,
-        alignment: WrapAlignment.start,
-        runAlignment: WrapAlignment.start,
-        verticalDirection: VerticalDirection.down,
-        children: List.generate(
-          AppConstants.forgotPassContactDetails.length,
-          (index) => ContactDetailsItem(
+    return Wrap(
+      spacing: 23.h,
+      runSpacing: 23.w,
+      alignment: WrapAlignment.start,
+      runAlignment: WrapAlignment.start,
+      verticalDirection: VerticalDirection.down,
+      children: List.generate(
+        AppConstants.forgotPassContactDetails.length,
+        (index) => BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
+          buildWhen: (_, current) => _buildWhen(current.status),
+          builder: (context, state) => ContactDetailsItem(
             contact: state.contactDetails![index],
             index: index,
             isSelected: state.selectedContactDetailsIndex == index,
@@ -33,5 +30,10 @@ class ContactDetailsListBlocBuilder extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  bool _buildWhen(ForgotPasswordStateStatus currentStatus) {
+    return currentStatus ==
+        ForgotPasswordStateStatus.updateSelectedContactDetails;
   }
 }

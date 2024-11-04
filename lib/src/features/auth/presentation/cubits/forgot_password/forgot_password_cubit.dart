@@ -27,13 +27,15 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
     }
   }
 
-  void getAccountByEmail(String email) async {
+  void getForgotPassContactDetails(String email) async {
     emit(state.copyWith(
       status: ForgotPasswordStateStatus.getAccountByEmailLoading,
     ));
     final params = GetAccountByEmailParams(email: email);
-    final result =
-        await _forgotPasswordRepo.getAccountByEmail(params, _cancelToken);
+    final result = await _forgotPasswordRepo.getForgotPassContactDetails(
+      params,
+      _cancelToken,
+    );
     result.when(
       success: (contactDetails) => emit(state.copyWith(
         status: ForgotPasswordStateStatus.getAccountByEmailSuccess,
@@ -52,8 +54,8 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
     emit(state.copyWith(status: ForgotPasswordStateStatus.sendPinLoading));
     final params = SendPinParams(userId: currentUserData!.user.id);
     final result = state.selectedContactDetailsIndex == 0
-        ? await _forgotPasswordRepo.sendSmsPin(params)
-        : await _forgotPasswordRepo.sendMailPin(params);
+        ? await _forgotPasswordRepo.sendSmsPin(params, _cancelToken)
+        : await _forgotPasswordRepo.sendMailPin(params, _cancelToken);
     result.when(
       success: (_) => emit(
           state.copyWith(status: ForgotPasswordStateStatus.sendPinSuccess)),
