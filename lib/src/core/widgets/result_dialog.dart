@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
+import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/ok_text_button.dart';
 
 class ResultDialog extends StatelessWidget {
