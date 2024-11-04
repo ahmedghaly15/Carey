@@ -37,7 +37,7 @@ class _BiometricApiService implements BiometricApiService {
     )
         .compose(
           _dio.options,
-          'https://carey-production.up.railway.app/users/create-biometric',
+          'users/create-biometric',
           queryParameters: queryParameters,
           data: _data,
         )

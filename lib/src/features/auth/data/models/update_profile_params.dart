@@ -4,8 +4,8 @@ part 'update_profile_params.freezed.dart';
 part 'update_profile_params.g.dart';
 
 @freezed
-@JsonSerializable()
 class UpdateProfileParams with _$UpdateProfileParams {
+  @JsonSerializable()
   const factory UpdateProfileParams({
     String? fullName,
     String? nickName,
