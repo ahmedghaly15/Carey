@@ -1,12 +1,12 @@
-import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:carey/src/core/utils/app_assets.dart';
+import 'package:carey/src/core/themes/app_text_styles.dart';
+import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/cancel_outlined_button.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
+import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_state.dart';
 import 'package:carey/src/features/auth/presentation/widgets/pass_text_form_field.dart';
@@ -24,7 +24,13 @@ class CreateBiometricAdaptiveDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog.adaptive(
       scrollable: true,
-      title: SvgPicture.asset(Assets.svgsSuccessDialogImage),
+      title: Text(
+        AppStrings.confirmYourPass,
+        style: AppTextStyles.font20SemiBoldWhite.copyWith(
+          color: Colors.black,
+        ),
+        textAlign: TextAlign.center,
+      ),
       content: Form(
         key: context.read<BiometricCubit>().formKey,
         child: Column(
@@ -50,7 +56,7 @@ class CreateBiometricAdaptiveDialog extends StatelessWidget {
           ],
         ),
       ),
-      contentPadding: EdgeInsets.symmetric(vertical: 16.h),
+      contentPadding: EdgeInsets.only(top: 32.h, bottom: 16.h),
     );
   }
 }
