@@ -11,7 +11,7 @@ import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_cubit.dart';
-import 'package:carey/src/features/auth/presentation/widgets/set_fingerprint/skip_and_continue_buttons_bloc_listener.dart';
+import 'package:carey/src/features/auth/presentation/widgets/set_fingerprint/biometric_skip_and_continue_buttons.dart';
 
 @RoutePage()
 class SetFingerprintView extends StatelessWidget implements AutoRouteWrapper {
@@ -58,7 +58,7 @@ class SetFingerprintView extends StatelessWidget implements AutoRouteWrapper {
                     style: AppTextStyles.font16Regular,
                     textAlign: TextAlign.center,
                   ),
-                  SkipAndContinueButtonsBlocListener(
+                  BiometricSkipAndContinueButtons(
                     updateProfileParams: updateProfileParams,
                   ),
                 ],
