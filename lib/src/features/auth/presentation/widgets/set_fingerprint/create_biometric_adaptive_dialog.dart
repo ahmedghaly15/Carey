@@ -1,3 +1,4 @@
+import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,7 +13,12 @@ import 'package:carey/src/features/auth/presentation/widgets/pass_text_form_fiel
 import 'package:carey/src/features/auth/presentation/widgets/set_fingerprint/create_biometric_continue_bloc_consumer.dart';
 
 class CreateBiometricAdaptiveDialog extends StatelessWidget {
-  const CreateBiometricAdaptiveDialog({super.key});
+  const CreateBiometricAdaptiveDialog({
+    super.key,
+    required this.updateProfileParams,
+  });
+
+  final UpdateProfileParams updateProfileParams;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +42,9 @@ class CreateBiometricAdaptiveDialog extends StatelessWidget {
               ),
             ),
             MySizedBox.height32,
-            const CreateBiometricContinueBlocConsumer(),
+            CreateBiometricContinueBlocConsumer(
+              updateProfileParams: updateProfileParams,
+            ),
             MySizedBox.height13,
             const CancelOutlinedButton(),
           ],
