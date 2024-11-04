@@ -8,6 +8,16 @@ class LocalAuthErrorHandler {
   static ApiErrorModel handleError(dynamic error) {
     if (error is PlatformException) {
       switch (error.code) {
+        case 'auth_in_progress':
+          return const ApiErrorModel(
+            error: ['Biometric authentication is in progress.'],
+          );
+
+        case 'UserCanceled' || 'authentication_canceled':
+          return const ApiErrorModel(
+            error: ['Biometric authentication is canceled.'],
+          );
+
         case auth_error.notAvailable:
           return const ApiErrorModel(
             error: ['Local authentication is not available.'],
@@ -47,12 +57,12 @@ class LocalAuthErrorHandler {
 
         default:
           return const ApiErrorModel(
-            error: ['Biometric authentication is not supported.'],
+            error: ['Biometric authentication is canceled.'],
           );
       }
     }
     return const ApiErrorModel(
-      error: ['Biometric authentication is not supported.'],
+      error: ['Biometric authentication is canceled.'],
     );
   }
 }
