@@ -11,12 +11,10 @@ class ResetPassRememberMeBlocSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocSelector<ResetPassCubit, ResetPassState, bool>(
       selector: (state) => state.rememberMe,
-      builder: (context, state) {
-        return RememberMeCheckBox(
-          value: state,
-          onChanged: (_) => context.read<ResetPassCubit>().toggleRememberMe(),
-        );
-      },
+      builder: (context, state) => RememberMeCheckBox(
+        value: state,
+        onChanged: (_) => context.read<ResetPassCubit>().toggleRememberMe(),
+      ),
     );
   }
 }

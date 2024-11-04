@@ -19,20 +19,20 @@ class ResetPasswordForm extends StatelessWidget {
         children: [
           BlocSelector<ResetPassCubit, ResetPassState, bool>(
             selector: (state) => state.isPasswordObscured,
-            builder: (context, state) => PassTextFormField(
+            builder: (context, isPasswordObscured) => PassTextFormField(
               controller: resetPassCubit.passController,
               passVisibilityOnTap: () => resetPassCubit.togglePassVisibility(),
-              obscureText: state,
+              obscureText: isPasswordObscured,
             ),
           ),
           MySizedBox.height33,
           BlocSelector<ResetPassCubit, ResetPassState, bool>(
             selector: (state) => state.isConfirmPassObscured,
-            builder: (context, state) => PassTextFormField(
+            builder: (context, isConfirmPassObscured) => PassTextFormField(
               controller: resetPassCubit.confirmPassController,
               passVisibilityOnTap: () =>
                   resetPassCubit.toggleConfirmPassVisibility(),
-              obscureText: state,
+              obscureText: isConfirmPassObscured,
               autofillHints: const [AutofillHints.newPassword],
               validate: (_) => TextFormValidator.validateConfirmPass(
                 pass: resetPassCubit.passController.text,

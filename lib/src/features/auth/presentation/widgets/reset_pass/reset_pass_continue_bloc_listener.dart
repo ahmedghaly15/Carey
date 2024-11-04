@@ -16,7 +16,7 @@ class ResetPassContinueBlocListener extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<ResetPassCubit, ResetPassState>(
-      listenWhen: (_, current) => _listenWhen(current),
+      listenWhen: (_, current) => _listenWhen(current.status),
       listener: (context, state) async => await _listener(state, context),
       child: PrimaryButton(
         margin: AppConstants.screenHorizontalPadding.add(
@@ -51,13 +51,13 @@ class ResetPassContinueBlocListener extends StatelessWidget {
       contentText: AppStrings.passChangedSuccessfully,
       okButtonOnPressed: () => context.router.pushAndPopUntil(
         const AuthRoute(),
-        predicate: (route) => route.settings.name == 'ForgotPasswordRoute',
+        predicate: (route) => route.settings.name == ForgotPasswordRoute.name,
       ),
     );
   }
 
-  bool _listenWhen(ResetPassState current) =>
-      current.status == ResetPassStateStatus.resetPassLoading ||
-      current.status == ResetPassStateStatus.resetPassSuccess ||
-      current.status == ResetPassStateStatus.resetPassError;
+  bool _listenWhen(ResetPassStateStatus currentStatus) =>
+      currentStatus == ResetPassStateStatus.resetPassLoading ||
+      currentStatus == ResetPassStateStatus.resetPassSuccess ||
+      currentStatus == ResetPassStateStatus.resetPassError;
 }

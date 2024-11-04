@@ -17,31 +17,37 @@ class VerifyButtonBlocListener extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<PinCodeVerificationCubit, PinCodeVerificationState>(
-      listenWhen: (_, current) =>
-          current is VerifyLoading ||
-          current is VerifySuccess ||
-          current is VerifyError,
-      listener: (context, state) {
-        state.whenOrNull(
-          verifyLoading: () => context.showLoadingDialog(),
-          verifyError: (error) {
-            context.popTop();
-            context.showErrorDialog(error);
-          },
-          verifySuccess: (token) {
-            DioFactory.setTokenIntoHeaders(token);
-            context.popTop();
-            Future.delayed(const Duration(milliseconds: 200), () {
-              context.pushRoute(const ResetPasswordRoute());
-            });
-          },
-        );
-      },
+      listenWhen: (_, current) => _listenWhen(current),
+      listener: (context, state) => _listener(state, context),
       child: PrimaryButton(
         margin: EdgeInsets.only(bottom: 24.h),
         onPressed: () => context.read<PinCodeVerificationCubit>().verifyPin(),
         text: AppStrings.verify,
       ),
     );
+  }
+
+  void _listener(
+      PinCodeVerificationState<dynamic> state, BuildContext context) {
+    state.whenOrNull(
+      verifyLoading: () => context.showLoadingDialog(),
+      verifyError: (error) {
+        context.popTop();
+        context.showErrorDialog(error);
+      },
+      verifySuccess: (token) {
+        DioFactory.setTokenIntoHeaders(token);
+        context.popTop();
+        Future.delayed(const Duration(milliseconds: 200), () {
+          context.pushRoute(const ResetPasswordRoute());
+        });
+      },
+    );
+  }
+
+  bool _listenWhen(PinCodeVerificationState<dynamic> current) {
+    return current is VerifyLoading ||
+        current is VerifySuccess ||
+        current is VerifyError;
   }
 }
