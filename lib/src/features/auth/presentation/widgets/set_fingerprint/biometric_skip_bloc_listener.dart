@@ -82,7 +82,7 @@ class BiometricSkipBlocListener extends StatelessWidget {
     Future.delayed(const Duration(seconds: 3), () {
       // TODO: go home instead of go splash
       router.pushAndPopUntil(
-        const SplashRoute(),
+        const HomeRoute(),
         predicate: (route) => route.settings.name == AccountSetupRoute.name,
       );
     });
