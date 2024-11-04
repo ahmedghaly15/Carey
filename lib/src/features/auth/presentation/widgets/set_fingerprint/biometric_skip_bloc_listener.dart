@@ -58,10 +58,11 @@ class BiometricSkipBlocListener extends StatelessWidget {
   }
 
   void _showSuccessDialogAndGoHome(BuildContext context) {
-    // ! i did that (router = context.router) to capture the router because if used context.router directly below
-    // ! it will not work because the context of the widget will be coming from a deactivated widget right then
-    // ! and the router will be null, so it will not work
-    final router = context.router;
+    _showSuccessDialog(context);
+    _pushHomeAndPopUntilAccountSetup(context);
+  }
+
+  void _showSuccessDialog(BuildContext context) {
     context.showResultDialog(
       barrierDismissible: false,
       hasOkButtonInActions: false,
@@ -79,6 +80,13 @@ class BiometricSkipBlocListener extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _pushHomeAndPopUntilAccountSetup(BuildContext context) {
+    // ! i did that (router = context.router) to capture the router because if used context.router directly below
+    // ! it will not work because the context of the widget will be coming from a deactivated widget right then
+    // ! and the router will be null, so it will not work
+    final router = context.router;
     Future.delayed(const Duration(seconds: 3), () {
       router.pushAndPopUntil(
         const HomeRoute(),
