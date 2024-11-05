@@ -8,18 +8,19 @@ import 'package:carey/src/core/api/dio_factory.dart';
 import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/services/local_auth.dart';
 import 'package:carey/src/features/auth/data/apis/account_setup_api_service.dart';
+import 'package:carey/src/features/auth/data/apis/biometric_api_service.dart';
 import 'package:carey/src/features/auth/data/apis/forgot_password_api_service.dart';
 import 'package:carey/src/features/auth/data/apis/login_api_service.dart';
 import 'package:carey/src/features/auth/data/apis/pin_code_verification_api_service.dart';
 import 'package:carey/src/features/auth/data/apis/register_api_service.dart';
 import 'package:carey/src/features/auth/data/apis/reset_pass_api_service.dart';
 import 'package:carey/src/features/auth/data/repositories/account_setup_repo.dart';
+import 'package:carey/src/features/auth/data/repositories/biometric_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/forgot_password_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/login_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/pin_code_verification_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/register_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/reset_pass_repo.dart';
-import 'package:carey/src/features/auth/data/repositories/set_fingerprint_repo.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_password.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
@@ -29,7 +30,7 @@ import 'package:carey/src/features/auth/presentation/cubits/login/login_cubit.da
 import 'package:carey/src/features/auth/presentation/cubits/pin_code_verification/pin_code_verification_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/register/register_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/reset_pass/reset_pass_cubit.dart';
-import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/set_fingerprint_cubit.dart';
+import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -68,6 +69,9 @@ void _setupForApiServices() {
   getIt.registerLazySingleton<AccountSetupApiService>(
     () => AccountSetupApiService(dio),
   );
+  getIt.registerLazySingleton<BiometricApiService>(
+    () => BiometricApiService(dio),
+  );
   getIt.registerLazySingleton<ForgotPasswordApiService>(
     () => ForgotPasswordApiService(dio),
   );
@@ -89,8 +93,11 @@ void _setupForRepos() {
   getIt.registerLazySingleton<AccountSetupRepo>(
     () => AccountSetupRepo(getIt.get<AccountSetupApiService>()),
   );
-  getIt.registerLazySingleton<SetFingerprintRepo>(
-    () => SetFingerprintRepo(getIt.get<LocalAuth>()),
+  getIt.registerLazySingleton<BiometricRepo>(
+    () => BiometricRepo(
+      localAuth: getIt.get<LocalAuth>(),
+      biometricApiService: getIt.get<BiometricApiService>(),
+    ),
   );
   getIt.registerLazySingleton<ForgotPasswordRepo>(
     () => ForgotPasswordRepo(getIt.get<ForgotPasswordApiService>()),
@@ -125,10 +132,10 @@ void _setupForCubits() {
   getIt.registerFactory<AccountSetupCubit>(
     () => AccountSetupCubit(),
   );
-  getIt.registerFactory<SetFingerprintCubit>(
-    () => SetFingerprintCubit(
+  getIt.registerLazySingleton<BiometricCubit>(
+    () => BiometricCubit(
       updateProfileUseCase: getIt.get<UpdateProfile>(),
-      fingerprintRepo: getIt.get<SetFingerprintRepo>(),
+      biometricRepo: getIt.get<BiometricRepo>(),
     ),
   );
   getIt.registerFactory<ForgotPasswordCubit>(

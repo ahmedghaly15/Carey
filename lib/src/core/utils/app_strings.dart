@@ -60,10 +60,15 @@ class AppStrings {
       'Please put your finger on the fingerprint scanner or scan your face to get started.';
   static const String skip = 'Skip';
   static const String scanYourFingerprint =
-      'Scan your fingerprint to authenticate';
+      'Scan your fingerprint or face to authenticate';
   static const String congratulations = 'Congratulations!';
   static const String yourAccountIsReady =
       'Your account is ready to use.\nYou will be redirected to the home in a few seconds.....';
+  static const String cancel = 'Cancel';
+  static const String info = 'Info';
+  static const String somethingWentWrong = 'Something went wrong';
+  static const String success = 'Success';
+  static const String warning = 'Warning';
   static const String forgotPassword = 'Forgot Password';
   static const String selectWhichContactDetails =
       'Select which contact details should we use to reset your password';
@@ -84,4 +89,5 @@ class AppStrings {
   static const String passChangedSuccessfully =
       'Password changed successfully. Please login';
   static const String confirmPass = 'Confirm Password';
+  static const String confirmYourPass = 'Confirm your password';
 }
