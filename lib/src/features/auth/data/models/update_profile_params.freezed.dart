@@ -170,6 +170,7 @@ class __$$UpdateProfileParamsImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 @JsonSerializable()
 class _$UpdateProfileParamsImpl implements _UpdateProfileParams {
   const _$UpdateProfileParamsImpl(

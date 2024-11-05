@@ -18,14 +18,26 @@ class BiometricRepo {
     try {
       final canCheckBiometrics = await localAuth.canDeviceCheckBiometrics();
       if (canCheckBiometrics) {
-        final authenticate = await localAuth.authenticate();
-        return ApiResult.success(authenticate);
+        final authResult = await localAuth.authenticate();
+        switch (authResult) {
+          case LocalAuthResult.success:
+            return const ApiResult.success(true);
+          case LocalAuthResult.cancelled:
+            return ApiResult.failure(
+              LocalAuthErrorHandler.handleError('Authentication cancelled'),
+            );
+          case LocalAuthResult.error:
+            return ApiResult.failure(
+              LocalAuthErrorHandler.handleError('Authentication failed'),
+            );
+        }
+      } else {
+        return ApiResult.failure(
+          LocalAuthErrorHandler.handleError(
+            'Biometric authentication is not supported.',
+          ),
+        );
       }
-      return ApiResult.failure(
-        LocalAuthErrorHandler.handleError(
-          'Biometric authentication is not supported.',
-        ),
-      );
     } catch (e) {
       return ApiResult.failure(LocalAuthErrorHandler.handleError(e));
     }

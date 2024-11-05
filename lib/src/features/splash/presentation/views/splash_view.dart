@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/widgets/animated_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -61,7 +62,13 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
         await SharedPrefHelper.getBool(CacheKeys.isStartViewVisited) ?? false;
 
     if (isStartViewVisited) {
-      context.replaceRoute(const AuthRoute());
+      if (isUserLoggedIn && isCurrentUserAccountSet) {
+        context.replaceRoute(const HomeRoute());
+      } else if (isUserLoggedIn && !isCurrentUserAccountSet) {
+        context.replaceRoute(const AccountSetupRoute());
+      } else {
+        context.replaceRoute(const AuthRoute());
+      }
     } else {
       context.replaceRoute(const StartWelcomeRoute());
     }

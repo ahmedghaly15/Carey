@@ -28,6 +28,7 @@ List<AutoRoute> get appRoutes => [
           _buildCustomRoute(page: ResetPasswordRoute.page),
         ],
       ),
+      _buildCustomRoute(page: HomeRoute.page),
     ];
 
 CustomRoute _buildCustomRoute({

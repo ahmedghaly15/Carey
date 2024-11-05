@@ -95,6 +95,25 @@ class ForgotPasswordRouteArgs {
 }
 
 /// generated route for
+/// [HomeView]
+class HomeRoute extends PageRouteInfo<void> {
+  const HomeRoute({List<PageRouteInfo>? children})
+      : super(
+          HomeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HomeRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const HomeView();
+    },
+  );
+}
+
+/// generated route for
 /// [LoginMethodsView]
 class LoginMethodsRoute extends PageRouteInfo<void> {
   const LoginMethodsRoute({List<PageRouteInfo>? children})
