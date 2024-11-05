@@ -62,6 +62,7 @@ extension ShowResultDialog on BuildContext {
         builder: (_) =>
             dialog ??
             ResultDialog(
+              okButtonOnPressed: okButtonOnPressed,
               titleText: titleText,
               titleWidget: titleWidget,
               contentText: contentText,
