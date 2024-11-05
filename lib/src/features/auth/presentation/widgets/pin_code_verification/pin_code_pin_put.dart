@@ -1,11 +1,12 @@
-import 'package:carey/src/features/auth/presentation/cubits/pin_code_verification/pin_code_verification_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pinput/pinput.dart';
 
+import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
+import 'package:carey/src/features/auth/presentation/cubits/pin_code_verification/pin_code_verification_cubit.dart';
 
 class PinCodePinPut extends StatelessWidget {
   const PinCodePinPut({super.key});
@@ -41,7 +42,7 @@ class PinCodePinPut extends StatelessWidget {
           ),
         ),
       ),
-      onCompleted: (_) => pinVerificationCubit.verifyPin(),
+      onCompleted: (_) => context.unfocusKeyboard(),
       length: 6,
     );
   }
