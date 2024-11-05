@@ -14,11 +14,12 @@ class PassTextFormField extends StatelessWidget {
     this.passVisibilityOnTap,
     this.keyboardType = TextInputType.visiblePassword,
     this.autofillHints = const [AutofillHints.password],
-    this.validate,
+    this.validate, this.hintText,
   });
 
   final bool obscureText;
   final TextEditingController? controller;
+  final String? hintText;
   final FocusNode? focusNode;
   final VoidCallback? passVisibilityOnTap;
   final TextInputType keyboardType;
@@ -31,7 +32,7 @@ class PassTextFormField extends StatelessWidget {
       controller: controller,
       focusNode: focusNode,
       keyboardType: keyboardType,
-      hintText: AppStrings.password,
+      hintText: hintText?? AppStrings.password,
       autofillHints: autofillHints,
       obscureText: obscureText,
       prefixSvgIcon: Assets.svgsLockIcon,

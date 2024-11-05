@@ -1,4 +1,5 @@
 import 'package:carey/src/core/helpers/text_form_validator.dart';
+import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
 import 'package:carey/src/features/auth/presentation/cubits/reset_pass/reset_pass_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/reset_pass/reset_pass_state.dart';
@@ -19,7 +20,7 @@ class ResetPasswordForm extends StatelessWidget {
         children: [
           BlocSelector<ResetPassCubit, ResetPassState, bool>(
             selector: (state) => state.isPasswordObscured,
-            builder: (context, isPasswordObscured) => PassTextFormField(
+            builder: (_, isPasswordObscured) => PassTextFormField(
               controller: resetPassCubit.passController,
               passVisibilityOnTap: () => resetPassCubit.togglePassVisibility(),
               obscureText: isPasswordObscured,
@@ -28,8 +29,9 @@ class ResetPasswordForm extends StatelessWidget {
           MySizedBox.height33,
           BlocSelector<ResetPassCubit, ResetPassState, bool>(
             selector: (state) => state.isConfirmPassObscured,
-            builder: (context, isConfirmPassObscured) => PassTextFormField(
+            builder: (_, isConfirmPassObscured) => PassTextFormField(
               controller: resetPassCubit.confirmPassController,
+              hintText: AppStrings.confirmPass,
               passVisibilityOnTap: () =>
                   resetPassCubit.toggleConfirmPassVisibility(),
               obscureText: isConfirmPassObscured,

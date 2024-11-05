@@ -32,16 +32,24 @@ class ResetPassContinueBlocListener extends StatelessWidget {
   Future<void> _listener(ResetPassState state, BuildContext context) async {
     switch (state.status) {
       case ResetPassStateStatus.resetPassLoading:
-        context.unfocusKeyboard();
-        context.showLoadingDialog();
+        _unfocusKeyboardAndShowLoadingDialog(context);
       case ResetPassStateStatus.resetPassSuccess:
         await _handleResetPassSuccessState(context);
       case ResetPassStateStatus.resetPassError:
-        context.popTop();
-        context.showErrorDialog(state.error!);
+        _popTopAndShowErrorDialog(context, state.error!);
       default:
         context.showLoadingDialog();
     }
+  }
+
+  void _popTopAndShowErrorDialog(BuildContext context, String error) {
+    context.popTop();
+    context.showErrorDialog(error);
+  }
+
+  void _unfocusKeyboardAndShowLoadingDialog(BuildContext context) {
+    context.unfocusKeyboard();
+    context.showLoadingDialog();
   }
 
   Future<void> _handleResetPassSuccessState(BuildContext context) async {
