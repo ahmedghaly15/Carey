@@ -18,8 +18,9 @@ class FillProfileContinueBlocListener extends StatelessWidget {
       listenWhen: (_, current) =>
           current.status == AccountSetupStateStatus.updateProfileLoading ||
           current.status == AccountSetupStateStatus.updateProfileSuccess ||
-          current.status == AccountSetupStateStatus.updateProfileError,
-      listener: (context, state) {
+          current.status == AccountSetupStateStatus.updateProfileError ||
+          current.status == AccountSetupStateStatus.updateProfileImgError,
+      listener: (context, state) async {
         switch (state.status) {
           case AccountSetupStateStatus.updateProfileLoading:
             context.unfocusKeyboard();
@@ -27,10 +28,17 @@ class FillProfileContinueBlocListener extends StatelessWidget {
             break;
           // return;
           case AccountSetupStateStatus.updateProfileSuccess:
+            if (state.pickedProfileImg != null) {
+              await context.read<AccountSetupCubit>().updateProfileImg();
+            }
             context.popTop();
             // TODO: navigate to home
             break;
           case AccountSetupStateStatus.updateProfileError:
+            context.popTop();
+            context.showErrorDialog(state.error!);
+            break;
+          case AccountSetupStateStatus.updateProfileImgError:
             context.popTop();
             context.showErrorDialog(state.error!);
             break;
