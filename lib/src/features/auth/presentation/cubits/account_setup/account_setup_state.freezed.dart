@@ -17,8 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AccountSetupState {
   AccountSetupStateStatus get status => throw _privateConstructorUsedError;
+  AuthResponseEntity? get currentUserData => throw _privateConstructorUsedError;
   AutovalidateMode get autovalidateMode => throw _privateConstructorUsedError;
-  String get countryCode => throw _privateConstructorUsedError;
+  String? get error => throw _privateConstructorUsedError;
+  File? get pickedProfileImg => throw _privateConstructorUsedError;
 
   /// Create a copy of AccountSetupState
   /// with the given fields replaced by the non-null parameter values.
@@ -35,8 +37,12 @@ abstract class $AccountSetupStateCopyWith<$Res> {
   @useResult
   $Res call(
       {AccountSetupStateStatus status,
+      AuthResponseEntity? currentUserData,
       AutovalidateMode autovalidateMode,
-      String countryCode});
+      String? error,
+      File? pickedProfileImg});
+
+  $AuthResponseEntityCopyWith<$Res>? get currentUserData;
 }
 
 /// @nodoc
@@ -55,23 +61,47 @@ class _$AccountSetupStateCopyWithImpl<$Res, $Val extends AccountSetupState>
   @override
   $Res call({
     Object? status = null,
+    Object? currentUserData = freezed,
     Object? autovalidateMode = null,
-    Object? countryCode = null,
+    Object? error = freezed,
+    Object? pickedProfileImg = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as AccountSetupStateStatus,
+      currentUserData: freezed == currentUserData
+          ? _value.currentUserData
+          : currentUserData // ignore: cast_nullable_to_non_nullable
+              as AuthResponseEntity?,
       autovalidateMode: null == autovalidateMode
           ? _value.autovalidateMode
           : autovalidateMode // ignore: cast_nullable_to_non_nullable
               as AutovalidateMode,
-      countryCode: null == countryCode
-          ? _value.countryCode
-          : countryCode // ignore: cast_nullable_to_non_nullable
-              as String,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pickedProfileImg: freezed == pickedProfileImg
+          ? _value.pickedProfileImg
+          : pickedProfileImg // ignore: cast_nullable_to_non_nullable
+              as File?,
     ) as $Val);
+  }
+
+  /// Create a copy of AccountSetupState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AuthResponseEntityCopyWith<$Res>? get currentUserData {
+    if (_value.currentUserData == null) {
+      return null;
+    }
+
+    return $AuthResponseEntityCopyWith<$Res>(_value.currentUserData!, (value) {
+      return _then(_value.copyWith(currentUserData: value) as $Val);
+    });
   }
 }
 
@@ -85,8 +115,13 @@ abstract class _$$AccountSetupStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {AccountSetupStateStatus status,
+      AuthResponseEntity? currentUserData,
       AutovalidateMode autovalidateMode,
-      String countryCode});
+      String? error,
+      File? pickedProfileImg});
+
+  @override
+  $AuthResponseEntityCopyWith<$Res>? get currentUserData;
 }
 
 /// @nodoc
@@ -103,22 +138,32 @@ class __$$AccountSetupStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
+    Object? currentUserData = freezed,
     Object? autovalidateMode = null,
-    Object? countryCode = null,
+    Object? error = freezed,
+    Object? pickedProfileImg = freezed,
   }) {
     return _then(_$AccountSetupStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as AccountSetupStateStatus,
+      currentUserData: freezed == currentUserData
+          ? _value.currentUserData
+          : currentUserData // ignore: cast_nullable_to_non_nullable
+              as AuthResponseEntity?,
       autovalidateMode: null == autovalidateMode
           ? _value.autovalidateMode
           : autovalidateMode // ignore: cast_nullable_to_non_nullable
               as AutovalidateMode,
-      countryCode: null == countryCode
-          ? _value.countryCode
-          : countryCode // ignore: cast_nullable_to_non_nullable
-              as String,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pickedProfileImg: freezed == pickedProfileImg
+          ? _value.pickedProfileImg
+          : pickedProfileImg // ignore: cast_nullable_to_non_nullable
+              as File?,
     ));
   }
 }
@@ -128,21 +173,26 @@ class __$$AccountSetupStateImplCopyWithImpl<$Res>
 class _$AccountSetupStateImpl implements _AccountSetupState {
   const _$AccountSetupStateImpl(
       {required this.status,
+      this.currentUserData,
       this.autovalidateMode = AutovalidateMode.disabled,
-      this.countryCode = AppConstants.defaultCountryCode});
+      this.error,
+      this.pickedProfileImg});
 
   @override
   final AccountSetupStateStatus status;
   @override
+  final AuthResponseEntity? currentUserData;
+  @override
   @JsonKey()
   final AutovalidateMode autovalidateMode;
   @override
-  @JsonKey()
-  final String countryCode;
+  final String? error;
+  @override
+  final File? pickedProfileImg;
 
   @override
   String toString() {
-    return 'AccountSetupState(status: $status, autovalidateMode: $autovalidateMode, countryCode: $countryCode)';
+    return 'AccountSetupState(status: $status, currentUserData: $currentUserData, autovalidateMode: $autovalidateMode, error: $error, pickedProfileImg: $pickedProfileImg)';
   }
 
   @override
@@ -151,15 +201,18 @@ class _$AccountSetupStateImpl implements _AccountSetupState {
         (other.runtimeType == runtimeType &&
             other is _$AccountSetupStateImpl &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.currentUserData, currentUserData) ||
+                other.currentUserData == currentUserData) &&
             (identical(other.autovalidateMode, autovalidateMode) ||
                 other.autovalidateMode == autovalidateMode) &&
-            (identical(other.countryCode, countryCode) ||
-                other.countryCode == countryCode));
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.pickedProfileImg, pickedProfileImg) ||
+                other.pickedProfileImg == pickedProfileImg));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, status, autovalidateMode, countryCode);
+  int get hashCode => Object.hash(runtimeType, status, currentUserData,
+      autovalidateMode, error, pickedProfileImg);
 
   /// Create a copy of AccountSetupState
   /// with the given fields replaced by the non-null parameter values.
@@ -174,15 +227,21 @@ class _$AccountSetupStateImpl implements _AccountSetupState {
 abstract class _AccountSetupState implements AccountSetupState {
   const factory _AccountSetupState(
       {required final AccountSetupStateStatus status,
+      final AuthResponseEntity? currentUserData,
       final AutovalidateMode autovalidateMode,
-      final String countryCode}) = _$AccountSetupStateImpl;
+      final String? error,
+      final File? pickedProfileImg}) = _$AccountSetupStateImpl;
 
   @override
   AccountSetupStateStatus get status;
   @override
+  AuthResponseEntity? get currentUserData;
+  @override
   AutovalidateMode get autovalidateMode;
   @override
-  String get countryCode;
+  String? get error;
+  @override
+  File? get pickedProfileImg;
 
   /// Create a copy of AccountSetupState
   /// with the given fields replaced by the non-null parameter values.

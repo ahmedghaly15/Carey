@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:dio/dio.dart';
 
 import 'package:carey/src/core/api/api_result.dart';
@@ -10,13 +11,25 @@ class AccountSetupRepo {
 
   AccountSetupRepo(this._accountSetupApiService);
 
-  Future<ApiResult<void>> updateProfile(
+  Future<ApiResult<void>> updateProfileDetails(
     UpdateProfileParams params, [
     CancelToken? cancelToken,
   ]) {
     return executeAndHandleErrors<void>(
-      () async => await _accountSetupApiService.updateProfile(
+      () async => _accountSetupApiService.updateProfileDetails(
         params,
+        cancelToken,
+      ),
+    );
+  }
+
+  Future<ApiResult<void>> updateProfileImg(
+    File imgFile, [
+    CancelToken? cancelToken,
+  ]) {
+    return executeAndHandleErrors<void>(
+      () async => await _accountSetupApiService.updateProfileImg(
+        imgFile,
         cancelToken,
       ),
     );

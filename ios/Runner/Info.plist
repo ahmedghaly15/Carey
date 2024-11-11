@@ -47,5 +47,13 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Access Photos</string>
+		<key>NSCameraUsageDescription</key>
+		<string>Access Camera</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>Access Location</string>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>Access Microphone</string>
 	</dict>
 </plist>
