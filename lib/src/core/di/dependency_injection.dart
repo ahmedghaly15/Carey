@@ -15,7 +15,7 @@ import 'package:carey/src/features/auth/data/repositories/login_repo_impl.dart';
 import 'package:carey/src/features/auth/data/repositories/register_repo.dart';
 import 'package:carey/src/features/auth/domain/repositories/login_repo.dart';
 import 'package:carey/src/features/auth/domain/usecases/login_via_password.dart';
-import 'package:carey/src/features/auth/domain/usecases/update_profile.dart';
+import 'package:carey/src/features/auth/domain/usecases/update_profile_details.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_img.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
@@ -80,8 +80,8 @@ void _setupForUseCases() {
   getIt.registerLazySingleton<LoginViaPassword>(
     () => LoginViaPassword(getIt.get<LoginRepo>()),
   );
-  getIt.registerLazySingleton<UpdateProfile>(
-    () => UpdateProfile(getIt.get<AccountSetupRepo>()),
+  getIt.registerLazySingleton<UpdateProfileDetails>(
+    () => UpdateProfileDetails(getIt.get<AccountSetupRepo>()),
   );
   getIt.registerLazySingleton<UpdateProfileImg>(
     () => UpdateProfileImg(getIt.get<AccountSetupRepo>()),
@@ -100,7 +100,7 @@ void _setupForCubits() {
   );
   getIt.registerFactory<AccountSetupCubit>(
     () => AccountSetupCubit(
-      updateProfileUseCase: getIt.get<UpdateProfile>(),
+      updateProfileDetailsUseCase: getIt.get<UpdateProfileDetails>(),
       updateProfileImgUseCase: getIt.get<UpdateProfileImg>(),
     ),
   );

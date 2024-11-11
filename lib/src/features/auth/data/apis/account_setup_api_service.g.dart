@@ -24,7 +24,7 @@ class _AccountSetupApiService implements AccountSetupApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<void> updateProfile(
+  Future<void> updateProfileDetails(
     UpdateProfileParams params, [
     CancelToken? cancelToken,
   ]) async {
@@ -56,15 +56,21 @@ class _AccountSetupApiService implements AccountSetupApiService {
 
   @override
   Future<void> updateProfileImg(
-    UpdateProfileImgParams params, [
+    File picture, [
     CancelToken? cancelToken,
   ]) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(params.toJson());
+    final _data = FormData();
+    _data.files.add(MapEntry(
+      'picture',
+      MultipartFile.fromFileSync(
+        picture.path,
+        filename: picture.path.split(Platform.pathSeparator).last,
+      ),
+    ));
     final _options = _setStreamType<void>(Options(
       method: 'POST',
       headers: _headers,
