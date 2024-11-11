@@ -4,6 +4,7 @@ import 'package:carey/src/features/auth/domain/usecases/update_profile.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:carey/src/core/api/dio_factory.dart';
@@ -38,6 +39,7 @@ Future<void> _setupForExternal() async {
   getIt.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
   const flutterSecureStorage = FlutterSecureStorage();
   getIt.registerLazySingleton<FlutterSecureStorage>(() => flutterSecureStorage);
+  getIt.registerLazySingleton<ImagePicker>(() => ImagePicker());
 }
 
 void _setupDIForCore() {
