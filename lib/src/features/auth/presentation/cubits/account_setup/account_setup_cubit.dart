@@ -9,7 +9,7 @@ import 'package:carey/src/core/usecase/api_usecase.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/features/auth/data/datasources/auth_local_data_source.dart';
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
-import 'package:carey/src/features/auth/data/repositories/pick_compressed_img.dart';
+import 'package:carey/src/features/auth/domain/usecases/pick_compressed_img.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_details.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_img.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_state.dart';
