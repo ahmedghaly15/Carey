@@ -3,13 +3,12 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_image_compress/flutter_image_compress.dart';
-import 'package:image_picker/image_picker.dart';
 
-import 'package:carey/src/core/di/dependency_injection.dart';
+import 'package:carey/src/core/usecase/api_usecase.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/features/auth/data/datasources/auth_local_data_source.dart';
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
+import 'package:carey/src/features/auth/data/repositories/pick_compressed_img.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_details.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_img.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_state.dart';
@@ -17,10 +16,12 @@ import 'package:carey/src/features/auth/presentation/cubits/account_setup/accoun
 class AccountSetupCubit extends Cubit<AccountSetupState> {
   final UpdateProfileDetails updateProfileDetailsUseCase;
   final UpdateProfileImg updateProfileImgUseCase;
+  final PickCompressedImg pickCompressedImgUseCase;
 
   AccountSetupCubit({
     required this.updateProfileDetailsUseCase,
     required this.updateProfileImgUseCase,
+    required this.pickCompressedImgUseCase,
   }) : super(AccountSetupState.initial()) {
     _initFormAttributes();
   }
@@ -84,18 +85,12 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
   }
 
   void pickProfileImg() async {
-    final pickedImg =
-        await getIt.get<ImagePicker>().pickImage(source: ImageSource.gallery);
-    if (pickedImg != null) {
-      final compressedImg = await FlutterImageCompress.compressAndGetFile(
-        pickedImg.path,
-        '${pickedImg.path}_compressed.jpg',
-        format: CompressFormat.jpeg,
-        quality: 70,
-      );
+    final pickedCompressedImg =
+        await pickCompressedImgUseCase(const NoParams());
+    if (pickedCompressedImg != null) {
       emit(state.copyWith(
         status: AccountSetupStateStatus.pickProfileImg,
-        pickedProfileImg: File(compressedImg!.path),
+        pickedProfileImg: File(pickedCompressedImg.path),
       ));
     }
   }

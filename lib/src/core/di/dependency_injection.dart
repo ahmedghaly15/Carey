@@ -1,3 +1,4 @@
+import 'package:carey/src/features/auth/data/repositories/pick_compressed_img.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -86,6 +87,7 @@ void _setupForUseCases() {
   getIt.registerLazySingleton<UpdateProfileImg>(
     () => UpdateProfileImg(getIt.get<AccountSetupRepo>()),
   );
+  getIt.registerLazySingleton<PickCompressedImg>(() => PickCompressedImg());
 }
 
 void _setupForCubits() {
@@ -102,6 +104,7 @@ void _setupForCubits() {
     () => AccountSetupCubit(
       updateProfileDetailsUseCase: getIt.get<UpdateProfileDetails>(),
       updateProfileImgUseCase: getIt.get<UpdateProfileImg>(),
+      pickCompressedImgUseCase: getIt.get<PickCompressedImg>(),
     ),
   );
 }
