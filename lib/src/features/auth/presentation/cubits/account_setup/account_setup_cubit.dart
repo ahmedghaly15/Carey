@@ -96,24 +96,22 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
   }
 
   Future<void> updateProfileImg() async {
-    if (state.pickedProfileImg != null) {
-      emit(state.copyWith(
-        status: AccountSetupStateStatus.updateProfileImgLoading,
-      ));
-      final result = await updateProfileImgUseCase(
-        state.pickedProfileImg!,
-        _cancelToken,
-      );
-      result.when(
-        success: (_) => emit(state.copyWith(
-          status: AccountSetupStateStatus.updateProfileImgSuccess,
-        )),
-        failure: (failure) => emit(state.copyWith(
-          status: AccountSetupStateStatus.updateProfileImgError,
-          error: failure.error[0],
-        )),
-      );
-    }
+    emit(state.copyWith(
+      status: AccountSetupStateStatus.updateProfileImgLoading,
+    ));
+    final result = await updateProfileImgUseCase(
+      state.pickedProfileImg!,
+      _cancelToken,
+    );
+    result.when(
+      success: (_) => emit(state.copyWith(
+        status: AccountSetupStateStatus.updateProfileImgSuccess,
+      )),
+      failure: (failure) => emit(state.copyWith(
+        status: AccountSetupStateStatus.updateProfileImgError,
+        error: failure.error[0],
+      )),
+    );
   }
 
   void validateFormAndUpdateProfile() async {
