@@ -3,23 +3,23 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:carey/src/core/di/dependency_injection.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/features/auth/data/datasources/auth_local_data_source.dart';
-import 'package:carey/src/features/auth/data/models/update_profile_img_params.dart';
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
-import 'package:carey/src/features/auth/domain/usecases/update_profile.dart';
+import 'package:carey/src/features/auth/domain/usecases/update_profile_details.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_img.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_state.dart';
 
 class AccountSetupCubit extends Cubit<AccountSetupState> {
-  final UpdateProfile updateProfileUseCase;
+  final UpdateProfileDetails updateProfileDetailsUseCase;
   final UpdateProfileImg updateProfileImgUseCase;
 
   AccountSetupCubit({
-    required this.updateProfileUseCase,
+    required this.updateProfileDetailsUseCase,
     required this.updateProfileImgUseCase,
   }) : super(AccountSetupState.initial()) {
     _initFormAttributes();
@@ -38,7 +38,7 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
   late final FocusNode addressFocusNode;
   late final FocusNode phoneFocusNode;
 
-  void _updateProfile() async {
+  Future<void> _updateProfileDetails() async {
     emit(state.copyWith(status: AccountSetupStateStatus.updateProfileLoading));
     final updateProfileParams = UpdateProfileParams(
       fullName: fullNameController.text.trim(),
@@ -47,7 +47,7 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
       phone: phoneNumber,
       gender: genderController.text,
     );
-    final result = await updateProfileUseCase(
+    final result = await updateProfileDetailsUseCase(
       updateProfileParams,
       _cancelToken,
     );
@@ -83,9 +83,47 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
     await AuthLocalDataSource.secureUserData(currentUserData!);
   }
 
-  void validateFormAndUpdateProfile() {
+  void pickProfileImg() async {
+    final pickedImg =
+        await getIt.get<ImagePicker>().pickImage(source: ImageSource.gallery);
+    if (pickedImg != null) {
+      final compressedImg = await FlutterImageCompress.compressAndGetFile(
+        pickedImg.path,
+        '${pickedImg.path}_compressed.jpg',
+        format: CompressFormat.jpeg,
+        quality: 70,
+      );
+      emit(state.copyWith(
+        status: AccountSetupStateStatus.pickProfileImg,
+        pickedProfileImg: File(compressedImg!.path),
+      ));
+    }
+  }
+
+  Future<void> updateProfileImg() async {
+    if (state.pickedProfileImg != null) {
+      emit(state.copyWith(
+        status: AccountSetupStateStatus.updateProfileImgLoading,
+      ));
+      final result = await updateProfileImgUseCase(
+        state.pickedProfileImg!,
+        _cancelToken,
+      );
+      result.when(
+        success: (_) => emit(state.copyWith(
+          status: AccountSetupStateStatus.updateProfileImgSuccess,
+        )),
+        failure: (failure) => emit(state.copyWith(
+          status: AccountSetupStateStatus.updateProfileImgError,
+          error: failure.error[0],
+        )),
+      );
+    }
+  }
+
+  void validateFormAndUpdateProfile() async {
     if (formKey.currentState!.validate()) {
-      _updateProfile();
+      await _updateProfileDetails();
     } else {
       _alwaysAutovalidateMode();
     }
@@ -106,38 +144,6 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
 
   void updateGender(String gender) {
     genderController.text = gender;
-  }
-
-  void pickProfileImg() async {
-    final pickedImg =
-        await getIt.get<ImagePicker>().pickImage(source: ImageSource.gallery);
-    if (pickedImg != null) {
-      emit(state.copyWith(
-        status: AccountSetupStateStatus.pickProfileImg,
-        pickedProfileImg: File(pickedImg.path),
-      ));
-    }
-  }
-
-  void updateProfileImg() async {
-    if (state.pickedProfileImg != null) {
-      emit(state.copyWith(
-        status: AccountSetupStateStatus.updateProfileImgLoading,
-      ));
-      final result = await updateProfileImgUseCase(
-        UpdateProfileImgParams(state.pickedProfileImg!),
-        _cancelToken,
-      );
-      result.when(
-        success: (_) => emit(state.copyWith(
-          status: AccountSetupStateStatus.updateProfileImgSuccess,
-        )),
-        failure: (failure) => emit(state.copyWith(
-          status: AccountSetupStateStatus.updateProfileImgError,
-          error: failure.error[0],
-        )),
-      );
-    }
   }
 
   void _initFormAttributes() {

@@ -37,6 +37,8 @@ dependencies:
   intl_phone_number_input: ^0.7.4
   # Provides a way to select images from the Android and iOS image library, and take new pictures with the camera.
   image_picker: ^1.1.2
+  # Compress Pictures. Can effectively reduce the size of the transmission.
+  flutter_image_compress: ^2.3.0
   
 dev_dependencies:
   flutter_test:
