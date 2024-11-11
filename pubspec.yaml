@@ -35,6 +35,8 @@ dependencies:
   flutter_secure_storage: ^9.2.2
   # A simple and customizable phone number input widget
   intl_phone_number_input: ^0.7.4
+  # Provides a way to select images from the Android and iOS image library, and take new pictures with the camera.
+  image_picker: ^1.1.2
   
 dev_dependencies:
   flutter_test:
