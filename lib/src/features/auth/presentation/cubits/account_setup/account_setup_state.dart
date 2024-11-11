@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -9,6 +10,7 @@ part 'account_setup_state.freezed.dart';
 
 enum AccountSetupStateStatus {
   initial,
+  getCountryCode,
   updateProfileLoading,
   updateProfileSuccess,
   updateProfileError,
@@ -26,6 +28,7 @@ class AccountSetupState with _$AccountSetupState {
     AuthResponseEntity? currentUserData,
     @Default(AutovalidateMode.disabled) AutovalidateMode autovalidateMode,
     String? error,
+    @Default(AppConstants.defaultCountryCode) String countryCode,
     File? pickedProfileImg,
   }) = _AccountSetupState;
 

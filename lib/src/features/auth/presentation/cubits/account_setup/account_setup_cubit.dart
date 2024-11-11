@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:carey/src/core/services/location_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,6 +39,14 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
   late final FocusNode nickNameFocusNode;
   late final FocusNode addressFocusNode;
   late final FocusNode phoneFocusNode;
+
+  void getCountryCode() async {
+    final countryCode = await LocationService.getAndCacheCountryCode();
+    emit(state.copyWith(
+      status: AccountSetupStateStatus.getCountryCode,
+      countryCode: countryCode,
+    ));
+  }
 
   Future<void> _updateProfileDetails() async {
     emit(state.copyWith(status: AccountSetupStateStatus.updateProfileLoading));

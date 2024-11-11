@@ -150,7 +150,7 @@ void _setupForCubits() {
   );
   getIt.registerLazySingleton<BiometricCubit>(
     () => BiometricCubit(
-      updateProfileUseCase: getIt.get<UpdateProfileDetails>(),
+      updateProfileDetailsUseCase: getIt.get<UpdateProfileDetails>(),
       biometricRepo: getIt.get<BiometricRepo>(),
     ),
   );
