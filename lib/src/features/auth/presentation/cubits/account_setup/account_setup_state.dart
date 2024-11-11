@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -11,6 +13,10 @@ enum AccountSetupStateStatus {
   updateProfileSuccess,
   updateProfileError,
   alwaysAutovalidateMode,
+  pickProfileImg,
+  updateProfileImgLoading,
+  updateProfileImgSuccess,
+  updateProfileImgError,
 }
 
 @freezed
@@ -20,6 +26,7 @@ class AccountSetupState with _$AccountSetupState {
     AuthResponseEntity? currentUserData,
     @Default(AutovalidateMode.disabled) AutovalidateMode autovalidateMode,
     String? error,
+    File? pickedProfileImg,
   }) = _AccountSetupState;
 
   factory AccountSetupState.initial() => const AccountSetupState(

@@ -20,6 +20,7 @@ mixin _$AccountSetupState {
   AuthResponseEntity? get currentUserData => throw _privateConstructorUsedError;
   AutovalidateMode get autovalidateMode => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
+  File? get pickedProfileImg => throw _privateConstructorUsedError;
 
   /// Create a copy of AccountSetupState
   /// with the given fields replaced by the non-null parameter values.
@@ -38,7 +39,8 @@ abstract class $AccountSetupStateCopyWith<$Res> {
       {AccountSetupStateStatus status,
       AuthResponseEntity? currentUserData,
       AutovalidateMode autovalidateMode,
-      String? error});
+      String? error,
+      File? pickedProfileImg});
 
   $AuthResponseEntityCopyWith<$Res>? get currentUserData;
 }
@@ -62,6 +64,7 @@ class _$AccountSetupStateCopyWithImpl<$Res, $Val extends AccountSetupState>
     Object? currentUserData = freezed,
     Object? autovalidateMode = null,
     Object? error = freezed,
+    Object? pickedProfileImg = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -80,6 +83,10 @@ class _$AccountSetupStateCopyWithImpl<$Res, $Val extends AccountSetupState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
+      pickedProfileImg: freezed == pickedProfileImg
+          ? _value.pickedProfileImg
+          : pickedProfileImg // ignore: cast_nullable_to_non_nullable
+              as File?,
     ) as $Val);
   }
 
@@ -110,7 +117,8 @@ abstract class _$$AccountSetupStateImplCopyWith<$Res>
       {AccountSetupStateStatus status,
       AuthResponseEntity? currentUserData,
       AutovalidateMode autovalidateMode,
-      String? error});
+      String? error,
+      File? pickedProfileImg});
 
   @override
   $AuthResponseEntityCopyWith<$Res>? get currentUserData;
@@ -133,6 +141,7 @@ class __$$AccountSetupStateImplCopyWithImpl<$Res>
     Object? currentUserData = freezed,
     Object? autovalidateMode = null,
     Object? error = freezed,
+    Object? pickedProfileImg = freezed,
   }) {
     return _then(_$AccountSetupStateImpl(
       status: null == status
@@ -151,6 +160,10 @@ class __$$AccountSetupStateImplCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
+      pickedProfileImg: freezed == pickedProfileImg
+          ? _value.pickedProfileImg
+          : pickedProfileImg // ignore: cast_nullable_to_non_nullable
+              as File?,
     ));
   }
 }
@@ -162,7 +175,8 @@ class _$AccountSetupStateImpl implements _AccountSetupState {
       {required this.status,
       this.currentUserData,
       this.autovalidateMode = AutovalidateMode.disabled,
-      this.error});
+      this.error,
+      this.pickedProfileImg});
 
   @override
   final AccountSetupStateStatus status;
@@ -173,10 +187,12 @@ class _$AccountSetupStateImpl implements _AccountSetupState {
   final AutovalidateMode autovalidateMode;
   @override
   final String? error;
+  @override
+  final File? pickedProfileImg;
 
   @override
   String toString() {
-    return 'AccountSetupState(status: $status, currentUserData: $currentUserData, autovalidateMode: $autovalidateMode, error: $error)';
+    return 'AccountSetupState(status: $status, currentUserData: $currentUserData, autovalidateMode: $autovalidateMode, error: $error, pickedProfileImg: $pickedProfileImg)';
   }
 
   @override
@@ -189,12 +205,14 @@ class _$AccountSetupStateImpl implements _AccountSetupState {
                 other.currentUserData == currentUserData) &&
             (identical(other.autovalidateMode, autovalidateMode) ||
                 other.autovalidateMode == autovalidateMode) &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.pickedProfileImg, pickedProfileImg) ||
+                other.pickedProfileImg == pickedProfileImg));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, status, currentUserData, autovalidateMode, error);
+  int get hashCode => Object.hash(runtimeType, status, currentUserData,
+      autovalidateMode, error, pickedProfileImg);
 
   /// Create a copy of AccountSetupState
   /// with the given fields replaced by the non-null parameter values.
@@ -211,7 +229,8 @@ abstract class _AccountSetupState implements AccountSetupState {
       {required final AccountSetupStateStatus status,
       final AuthResponseEntity? currentUserData,
       final AutovalidateMode autovalidateMode,
-      final String? error}) = _$AccountSetupStateImpl;
+      final String? error,
+      final File? pickedProfileImg}) = _$AccountSetupStateImpl;
 
   @override
   AccountSetupStateStatus get status;
@@ -221,6 +240,8 @@ abstract class _AccountSetupState implements AccountSetupState {
   AutovalidateMode get autovalidateMode;
   @override
   String? get error;
+  @override
+  File? get pickedProfileImg;
 
   /// Create a copy of AccountSetupState
   /// with the given fields replaced by the non-null parameter values.

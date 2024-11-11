@@ -1,6 +1,3 @@
-import 'package:carey/src/features/auth/data/apis/account_setup_api_service.dart';
-import 'package:carey/src/features/auth/data/repositories/account_setup_repo.dart';
-import 'package:carey/src/features/auth/domain/usecases/update_profile.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -9,13 +6,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:carey/src/core/api/dio_factory.dart';
 import 'package:carey/src/core/router/app_router.dart';
+import 'package:carey/src/features/auth/data/apis/account_setup_api_service.dart';
 import 'package:carey/src/features/auth/data/apis/login_api_service.dart';
 import 'package:carey/src/features/auth/data/apis/register_api_service.dart';
 import 'package:carey/src/features/auth/data/datasources/login_remote_data_source.dart';
+import 'package:carey/src/features/auth/data/repositories/account_setup_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/login_repo_impl.dart';
 import 'package:carey/src/features/auth/data/repositories/register_repo.dart';
 import 'package:carey/src/features/auth/domain/repositories/login_repo.dart';
 import 'package:carey/src/features/auth/domain/usecases/login_via_password.dart';
+import 'package:carey/src/features/auth/domain/usecases/update_profile.dart';
+import 'package:carey/src/features/auth/domain/usecases/update_profile_img.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_cubit.dart';
@@ -82,6 +83,9 @@ void _setupForUseCases() {
   getIt.registerLazySingleton<UpdateProfile>(
     () => UpdateProfile(getIt.get<AccountSetupRepo>()),
   );
+  getIt.registerLazySingleton<UpdateProfileImg>(
+    () => UpdateProfileImg(getIt.get<AccountSetupRepo>()),
+  );
 }
 
 void _setupForCubits() {
@@ -95,6 +99,9 @@ void _setupForCubits() {
     () => RegisterCubit(getIt.get<RegisterRepo>()),
   );
   getIt.registerFactory<AccountSetupCubit>(
-    () => AccountSetupCubit(getIt.get<UpdateProfile>()),
+    () => AccountSetupCubit(
+      updateProfileUseCase: getIt.get<UpdateProfile>(),
+      updateProfileImgUseCase: getIt.get<UpdateProfileImg>(),
+    ),
   );
 }
