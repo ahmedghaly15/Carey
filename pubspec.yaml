@@ -47,6 +47,8 @@ dependencies:
   geolocator: ^13.0.1
   # Provides easy geocoding and reverse-geocoding features.
   geocoding: ^3.0.0
+  # To load and cache network images.
+  cached_network_image: ^3.4.1
   
 dev_dependencies:
   flutter_test:

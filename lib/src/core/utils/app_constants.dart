@@ -52,4 +52,5 @@ class AppConstants {
     ),
   ];
   static const String defaultCountryCode = 'EG';
+  static const double screenHorizontalPaddingVal = 17;
 }
