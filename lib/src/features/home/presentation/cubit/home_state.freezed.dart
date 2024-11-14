@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeState {
   HomeStateStatus get status => throw _privateConstructorUsedError;
   int get currentSpecialOffer => throw _privateConstructorUsedError;
+  int get currentSelectedTopDealBrand => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +32,10 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({HomeStateStatus status, int currentSpecialOffer});
+  $Res call(
+      {HomeStateStatus status,
+      int currentSpecialOffer,
+      int currentSelectedTopDealBrand});
 }
 
 /// @nodoc
@@ -51,6 +55,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   $Res call({
     Object? status = null,
     Object? currentSpecialOffer = null,
+    Object? currentSelectedTopDealBrand = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -60,6 +65,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
       currentSpecialOffer: null == currentSpecialOffer
           ? _value.currentSpecialOffer
           : currentSpecialOffer // ignore: cast_nullable_to_non_nullable
+              as int,
+      currentSelectedTopDealBrand: null == currentSelectedTopDealBrand
+          ? _value.currentSelectedTopDealBrand
+          : currentSelectedTopDealBrand // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -73,7 +82,10 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({HomeStateStatus status, int currentSpecialOffer});
+  $Res call(
+      {HomeStateStatus status,
+      int currentSpecialOffer,
+      int currentSelectedTopDealBrand});
 }
 
 /// @nodoc
@@ -91,6 +103,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? currentSpecialOffer = null,
+    Object? currentSelectedTopDealBrand = null,
   }) {
     return _then(_$HomeStateImpl(
       status: null == status
@@ -101,6 +114,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.currentSpecialOffer
           : currentSpecialOffer // ignore: cast_nullable_to_non_nullable
               as int,
+      currentSelectedTopDealBrand: null == currentSelectedTopDealBrand
+          ? _value.currentSelectedTopDealBrand
+          : currentSelectedTopDealBrand // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -108,17 +125,23 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HomeStateImpl implements _HomeState {
-  const _$HomeStateImpl({required this.status, this.currentSpecialOffer = 0});
+  const _$HomeStateImpl(
+      {required this.status,
+      this.currentSpecialOffer = 0,
+      this.currentSelectedTopDealBrand = 0});
 
   @override
   final HomeStateStatus status;
   @override
   @JsonKey()
   final int currentSpecialOffer;
+  @override
+  @JsonKey()
+  final int currentSelectedTopDealBrand;
 
   @override
   String toString() {
-    return 'HomeState(status: $status, currentSpecialOffer: $currentSpecialOffer)';
+    return 'HomeState(status: $status, currentSpecialOffer: $currentSpecialOffer, currentSelectedTopDealBrand: $currentSelectedTopDealBrand)';
   }
 
   @override
@@ -128,11 +151,16 @@ class _$HomeStateImpl implements _HomeState {
             other is _$HomeStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.currentSpecialOffer, currentSpecialOffer) ||
-                other.currentSpecialOffer == currentSpecialOffer));
+                other.currentSpecialOffer == currentSpecialOffer) &&
+            (identical(other.currentSelectedTopDealBrand,
+                    currentSelectedTopDealBrand) ||
+                other.currentSelectedTopDealBrand ==
+                    currentSelectedTopDealBrand));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, currentSpecialOffer);
+  int get hashCode => Object.hash(
+      runtimeType, status, currentSpecialOffer, currentSelectedTopDealBrand);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -146,12 +174,15 @@ class _$HomeStateImpl implements _HomeState {
 abstract class _HomeState implements HomeState {
   const factory _HomeState(
       {required final HomeStateStatus status,
-      final int currentSpecialOffer}) = _$HomeStateImpl;
+      final int currentSpecialOffer,
+      final int currentSelectedTopDealBrand}) = _$HomeStateImpl;
 
   @override
   HomeStateStatus get status;
   @override
   int get currentSpecialOffer;
+  @override
+  int get currentSelectedTopDealBrand;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

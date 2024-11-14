@@ -20,4 +20,13 @@ class HomeCubit extends Cubit<HomeState> {
       ));
     }
   }
+
+  void updateSelectedTopDealBrand(int index) {
+    if (index != state.currentSelectedTopDealBrand) {
+      emit(state.copyWith(
+        status: HomeStateStatus.updateSelectedTopDealBrand,
+        currentSelectedTopDealBrand: index,
+      ));
+    }
+  }
 }
