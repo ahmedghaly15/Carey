@@ -100,8 +100,20 @@ class AppTextStyles {
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
       );
+  static TextStyle get font15Bold => TextStyle(
+        fontSize: 15.sp,
+        fontWeight: FontWeight.bold,
+      );
   static TextStyle get font12Bold => TextStyle(
         fontSize: 12.sp,
+        fontWeight: FontWeight.bold,
+      );
+  static TextStyle get font10Bold => TextStyle(
+        fontSize: 10.sp,
+        fontWeight: FontWeight.bold,
+      );
+  static TextStyle get font8Bold => TextStyle(
+        fontSize: 8.sp,
         fontWeight: FontWeight.bold,
       );
 }

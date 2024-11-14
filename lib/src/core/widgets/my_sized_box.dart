@@ -23,6 +23,7 @@ class MySizedBox {
   static const CustomSizedBox width9 = CustomSizedBox(width: 9);
   static const CustomSizedBox height40 = CustomSizedBox(height: 40);
   static const CustomSizedBox height13 = CustomSizedBox(height: 13);
+  static const CustomSizedBox height12 = CustomSizedBox(height: 12);
   static const CustomSizedBox height53 = CustomSizedBox(height: 53);
   static const CustomSizedBox height33 = CustomSizedBox(height: 33);
   static const CustomSizedBox height17 = CustomSizedBox(height: 17);
