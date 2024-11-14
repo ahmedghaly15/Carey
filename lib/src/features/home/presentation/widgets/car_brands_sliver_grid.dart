@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:carey/src/features/home/presentation/widgets/car_brand.dart';
 
@@ -9,10 +8,9 @@ class CarBrandsSliverGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverGrid.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,
-        crossAxisSpacing: 6.w,
-        mainAxisSpacing: 11.h,
+        childAspectRatio: 82 / 89,
       ),
       itemCount: 8,
       itemBuilder: (_, index) => const CarBrand(),

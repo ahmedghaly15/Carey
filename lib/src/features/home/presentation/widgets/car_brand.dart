@@ -11,11 +11,9 @@ class CarBrand extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          height: 60.h,
-          width: 60.h,
+          padding: EdgeInsets.all(14.h),
           decoration: const BoxDecoration(
             color: AppColors.colorD9D9D9,
             shape: BoxShape.circle,
@@ -26,6 +24,8 @@ class CarBrand extends StatelessWidget {
         Text(
           'Mercedes',
           style: AppTextStyles.font16Bold,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
     );
