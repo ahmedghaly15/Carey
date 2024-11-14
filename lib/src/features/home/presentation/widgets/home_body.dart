@@ -9,6 +9,7 @@ import 'package:carey/src/features/home/presentation/widgets/home_sliver_app_bar
 import 'package:carey/src/features/home/presentation/widgets/special_offers_page_view.dart';
 import 'package:carey/src/features/home/presentation/widgets/text_and_see_all.dart';
 import 'package:carey/src/features/home/presentation/widgets/top_deals_brands_list_view.dart';
+import 'package:carey/src/features/home/presentation/widgets/top_deals_sliver_grid.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
@@ -66,6 +67,13 @@ class HomeBody extends StatelessWidget {
               height: 34.h,
               child: const TopDealsBrandsListView(),
             ),
+          ),
+          SliverPadding(
+            padding: EdgeInsets.symmetric(
+              horizontal: AppConstants.screenHorizontalPaddingVal.w,
+              vertical: 19.h,
+            ),
+            sliver: const TopDealsSliverGrid(),
           ),
         ],
       ),
