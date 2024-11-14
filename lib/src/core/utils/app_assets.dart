@@ -38,6 +38,10 @@ class Assets {
   /// assets/fonts/Poppins/Poppins-SemiBold.ttf
   static const String fontsPoppinsPoppinsSemiBold = "assets/fonts/Poppins/Poppins-SemiBold.ttf";
 
+  /// Assets for imagesCarTest
+  /// assets/images/car-test.png
+  static const String imagesCarTest = "assets/images/car-test.png";
+
   /// Assets for imagesError
   /// assets/images/error.png
   static const String imagesError = "assets/images/error.png";
