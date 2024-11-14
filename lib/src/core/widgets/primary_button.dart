@@ -15,7 +15,6 @@ class PrimaryButton extends StatelessWidget {
     this.textColor,
     this.boxShadow,
     this.width,
-    // this.height,
     this.padding,
     this.border,
     this.isOutlined = false,
@@ -34,7 +33,6 @@ class PrimaryButton extends StatelessWidget {
   final void Function()? onPressed;
   final List<BoxShadow>? boxShadow;
   final double? width;
-  // final double? height;
   final EdgeInsetsGeometry? padding;
   final BoxBorder? border;
   final bool isOutlined;
@@ -46,9 +44,7 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width?.w ?? double.infinity,
-      // height: height?.h ?? 54.0.h,
-      margin: margin ?? EdgeInsets.symmetric(horizontal: 18.w),
+      margin: margin,
       decoration: BoxDecoration(
         color: isOutlined
             ? Colors.transparent
@@ -83,6 +79,8 @@ class PrimaryButton extends StatelessWidget {
                           ? AppColors.primaryColor
                           : textColor ?? Colors.white,
                     ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
       ),

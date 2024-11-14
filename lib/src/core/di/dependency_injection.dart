@@ -1,3 +1,4 @@
+import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -163,4 +164,5 @@ void _setupForCubits() {
   getIt.registerFactory<ResetPassCubit>(
     () => ResetPassCubit(getIt.get<UpdatePasswordUseCase>()),
   );
+  getIt.registerFactory<HomeCubit>(() => HomeCubit());
 }

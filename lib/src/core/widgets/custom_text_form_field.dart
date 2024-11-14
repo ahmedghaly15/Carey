@@ -18,6 +18,7 @@ class CustomTextFormField extends StatelessWidget {
     this.obscureText,
     this.suffixIcon,
     this.prefixSvgIcon,
+    this.prefixIcon,
     this.onSubmit,
     this.autofillHints,
     this.focusNode,
@@ -37,6 +38,9 @@ class CustomTextFormField extends StatelessWidget {
     this.autofocus = false,
     this.onSaved,
     this.maxLength,
+    this.fillColor,
+    this.borderRadius = 20,
+    this.borderColor,
   });
 
   final TextInputType keyboardType;
@@ -48,6 +52,7 @@ class CustomTextFormField extends StatelessWidget {
   final bool? obscureText;
   final Widget? suffixIcon;
   final String? prefixSvgIcon;
+  final Widget? prefixIcon;
   final void Function(String submittedText)? onSubmit;
   final List<String>? autofillHints;
   final FocusNode? focusNode;
@@ -66,6 +71,9 @@ class CustomTextFormField extends StatelessWidget {
   final bool autofocus;
   final Function(String? value)? onSaved;
   final int? maxLength;
+  final Color? fillColor;
+  final double borderRadius;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -92,34 +100,44 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         suffixIconColor: AppColors.primaryColor,
         suffixIcon: suffixIcon,
-        prefixIcon: prefixSvgIcon != null
-            ? Container(
-                margin: EdgeInsetsDirectional.only(
-                  start: 23.w,
-                  end: 10.w,
-                  top: 22.h,
-                  bottom: 22.h,
-                ),
-                child: SvgPicture.asset(
-                  prefixSvgIcon!,
-                ),
-              )
-            : null,
+        prefixIcon: prefixIcon ??
+            (prefixSvgIcon != null
+                ? Container(
+                    margin: EdgeInsetsDirectional.only(
+                      start: 23.w,
+                      end: 10.w,
+                      top: 22.h,
+                      bottom: 22.h,
+                    ),
+                    child: SvgPicture.asset(
+                      prefixSvgIcon!,
+                    ),
+                  )
+                : null),
         contentPadding:
             contentPadding ?? AppConstants.textFormFieldHorizontalPadding,
-        disabledBorder:
-            disabledBorder ?? AppConstants.textFormFieldOutlineBorder,
-        enabledBorder: enabledBorder ?? AppConstants.textFormFieldOutlineBorder,
-        focusedBorder: focusedBorder ?? AppConstants.textFormFieldOutlineBorder,
-        focusedErrorBorder:
-            focusedErrorBorder ?? AppConstants.textFormFieldOutlineBorder,
-        errorBorder: errorBorder ?? AppConstants.textFormFieldOutlineBorder,
+        disabledBorder: disabledBorder ?? _outlineInputBorder,
+        enabledBorder: enabledBorder ?? _outlineInputBorder,
+        focusedBorder: focusedBorder ?? _outlineInputBorder,
+        focusedErrorBorder: focusedErrorBorder ?? _outlineInputBorder,
+        errorBorder: errorBorder ?? _outlineInputBorder,
+        border: border ?? _outlineInputBorder,
         hintText: hintText ?? '',
         hintStyle: hintStyle ?? AppTextStyles.hintTextStyle,
         filled: true,
-        fillColor: AppColors.textFormFieldFillColor,
-        border: border ?? AppConstants.textFormFieldOutlineBorder,
+        fillColor: fillColor ?? AppColors.textFormFieldFillColor,
       ),
     );
   }
+
+  OutlineInputBorder get _outlineInputBorder =>
+      // ! textFormFieldOutlineBorder saved in AppConstants because it's accessed in
+      // ! another type of text fields
+      AppConstants.textFormFieldOutlineBorder.copyWith(
+        borderRadius: BorderRadius.circular(borderRadius.r),
+        borderSide: BorderSide(
+          color: borderColor ?? AppColors.primaryColor.withOpacity(0.1),
+          width: 1.w,
+        ),
+      );
 }

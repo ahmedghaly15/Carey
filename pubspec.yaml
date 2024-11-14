@@ -47,6 +47,8 @@ dependencies:
   geolocator: ^13.0.1
   # Provides easy geocoding and reverse-geocoding features.
   geocoding: ^3.0.0
+  # To load and cache network images.
+  cached_network_image: ^3.4.1
   # Provides a way to select images from the Android and iOS image library, and take new pictures with the camera.
   image_picker: ^1.1.2
   # Compress Pictures. Can effectively reduce the size of the transmission.
