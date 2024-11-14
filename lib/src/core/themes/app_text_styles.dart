@@ -96,6 +96,10 @@ class AppTextStyles {
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
       );
+  static TextStyle get font16Bold => TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
+      );
   static TextStyle get font12Bold => TextStyle(
         fontSize: 12.sp,
         fontWeight: FontWeight.bold,

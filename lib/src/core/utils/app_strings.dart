@@ -92,4 +92,5 @@ class AppStrings {
   static const String search = 'Search';
   static const String specialOffers = 'Special Offers';
   static const String seeAll = 'See All';
+  static const String topDeals = 'Top Deals';
 }
