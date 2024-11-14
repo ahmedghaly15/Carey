@@ -35,24 +35,34 @@ class ForgotPassContinueBlocListener extends StatelessWidget {
         context.showLoadingDialog();
         break;
       case ForgotPasswordStateStatus.sendPinSuccess:
-        context.popTop();
-        context.showResultDialog(
-          contentText:
-              '${AppStrings.pinCodeHasBeenSentTo}. ${AppStrings.checkYourInbox}',
-          okButtonOnPressed: () => _resultDialogOkButtonOnPressed(
-            context: context,
-            contact: state
-                .contactDetails![state.selectedContactDetailsIndex].contact!,
-          ),
-        );
+        _popTopAndShowResultDialog(context, state);
         break;
       case ForgotPasswordStateStatus.sendPinError:
-        context.popTop();
-        context.showErrorDialog(state.error!);
+        _popTopAndShowErrorDialog(context, state);
         break;
       default:
         context.showLoadingDialog();
     }
+  }
+
+  void _popTopAndShowErrorDialog(
+      BuildContext context, ForgotPasswordState state) {
+    context.popTop();
+    context.showErrorDialog(state.error!);
+  }
+
+  void _popTopAndShowResultDialog(
+      BuildContext context, ForgotPasswordState state) {
+    context.popTop();
+    context.showResultDialog(
+      contentText:
+          '${AppStrings.pinCodeHasBeenSentTo}. ${AppStrings.checkYourInbox}',
+      okButtonOnPressed: () => _resultDialogOkButtonOnPressed(
+        context: context,
+        contact:
+            state.contactDetails![state.selectedContactDetailsIndex].contact!,
+      ),
+    );
   }
 
   void _resultDialogOkButtonOnPressed({

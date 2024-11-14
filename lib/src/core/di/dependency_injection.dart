@@ -3,6 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:carey/src/features/auth/domain/usecases/pick_compressed_img.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:carey/src/core/api/dio_factory.dart';
@@ -23,7 +25,9 @@ import 'package:carey/src/features/auth/data/repositories/pin_code_verification_
 import 'package:carey/src/features/auth/data/repositories/register_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/reset_pass_repo.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_password.dart';
-import 'package:carey/src/features/auth/domain/usecases/update_profile.dart';
+import 'package:carey/src/features/auth/domain/usecases/login_via_password.dart';
+import 'package:carey/src/features/auth/domain/usecases/update_profile_details.dart';
+import 'package:carey/src/features/auth/domain/usecases/update_profile_img.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/forgot_password/forgot_password_cubit.dart';
@@ -52,6 +56,7 @@ Future<void> _setupForExternal() async {
   getIt.registerLazySingleton<FlutterSecureStorage>(() => flutterSecureStorage);
   final LocalAuthentication localAuth = LocalAuthentication();
   getIt.registerLazySingleton<LocalAuthentication>(() => localAuth);
+  getIt.registerLazySingleton<ImagePicker>(() => ImagePicker());
 }
 
 void _setupDIForCore() {
@@ -112,12 +117,19 @@ void _setupForRepos() {
 }
 
 void _setupForUseCases() {
-  getIt.registerLazySingleton<UpdateProfile>(
-    () => UpdateProfile(getIt.get<AccountSetupRepo>()),
-  );
   getIt.registerLazySingleton<UpdatePasswordUseCase>(
     () => UpdatePasswordUseCase(getIt.get<ResetPassRepo>()),
   );
+  getIt.registerLazySingleton<LoginViaPassword>(
+    () => LoginViaPassword(getIt.get<LoginRepo>()),
+  );
+  getIt.registerLazySingleton<UpdateProfileDetails>(
+    () => UpdateProfileDetails(getIt.get<AccountSetupRepo>()),
+  );
+  getIt.registerLazySingleton<UpdateProfileImg>(
+    () => UpdateProfileImg(getIt.get<AccountSetupRepo>()),
+  );
+  getIt.registerLazySingleton<PickCompressedImg>(() => PickCompressedImg());
 }
 
 void _setupForCubits() {
@@ -131,11 +143,15 @@ void _setupForCubits() {
     () => RegisterCubit(getIt.get<RegisterRepo>()),
   );
   getIt.registerFactory<AccountSetupCubit>(
-    () => AccountSetupCubit(),
+    () => AccountSetupCubit(
+      updateProfileDetailsUseCase: getIt.get<UpdateProfileDetails>(),
+      updateProfileImgUseCase: getIt.get<UpdateProfileImg>(),
+      pickCompressedImgUseCase: getIt.get<PickCompressedImg>(),
+    ),
   );
   getIt.registerLazySingleton<BiometricCubit>(
     () => BiometricCubit(
-      updateProfileUseCase: getIt.get<UpdateProfile>(),
+      updateProfileDetailsUseCase: getIt.get<UpdateProfileDetails>(),
       biometricRepo: getIt.get<BiometricRepo>(),
     ),
   );

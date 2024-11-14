@@ -1,15 +1,33 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/core/router/app_router.dart';
+import 'dart:io';
+
 import 'package:carey/src/core/services/location_service.dart';
-import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
-import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_state.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:carey/src/core/usecase/api_usecase.dart';
+import 'package:carey/src/core/utils/app_constants.dart';
+import 'package:carey/src/features/auth/data/datasources/auth_local_data_source.dart';
+import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
+import 'package:carey/src/features/auth/domain/usecases/pick_compressed_img.dart';
+import 'package:carey/src/features/auth/domain/usecases/update_profile_details.dart';
+import 'package:carey/src/features/auth/domain/usecases/update_profile_img.dart';
+import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_state.dart';
+
 class AccountSetupCubit extends Cubit<AccountSetupState> {
-  AccountSetupCubit() : super(AccountSetupState.initial()) {
+  final UpdateProfileDetails updateProfileDetailsUseCase;
+  final UpdateProfileImg updateProfileImgUseCase;
+  final PickCompressedImg pickCompressedImgUseCase;
+
+  AccountSetupCubit({
+    required this.updateProfileDetailsUseCase,
+    required this.updateProfileImgUseCase,
+    required this.pickCompressedImgUseCase,
+  }) : super(AccountSetupState.initial()) {
     _initFormAttributes();
   }
+
+  final CancelToken _cancelToken = CancelToken();
 
   late final GlobalKey<FormState> formKey;
   late final TextEditingController fullNameController;
@@ -30,24 +48,96 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
     ));
   }
 
-  void continueToSetFingerprint(BuildContext context) {
-    if (formKey.currentState!.validate()) {
-      final updateProfileParams = UpdateProfileParams(
+  Future<void> _updateProfileDetails() async {
+    emit(state.copyWith(status: AccountSetupStateStatus.updateProfileLoading));
+    final updateProfileParams = UpdateProfileParams(
+      fullName: fullNameController.text.trim(),
+      nickName: nickNameController.text.trim(),
+      address: addressController.text.trim(),
+      phone: phoneNumber,
+      gender: genderController.text,
+    );
+    final result = await updateProfileDetailsUseCase(
+      updateProfileParams,
+      _cancelToken,
+    );
+    result.when(
+      success: (_) async {
+        await _updateCurrentUserDataAndSecureIt();
+        emit(
+          state.copyWith(
+            status: AccountSetupStateStatus.updateProfileSuccess,
+            currentUserData: currentUserData,
+          ),
+        );
+      },
+      failure: (failure) => emit(
+        state.copyWith(
+          status: AccountSetupStateStatus.updateProfileError,
+          error: failure.error[0],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _updateCurrentUserDataAndSecureIt() async {
+    currentUserData = currentUserData!.copyWith(
+      user: currentUserData!.user.copyWith(
         fullName: fullNameController.text.trim(),
         nickName: nickNameController.text.trim(),
-        address: addressController.text,
+        address: addressController.text.trim(),
         phone: phoneNumber,
         gender: genderController.text,
-      );
-      context.pushRoute(
-        SetFingerprintRoute(updateProfileParams: updateProfileParams),
-      );
-    } else {
+      ),
+    );
+    await AuthLocalDataSource.secureUserData(currentUserData!);
+  }
+
+  void pickProfileImg() async {
+    final pickedCompressedImg =
+        await pickCompressedImgUseCase(const NoParams());
+    if (pickedCompressedImg != null) {
       emit(state.copyWith(
-        status: AccountSetupStateStatus.alwaysAutovalidateMode,
-        autovalidateMode: AutovalidateMode.always,
+        status: AccountSetupStateStatus.pickProfileImg,
+        pickedProfileImg: File(pickedCompressedImg.path),
       ));
     }
+  }
+
+  Future<void> updateProfileImg() async {
+    emit(state.copyWith(
+      status: AccountSetupStateStatus.updateProfileImgLoading,
+    ));
+    final result = await updateProfileImgUseCase(
+      state.pickedProfileImg!,
+      _cancelToken,
+    );
+    result.when(
+      success: (_) => emit(state.copyWith(
+        status: AccountSetupStateStatus.updateProfileImgSuccess,
+      )),
+      failure: (failure) => emit(state.copyWith(
+        status: AccountSetupStateStatus.updateProfileImgError,
+        error: failure.error[0],
+      )),
+    );
+  }
+
+  void validateFormAndUpdateProfile() async {
+    if (formKey.currentState!.validate()) {
+      await _updateProfileDetails();
+    } else {
+      _alwaysAutovalidateMode();
+    }
+  }
+
+  void _alwaysAutovalidateMode() {
+    emit(
+      state.copyWith(
+        status: AccountSetupStateStatus.alwaysAutovalidateMode,
+        autovalidateMode: AutovalidateMode.always,
+      ),
+    );
   }
 
   void updatePhoneNumber(String phone) {
@@ -100,6 +190,7 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
   @override
   Future<void> close() {
     _disposeFormAttributes();
+    _cancelToken.cancel();
     return super.close();
   }
 }

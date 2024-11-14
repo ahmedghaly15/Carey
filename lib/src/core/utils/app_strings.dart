@@ -88,6 +88,7 @@ class AppStrings {
   static const String passwordsDoNotMatch = 'Passwords do not match';
   static const String passChangedSuccessfully =
       'Password changed successfully. Please login';
+  static const String confirmPass = 'Confirm Password';
   static const String confirmYourPass = 'Confirm your password';
   static const String search = 'Search';
   static const String specialOffers = 'Special Offers';
