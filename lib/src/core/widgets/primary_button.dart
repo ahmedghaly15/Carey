@@ -6,9 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     super.key,
+    required this.onPressed,
+    this.isInfinityWidth = true,
     this.text,
     this.child,
-    required this.onPressed,
     this.borderRadius,
     this.textStyle,
     this.backgroundColor,
@@ -24,6 +25,7 @@ class PrimaryButton extends StatelessWidget {
     this.borderWidth = 1,
   });
 
+  final bool isInfinityWidth;
   final String? text;
   final Widget? child;
   final double? borderRadius;
@@ -44,6 +46,7 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: isInfinityWidth ? double.infinity : null,
       margin: margin,
       decoration: BoxDecoration(
         color: isOutlined
