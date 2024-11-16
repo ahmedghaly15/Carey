@@ -343,6 +343,25 @@ class SetFingerprintRouteArgs {
 }
 
 /// generated route for
+/// [SpecialOffersView]
+class SpecialOffersRoute extends PageRouteInfo<void> {
+  const SpecialOffersRoute({List<PageRouteInfo>? children})
+      : super(
+          SpecialOffersRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SpecialOffersRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SpecialOffersView();
+    },
+  );
+}
+
+/// generated route for
 /// [SplashView]
 class SplashRoute extends PageRouteInfo<void> {
   const SplashRoute({List<PageRouteInfo>? children})
