@@ -63,22 +63,13 @@ class HomeBody extends StatelessWidget {
           SliverToBoxAdapter(
             child: TextAndSeeAll(
               text: AppStrings.topDeals,
-              seeAllOnPressed: () {},
+              seeAllOnPressed: () => context.pushRoute(const TopDealsRoute()),
             ),
           ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 34.h,
-              child: const TopDealsBrandsListView(),
-            ),
+          const SliverToBoxAdapter(
+            child: TopDealsBrandsListView(),
           ),
-          SliverPadding(
-            padding: EdgeInsets.symmetric(
-              horizontal: AppConstants.screenHorizontalPaddingVal.w,
-              vertical: 19.h,
-            ),
-            sliver: const TopDealsSliverGrid(),
-          ),
+          const TopDealsSliverGrid(),
         ],
       ),
     );
