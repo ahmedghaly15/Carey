@@ -29,7 +29,7 @@ import 'package:carey/src/features/auth/domain/usecases/login_via_password.dart'
 import 'package:carey/src/features/auth/domain/usecases/update_profile_details.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_img.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
-import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
+import 'package:carey/src/features/auth/presentation/cubits/auth_form/auth_form_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/forgot_password/forgot_password_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/pin_code_verification/pin_code_verification_cubit.dart';
@@ -133,16 +133,16 @@ void _setupForUseCases() {
 }
 
 void _setupForCubits() {
-  getIt.registerFactory<FormAttributesCubit>(
-    () => FormAttributesCubit(),
+  getIt.registerFactory<AuthFormCubit>(
+    () => AuthFormCubit(),
   );
-  getIt.registerFactory<LoginCubit>(
+  getIt.registerLazySingleton<LoginCubit>(
     () => LoginCubit(getIt.get<LoginRepo>()),
   );
-  getIt.registerFactory<RegisterCubit>(
+  getIt.registerLazySingleton<RegisterCubit>(
     () => RegisterCubit(getIt.get<RegisterRepo>()),
   );
-  getIt.registerFactory<AccountSetupCubit>(
+  getIt.registerLazySingleton<AccountSetupCubit>(
     () => AccountSetupCubit(
       updateProfileDetailsUseCase: getIt.get<UpdateProfileDetails>(),
       updateProfileImgUseCase: getIt.get<UpdateProfileImg>(),
@@ -155,13 +155,13 @@ void _setupForCubits() {
       biometricRepo: getIt.get<BiometricRepo>(),
     ),
   );
-  getIt.registerFactory<ForgotPasswordCubit>(
+  getIt.registerLazySingleton<ForgotPasswordCubit>(
     () => ForgotPasswordCubit(getIt.get<ForgotPasswordRepo>()),
   );
-  getIt.registerFactory<PinCodeVerificationCubit>(
+  getIt.registerLazySingleton<PinCodeVerificationCubit>(
     () => PinCodeVerificationCubit(getIt.get<PinCodeVerificationRepo>()),
   );
-  getIt.registerFactory<ResetPassCubit>(
+  getIt.registerLazySingleton<ResetPassCubit>(
     () => ResetPassCubit(getIt.get<UpdatePasswordUseCase>()),
   );
   getIt.registerFactory<HomeCubit>(() => HomeCubit());

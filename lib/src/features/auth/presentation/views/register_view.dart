@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:carey/src/core/di/dependency_injection.dart';
-import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
+import 'package:carey/src/features/auth/presentation/cubits/auth_form/auth_form_cubit.dart';
 import 'package:carey/src/features/auth/presentation/widgets/register/register_view_body.dart';
 
 @RoutePage()
@@ -18,11 +18,11 @@ class RegisterView extends StatelessWidget implements AutoRouteWrapper {
   Widget wrappedRoute(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<FormAttributesCubit>(
-          create: (_) => getIt.get<FormAttributesCubit>(),
+        BlocProvider<AuthFormCubit>.value(
+          value: getIt.get<AuthFormCubit>(),
         ),
-        BlocProvider<RegisterCubit>(
-          create: (_) => getIt.get<RegisterCubit>(),
+        BlocProvider<RegisterCubit>.value(
+          value: getIt.get<RegisterCubit>(),
         ),
       ],
       child: this,

@@ -26,6 +26,7 @@ class TopDealsBrandsListView extends StatelessWidget {
         builder: (context, currentSelectedTopDealBrand) {
           final bool isSelected = currentSelectedTopDealBrand == index;
           return PrimaryButton(
+            isInfinityWidth: false,
             padding: EdgeInsets.symmetric(
               vertical: 6.h,
               horizontal: 9.w,

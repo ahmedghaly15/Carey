@@ -9,7 +9,7 @@ import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/auth/data/datasources/auth_local_data_source.dart';
 import 'package:carey/src/features/auth/data/models/auth_via_password_request.dart';
 import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
-import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
+import 'package:carey/src/features/auth/presentation/cubits/auth_form/auth_form_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_state.dart';
 
@@ -35,7 +35,7 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
   }
 
   void _loginViaPass(BuildContext context) {
-    final formAttributesCubit = context.read<FormAttributesCubit>();
+    final formAttributesCubit = context.read<AuthFormCubit>();
     final params = AuthViaPasswordRequest(
       email: formAttributesCubit.emailController.text.trim(),
       password: formAttributesCubit.passwordController.text,
@@ -79,9 +79,7 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
     BuildContext context,
     AuthResponseEntity authEntity,
   ) async {
-    await context
-        .read<FormAttributesCubit>()
-        .handleRememberingEmailAndPassword();
+    await context.read<AuthFormCubit>().handleRememberingEmailAndPassword();
     await AuthLocalDataSource.setAndSecureUserDataAndSetTokenIntoHeaders(
       authEntity,
     );
