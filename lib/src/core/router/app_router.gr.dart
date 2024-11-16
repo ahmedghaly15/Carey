@@ -114,6 +114,44 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [InboxView]
+class InboxRoute extends PageRouteInfo<void> {
+  const InboxRoute({List<PageRouteInfo>? children})
+      : super(
+          InboxRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'InboxRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const InboxView();
+    },
+  );
+}
+
+/// generated route for
+/// [LayoutView]
+class LayoutRoute extends PageRouteInfo<void> {
+  const LayoutRoute({List<PageRouteInfo>? children})
+      : super(
+          LayoutRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'LayoutRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const LayoutView();
+    },
+  );
+}
+
+/// generated route for
 /// [LoginMethodsView]
 class LoginMethodsRoute extends PageRouteInfo<void> {
   const LoginMethodsRoute({List<PageRouteInfo>? children})
@@ -181,6 +219,25 @@ class LoginRouteArgs {
 }
 
 /// generated route for
+/// [OrdersView]
+class OrdersRoute extends PageRouteInfo<void> {
+  const OrdersRoute({List<PageRouteInfo>? children})
+      : super(
+          OrdersRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OrdersRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const OrdersView();
+    },
+  );
+}
+
+/// generated route for
 /// [PinCodeVerificationView]
 class PinCodeVerificationRoute
     extends PageRouteInfo<PinCodeVerificationRouteArgs> {
@@ -226,6 +283,25 @@ class PinCodeVerificationRouteArgs {
   String toString() {
     return 'PinCodeVerificationRouteArgs{key: $key, contact: $contact}';
   }
+}
+
+/// generated route for
+/// [ProfileView]
+class ProfileRoute extends PageRouteInfo<void> {
+  const ProfileRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ProfileView();
+    },
+  );
 }
 
 /// generated route for
@@ -433,6 +509,25 @@ class TopDealsRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return WrappedRoute(child: const TopDealsView());
+    },
+  );
+}
+
+/// generated route for
+/// [WalletView]
+class WalletRoute extends PageRouteInfo<void> {
+  const WalletRoute({List<PageRouteInfo>? children})
+      : super(
+          WalletRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'WalletRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const WalletView();
     },
   );
 }

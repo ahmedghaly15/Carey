@@ -1,5 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:carey/src/features/home/presentation/views/top_deals_view.dart';
+import 'package:carey/src/features/inbox/inbox_view.dart';
+import 'package:carey/src/features/layout/presentation/views/layout_view.dart';
+import 'package:carey/src/features/orders/orders_view.dart';
+import 'package:carey/src/features/profile/profile_view.dart';
+import 'package:carey/src/features/wallet/wallet_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
