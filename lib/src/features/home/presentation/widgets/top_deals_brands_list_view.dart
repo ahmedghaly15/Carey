@@ -14,34 +14,37 @@ class TopDealsBrandsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      padding: EdgeInsetsDirectional.only(
-        start: AppConstants.screenHorizontalPaddingVal.w,
-        end: AppConstants.screenHorizontalPaddingVal.w,
+    return SizedBox(
+      height: 34.h,
+      child: ListView.separated(
+        padding: EdgeInsetsDirectional.only(
+          start: AppConstants.screenHorizontalPaddingVal.w,
+          end: AppConstants.screenHorizontalPaddingVal.w,
+        ),
+        scrollDirection: Axis.horizontal,
+        itemCount: 12,
+        itemBuilder: (_, index) => BlocSelector<HomeCubit, HomeState, int>(
+          selector: (state) => state.currentSelectedTopDealBrand,
+          builder: (context, currentSelectedTopDealBrand) {
+            final bool isSelected = currentSelectedTopDealBrand == index;
+            return PrimaryButton(
+              isInfinityWidth: false,
+              padding: EdgeInsets.symmetric(
+                vertical: 6.h,
+                horizontal: 9.w,
+              ),
+              isOutlined: isSelected ? false : true,
+              textStyle: AppTextStyles.font16Bold.copyWith(
+                color: isSelected ? Colors.white : Colors.black,
+              ),
+              onPressed: () =>
+                  context.read<HomeCubit>().updateSelectedTopDealBrand(index),
+              text: 'Mercedes',
+            );
+          },
+        ),
+        separatorBuilder: (_, __) => MySizedBox.width9,
       ),
-      scrollDirection: Axis.horizontal,
-      itemCount: 12,
-      itemBuilder: (_, index) => BlocSelector<HomeCubit, HomeState, int>(
-        selector: (state) => state.currentSelectedTopDealBrand,
-        builder: (context, currentSelectedTopDealBrand) {
-          final bool isSelected = currentSelectedTopDealBrand == index;
-          return PrimaryButton(
-            isInfinityWidth: false,
-            padding: EdgeInsets.symmetric(
-              vertical: 6.h,
-              horizontal: 9.w,
-            ),
-            isOutlined: isSelected ? false : true,
-            textStyle: AppTextStyles.font16Bold.copyWith(
-              color: isSelected ? Colors.white : Colors.black,
-            ),
-            onPressed: () =>
-                context.read<HomeCubit>().updateSelectedTopDealBrand(index),
-            text: 'Mercedes',
-          );
-        },
-      ),
-      separatorBuilder: (_, __) => MySizedBox.width9,
     );
   }
 }

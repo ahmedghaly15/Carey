@@ -21,17 +21,19 @@ class TopDealItem extends StatelessWidget {
               color: AppColors.colorD9D9D9.withOpacity(0.67),
               borderRadius: BorderRadius.circular(40.r),
             ),
-            child: FittedBox(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.favorite_border),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.favorite_border, size: 16.h),
+                ),
+                Expanded(
+                  child: Center(
+                    child: Image.asset(Assets.imagesCarTest, fit: BoxFit.cover),
                   ),
-                  Image.asset(Assets.imagesCarTest),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
