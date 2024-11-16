@@ -28,7 +28,17 @@ List<AutoRoute> get appRoutes => [
           _buildCustomRoute(page: ResetPasswordRoute.page),
         ],
       ),
-      _buildCustomRoute(initial: true, page: HomeRoute.page),
+      AutoRoute(
+        initial: true,
+        page: LayoutRoute.page,
+        children: [
+          _buildCustomRoute(initial: true, page: HomeRoute.page),
+          _buildCustomRoute(page: OrdersRoute.page),
+          _buildCustomRoute(page: InboxRoute.page),
+          _buildCustomRoute(page: WalletRoute.page),
+          _buildCustomRoute(page: ProfileRoute.page),
+        ],
+      ),
       _buildCustomRoute(page: SpecialOffersRoute.page),
       _buildCustomRoute(page: TopDealsRoute.page),
     ];

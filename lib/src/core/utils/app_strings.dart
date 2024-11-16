@@ -94,4 +94,9 @@ class AppStrings {
   static const String specialOffers = 'Special Offers';
   static const String seeAll = 'See All';
   static const String topDeals = 'Top Deals';
+  static const String home = 'Home';
+  static const String orders = 'Orders';
+  static const String inbox = 'Inbox';
+  static const String wallet = 'Wallet';
+  static const String profile = 'Profile';
 }
