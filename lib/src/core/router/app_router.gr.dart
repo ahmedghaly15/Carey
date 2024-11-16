@@ -419,6 +419,25 @@ class StartWelcomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [TopDealsView]
+class TopDealsRoute extends PageRouteInfo<void> {
+  const TopDealsRoute({List<PageRouteInfo>? children})
+      : super(
+          TopDealsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TopDealsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const TopDealsView());
+    },
+  );
+}
+
+/// generated route for
 /// [WelcomeView]
 class WelcomeRoute extends PageRouteInfo<void> {
   const WelcomeRoute({List<PageRouteInfo>? children})
