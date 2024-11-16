@@ -21,6 +21,10 @@ class AppTextStyles {
         fontWeight: FontWeight.w600,
         color: Colors.white,
       );
+  static TextStyle get font20Bold => TextStyle(
+        fontSize: 20.sp,
+        fontWeight: FontWeight.bold,
+      );
   static TextStyle get font15SemiBoldWhite => TextStyle(
         fontSize: 15.sp,
         fontWeight: FontWeight.w600,
@@ -91,5 +95,25 @@ class AppTextStyles {
   static TextStyle get font16Medium => TextStyle(
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
+      );
+  static TextStyle get font16Bold => TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
+      );
+  static TextStyle get font15Bold => TextStyle(
+        fontSize: 15.sp,
+        fontWeight: FontWeight.bold,
+      );
+  static TextStyle get font12Bold => TextStyle(
+        fontSize: 12.sp,
+        fontWeight: FontWeight.bold,
+      );
+  static TextStyle get font10Bold => TextStyle(
+        fontSize: 10.sp,
+        fontWeight: FontWeight.bold,
+      );
+  static TextStyle get font8Bold => TextStyle(
+        fontSize: 8.sp,
+        fontWeight: FontWeight.bold,
       );
 }

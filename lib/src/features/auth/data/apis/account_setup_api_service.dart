@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -11,9 +13,16 @@ abstract class AccountSetupApiService {
   factory AccountSetupApiService(Dio dio, {String baseUrl}) =
       _AccountSetupApiService;
 
-  @PATCH(EndPoints.updateProfile)
-  Future<void> updateProfile(
+  @PATCH(EndPoints.updateProfileDetails)
+  Future<void> updateProfileDetails(
     @Body() UpdateProfileParams params, [
+    @CancelRequest() CancelToken? cancelToken,
+  ]);
+
+  @MultiPart()
+  @POST(EndPoints.updateProfileImg)
+  Future<void> updateProfileImg(
+    @Part() File picture, [
     @CancelRequest() CancelToken? cancelToken,
   ]);
 }

@@ -90,4 +90,8 @@ class AppStrings {
       'Password changed successfully. Please login';
   static const String confirmPass = 'Confirm Password';
   static const String confirmYourPass = 'Confirm your password';
+  static const String search = 'Search';
+  static const String specialOffers = 'Special Offers';
+  static const String seeAll = 'See All';
+  static const String topDeals = 'Top Deals';
 }

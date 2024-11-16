@@ -24,7 +24,7 @@ class _AccountSetupApiService implements AccountSetupApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<void> updateProfile(
+  Future<void> updateProfileDetails(
     UpdateProfileParams params, [
     CancelToken? cancelToken,
   ]) async {
@@ -42,6 +42,44 @@ class _AccountSetupApiService implements AccountSetupApiService {
         .compose(
           _dio.options,
           'users/update-my-profile',
+          queryParameters: queryParameters,
+          data: _data,
+          cancelToken: cancelToken,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    await _dio.fetch<void>(_options);
+  }
+
+  @override
+  Future<void> updateProfileImg(
+    File picture, [
+    CancelToken? cancelToken,
+  ]) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.files.add(MapEntry(
+      'picture',
+      MultipartFile.fromFileSync(
+        picture.path,
+        filename: picture.path.split(Platform.pathSeparator).last,
+      ),
+    ));
+    final _options = _setStreamType<void>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'multipart/form-data',
+    )
+        .compose(
+          _dio.options,
+          'users/update-picture',
           queryParameters: queryParameters,
           data: _data,
           cancelToken: cancelToken,

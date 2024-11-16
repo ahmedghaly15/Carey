@@ -1,5 +1,6 @@
 import 'package:carey/src/features/auth/data/models/create_biometric_params.dart';
 import 'package:carey/src/features/auth/data/repositories/biometric_repo.dart';
+import 'package:carey/src/features/auth/domain/usecases/update_profile_details.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,15 +8,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/features/auth/data/datasources/auth_local_data_source.dart';
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
-import 'package:carey/src/features/auth/domain/usecases/update_profile.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_state.dart';
 
 class BiometricCubit extends Cubit<BiometricState> {
   final BiometricRepo biometricRepo;
-  final UpdateProfile updateProfileUseCase;
+  final UpdateProfileDetails updateProfileDetailsUseCase;
 
   BiometricCubit({
-    required this.updateProfileUseCase,
+    required this.updateProfileDetailsUseCase,
     required this.biometricRepo,
   }) : super(BiometricState.initial()) {
     _initFormAttributes();
@@ -37,7 +37,7 @@ class BiometricCubit extends Cubit<BiometricState> {
         status: BiometricStateStatus.updateProfileLoading,
       ),
     );
-    final result = await updateProfileUseCase(
+    final result = await updateProfileDetailsUseCase(
       params,
       _cancelToken,
     );
