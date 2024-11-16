@@ -6,7 +6,9 @@ import 'package:carey/src/core/widgets/my_sized_box.dart';
 import 'package:carey/src/features/home/presentation/widgets/custom_dots_indicators.dart';
 
 class SpecialOfferItem extends StatelessWidget {
-  const SpecialOfferItem({super.key});
+  const SpecialOfferItem({super.key, required this.pageIndex});
+
+  final int pageIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class SpecialOfferItem extends StatelessWidget {
           ],
         ),
         MySizedBox.height16,
-        const Flexible(child: CustomDotsIndicators()),
+        Flexible(child: CustomDotsIndicators(pageIndex: pageIndex)),
       ],
     );
   }

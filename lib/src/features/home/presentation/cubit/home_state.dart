@@ -4,7 +4,6 @@ part 'home_state.freezed.dart';
 
 enum HomeStateStatus {
   initial,
-  changeCurrentSpecialOffer,
   updateSelectedTopDealBrand,
 }
 
@@ -12,7 +11,6 @@ enum HomeStateStatus {
 sealed class HomeState with _$HomeState {
   const factory HomeState({
     required HomeStateStatus status,
-    @Default(0) int currentSpecialOffer,
     @Default(0) int currentSelectedTopDealBrand,
   }) = _HomeState;
 

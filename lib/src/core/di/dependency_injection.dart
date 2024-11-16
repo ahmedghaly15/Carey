@@ -164,5 +164,5 @@ void _setupForCubits() {
   getIt.registerFactory<ResetPassCubit>(
     () => ResetPassCubit(getIt.get<UpdatePasswordUseCase>()),
   );
-  getIt.registerFactory<HomeCubit>(() => HomeCubit());
+  getIt.registerLazySingleton<HomeCubit>(() => HomeCubit());
 }
