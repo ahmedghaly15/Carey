@@ -1,3 +1,4 @@
+import 'package:carey/src/core/widgets/favorite_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,10 +25,7 @@ class TopDealItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.favorite_border, size: 16.h),
-                ),
+                const FavoriteIconButton(),
                 Expanded(
                   child: Center(
                     child: Image.asset(Assets.imagesCarTest, fit: BoxFit.cover),
