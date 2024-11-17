@@ -343,6 +343,53 @@ class ProductInfoRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ProductReviewsView]
+class ProductReviewsRoute extends PageRouteInfo<ProductReviewsRouteArgs> {
+  ProductReviewsRoute({
+    Key? key,
+    required String review,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ProductReviewsRoute.name,
+          args: ProductReviewsRouteArgs(
+            key: key,
+            review: review,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductReviewsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ProductReviewsRouteArgs>();
+      return WrappedRoute(
+          child: ProductReviewsView(
+        key: args.key,
+        review: args.review,
+      ));
+    },
+  );
+}
+
+class ProductReviewsRouteArgs {
+  const ProductReviewsRouteArgs({
+    this.key,
+    required this.review,
+  });
+
+  final Key? key;
+
+  final String review;
+
+  @override
+  String toString() {
+    return 'ProductReviewsRouteArgs{key: $key, review: $review}';
+  }
+}
+
+/// generated route for
 /// [ProfileView]
 class ProfileRoute extends PageRouteInfo<void> {
   const ProfileRoute({List<PageRouteInfo>? children})

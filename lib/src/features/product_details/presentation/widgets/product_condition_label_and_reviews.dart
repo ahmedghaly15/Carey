@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:carey/src/core/router/app_router.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carey/src/core/themes/app_text_styles.dart';
@@ -17,7 +19,9 @@ class ProductConditionLabelAndReviews extends StatelessWidget {
           Icons.star_half_rounded,
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () => context.pushRoute(
+            ProductReviewsRoute(review: '4.8 (86 reviews)'),
+          ),
           child: Text(
             '4.8 (86 reviews)',
             style: AppTextStyles.font13Regular.copyWith(
