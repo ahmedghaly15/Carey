@@ -1,4 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
@@ -6,13 +9,11 @@ import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
 import 'package:carey/src/core/widgets/favorite_icon_button.dart';
-import 'package:carey/src/core/widgets/my_sized_box.dart';
-import 'package:carey/src/core/widgets/primary_button.dart';
-import 'package:carey/src/core/widgets/product_condition_label.dart';
+import 'package:carey/src/features/product_details/presentation/widgets/gallery_photos_list_view.dart';
+import 'package:carey/src/features/product_details/presentation/widgets/price_and_make_offer_button.dart';
 import 'package:carey/src/features/product_details/presentation/widgets/product_colors.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:carey/src/features/product_details/presentation/widgets/product_company_details.dart';
+import 'package:carey/src/features/product_details/presentation/widgets/product_condition_label_and_reviews.dart';
 
 @RoutePage()
 class ProductDetailsView extends StatelessWidget {
@@ -30,10 +31,7 @@ class ProductDetailsView extends StatelessWidget {
               actions: [FavoriteIconButton()],
             ),
             SliverToBoxAdapter(
-              child: Image.asset(
-                Assets.imagesCarTest,
-                fit: BoxFit.cover,
-              ),
+              child: Image.asset(Assets.imagesCarTest, fit: BoxFit.cover),
             ),
             const SliverToBoxAdapter(child: ProductColors()),
             SliverPadding(
@@ -51,25 +49,8 @@ class ProductDetailsView extends StatelessWidget {
               padding: EdgeInsetsDirectional.only(
                 start: AppConstants.productDetailsStartPadVal.w,
               ),
-              sliver: SliverToBoxAdapter(
-                child: Row(
-                  children: [
-                    const ProductConditionLabel(),
-                    MySizedBox.width10,
-                    const Icon(
-                      Icons.star_half_rounded,
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        '4.8 (86 reviews)',
-                        style: AppTextStyles.font13Regular.copyWith(
-                          color: Colors.black.withOpacity(0.7),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              sliver: const SliverToBoxAdapter(
+                child: ProductConditionLabelAndReviews(),
               ),
             ),
             SliverPadding(
@@ -101,23 +82,7 @@ class ProductDetailsView extends StatelessWidget {
                 ),
               ),
             ),
-            SliverToBoxAdapter(
-              child: SizedBox(
-                height: 54.h,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  physics: const BouncingScrollPhysics(),
-                  padding: EdgeInsetsDirectional.only(
-                    start: AppConstants.productDetailsStartPadVal.w,
-                    end: AppConstants.productDetailsEndPadVal.w,
-                  ),
-                  itemBuilder: (_, index) =>
-                      Image.asset(Assets.imagesGalleryPhotoTestpng),
-                  separatorBuilder: (_, __) => MySizedBox.width10,
-                  itemCount: 10,
-                ),
-              ),
-            ),
+            const SliverToBoxAdapter(child: GalleryPhotosListView()),
             SliverPadding(
               padding: EdgeInsetsDirectional.only(
                 start: AppConstants.productDetailsStartPadVal.w,
@@ -125,44 +90,7 @@ class ProductDetailsView extends StatelessWidget {
                 top: 16.h,
                 bottom: 13.h,
               ),
-              sliver: SliverToBoxAdapter(
-                child: Row(
-                  children: [
-                    Image.asset(Assets.imagesBmwIcon),
-                    MySizedBox.width16,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              'BMW Store',
-                              style: AppTextStyles.font18Medium,
-                            ),
-                            const Icon(
-                              Icons.check_circle,
-                              color: Colors.blue,
-                            ),
-                          ],
-                        ),
-                        Text(
-                          'Official Account of BMW',
-                          style: AppTextStyles.poppinsFont12Regular,
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset(Assets.svgsChatIcon),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.phone_outlined),
-                    ),
-                  ],
-                ),
-              ),
+              sliver: const SliverToBoxAdapter(child: ProductCompanyDetails()),
             ),
             SliverPadding(
               padding: EdgeInsetsDirectional.only(
@@ -171,34 +99,8 @@ class ProductDetailsView extends StatelessWidget {
                 end: AppConstants.productDetailsEndPadVal.w,
                 bottom: 13.h,
               ),
-              sliver: SliverToBoxAdapter(
-                child: Row(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppStrings.price,
-                          style: AppTextStyles.font15Regular.copyWith(
-                            color: Colors.black.withOpacity(0.65),
-                          ),
-                        ),
-                        Text(
-                          '\$185.000',
-                          style: AppTextStyles.font20Regular,
-                        ),
-                      ],
-                    ),
-                    MySizedBox.width27,
-                    Expanded(
-                      child: PrimaryButton(
-                        onPressed: () {},
-                        text: AppStrings.makeAnOffer,
-                        borderRadius: 20,
-                      ),
-                    ),
-                  ],
-                ),
+              sliver: const SliverToBoxAdapter(
+                child: PriceAndMakeOfferButton(),
               ),
             ),
           ],
