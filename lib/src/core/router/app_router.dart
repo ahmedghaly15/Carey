@@ -5,6 +5,7 @@ import 'package:carey/src/features/layout/presentation/views/layout_view.dart';
 import 'package:carey/src/features/orders/orders_view.dart';
 import 'package:carey/src/features/profile/profile_view.dart';
 import 'package:carey/src/features/wallet/wallet_view.dart';
+import 'package:carey/src/features/wishlist/presentation/views/my_wishlist_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
