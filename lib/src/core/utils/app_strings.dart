@@ -99,4 +99,5 @@ class AppStrings {
   static const String inbox = 'Inbox';
   static const String wallet = 'Wallet';
   static const String profile = 'Profile';
+  static const String myWishlist = 'My Wishlist';
 }

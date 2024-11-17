@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:carey/src/core/utils/app_assets.dart';
+import 'package:carey/src/core/widgets/account_default_image.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_state.dart';
 import 'package:flutter/material.dart';
@@ -19,17 +20,7 @@ class AccountImage extends StatelessWidget {
         BlocSelector<AccountSetupCubit, AccountSetupState, File?>(
           selector: (state) => state.pickedProfileImg,
           builder: (context, pickedProfileImg) => pickedProfileImg == null
-              ? Container(
-                  height: 125.h,
-                  width: 127.w,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                  ),
-                  child: SvgPicture.asset(
-                    Assets.svgsDefaultUserImage,
-                    fit: BoxFit.cover,
-                  ),
-                )
+              ? const AccountDefaultImage()
               : CircleAvatar(
                   radius: 65.r,
                   backgroundImage: FileImage(pickedProfileImg) as ImageProvider,

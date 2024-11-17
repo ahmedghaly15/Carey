@@ -219,6 +219,25 @@ class LoginRouteArgs {
 }
 
 /// generated route for
+/// [MyWishlistView]
+class MyWishlistRoute extends PageRouteInfo<void> {
+  const MyWishlistRoute({List<PageRouteInfo>? children})
+      : super(
+          MyWishlistRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MyWishlistRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const MyWishlistView();
+    },
+  );
+}
+
+/// generated route for
 /// [OrdersView]
 class OrdersRoute extends PageRouteInfo<void> {
   const OrdersRoute({List<PageRouteInfo>? children})

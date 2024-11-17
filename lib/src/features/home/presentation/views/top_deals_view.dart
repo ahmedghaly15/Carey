@@ -7,7 +7,7 @@ import 'package:carey/src/core/di/dependency_injection.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
 import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
-import 'package:carey/src/features/home/presentation/widgets/top_deals_sliver_grid.dart';
+import 'package:carey/src/core/widgets/products_sliver_grid.dart';
 
 @RoutePage()
 class TopDealsView extends StatelessWidget implements AutoRouteWrapper {
@@ -31,7 +31,7 @@ class TopDealsView extends StatelessWidget implements AutoRouteWrapper {
             SliverToBoxAdapter(
               child: TopDealsBrandsListView(),
             ),
-            TopDealsSliverGrid(),
+            ProductsSliverGrid(),
           ],
         ),
       ),
