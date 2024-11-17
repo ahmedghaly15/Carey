@@ -100,4 +100,8 @@ class AppStrings {
   static const String wallet = 'Wallet';
   static const String profile = 'Profile';
   static const String myWishlist = 'My Wishlist';
+  static const String newWord = 'New';
+  static const String galleryPhotos = 'Gallery Photos';
+  static const String price = 'Price';
+  static const String makeAnOffer = 'Make an Offer';
 }
