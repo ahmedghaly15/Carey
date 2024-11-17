@@ -3,6 +3,7 @@ import 'package:carey/src/features/home/presentation/views/top_deals_view.dart';
 import 'package:carey/src/features/inbox/inbox_view.dart';
 import 'package:carey/src/features/layout/presentation/views/layout_view.dart';
 import 'package:carey/src/features/orders/orders_view.dart';
+import 'package:carey/src/features/product_details/presentation/views/product_details_view.dart';
 import 'package:carey/src/features/profile/profile_view.dart';
 import 'package:carey/src/features/wallet/wallet_view.dart';
 import 'package:carey/src/features/wishlist/presentation/views/my_wishlist_view.dart';
@@ -43,4 +44,9 @@ class StartWelcome extends AutoRouter {
 @RoutePage(name: 'AuthRoute')
 class Auth extends AutoRouter {
   const Auth({super.key});
+}
+
+@RoutePage(name: 'ProductInfoRoute')
+class ProductInfo extends AutoRouter {
+  const ProductInfo({super.key});
 }
