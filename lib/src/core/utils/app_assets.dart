@@ -38,6 +38,10 @@ class Assets {
   /// assets/fonts/Poppins/Poppins-SemiBold.ttf
   static const String fontsPoppinsPoppinsSemiBold = "assets/fonts/Poppins/Poppins-SemiBold.ttf";
 
+  /// Assets for imagesBmwIcon
+  /// assets/images/bmw-icon.png
+  static const String imagesBmwIcon = "assets/images/bmw-icon.png";
+
   /// Assets for imagesCarBrandTest
   /// assets/images/car-brand-test.png
   static const String imagesCarBrandTest = "assets/images/car-brand-test.png";
@@ -49,6 +53,10 @@ class Assets {
   /// Assets for imagesError
   /// assets/images/error.png
   static const String imagesError = "assets/images/error.png";
+
+  /// Assets for imagesGalleryPhotoTestpng
+  /// assets/images/gallery-photo-testpng.png
+  static const String imagesGalleryPhotoTestpng = "assets/images/gallery-photo-testpng.png";
 
   /// Assets for imagesSplash
   /// assets/images/splash.png
@@ -69,6 +77,10 @@ class Assets {
   /// Assets for svgsArrowBackIcon
   /// assets/svgs/arrow-back-icon.svg
   static const String svgsArrowBackIcon = "assets/svgs/arrow-back-icon.svg";
+
+  /// Assets for svgsChatIcon
+  /// assets/svgs/chat-icon.svg
+  static const String svgsChatIcon = "assets/svgs/chat-icon.svg";
 
   /// Assets for svgsDefaultUserImage
   /// assets/svgs/default-user-image.svg

@@ -305,6 +305,44 @@ class PinCodeVerificationRouteArgs {
 }
 
 /// generated route for
+/// [ProductDetailsView]
+class ProductDetailsRoute extends PageRouteInfo<void> {
+  const ProductDetailsRoute({List<PageRouteInfo>? children})
+      : super(
+          ProductDetailsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductDetailsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ProductDetailsView();
+    },
+  );
+}
+
+/// generated route for
+/// [ProductInfo]
+class ProductInfoRoute extends PageRouteInfo<void> {
+  const ProductInfoRoute({List<PageRouteInfo>? children})
+      : super(
+          ProductInfoRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductInfoRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ProductInfo();
+    },
+  );
+}
+
+/// generated route for
 /// [ProfileView]
 class ProfileRoute extends PageRouteInfo<void> {
   const ProfileRoute({List<PageRouteInfo>? children})

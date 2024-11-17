@@ -32,16 +32,25 @@ List<AutoRoute> get appRoutes => [
         initial: true,
         page: LayoutRoute.page,
         children: [
-          _buildCustomRoute(initial: true, page: HomeRoute.page),
-          _buildCustomRoute(page: OrdersRoute.page),
-          _buildCustomRoute(page: InboxRoute.page),
-          _buildCustomRoute(page: WalletRoute.page),
-          _buildCustomRoute(page: ProfileRoute.page),
+          AutoRoute(initial: true, page: HomeRoute.page),
+          AutoRoute(page: OrdersRoute.page),
+          AutoRoute(page: InboxRoute.page),
+          AutoRoute(page: WalletRoute.page),
+          AutoRoute(page: ProfileRoute.page),
         ],
       ),
       _buildCustomRoute(page: SpecialOffersRoute.page),
       _buildCustomRoute(page: TopDealsRoute.page),
       _buildCustomRoute(page: MyWishlistRoute.page),
+      _buildCustomRoute(
+        page: ProductInfoRoute.page,
+        children: [
+          _buildCustomRoute(
+            initial: true,
+            page: ProductDetailsRoute.page,
+          ),
+        ],
+      ),
     ];
 
 CustomRoute _buildCustomRoute({
@@ -55,7 +64,8 @@ CustomRoute _buildCustomRoute({
     CustomRoute(
       initial: initial,
       page: page,
-      transitionsBuilder: transitionsBuilder ?? TransitionsBuilders.fadeIn,
-      durationInMilliseconds: durationInMilliseconds ?? 400,
+      transitionsBuilder:
+          transitionsBuilder ?? TransitionsBuilders.slideRightWithFade,
+      durationInMilliseconds: durationInMilliseconds ?? 500,
       children: children,
     );
