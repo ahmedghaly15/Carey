@@ -61,5 +61,5 @@ class AppConstants {
     Color(0xff1A1151),
   ];
   static const double productDetailsStartPadVal = 23;
-  static const double productDetailsEndPadVal = 19;
+  static const double pad19 = 19;
 }

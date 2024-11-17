@@ -17,7 +17,7 @@ class GalleryPhotosListView extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         padding: EdgeInsetsDirectional.only(
           start: AppConstants.productDetailsStartPadVal.w,
-          end: AppConstants.productDetailsEndPadVal.w,
+          end: AppConstants.pad19.w,
         ),
         itemBuilder: (_, index) =>
             Image.asset(Assets.imagesGalleryPhotoTestpng),

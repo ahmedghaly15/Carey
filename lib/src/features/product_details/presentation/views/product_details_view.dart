@@ -56,7 +56,7 @@ class ProductDetailsView extends StatelessWidget {
             SliverPadding(
               padding: EdgeInsetsDirectional.only(
                 start: AppConstants.productDetailsStartPadVal.w,
-                end: AppConstants.productDetailsEndPadVal.w,
+                end: AppConstants.pad19.w,
                 top: 10.h,
                 bottom: 10.h,
               ),
@@ -86,7 +86,7 @@ class ProductDetailsView extends StatelessWidget {
             SliverPadding(
               padding: EdgeInsetsDirectional.only(
                 start: AppConstants.productDetailsStartPadVal.w,
-                end: AppConstants.productDetailsEndPadVal.w,
+                end: AppConstants.pad19.w,
                 top: 16.h,
                 bottom: 13.h,
               ),
@@ -96,7 +96,7 @@ class ProductDetailsView extends StatelessWidget {
               padding: EdgeInsetsDirectional.only(
                 top: 8.h,
                 start: AppConstants.productDetailsStartPadVal.w,
-                end: AppConstants.productDetailsEndPadVal.w,
+                end: AppConstants.pad19.w,
                 bottom: 13.h,
               ),
               sliver: const SliverToBoxAdapter(
