@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:carey/src/features/home/presentation/widgets/top_deal_item.dart';
 
-class TopDealsSliverGrid extends StatelessWidget {
-  const TopDealsSliverGrid({super.key});
+class ProductsSliverGrid extends StatelessWidget {
+  const ProductsSliverGrid({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -14,7 +14,7 @@ import 'package:carey/src/features/home/presentation/widgets/home_sliver_app_bar
 import 'package:carey/src/features/home/presentation/widgets/special_offers_page_view.dart';
 import 'package:carey/src/features/home/presentation/widgets/text_and_see_all.dart';
 import 'package:carey/src/features/home/presentation/widgets/top_deals_brands_list_view.dart';
-import 'package:carey/src/features/home/presentation/widgets/top_deals_sliver_grid.dart';
+import 'package:carey/src/core/widgets/products_sliver_grid.dart';
 
 @RoutePage()
 class HomeView extends StatelessWidget implements AutoRouteWrapper {
@@ -81,7 +81,7 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
           const SliverToBoxAdapter(
             child: TopDealsBrandsListView(),
           ),
-          const TopDealsSliverGrid(),
+          const ProductsSliverGrid(),
         ],
       ),
     );
