@@ -4,6 +4,7 @@ import 'package:carey/src/features/inbox/inbox_view.dart';
 import 'package:carey/src/features/layout/presentation/views/layout_view.dart';
 import 'package:carey/src/features/orders/orders_view.dart';
 import 'package:carey/src/features/product_details/presentation/views/product_details_view.dart';
+import 'package:carey/src/features/product_reviews/presentation/views/product_reviews_view.dart';
 import 'package:carey/src/features/profile/profile_view.dart';
 import 'package:carey/src/features/wallet/wallet_view.dart';
 import 'package:carey/src/features/wishlist/presentation/views/my_wishlist_view.dart';
