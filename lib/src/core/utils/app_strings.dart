@@ -106,4 +106,15 @@ class AppStrings {
   static const String makeAnOffer = 'Make an Offer';
   static const String enterYourOfferAmount = 'Enter your offer amount';
   static const String sendOffer = 'Send Offer';
+  static const String yourOffer = 'Your Offer';
+  static const String offerAccepted = 'Congrats! Your offer has been accepted!';
+  static const String offerAcceptedDescription =
+      'Your offer has been accepted by the seller for';
+  static const String offerRejected =
+      'We\'re sorry,your offer has been rejected';
+  static const String offerRejectedDescription =
+      'Don\'t worry, you will always be able to make another offer that is more  suitable, so that your offer is accepted.';
+  static const String makeOfferAgain = 'Make an offer again';
+  static const String backToHome = 'Back to home';
+  static const String proceedToCheckout = 'Proceed to Checkout';
 }
