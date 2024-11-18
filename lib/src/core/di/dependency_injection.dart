@@ -1,11 +1,8 @@
-import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
-import 'package:carey/src/features/product_reviews/presentation/cubit/product_reviews_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
-import 'package:local_auth/local_auth.dart';
-import 'package:carey/src/features/auth/domain/usecases/pick_compressed_img.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:carey/src/core/api/dio_factory.dart';
@@ -25,8 +22,9 @@ import 'package:carey/src/features/auth/data/repositories/login_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/pin_code_verification_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/register_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/reset_pass_repo.dart';
-import 'package:carey/src/features/auth/domain/usecases/update_password.dart';
 import 'package:carey/src/features/auth/domain/usecases/login_via_password.dart';
+import 'package:carey/src/features/auth/domain/usecases/pick_compressed_img.dart';
+import 'package:carey/src/features/auth/domain/usecases/update_password.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_details.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_img.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
@@ -37,6 +35,9 @@ import 'package:carey/src/features/auth/presentation/cubits/pin_code_verificatio
 import 'package:carey/src/features/auth/presentation/cubits/register/register_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/reset_pass/reset_pass_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_cubit.dart';
+import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
+import 'package:carey/src/features/make_offer/presentation/cubit/make_offer_cubit.dart';
+import 'package:carey/src/features/product_reviews/presentation/cubit/product_reviews_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -167,4 +168,5 @@ void _setupForCubits() {
   );
   getIt.registerLazySingleton<HomeCubit>(() => HomeCubit());
   getIt.registerLazySingleton<ProductReviewsCubit>(() => ProductReviewsCubit());
+  getIt.registerLazySingleton<MakeOfferCubit>(() => MakeOfferCubit());
 }

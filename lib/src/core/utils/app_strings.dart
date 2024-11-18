@@ -104,4 +104,6 @@ class AppStrings {
   static const String galleryPhotos = 'Gallery Photos';
   static const String price = 'Price';
   static const String makeAnOffer = 'Make an Offer';
+  static const String enterYourOfferAmount = 'Enter your offer amount';
+  static const String sendOffer = 'Send Offer';
 }
