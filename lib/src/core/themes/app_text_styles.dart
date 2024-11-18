@@ -97,6 +97,11 @@ class AppTextStyles {
         fontWeight: FontWeight.w600,
         fontFamily: AppStrings.poppinsFontFamily,
       );
+  static TextStyle get poppinsFont16Regular => TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400,
+        fontFamily: AppStrings.poppinsFontFamily,
+      );
   static TextStyle get poppinsFont12Regular => TextStyle(
         fontSize: 12.sp,
         fontWeight: FontWeight.w400,

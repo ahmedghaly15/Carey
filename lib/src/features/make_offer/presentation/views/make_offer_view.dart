@@ -7,10 +7,10 @@ import 'package:carey/src/core/di/dependency_injection.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
-import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/make_offer/presentation/cubit/make_offer_cubit.dart';
 import 'package:carey/src/features/make_offer/presentation/widgets/offer_container.dart';
 import 'package:carey/src/features/make_offer/presentation/widgets/offers_sliver_grid.dart';
+import 'package:carey/src/features/make_offer/presentation/widgets/send_offer_button_bloc_selector.dart';
 
 @RoutePage()
 class MakeOfferView extends StatelessWidget implements AutoRouteWrapper {
@@ -45,19 +45,12 @@ class MakeOfferView extends StatelessWidget implements AutoRouteWrapper {
               padding: EdgeInsets.symmetric(horizontal: 34.w),
               sliver: const OffersSliverGrid(),
             ),
-            SliverFillRemaining(
+            const SliverFillRemaining(
               hasScrollBody: false,
               child: Column(
                 children: [
-                  const Spacer(),
-                  PrimaryButton(
-                    onPressed: () {},
-                    text: AppStrings.sendOffer,
-                    margin: EdgeInsets.symmetric(
-                      vertical: 34.h,
-                      horizontal: 34.w,
-                    ),
-                  ),
+                  Spacer(),
+                  SendOfferButtonBlocSelector(),
                 ],
               ),
             ),

@@ -58,6 +58,14 @@ class Assets {
   /// assets/images/gallery-photo-testpng.png
   static const String imagesGalleryPhotoTestpng = "assets/images/gallery-photo-testpng.png";
 
+  /// Assets for imagesOfferAccepted
+  /// assets/images/offer-accepted.png
+  static const String imagesOfferAccepted = "assets/images/offer-accepted.png";
+
+  /// Assets for imagesOfferRejected
+  /// assets/images/offer-rejected.png
+  static const String imagesOfferRejected = "assets/images/offer-rejected.png";
+
   /// Assets for imagesSplash
   /// assets/images/splash.png
   static const String imagesSplash = "assets/images/splash.png";

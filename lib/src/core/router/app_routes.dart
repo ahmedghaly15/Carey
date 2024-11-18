@@ -57,6 +57,7 @@ List<AutoRoute> get appRoutes => [
                 initial: true,
                 page: MakeOfferRoute.page,
               ),
+              _buildCustomRoute(page: OfferStatusRoute.page),
             ],
           ),
         ],

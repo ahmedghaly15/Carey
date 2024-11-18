@@ -276,6 +276,58 @@ class OfferRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [OfferStatusView]
+class OfferStatusRoute extends PageRouteInfo<OfferStatusRouteArgs> {
+  OfferStatusRoute({
+    Key? key,
+    required OfferStatus offerStatus,
+    required int offer,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OfferStatusRoute.name,
+          args: OfferStatusRouteArgs(
+            key: key,
+            offerStatus: offerStatus,
+            offer: offer,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OfferStatusRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<OfferStatusRouteArgs>();
+      return OfferStatusView(
+        key: args.key,
+        offerStatus: args.offerStatus,
+        offer: args.offer,
+      );
+    },
+  );
+}
+
+class OfferStatusRouteArgs {
+  const OfferStatusRouteArgs({
+    this.key,
+    required this.offerStatus,
+    required this.offer,
+  });
+
+  final Key? key;
+
+  final OfferStatus offerStatus;
+
+  final int offer;
+
+  @override
+  String toString() {
+    return 'OfferStatusRouteArgs{key: $key, offerStatus: $offerStatus, offer: $offer}';
+  }
+}
+
+/// generated route for
 /// [OrdersView]
 class OrdersRoute extends PageRouteInfo<void> {
   const OrdersRoute({List<PageRouteInfo>? children})
