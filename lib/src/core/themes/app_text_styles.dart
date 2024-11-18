@@ -54,6 +54,10 @@ class AppTextStyles {
         fontSize: 25.sp,
         fontWeight: FontWeight.w600,
       );
+  static TextStyle get font27SemiBold => TextStyle(
+        fontSize: 25.sp,
+        fontWeight: FontWeight.w600,
+      );
   static TextStyle get font13Regular => TextStyle(
         fontSize: 13.sp,
         fontWeight: FontWeight.w400,
@@ -116,6 +120,10 @@ class AppTextStyles {
   static TextStyle get font15Bold => TextStyle(
         fontSize: 15.sp,
         fontWeight: FontWeight.bold,
+      );
+  static TextStyle get font15Medium => TextStyle(
+        fontSize: 15.sp,
+        fontWeight: FontWeight.w500,
       );
   static TextStyle get font12Bold => TextStyle(
         fontSize: 12.sp,

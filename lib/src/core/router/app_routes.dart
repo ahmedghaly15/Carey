@@ -2,7 +2,7 @@ part of 'app_router.dart';
 
 List<AutoRoute> get appRoutes => [
       AutoRoute(
-        initial: true,
+        // initial: true,
         page: SplashRoute.page,
       ),
       AutoRoute(
@@ -29,7 +29,7 @@ List<AutoRoute> get appRoutes => [
         ],
       ),
       AutoRoute(
-        // initial: true,
+        initial: true,
         page: LayoutRoute.page,
         children: [
           AutoRoute(initial: true, page: HomeRoute.page),
@@ -50,6 +50,15 @@ List<AutoRoute> get appRoutes => [
             page: ProductDetailsRoute.page,
           ),
           _buildCustomRoute(page: ProductReviewsRoute.page),
+          AutoRoute(
+            page: OfferRoute.page,
+            children: [
+              _buildCustomRoute(
+                initial: true,
+                page: MakeOfferRoute.page,
+              ),
+            ],
+          ),
         ],
       ),
     ];

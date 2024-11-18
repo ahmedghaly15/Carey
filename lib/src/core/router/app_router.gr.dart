@@ -219,6 +219,25 @@ class LoginRouteArgs {
 }
 
 /// generated route for
+/// [MakeOfferView]
+class MakeOfferRoute extends PageRouteInfo<void> {
+  const MakeOfferRoute({List<PageRouteInfo>? children})
+      : super(
+          MakeOfferRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MakeOfferRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const MakeOfferView());
+    },
+  );
+}
+
+/// generated route for
 /// [MyWishlistView]
 class MyWishlistRoute extends PageRouteInfo<void> {
   const MyWishlistRoute({List<PageRouteInfo>? children})
@@ -233,6 +252,25 @@ class MyWishlistRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const MyWishlistView();
+    },
+  );
+}
+
+/// generated route for
+/// [Offer]
+class OfferRoute extends PageRouteInfo<void> {
+  const OfferRoute({List<PageRouteInfo>? children})
+      : super(
+          OfferRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OfferRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const Offer();
     },
   );
 }
