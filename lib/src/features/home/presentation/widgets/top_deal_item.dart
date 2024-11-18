@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/widgets/favorite_icon_button.dart';
-import 'package:carey/src/core/widgets/product_condition_label.dart';
+import 'package:carey/src/core/widgets/condition_label.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -64,7 +64,7 @@ class TopDealItem extends StatelessWidget {
                 margin: EdgeInsets.symmetric(horizontal: 6.w),
                 color: Colors.black,
               ),
-              const ProductConditionLabel(),
+              const ConditionLabel(),
             ],
           ),
           Text('\$190.000', style: AppTextStyles.font15Bold),

@@ -24,8 +24,8 @@ class OfferStatusActionWidget extends StatelessWidget {
           const Spacer(),
           PrimaryButton(
             onPressed: () => _offerStatusIsAccepted
-                ? _proceedToCheckout()
-                : _makeOfferAgain(context),
+                ? context.pushRoute(const CheckoutProcessRoute())
+                : context.maybePop(),
             text: _offerStatusIsAccepted
                 ? AppStrings.proceedToCheckout
                 : AppStrings.makeOfferAgain,
@@ -45,10 +45,6 @@ class OfferStatusActionWidget extends StatelessWidget {
       ),
     );
   }
-
-  void _makeOfferAgain(BuildContext context) => context.maybePop();
-
-  void _proceedToCheckout() {}
 
   bool get _offerStatusIsAccepted => offerStatus == OfferStatus.accepted;
 }
