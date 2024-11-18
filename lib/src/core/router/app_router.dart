@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:carey/src/features/home/presentation/views/top_deals_view.dart';
 import 'package:carey/src/features/inbox/inbox_view.dart';
 import 'package:carey/src/features/layout/presentation/views/layout_view.dart';
+import 'package:carey/src/features/make_offer/presentation/views/make_offer_view.dart';
 import 'package:carey/src/features/orders/orders_view.dart';
 import 'package:carey/src/features/product_details/presentation/views/product_details_view.dart';
 import 'package:carey/src/features/product_reviews/presentation/views/product_reviews_view.dart';
@@ -50,4 +51,9 @@ class Auth extends AutoRouter {
 @RoutePage(name: 'ProductInfoRoute')
 class ProductInfo extends AutoRouter {
   const ProductInfo({super.key});
+}
+
+@RoutePage(name: 'OfferRoute')
+class Offer extends AutoRouter {
+  const Offer({super.key});
 }
