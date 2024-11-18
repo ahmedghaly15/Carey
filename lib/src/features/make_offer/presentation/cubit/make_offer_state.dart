@@ -5,7 +5,6 @@ part 'make_offer_state.freezed.dart';
 enum MakeOfferStateStatus {
   initial,
   updateSelectedOffer,
-  updateSelectedOfferIndex,
 }
 
 @freezed

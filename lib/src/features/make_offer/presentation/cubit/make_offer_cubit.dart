@@ -8,18 +8,12 @@ class MakeOfferCubit extends Cubit<MakeOfferState> {
     required int index,
     required int offer,
   }) {
-    // Check if the offer is not selected and update accordingly
+    // Check if the offer is not selected
     final isNotSelected = state.selectedOfferIndex != index;
 
-    // Emit the updated state for the selected index
-    emit(state.copyWith(
-      status: MakeOfferStateStatus.updateSelectedOfferIndex,
-      selectedOfferIndex: isNotSelected ? index : -1,
-    ));
-
-    // Emit the updated state for the offer amount
     emit(state.copyWith(
       status: MakeOfferStateStatus.updateSelectedOffer,
+      selectedOfferIndex: isNotSelected ? index : -1,
       selectedOffer: isNotSelected ? offer : 0,
     ));
   }
