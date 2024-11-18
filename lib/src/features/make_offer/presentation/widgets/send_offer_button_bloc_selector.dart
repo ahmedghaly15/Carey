@@ -24,7 +24,7 @@ class SendOfferButtonBlocSelector extends StatelessWidget {
               child: PrimaryButton(
                 onPressed: () => context.pushRoute(
                   OfferStatusRoute(
-                    offerStatus: OfferStatus.rejected,
+                    offerStatus: OfferStatus.accepted,
                     offer: selectedOffer,
                   ),
                 ),

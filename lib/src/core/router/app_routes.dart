@@ -50,7 +50,7 @@ List<AutoRoute> get appRoutes => [
             page: ProductDetailsRoute.page,
           ),
           _buildCustomRoute(page: ProductReviewsRoute.page),
-          AutoRoute(
+          _buildCustomRoute(
             page: OfferRoute.page,
             children: [
               _buildCustomRoute(
@@ -58,6 +58,15 @@ List<AutoRoute> get appRoutes => [
                 page: MakeOfferRoute.page,
               ),
               _buildCustomRoute(page: OfferStatusRoute.page),
+            ],
+          ),
+          _buildCustomRoute(
+            page: CheckoutProcessRoute.page,
+            children: [
+              _buildCustomRoute(
+                initial: true,
+                page: CheckoutRoute.page,
+              ),
             ],
           ),
         ],

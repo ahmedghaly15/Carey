@@ -117,4 +117,11 @@ class AppStrings {
   static const String makeOfferAgain = 'Make an offer again';
   static const String backToHome = 'Back to home';
   static const String proceedToCheckout = 'Proceed to Checkout';
+  static const String checkout = 'Checkout';
+  static const String shippingAddress = 'Shipping Address';
+  static const String order = 'Order';
+  static const String chooseShipping = 'Choose Shipping';
+  static const String defaultWord = 'Default';
+  static const String chooseShippingType = 'Choose Shipping Type';
+  static const String continueToPayment = 'Continue to Payment';
 }

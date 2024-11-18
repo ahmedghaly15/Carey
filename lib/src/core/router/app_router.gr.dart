@@ -48,6 +48,44 @@ class AuthRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CheckoutProcess]
+class CheckoutProcessRoute extends PageRouteInfo<void> {
+  const CheckoutProcessRoute({List<PageRouteInfo>? children})
+      : super(
+          CheckoutProcessRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CheckoutProcessRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CheckoutProcess();
+    },
+  );
+}
+
+/// generated route for
+/// [CheckoutView]
+class CheckoutRoute extends PageRouteInfo<void> {
+  const CheckoutRoute({List<PageRouteInfo>? children})
+      : super(
+          CheckoutRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CheckoutRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CheckoutView();
+    },
+  );
+}
+
+/// generated route for
 /// [ForgotPasswordView]
 class ForgotPasswordRoute extends PageRouteInfo<ForgotPasswordRouteArgs> {
   ForgotPasswordRoute({

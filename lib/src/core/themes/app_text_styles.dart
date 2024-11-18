@@ -81,6 +81,11 @@ class AppTextStyles {
         fontWeight: FontWeight.w500,
         fontFamily: AppStrings.poppinsFontFamily,
       );
+  static TextStyle get poppinsFont13Medium => TextStyle(
+        fontFamily: AppStrings.poppinsFontFamily,
+        fontSize: 13.sp,
+        fontWeight: FontWeight.w500,
+      );
   static TextStyle get poppinsFont14RegularDarkGrey => TextStyle(
         fontFamily: AppStrings.poppinsFontFamily,
         fontSize: 14.sp,
@@ -90,6 +95,21 @@ class AppTextStyles {
   static TextStyle get poppinsFont14SemiBold => TextStyle(
         fontSize: 14.sp,
         fontWeight: FontWeight.w600,
+        fontFamily: AppStrings.poppinsFontFamily,
+      );
+  static TextStyle get poppinsFont15SemiBold => TextStyle(
+        fontSize: 15.sp,
+        fontWeight: FontWeight.w600,
+        fontFamily: AppStrings.poppinsFontFamily,
+      );
+  static TextStyle get poppinsFont17SemiBold => TextStyle(
+        fontSize: 17.sp,
+        fontWeight: FontWeight.w600,
+        fontFamily: AppStrings.poppinsFontFamily,
+      );
+  static TextStyle get poppinsFont20Medium => TextStyle(
+        fontSize: 20.sp,
+        fontWeight: FontWeight.w500,
         fontFamily: AppStrings.poppinsFontFamily,
       );
   static TextStyle get poppinsFont20SemiBold => TextStyle(

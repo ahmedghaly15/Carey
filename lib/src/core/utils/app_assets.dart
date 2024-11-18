@@ -90,6 +90,10 @@ class Assets {
   /// assets/svgs/chat-icon.svg
   static const String svgsChatIcon = "assets/svgs/chat-icon.svg";
 
+  /// Assets for svgsChooseShippingCarIcon
+  /// assets/svgs/choose-shipping-car-icon.svg
+  static const String svgsChooseShippingCarIcon = "assets/svgs/choose-shipping-car-icon.svg";
+
   /// Assets for svgsDefaultUserImage
   /// assets/svgs/default-user-image.svg
   static const String svgsDefaultUserImage = "assets/svgs/default-user-image.svg";
@@ -117,6 +121,10 @@ class Assets {
   /// Assets for svgsLockIcon
   /// assets/svgs/lock-icon.svg
   static const String svgsLockIcon = "assets/svgs/lock-icon.svg";
+
+  /// Assets for svgsPenIcon
+  /// assets/svgs/pen-icon.svg
+  static const String svgsPenIcon = "assets/svgs/pen-icon.svg";
 
   /// Assets for svgsResetPassImage
   /// assets/svgs/reset-pass-image.svg

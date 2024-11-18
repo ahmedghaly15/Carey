@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:carey/src/features/checkout/presentation/views/checkout_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
@@ -57,4 +58,9 @@ class ProductInfo extends AutoRouter {
 @RoutePage(name: 'OfferRoute')
 class Offer extends AutoRouter {
   const Offer({super.key});
+}
+
+@RoutePage(name: 'CheckoutProcessRoute')
+class CheckoutProcess extends AutoRouter {
+  const CheckoutProcess({super.key});
 }
