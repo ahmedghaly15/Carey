@@ -4,44 +4,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class MakeOfferCubit extends Cubit<MakeOfferState> {
   MakeOfferCubit() : super(MakeOfferState.initial());
 
-  void _updateSelectedOfferAmount(int offer) {
-    emit(state.copyWith(
-      status: MakeOfferStateStatus.updateSelectedOffer,
-      selectedOffer: offer,
-    ));
-  }
-
   void updateSelectedOffer({
     required int index,
     required int offer,
   }) {
-    if (state.selectedOfferIndex != index) {
-      _updatedSelectedOfferIndex(index);
-      _updateSelectedOfferAmount(offer);
-    } else {
-      _unSelectTheOffer();
-      _makeSelectedOfferZero();
-    }
-  }
+    // Check if the offer is not selected and update accordingly
+    final isNotSelected = state.selectedOfferIndex != index;
 
-  void _updatedSelectedOfferIndex(int index) {
+    // Emit the updated state for the selected index
     emit(state.copyWith(
       status: MakeOfferStateStatus.updateSelectedOfferIndex,
-      selectedOfferIndex: index,
+      selectedOfferIndex: isNotSelected ? index : -1,
     ));
-  }
 
-  void _makeSelectedOfferZero() {
+    // Emit the updated state for the offer amount
     emit(state.copyWith(
       status: MakeOfferStateStatus.updateSelectedOffer,
-      selectedOffer: 0,
-    ));
-  }
-
-  void _unSelectTheOffer() {
-    emit(state.copyWith(
-      status: MakeOfferStateStatus.updateSelectedOfferIndex,
-      selectedOfferIndex: -1,
+      selectedOffer: isNotSelected ? offer : 0,
     ));
   }
 }
