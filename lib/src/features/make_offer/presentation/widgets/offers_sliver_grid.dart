@@ -29,7 +29,7 @@ class OffersSliverGrid extends StatelessWidget {
             final int offer = ((index * 10000) + 100000);
             return PrimaryButton(
               onPressed: () =>
-                  context.read<MakeOfferCubit>().updateSelectedOfferIndex(
+                  context.read<MakeOfferCubit>().updateSelectedOffer(
                         index: index,
                         offer: offer,
                       ),

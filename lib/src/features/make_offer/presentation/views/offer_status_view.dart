@@ -1,14 +1,13 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/core/router/app_router.dart';
-import 'package:carey/src/core/themes/app_colors.dart';
-import 'package:carey/src/core/themes/app_text_styles.dart';
-import 'package:carey/src/core/utils/app_assets.dart';
-import 'package:carey/src/core/utils/app_strings.dart';
-import 'package:carey/src/core/utils/functions/format_int_with_commas.dart';
-import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
-import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:carey/src/core/utils/app_strings.dart';
+import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
+import 'package:carey/src/features/make_offer/presentation/widgets/offer_status_action_widget.dart';
+import 'package:carey/src/features/make_offer/presentation/widgets/offer_status_description.dart';
+import 'package:carey/src/features/make_offer/presentation/widgets/offer_status_image.dart';
+import 'package:carey/src/features/make_offer/presentation/widgets/offer_status_message.dart';
 
 enum OfferStatus { accepted, rejected }
 
@@ -31,90 +30,27 @@ class OfferStatusView extends StatelessWidget {
           slivers: [
             const CustomSliverAppBar(titleText: AppStrings.yourOffer),
             SliverToBoxAdapter(
-              child: Image.asset(
-                switch (offerStatus) {
-                  OfferStatus.accepted => Assets.imagesOfferAccepted,
-                  OfferStatus.rejected => Assets.imagesOfferRejected,
-                },
-                height: 194.h,
-                width: 168.w,
-              ),
+              child: OfferStatusImage(offerStatus: offerStatus),
             ),
             SliverToBoxAdapter(
-              child: Container(
-                margin: EdgeInsets.symmetric(
-                  vertical: 20.h,
-                  horizontal: 34.w,
-                ),
-                child: Text(
-                  switch (offerStatus) {
-                    OfferStatus.accepted => AppStrings.offerAccepted,
-                    OfferStatus.rejected => AppStrings.offerRejected,
-                  },
-                  style: AppTextStyles.font25SemiBold,
-                  textAlign: TextAlign.center,
-                ),
-              ),
+              child: OfferStatusMessage(offerStatus: offerStatus),
             ),
             SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: 34.w),
               sliver: SliverToBoxAdapter(
-                child: Text(
-                  switch (offerStatus) {
-                    OfferStatus.accepted =>
-                      '${AppStrings.offerAcceptedDescription} \$${formatIntWithCommas(offer)}',
-                    OfferStatus.rejected => AppStrings.offerRejectedDescription,
-                  },
-                  style: AppTextStyles.poppinsFont16Regular.copyWith(
-                    color: Colors.black.withOpacity(0.8),
-                  ),
-                  textAlign: TextAlign.center,
+                child: OfferStatusDescription(
+                  offerStatus: offerStatus,
+                  offer: offer,
                 ),
               ),
             ),
             SliverFillRemaining(
               hasScrollBody: false,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: 34.h,
-                  horizontal: 34.w,
-                ),
-                child: Column(
-                  children: [
-                    const Spacer(),
-                    PrimaryButton(
-                      onPressed: () => _offerStatusIsAccepted
-                          ? _proceedToCheckout()
-                          : _makeOfferAgain(context),
-                      text: _offerStatusIsAccepted
-                          ? AppStrings.proceedToCheckout
-                          : AppStrings.makeOfferAgain,
-                      margin: EdgeInsets.only(bottom: 16.h),
-                    ),
-                    if (!_offerStatusIsAccepted)
-                      PrimaryButton(
-                        onPressed: () => context.router.pushAndPopUntil(
-                          const LayoutRoute(),
-                          predicate: (route) =>
-                              route.settings.name == OfferRoute.name,
-                        ),
-                        backgroundColor: AppColors.colorD9D9D9,
-                        text: AppStrings.backToHome,
-                        textColor: Colors.black,
-                      ),
-                  ],
-                ),
-              ),
+              child: OfferStatusActionWidget(offerStatus: offerStatus),
             ),
           ],
         ),
       ),
     );
   }
-
-  void _makeOfferAgain(BuildContext context) => context.maybePop();
-
-  void _proceedToCheckout() {}
-
-  bool get _offerStatusIsAccepted => offerStatus == OfferStatus.accepted;
 }
