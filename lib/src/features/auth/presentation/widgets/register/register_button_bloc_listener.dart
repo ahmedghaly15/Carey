@@ -5,7 +5,7 @@ import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/auth/data/models/auth_via_password_request.dart';
-import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
+import 'package:carey/src/features/auth/presentation/cubits/auth_form/auth_form_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/register/register_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/register/register_state.dart';
 
@@ -31,7 +31,7 @@ class RegisterButtonBlocListener extends StatelessWidget {
   }
 
   void _register(BuildContext context) {
-    final formAttributesCubit = context.read<FormAttributesCubit>();
+    final formAttributesCubit = context.read<AuthFormCubit>();
     final params = AuthViaPasswordRequest(
       email: formAttributesCubit.emailController.text.trim(),
       password: formAttributesCubit.passwordController.text,
@@ -64,9 +64,7 @@ class RegisterButtonBlocListener extends StatelessWidget {
   Future<void> _handleRememberingAndShowResultDialog(
     BuildContext context,
   ) async {
-    await context
-        .read<FormAttributesCubit>()
-        .handleRememberingEmailAndPassword();
+    await context.read<AuthFormCubit>().handleRememberingEmailAndPassword();
     context.popTop();
     _clearFormControllers(context);
     context.showResultDialog(
@@ -75,7 +73,7 @@ class RegisterButtonBlocListener extends StatelessWidget {
   }
 
   void _clearFormControllers(BuildContext context) {
-    final formAttributesCubit = context.read<FormAttributesCubit>();
+    final formAttributesCubit = context.read<AuthFormCubit>();
     formAttributesCubit.emailController.clear();
     formAttributesCubit.passwordController.clear();
   }

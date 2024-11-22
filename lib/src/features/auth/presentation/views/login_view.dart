@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:carey/src/core/di/dependency_injection.dart';
 import 'package:carey/src/core/widgets/arrow_back_icon_button.dart';
-import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
+import 'package:carey/src/features/auth/presentation/cubits/auth_form/auth_form_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:carey/src/features/auth/presentation/widgets/login/login_view_body.dart';
 
@@ -18,11 +18,11 @@ class LoginView extends StatelessWidget implements AutoRouteWrapper {
   Widget wrappedRoute(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<LoginCubit>(
-          create: (_) => getIt.get<LoginCubit>(),
+        BlocProvider<LoginCubit>.value(
+          value: getIt.get<LoginCubit>(),
         ),
-        BlocProvider<FormAttributesCubit>(
-          create: (_) => getIt.get<FormAttributesCubit>()
+        BlocProvider<AuthFormCubit>.value(
+          value: getIt.get<AuthFormCubit>()
             ..assignRememberedEmailAndPass()
             ..initRememberMe(),
         ),

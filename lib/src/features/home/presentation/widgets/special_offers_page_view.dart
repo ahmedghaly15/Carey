@@ -1,13 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:carey/src/core/themes/app_colors.dart';
-import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:carey/src/features/home/presentation/widgets/special_offer_item.dart';
 
-class SpecialOffersPageView extends StatelessWidget {
-  const SpecialOffersPageView({super.key});
+class SpecialOffersPageView extends StatefulWidget {
+  const SpecialOffersPageView({
+    super.key,
+  });
+
+  @override
+  State<SpecialOffersPageView> createState() => _SpecialOffersPageViewState();
+}
+
+class _SpecialOffersPageViewState extends State<SpecialOffersPageView> {
+  int pageIndex = 0;
+  late final PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +44,10 @@ class SpecialOffersPageView extends StatelessWidget {
           borderRadius: BorderRadius.circular(40.r),
         ),
         child: PageView.builder(
-          controller: context.read<HomeCubit>().specialOffersController,
-          itemBuilder: (_, index) => const SpecialOfferItem(),
+          controller: _pageController,
+          itemBuilder: (_, index) => SpecialOfferItem(pageIndex: pageIndex),
           itemCount: 5,
-          onPageChanged: (index) =>
-              context.read<HomeCubit>().changeCurrentSpecialOffer(index),
+          onPageChanged: (index) => setState(() => pageIndex = index),
         ),
       ),
     );

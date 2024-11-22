@@ -6,9 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     super.key,
+    required this.onPressed,
+    this.isInfinityWidth = true,
     this.text,
     this.child,
-    required this.onPressed,
     this.borderRadius,
     this.textStyle,
     this.backgroundColor,
@@ -22,8 +23,10 @@ class PrimaryButton extends StatelessWidget {
     this.margin,
     this.borderColor = AppColors.primaryColor,
     this.borderWidth = 1,
+    this.height,
   });
 
+  final bool isInfinityWidth;
   final String? text;
   final Widget? child;
   final double? borderRadius;
@@ -32,7 +35,7 @@ class PrimaryButton extends StatelessWidget {
   final Color? textColor;
   final void Function()? onPressed;
   final List<BoxShadow>? boxShadow;
-  final double? width;
+  final double? width, height;
   final EdgeInsetsGeometry? padding;
   final BoxBorder? border;
   final bool isOutlined;
@@ -44,6 +47,8 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: height?.h,
+      width: width?.w ?? (isInfinityWidth ? double.infinity : null),
       margin: margin,
       decoration: BoxDecoration(
         color: isOutlined
@@ -69,19 +74,17 @@ class PrimaryButton extends StatelessWidget {
           ),
         ),
         child: child ??
-            FittedBox(
-              child: Text(
-                text!,
-                style: textStyle ??
-                    AppTextStyles.font20SemiBoldWhite.copyWith(
-                      fontSize: fontSize?.sp ?? 20.sp,
-                      color: isOutlined
-                          ? AppColors.primaryColor
-                          : textColor ?? Colors.white,
-                    ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
+            Text(
+              text!,
+              style: textStyle ??
+                  AppTextStyles.font20SemiBoldWhite.copyWith(
+                    fontSize: fontSize?.sp ?? 20.sp,
+                    color: isOutlined
+                        ? AppColors.primaryColor
+                        : textColor ?? Colors.white,
+                  ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
       ),
     );

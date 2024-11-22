@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/helpers/remember_me_helper.dart';
-import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_state.dart';
+import 'package:carey/src/features/auth/presentation/cubits/auth_form/auth_form_state.dart';
 
-class FormAttributesCubit extends Cubit<FormAttributesState> {
-  FormAttributesCubit() : super(FormAttributesState.initial()) {
+class AuthFormCubit extends Cubit<AuthFormState> {
+  AuthFormCubit() : super(AuthFormState.initial()) {
     _initFormAttributes();
   }
 
@@ -45,7 +45,7 @@ class FormAttributesCubit extends Cubit<FormAttributesState> {
   void togglePassVisibility() {
     emit(
       state.copyWith(
-        status: FormAttributesStatus.togglePasswordVisibility,
+        status: AuthFormStateStatus.togglePasswordVisibility,
         isPasswordObscured: !state.isPasswordObscured,
       ),
     );
@@ -54,7 +54,7 @@ class FormAttributesCubit extends Cubit<FormAttributesState> {
   void toggleRememberMe() {
     emit(
       state.copyWith(
-        status: FormAttributesStatus.toggleRememberMe,
+        status: AuthFormStateStatus.toggleRememberMe,
         rememberMe: !state.rememberMe,
       ),
     );
@@ -65,14 +65,14 @@ class FormAttributesCubit extends Cubit<FormAttributesState> {
     if (!rememberedPass.isNullOrEmpty) {
       emit(
         state.copyWith(
-          status: FormAttributesStatus.toggleRememberMe,
+          status: AuthFormStateStatus.toggleRememberMe,
           rememberMe: true,
         ),
       );
     } else {
       emit(
         state.copyWith(
-          status: FormAttributesStatus.toggleRememberMe,
+          status: AuthFormStateStatus.toggleRememberMe,
           rememberMe: false,
         ),
       );
@@ -90,7 +90,7 @@ class FormAttributesCubit extends Cubit<FormAttributesState> {
   void _alwaysAutovalidateMode() {
     emit(
       state.copyWith(
-        status: FormAttributesStatus.alwaysAutovalidateMode,
+        status: AuthFormStateStatus.alwaysAutovalidateMode,
         autovalidateMode: AutovalidateMode.always,
       ),
     );

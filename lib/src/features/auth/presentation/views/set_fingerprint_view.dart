@@ -24,8 +24,8 @@ class SetFingerprintView extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<BiometricCubit>(
-      create: (_) => getIt.get<BiometricCubit>(),
+    return BlocProvider<BiometricCubit>.value(
+      value: getIt.get<BiometricCubit>(),
       child: this,
     );
   }

@@ -22,8 +22,8 @@ class ResetPasswordView extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<ResetPassCubit>(
-      create: (_) => getIt.get<ResetPassCubit>(),
+    return BlocProvider<ResetPassCubit>.value(
+      value: getIt.get<ResetPassCubit>(),
       child: this,
     );
   }

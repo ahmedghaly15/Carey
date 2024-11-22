@@ -1,10 +1,8 @@
-import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
-import 'package:local_auth/local_auth.dart';
-import 'package:carey/src/features/auth/domain/usecases/pick_compressed_img.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:carey/src/core/api/dio_factory.dart';
@@ -24,18 +22,22 @@ import 'package:carey/src/features/auth/data/repositories/login_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/pin_code_verification_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/register_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/reset_pass_repo.dart';
-import 'package:carey/src/features/auth/domain/usecases/update_password.dart';
 import 'package:carey/src/features/auth/domain/usecases/login_via_password.dart';
+import 'package:carey/src/features/auth/domain/usecases/pick_compressed_img.dart';
+import 'package:carey/src/features/auth/domain/usecases/update_password.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_details.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_img.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
-import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
+import 'package:carey/src/features/auth/presentation/cubits/auth_form/auth_form_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/forgot_password/forgot_password_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/pin_code_verification/pin_code_verification_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/register/register_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/reset_pass/reset_pass_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_cubit.dart';
+import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
+import 'package:carey/src/features/make_offer/presentation/cubit/make_offer_cubit.dart';
+import 'package:carey/src/features/product_reviews/presentation/cubit/product_reviews_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -133,16 +135,16 @@ void _setupForUseCases() {
 }
 
 void _setupForCubits() {
-  getIt.registerFactory<FormAttributesCubit>(
-    () => FormAttributesCubit(),
+  getIt.registerFactory<AuthFormCubit>(
+    () => AuthFormCubit(),
   );
-  getIt.registerFactory<LoginCubit>(
+  getIt.registerLazySingleton<LoginCubit>(
     () => LoginCubit(getIt.get<LoginRepo>()),
   );
-  getIt.registerFactory<RegisterCubit>(
+  getIt.registerLazySingleton<RegisterCubit>(
     () => RegisterCubit(getIt.get<RegisterRepo>()),
   );
-  getIt.registerFactory<AccountSetupCubit>(
+  getIt.registerLazySingleton<AccountSetupCubit>(
     () => AccountSetupCubit(
       updateProfileDetailsUseCase: getIt.get<UpdateProfileDetails>(),
       updateProfileImgUseCase: getIt.get<UpdateProfileImg>(),
@@ -155,14 +157,16 @@ void _setupForCubits() {
       biometricRepo: getIt.get<BiometricRepo>(),
     ),
   );
-  getIt.registerFactory<ForgotPasswordCubit>(
+  getIt.registerLazySingleton<ForgotPasswordCubit>(
     () => ForgotPasswordCubit(getIt.get<ForgotPasswordRepo>()),
   );
-  getIt.registerFactory<PinCodeVerificationCubit>(
+  getIt.registerLazySingleton<PinCodeVerificationCubit>(
     () => PinCodeVerificationCubit(getIt.get<PinCodeVerificationRepo>()),
   );
-  getIt.registerFactory<ResetPassCubit>(
+  getIt.registerLazySingleton<ResetPassCubit>(
     () => ResetPassCubit(getIt.get<UpdatePasswordUseCase>()),
   );
-  getIt.registerFactory<HomeCubit>(() => HomeCubit());
+  getIt.registerLazySingleton<HomeCubit>(() => HomeCubit());
+  getIt.registerLazySingleton<ProductReviewsCubit>(() => ProductReviewsCubit());
+  getIt.registerLazySingleton<MakeOfferCubit>(() => MakeOfferCubit());
 }

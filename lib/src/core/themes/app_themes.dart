@@ -34,5 +34,16 @@ class AppThemes {
             textStyle: AppTextStyles.poppinsFont14SemiBold,
           ),
         ),
+        navigationBarTheme: NavigationBarThemeData(
+          backgroundColor: AppColors.colorD9D9D9,
+          elevation: 0,
+          labelTextStyle: WidgetStateTextStyle.resolveWith((states) {
+            if (states.contains(WidgetState.selected)) {
+              return AppTextStyles.font15Bold;
+            }
+            return AppTextStyles.font15Bold
+                .copyWith(color: Colors.black.withOpacity(0.6));
+          }),
+        ),
       );
 }

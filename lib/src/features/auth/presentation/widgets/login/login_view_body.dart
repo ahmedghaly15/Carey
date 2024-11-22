@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:carey/src/core/helpers/extensions.dart';
-import 'package:carey/src/features/auth/presentation/cubits/auth_form_attributes/form_attributes_cubit.dart';
+import 'package:carey/src/features/auth/presentation/cubits/auth_form/auth_form_cubit.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carey/src/core/router/app_router.dart';
@@ -69,7 +69,7 @@ class LoginViewBody extends StatelessWidget {
   }
 
   void _forgotPassOnPressed(BuildContext context) {
-    final email = context.read<FormAttributesCubit>().emailController.text;
+    final email = context.read<AuthFormCubit>().emailController.text;
     if (email.isEmpty) {
       context.showErrorDialog(AppStrings.writeYourEmailFirst);
     } else {

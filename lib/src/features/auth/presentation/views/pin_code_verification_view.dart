@@ -25,8 +25,8 @@ class PinCodeVerificationView extends StatelessWidget
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<PinCodeVerificationCubit>(
-      create: (_) => getIt.get<PinCodeVerificationCubit>(),
+    return BlocProvider<PinCodeVerificationCubit>.value(
+      value: getIt.get<PinCodeVerificationCubit>(),
       child: this,
     );
   }
