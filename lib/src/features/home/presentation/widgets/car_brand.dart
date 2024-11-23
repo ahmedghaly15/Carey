@@ -6,11 +6,20 @@ import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/widgets/custom_cached_network_image.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
 import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CarBrand extends StatelessWidget {
-  const CarBrand({super.key, required this.brand});
+  const CarBrand({
+    super.key,
+    this.brand,
+    this.isSvgImg = false,
+    this.svgImgPath,
+    this.svgImgName,
+  });
 
-  final CarBrandModel brand;
+  final CarBrandModel? brand;
+  final bool isSvgImg;
+  final String? svgImgPath, svgImgName;
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +33,17 @@ class CarBrand extends StatelessWidget {
             color: AppColors.colorD9D9D9,
             shape: BoxShape.circle,
           ),
-          child: CustomCachedNetworkImage(
-            imageUrl: brand.image ??
-                'https://carey-production.up.railway.app/uploads/brands/1732304931045-467666725-image.png',
-          ),
+          child: isSvgImg
+              ? SvgPicture.asset(svgImgPath!)
+              : CustomCachedNetworkImage(
+                  imageUrl: brand!.image ??
+                      'https://carey-production.up.railway.app/uploads/brands/1732304931045-467666725-image.png',
+                  fit: BoxFit.contain,
+                ),
         ),
         MySizedBox.height8,
         Text(
-          brand.name,
+          isSvgImg ? svgImgName! : brand!.name,
           style: AppTextStyles.font16Bold,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,

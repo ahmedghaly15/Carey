@@ -124,4 +124,6 @@ class AppStrings {
   static const String defaultWord = 'Default';
   static const String chooseShippingType = 'Choose Shipping Type';
   static const String continueToPayment = 'Continue to Payment';
+  static const String more = 'More';
+  static const String less = 'Less';
 }
