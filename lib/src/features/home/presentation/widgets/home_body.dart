@@ -60,18 +60,20 @@ class HomeBody extends StatelessWidget {
             start: AppConstants.screenHorizontalPaddingVal.w,
             end: AppConstants.screenHorizontalPaddingVal.w,
           ),
-          sliver: const CarBrandsSliverGrid(),
+          sliver: CarBrandsSliverGrid(brands: data.brands),
         ),
         SliverToBoxAdapter(
           child: TextAndSeeAll(
             text: AppStrings.topDeals,
-            seeAllOnPressed: () => context.pushRoute(const TopDealsRoute()),
+            seeAllOnPressed: () => context.pushRoute(
+              TopDealsRoute(bestCars: data.bestCars),
+            ),
           ),
         ),
         const SliverToBoxAdapter(
           child: TopDealsBrandsListView(),
         ),
-        const ProductsSliverGrid(),
+        ProductsSliverGrid(cars: data.bestCars),
       ],
     );
   }

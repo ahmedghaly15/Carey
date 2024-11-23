@@ -35,7 +35,9 @@ class HomeSliverAppBar extends StatelessWidget {
           ),
         ),
         IconButton(
-          onPressed: () => context.pushRoute(const MyWishlistRoute()),
+          onPressed: () => context.pushRoute(
+            MyWishlistRoute(wishlistCars: const []),
+          ),
           icon: const Icon(Icons.favorite_outline),
         ),
       ],

@@ -22,7 +22,7 @@ class FetchHomeResponse {
 
 @JsonSerializable(explicitToJson: true)
 class HomeResponseData {
-  final List<CarBrand> brands;
+  final List<CarBrandModel> brands;
   final List<Car> bestOffers;
   final List<Car> bestCars;
 
@@ -41,7 +41,7 @@ class HomeResponseData {
 class Car {
   final int id;
   final String name, type, price;
-  final CarBrand brand;
+  final CarBrandModel brand;
   final List<CarAttachment> attachments;
   final List<CarRate> rates;
 
@@ -61,20 +61,20 @@ class Car {
 }
 
 @JsonSerializable()
-class CarBrand {
+class CarBrandModel {
   final int id;
   final String name;
   final String? image;
 
-  CarBrand({
+  CarBrandModel({
     required this.id,
     required this.name,
     this.image,
   });
 
-  factory CarBrand.fromJson(Map<String, dynamic> json) =>
-      _$CarBrandFromJson(json);
-  Map<String, dynamic> toJson() => _$CarBrandToJson(this);
+  factory CarBrandModel.fromJson(Map<String, dynamic> json) =>
+      _$CarBrandModelFromJson(json);
+  Map<String, dynamic> toJson() => _$CarBrandModelToJson(this);
 }
 
 @JsonSerializable()

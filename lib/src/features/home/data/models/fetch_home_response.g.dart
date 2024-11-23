@@ -23,7 +23,7 @@ Map<String, dynamic> _$FetchHomeResponseToJson(FetchHomeResponse instance) =>
 HomeResponseData _$HomeResponseDataFromJson(Map<String, dynamic> json) =>
     HomeResponseData(
       brands: (json['brands'] as List<dynamic>)
-          .map((e) => CarBrand.fromJson(e as Map<String, dynamic>))
+          .map((e) => CarBrandModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       bestOffers: (json['bestOffers'] as List<dynamic>)
           .map((e) => Car.fromJson(e as Map<String, dynamic>))
@@ -45,7 +45,7 @@ Car _$CarFromJson(Map<String, dynamic> json) => Car(
       name: json['name'] as String,
       type: json['type'] as String,
       price: json['price'] as String,
-      brand: CarBrand.fromJson(json['brand'] as Map<String, dynamic>),
+      brand: CarBrandModel.fromJson(json['brand'] as Map<String, dynamic>),
       attachments: (json['attachments'] as List<dynamic>)
           .map((e) => CarAttachment.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -64,13 +64,15 @@ Map<String, dynamic> _$CarToJson(Car instance) => <String, dynamic>{
       'rates': instance.rates.map((e) => e.toJson()).toList(),
     };
 
-CarBrand _$CarBrandFromJson(Map<String, dynamic> json) => CarBrand(
+CarBrandModel _$CarBrandModelFromJson(Map<String, dynamic> json) =>
+    CarBrandModel(
       id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       image: json['image'] as String?,
     );
 
-Map<String, dynamic> _$CarBrandToJson(CarBrand instance) => <String, dynamic>{
+Map<String, dynamic> _$CarBrandModelToJson(CarBrandModel instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'image': instance.image,
