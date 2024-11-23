@@ -4,17 +4,11 @@ import 'package:hive_flutter/hive_flutter.dart';
 class HiveHelper {
   HiveHelper._();
 
-  static final List _adapters = [
-    HomeResponseDataAdapter(),
-    CarAdapter(),
-    CarBrandModelAdapter(),
-    CarAttachmentAdapter(),
-    CarRateAdapter(),
-  ];
-
   static Future<void> registerAdapters() async {
-    for (final adapter in _adapters) {
-      Hive.registerAdapter(adapter);
-    }
+    Hive.registerAdapter(HomeResponseDataAdapter());
+    Hive.registerAdapter(CarBrandModelAdapter());
+    Hive.registerAdapter(CarAdapter());
+    Hive.registerAdapter(CarAttachmentAdapter());
+    Hive.registerAdapter(CarRateAdapter());
   }
 }

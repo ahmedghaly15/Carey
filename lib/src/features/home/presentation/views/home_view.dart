@@ -26,7 +26,6 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
     return SafeArea(
       child: RefreshIndicator(
         color: AppColors.primaryColor,
-        backgroundColor: Colors.transparent,
         onRefresh: () async => await context.read<HomeCubit>().fetchHome(),
         child: BlocBuilder<HomeCubit, HomeState>(
           buildWhen: (_, current) => _buildWhen(current.status),

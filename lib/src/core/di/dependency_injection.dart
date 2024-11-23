@@ -1,3 +1,4 @@
+import 'package:carey/src/features/home/data/datasource/home_local_datasource.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -48,6 +49,7 @@ Future<void> setupDI() async {
   await _setupForExternal();
   _setupDIForCore();
   _setupForApiServices();
+  _setupForLocalDataSources();
   _setupForRepos();
   _setupForUseCases();
   _setupForCubits();
@@ -95,6 +97,10 @@ void _setupForApiServices() {
   getIt.registerLazySingleton<HomeApiService>(() => HomeApiService(dio));
 }
 
+void _setupForLocalDataSources() {
+  getIt.registerLazySingleton<HomeLocalDataSource>(() => HomeLocalDataSource());
+}
+
 void _setupForRepos() {
   getIt.registerLazySingleton<LoginRepo>(
     () => LoginRepo(getIt.get<LoginApiService>()),
@@ -121,7 +127,10 @@ void _setupForRepos() {
     () => ResetPassRepo(getIt.get<ResetPassApiService>()),
   );
   getIt.registerLazySingleton<HomeRepo>(
-    () => HomeRepo(getIt.get<HomeApiService>()),
+    () => HomeRepo(
+      getIt.get<HomeApiService>(),
+      getIt.get<HomeLocalDataSource>(),
+    ),
   );
 }
 

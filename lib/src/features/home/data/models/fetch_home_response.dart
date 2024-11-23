@@ -72,7 +72,6 @@ class Car {
   });
 
   factory Car.fromJson(Map<String, dynamic> json) => _$CarFromJson(json);
-
   Map<String, dynamic> toJson() => _$CarToJson(this);
 }
 

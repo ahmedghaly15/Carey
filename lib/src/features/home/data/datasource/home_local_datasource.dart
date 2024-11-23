@@ -19,7 +19,8 @@ class HomeLocalDataSource {
   Future<HomeResponseData?> retrieveCachedHomeData() async {
     final box =
         await Hive.openLazyBox<HomeResponseData>(HiveBoxes.homeResponseData);
-    debugPrint('*#*#*#*#* HOME RESPONSE DATA HAS BEEN RETRIEVED *#*#*#*#*');
+    debugPrint(
+        '*#*#*#*#* CACHED HOME RESPONSE DATA HAS BEEN RETRIEVED *#*#*#*#*');
     return box.get(
       '${HiveKeys.homeResponseData}_${currentUserData!.user.email}',
     );
