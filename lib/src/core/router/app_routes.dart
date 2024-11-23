@@ -2,7 +2,7 @@ part of 'app_router.dart';
 
 List<AutoRoute> get appRoutes => [
       AutoRoute(
-        // initial: true,
+        initial: true,
         page: SplashRoute.page,
       ),
       AutoRoute(
@@ -29,7 +29,7 @@ List<AutoRoute> get appRoutes => [
         ],
       ),
       AutoRoute(
-        initial: true,
+        // initial: true,
         page: LayoutRoute.page,
         children: [
           AutoRoute(initial: true, page: HomeRoute.page),
@@ -42,32 +42,24 @@ List<AutoRoute> get appRoutes => [
       _buildCustomRoute(page: SpecialOffersRoute.page),
       _buildCustomRoute(page: TopDealsRoute.page),
       _buildCustomRoute(page: MyWishlistRoute.page),
+      _buildCustomRoute(page: ProductDetailsRoute.page),
+      _buildCustomRoute(page: ProductReviewsRoute.page),
       _buildCustomRoute(
-        page: ProductInfoRoute.page,
+        page: OfferRoute.page,
         children: [
           _buildCustomRoute(
             initial: true,
-            page: ProductDetailsRoute.page,
+            page: MakeOfferRoute.page,
           ),
-          _buildCustomRoute(page: ProductReviewsRoute.page),
+          _buildCustomRoute(page: OfferStatusRoute.page),
+        ],
+      ),
+      _buildCustomRoute(
+        page: CheckoutProcessRoute.page,
+        children: [
           _buildCustomRoute(
-            page: OfferRoute.page,
-            children: [
-              _buildCustomRoute(
-                initial: true,
-                page: MakeOfferRoute.page,
-              ),
-              _buildCustomRoute(page: OfferStatusRoute.page),
-            ],
-          ),
-          _buildCustomRoute(
-            page: CheckoutProcessRoute.page,
-            children: [
-              _buildCustomRoute(
-                initial: true,
-                page: CheckoutRoute.page,
-              ),
-            ],
+            initial: true,
+            page: CheckoutRoute.page,
           ),
         ],
       ),

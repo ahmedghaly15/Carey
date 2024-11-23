@@ -277,10 +277,17 @@ class MakeOfferRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [MyWishlistView]
-class MyWishlistRoute extends PageRouteInfo<void> {
-  const MyWishlistRoute({List<PageRouteInfo>? children})
-      : super(
+class MyWishlistRoute extends PageRouteInfo<MyWishlistRouteArgs> {
+  MyWishlistRoute({
+    Key? key,
+    required List<Car> wishlistCars,
+    List<PageRouteInfo>? children,
+  }) : super(
           MyWishlistRoute.name,
+          args: MyWishlistRouteArgs(
+            key: key,
+            wishlistCars: wishlistCars,
+          ),
           initialChildren: children,
         );
 
@@ -289,9 +296,29 @@ class MyWishlistRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const MyWishlistView();
+      final args = data.argsAs<MyWishlistRouteArgs>();
+      return MyWishlistView(
+        key: args.key,
+        wishlistCars: args.wishlistCars,
+      );
     },
   );
+}
+
+class MyWishlistRouteArgs {
+  const MyWishlistRouteArgs({
+    this.key,
+    required this.wishlistCars,
+  });
+
+  final Key? key;
+
+  final List<Car> wishlistCars;
+
+  @override
+  String toString() {
+    return 'MyWishlistRouteArgs{key: $key, wishlistCars: $wishlistCars}';
+  }
 }
 
 /// generated route for
@@ -434,10 +461,17 @@ class PinCodeVerificationRouteArgs {
 
 /// generated route for
 /// [ProductDetailsView]
-class ProductDetailsRoute extends PageRouteInfo<void> {
-  const ProductDetailsRoute({List<PageRouteInfo>? children})
-      : super(
+class ProductDetailsRoute extends PageRouteInfo<ProductDetailsRouteArgs> {
+  ProductDetailsRoute({
+    Key? key,
+    required Car car,
+    List<PageRouteInfo>? children,
+  }) : super(
           ProductDetailsRoute.name,
+          args: ProductDetailsRouteArgs(
+            key: key,
+            car: car,
+          ),
           initialChildren: children,
         );
 
@@ -446,28 +480,29 @@ class ProductDetailsRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const ProductDetailsView();
+      final args = data.argsAs<ProductDetailsRouteArgs>();
+      return ProductDetailsView(
+        key: args.key,
+        car: args.car,
+      );
     },
   );
 }
 
-/// generated route for
-/// [ProductInfo]
-class ProductInfoRoute extends PageRouteInfo<void> {
-  const ProductInfoRoute({List<PageRouteInfo>? children})
-      : super(
-          ProductInfoRoute.name,
-          initialChildren: children,
-        );
+class ProductDetailsRouteArgs {
+  const ProductDetailsRouteArgs({
+    this.key,
+    required this.car,
+  });
 
-  static const String name = 'ProductInfoRoute';
+  final Key? key;
 
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const ProductInfo();
-    },
-  );
+  final Car car;
+
+  @override
+  String toString() {
+    return 'ProductDetailsRouteArgs{key: $key, car: $car}';
+  }
 }
 
 /// generated route for
@@ -728,10 +763,17 @@ class StartWelcomeRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [TopDealsView]
-class TopDealsRoute extends PageRouteInfo<void> {
-  const TopDealsRoute({List<PageRouteInfo>? children})
-      : super(
+class TopDealsRoute extends PageRouteInfo<TopDealsRouteArgs> {
+  TopDealsRoute({
+    Key? key,
+    required List<Car> bestCars,
+    List<PageRouteInfo>? children,
+  }) : super(
           TopDealsRoute.name,
+          args: TopDealsRouteArgs(
+            key: key,
+            bestCars: bestCars,
+          ),
           initialChildren: children,
         );
 
@@ -740,9 +782,30 @@ class TopDealsRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return WrappedRoute(child: const TopDealsView());
+      final args = data.argsAs<TopDealsRouteArgs>();
+      return WrappedRoute(
+          child: TopDealsView(
+        key: args.key,
+        bestCars: args.bestCars,
+      ));
     },
   );
+}
+
+class TopDealsRouteArgs {
+  const TopDealsRouteArgs({
+    this.key,
+    required this.bestCars,
+  });
+
+  final Key? key;
+
+  final List<Car> bestCars;
+
+  @override
+  String toString() {
+    return 'TopDealsRouteArgs{key: $key, bestCars: $bestCars}';
+  }
 }
 
 /// generated route for
