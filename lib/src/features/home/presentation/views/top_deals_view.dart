@@ -1,3 +1,4 @@
+import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
 import 'package:carey/src/features/home/presentation/widgets/top_deals_brands_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +12,9 @@ import 'package:carey/src/core/widgets/products_sliver_grid.dart';
 
 @RoutePage()
 class TopDealsView extends StatelessWidget implements AutoRouteWrapper {
-  const TopDealsView({super.key});
+  const TopDealsView({super.key, required this.bestCars});
+
+  final List<Car> bestCars;
 
   @override
   Widget wrappedRoute(BuildContext context) {
@@ -23,15 +26,15 @@ class TopDealsView extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            CustomSliverAppBar(titleText: AppStrings.topDeals),
-            SliverToBoxAdapter(
+            const CustomSliverAppBar(titleText: AppStrings.topDeals),
+            const SliverToBoxAdapter(
               child: TopDealsBrandsListView(),
             ),
-            ProductsSliverGrid(),
+            ProductsSliverGrid(cars: bestCars),
           ],
         ),
       ),
