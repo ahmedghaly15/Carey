@@ -53,6 +53,10 @@ dependencies:
   image_picker: ^1.1.2
   # Compress Pictures. Can effectively reduce the size of the transmission.
   flutter_image_compress: ^2.3.0
+  # Provides fully customizable rating bar
+  flutter_rating_bar: ^4.0.1
+  # Provides easy way to add shimmer effect
+  shimmer: ^3.0.0
   
 dev_dependencies:
   flutter_test:
