@@ -37,6 +37,13 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
+  void switchShowAllBrands() {
+    emit(state.copyWith(
+      status: HomeStateStatus.switchShowAllBrands,
+      showAllBrands: !state.showAllBrands,
+    ));
+  }
+
   @override
   Future<void> close() {
     _cancelToken.cancel();

@@ -9,6 +9,7 @@ enum HomeStateStatus {
   fetchHomeDataLoading,
   fetchHomeDataSuccess,
   fetchHomeDataFailure,
+  switchShowAllBrands,
 }
 
 @freezed
@@ -18,6 +19,7 @@ sealed class HomeState with _$HomeState {
     @Default(0) int currentSelectedTopDealBrand,
     HomeResponseData? homeData,
     String? error,
+    @Default(false) bool showAllBrands,
   }) = _HomeState;
 
   factory HomeState.initial() => const HomeState(

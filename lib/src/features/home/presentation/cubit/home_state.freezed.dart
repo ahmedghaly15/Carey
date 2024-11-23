@@ -20,6 +20,7 @@ mixin _$HomeState {
   int get currentSelectedTopDealBrand => throw _privateConstructorUsedError;
   HomeResponseData? get homeData => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
+  bool get showAllBrands => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -37,7 +38,8 @@ abstract class $HomeStateCopyWith<$Res> {
       {HomeStateStatus status,
       int currentSelectedTopDealBrand,
       HomeResponseData? homeData,
-      String? error});
+      String? error,
+      bool showAllBrands});
 }
 
 /// @nodoc
@@ -59,6 +61,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? currentSelectedTopDealBrand = null,
     Object? homeData = freezed,
     Object? error = freezed,
+    Object? showAllBrands = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -77,6 +80,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
+      showAllBrands: null == showAllBrands
+          ? _value.showAllBrands
+          : showAllBrands // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -93,7 +100,8 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       {HomeStateStatus status,
       int currentSelectedTopDealBrand,
       HomeResponseData? homeData,
-      String? error});
+      String? error,
+      bool showAllBrands});
 }
 
 /// @nodoc
@@ -113,6 +121,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? currentSelectedTopDealBrand = null,
     Object? homeData = freezed,
     Object? error = freezed,
+    Object? showAllBrands = null,
   }) {
     return _then(_$HomeStateImpl(
       status: null == status
@@ -131,6 +140,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
+      showAllBrands: null == showAllBrands
+          ? _value.showAllBrands
+          : showAllBrands // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -142,7 +155,8 @@ class _$HomeStateImpl implements _HomeState {
       {required this.status,
       this.currentSelectedTopDealBrand = 0,
       this.homeData,
-      this.error});
+      this.error,
+      this.showAllBrands = false});
 
   @override
   final HomeStateStatus status;
@@ -153,10 +167,13 @@ class _$HomeStateImpl implements _HomeState {
   final HomeResponseData? homeData;
   @override
   final String? error;
+  @override
+  @JsonKey()
+  final bool showAllBrands;
 
   @override
   String toString() {
-    return 'HomeState(status: $status, currentSelectedTopDealBrand: $currentSelectedTopDealBrand, homeData: $homeData, error: $error)';
+    return 'HomeState(status: $status, currentSelectedTopDealBrand: $currentSelectedTopDealBrand, homeData: $homeData, error: $error, showAllBrands: $showAllBrands)';
   }
 
   @override
@@ -171,12 +188,14 @@ class _$HomeStateImpl implements _HomeState {
                     currentSelectedTopDealBrand) &&
             (identical(other.homeData, homeData) ||
                 other.homeData == homeData) &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.showAllBrands, showAllBrands) ||
+                other.showAllBrands == showAllBrands));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, status, currentSelectedTopDealBrand, homeData, error);
+  int get hashCode => Object.hash(runtimeType, status,
+      currentSelectedTopDealBrand, homeData, error, showAllBrands);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -192,7 +211,8 @@ abstract class _HomeState implements HomeState {
       {required final HomeStateStatus status,
       final int currentSelectedTopDealBrand,
       final HomeResponseData? homeData,
-      final String? error}) = _$HomeStateImpl;
+      final String? error,
+      final bool showAllBrands}) = _$HomeStateImpl;
 
   @override
   HomeStateStatus get status;
@@ -202,6 +222,8 @@ abstract class _HomeState implements HomeState {
   HomeResponseData? get homeData;
   @override
   String? get error;
+  @override
+  bool get showAllBrands;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
