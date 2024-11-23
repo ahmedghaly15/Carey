@@ -22,6 +22,7 @@ import 'package:carey/src/features/auth/data/repositories/login_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/pin_code_verification_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/register_repo.dart';
 import 'package:carey/src/features/auth/data/repositories/reset_pass_repo.dart';
+import 'package:carey/src/features/auth/domain/usecases/fetch_my_profile.dart';
 import 'package:carey/src/features/auth/domain/usecases/login_via_password.dart';
 import 'package:carey/src/features/auth/domain/usecases/pick_compressed_img.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_password.dart';
@@ -35,6 +36,8 @@ import 'package:carey/src/features/auth/presentation/cubits/pin_code_verificatio
 import 'package:carey/src/features/auth/presentation/cubits/register/register_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/reset_pass/reset_pass_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_cubit.dart';
+import 'package:carey/src/features/home/data/api/home_api_service.dart';
+import 'package:carey/src/features/home/data/repositories/home_repo.dart';
 import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:carey/src/features/make_offer/presentation/cubit/make_offer_cubit.dart';
 import 'package:carey/src/features/product_reviews/presentation/cubit/product_reviews_cubit.dart';
@@ -89,6 +92,7 @@ void _setupForApiServices() {
   getIt.registerLazySingleton<ResetPassApiService>(
     () => ResetPassApiService(dio),
   );
+  getIt.registerLazySingleton<HomeApiService>(() => HomeApiService(dio));
 }
 
 void _setupForRepos() {
@@ -116,6 +120,9 @@ void _setupForRepos() {
   getIt.registerLazySingleton<ResetPassRepo>(
     () => ResetPassRepo(getIt.get<ResetPassApiService>()),
   );
+  getIt.registerLazySingleton<HomeRepo>(
+    () => HomeRepo(getIt.get<HomeApiService>()),
+  );
 }
 
 void _setupForUseCases() {
@@ -132,6 +139,9 @@ void _setupForUseCases() {
     () => UpdateProfileImg(getIt.get<AccountSetupRepo>()),
   );
   getIt.registerLazySingleton<PickCompressedImg>(() => PickCompressedImg());
+  getIt.registerLazySingleton<FetchMyProfile>(
+    () => FetchMyProfile(getIt.get<AccountSetupRepo>()),
+  );
 }
 
 void _setupForCubits() {
@@ -149,6 +159,7 @@ void _setupForCubits() {
       updateProfileDetailsUseCase: getIt.get<UpdateProfileDetails>(),
       updateProfileImgUseCase: getIt.get<UpdateProfileImg>(),
       pickCompressedImgUseCase: getIt.get<PickCompressedImg>(),
+      fetchMyProfileUseCase: getIt.get<FetchMyProfile>(),
     ),
   );
   getIt.registerLazySingleton<BiometricCubit>(
@@ -166,7 +177,9 @@ void _setupForCubits() {
   getIt.registerLazySingleton<ResetPassCubit>(
     () => ResetPassCubit(getIt.get<UpdatePasswordUseCase>()),
   );
-  getIt.registerLazySingleton<HomeCubit>(() => HomeCubit());
+  getIt.registerLazySingleton<HomeCubit>(
+    () => HomeCubit(getIt.get<HomeRepo>()),
+  );
   getIt.registerLazySingleton<ProductReviewsCubit>(() => ProductReviewsCubit());
   getIt.registerLazySingleton<MakeOfferCubit>(() => MakeOfferCubit());
 }

@@ -1,12 +1,15 @@
-import 'package:carey/src/features/home/data/repositories/home_repo.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:carey/src/features/home/data/repositories/home_repo.dart';
 import 'package:carey/src/features/home/presentation/cubit/home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final HomeRepo _homeRepo;
 
   HomeCubit(this._homeRepo) : super(HomeState.initial());
+
+  final CancelToken _cancelToken = CancelToken();
 
   void updateSelectedTopDealBrand(int index) {
     if (index != state.currentSelectedTopDealBrand) {
@@ -17,11 +20,11 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  void fetchHome() async {
+  Future<void> fetchHome() async {
     emit(state.copyWith(
       status: HomeStateStatus.fetchHomeDataLoading,
     ));
-    final result = await _homeRepo.fetchHome();
+    final result = await _homeRepo.fetchHome(_cancelToken);
     result.when(
       success: (homeData) => emit(state.copyWith(
         status: HomeStateStatus.fetchHomeDataSuccess,
@@ -32,5 +35,11 @@ class HomeCubit extends Cubit<HomeState> {
         error: failure.error[0],
       )),
     );
+  }
+
+  @override
+  Future<void> close() {
+    _cancelToken.cancel();
+    return super.close();
   }
 }

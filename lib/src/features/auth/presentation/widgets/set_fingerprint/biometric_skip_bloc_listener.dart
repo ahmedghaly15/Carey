@@ -89,7 +89,7 @@ class BiometricSkipBlocListener extends StatelessWidget {
     final router = context.router;
     Future.delayed(const Duration(seconds: 3), () {
       router.pushAndPopUntil(
-        const HomeRoute(),
+        const LayoutRoute(),
         predicate: (route) => route.settings.name == AccountSetupRoute.name,
       );
     });

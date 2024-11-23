@@ -24,9 +24,10 @@ class _HomeApiService implements HomeApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<FetchHomeResponse> fetchHome() async {
+  Future<FetchHomeResponse> fetchHome([CancelToken? cancelToken]) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<FetchHomeResponse>(Options(
@@ -39,6 +40,7 @@ class _HomeApiService implements HomeApiService {
           'home',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(
             baseUrl: _combineBaseUrls(
