@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/features/checkout/presentation/views/checkout_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
@@ -11,14 +10,16 @@ import 'package:carey/src/features/auth/presentation/views/pin_code_verification
 import 'package:carey/src/features/auth/presentation/views/register_view.dart';
 import 'package:carey/src/features/auth/presentation/views/reset_password_view.dart';
 import 'package:carey/src/features/auth/presentation/views/set_fingerprint_view.dart';
+import 'package:carey/src/features/checkout/presentation/views/checkout_view.dart';
+import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
 import 'package:carey/src/features/home/presentation/views/home_view.dart';
 import 'package:carey/src/features/home/presentation/views/special_offers_view.dart';
 import 'package:carey/src/features/home/presentation/views/top_deals_view.dart';
 import 'package:carey/src/features/inbox/inbox_view.dart';
 import 'package:carey/src/features/layout/presentation/views/layout_view.dart';
 import 'package:carey/src/features/make_offer/presentation/views/make_offer_view.dart';
-import 'package:carey/src/features/orders/orders_view.dart';
 import 'package:carey/src/features/make_offer/presentation/views/offer_status_view.dart';
+import 'package:carey/src/features/orders/orders_view.dart';
 import 'package:carey/src/features/product_details/presentation/views/product_details_view.dart';
 import 'package:carey/src/features/product_reviews/presentation/views/product_reviews_view.dart';
 import 'package:carey/src/features/profile/profile_view.dart';
@@ -48,11 +49,6 @@ class StartWelcome extends AutoRouter {
 @RoutePage(name: 'AuthRoute')
 class Auth extends AutoRouter {
   const Auth({super.key});
-}
-
-@RoutePage(name: 'ProductInfoRoute')
-class ProductInfo extends AutoRouter {
-  const ProductInfo({super.key});
 }
 
 @RoutePage(name: 'OfferRoute')
