@@ -1,3 +1,4 @@
+import 'package:carey/src/core/helpers/hive_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -14,6 +15,7 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   final appDocumentDir = await getApplicationDocumentsDirectory();
   await Hive.initFlutter(appDocumentDir.path);
+  await HiveHelper.registerAdapters();
   await setupDI();
   await checkIfUserIsLoggedIn();
   await checkIfCurrentUserAccountIsSet();
