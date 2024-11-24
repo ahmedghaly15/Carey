@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:carey/src/core/router/app_router.dart';
@@ -46,8 +47,28 @@ class TopDealItem extends StatelessWidget {
         ),
         Row(
           children: [
-            const Icon(
-              Icons.star_half_rounded,
+            RatingBar(
+              initialRating: car.rates[0].rate / 5,
+              direction: Axis.horizontal,
+              itemCount: 1,
+              glow: true,
+              maxRating: 1,
+              minRating: 0,
+              allowHalfRating: true,
+              ignoreGestures: true,
+              itemSize: 16.h,
+              ratingWidget: RatingWidget(
+                full: const Icon(
+                  Icons.star_rounded,
+                ),
+                half: const Icon(
+                  Icons.star_half_rounded,
+                ),
+                empty: const Icon(
+                  Icons.star_border_rounded,
+                ),
+              ),
+              onRatingUpdate: (_) {},
             ),
             Text(
               '${car.rates[0].rate}',

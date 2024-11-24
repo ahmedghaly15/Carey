@@ -3,6 +3,219 @@
 part of 'fetch_home_response.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class HomeResponseDataAdapter extends TypeAdapter<HomeResponseData> {
+  @override
+  final int typeId = 0;
+
+  @override
+  HomeResponseData read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return HomeResponseData(
+      brands: (fields[0] as List).cast<CarBrandModel>(),
+      bestOffers: (fields[1] as List).cast<Car>(),
+      bestCars: (fields[2] as List).cast<Car>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, HomeResponseData obj) {
+    writer
+      ..writeByte(3)
+      ..writeByte(0)
+      ..write(obj.brands)
+      ..writeByte(1)
+      ..write(obj.bestOffers)
+      ..writeByte(2)
+      ..write(obj.bestCars);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is HomeResponseDataAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class CarAdapter extends TypeAdapter<Car> {
+  @override
+  final int typeId = 1;
+
+  @override
+  Car read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Car(
+      id: fields[0] as int,
+      name: fields[1] as String,
+      type: fields[2] as String,
+      price: fields[3] as String,
+      brand: fields[4] as CarBrandModel,
+      attachments: (fields[5] as List).cast<CarAttachment>(),
+      rates: (fields[6] as List).cast<CarRate>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Car obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.name)
+      ..writeByte(2)
+      ..write(obj.type)
+      ..writeByte(3)
+      ..write(obj.price)
+      ..writeByte(4)
+      ..write(obj.brand)
+      ..writeByte(5)
+      ..write(obj.attachments)
+      ..writeByte(6)
+      ..write(obj.rates);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CarAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class CarBrandModelAdapter extends TypeAdapter<CarBrandModel> {
+  @override
+  final int typeId = 2;
+
+  @override
+  CarBrandModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CarBrandModel(
+      id: fields[0] as int,
+      name: fields[1] as String,
+      image: fields[2] as String?,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CarBrandModel obj) {
+    writer
+      ..writeByte(3)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.name)
+      ..writeByte(2)
+      ..write(obj.image);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CarBrandModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class CarAttachmentAdapter extends TypeAdapter<CarAttachment> {
+  @override
+  final int typeId = 3;
+
+  @override
+  CarAttachment read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CarAttachment(
+      id: fields[0] as int,
+      type: fields[1] as String,
+      url: fields[2] as String,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CarAttachment obj) {
+    writer
+      ..writeByte(3)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.type)
+      ..writeByte(2)
+      ..write(obj.url);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CarAttachmentAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class CarRateAdapter extends TypeAdapter<CarRate> {
+  @override
+  final int typeId = 4;
+
+  @override
+  CarRate read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CarRate(
+      id: fields[0] as int,
+      rate: fields[1] as double,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CarRate obj) {
+    writer
+      ..writeByte(2)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.rate);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CarRateAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
