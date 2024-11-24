@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:carey/src/core/di/dependency_injection.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
+import 'package:carey/src/core/widgets/custom_error_widget.dart';
 import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:carey/src/features/home/presentation/cubit/home_state.dart';
 import 'package:carey/src/features/home/presentation/widgets/home_body.dart';
@@ -33,9 +34,16 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
             switch (state.status) {
               case HomeStateStatus.fetchHomeDataLoading:
                 return const HomeShimmerLoading();
-              case HomeStateStatus.fetchHomeDataSuccess ||
-                    HomeStateStatus.fetchHomeDataFailure:
+              case HomeStateStatus.fetchHomeDataSuccess:
                 return HomeBody(data: state.homeData!);
+              case HomeStateStatus.fetchHomeDataFailure:
+                return state.homeData != null
+                    ? HomeBody(data: state.homeData!)
+                    : CustomErrorWidget(
+                        error: state.error!,
+                        tryAgainOnPressed: () =>
+                            context.read<HomeCubit>().fetchHome(),
+                      );
               default:
                 return const HomeShimmerLoading();
             }
