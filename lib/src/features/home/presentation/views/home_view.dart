@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:carey/src/core/di/dependency_injection.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
-import 'package:carey/src/core/widgets/animated_loading_indicator.dart';
 import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:carey/src/features/home/presentation/cubit/home_state.dart';
 import 'package:carey/src/features/home/presentation/widgets/home_body.dart';
+import 'package:carey/src/features/home/presentation/widgets/home_shimmer_loading.dart';
 
 @RoutePage()
 class HomeView extends StatelessWidget implements AutoRouteWrapper {
@@ -32,16 +32,12 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
           builder: (_, state) {
             switch (state.status) {
               case HomeStateStatus.fetchHomeDataLoading:
-                return const Center(
-                  child: AnimatedLoadingIndicator(),
-                );
+                return const HomeShimmerLoading();
               case HomeStateStatus.fetchHomeDataSuccess ||
                     HomeStateStatus.fetchHomeDataFailure:
                 return HomeBody(data: state.homeData!);
               default:
-                return const Center(
-                  child: AnimatedLoadingIndicator(),
-                );
+                return const HomeShimmerLoading();
             }
           },
         ),

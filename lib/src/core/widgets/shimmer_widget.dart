@@ -27,8 +27,8 @@ class ShimmerWidget extends StatelessWidget {
       baseColor: Colors.grey.shade300,
       highlightColor: Colors.grey.shade100,
       child: Container(
-        height: height,
-        width: width,
+        height: height?.h,
+        width: width?.w ?? double.infinity,
         constraints: constraints,
         margin: margin,
         padding: padding,
