@@ -17,6 +17,7 @@ class EndPoints {
   static const String updatePassword = '${users}update-password';
   static const String updateProfileDetails = '${users}update-my-profile';
   static const String updateProfileImg = '${users}update-picture';
+  static const String wishlist = 'wishlist';
   static const String fetchHome = 'home';
   static const String fetchMyProfile = '${users}my-profile';
 }
