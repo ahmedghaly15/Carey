@@ -22,6 +22,7 @@ class TopDealsBrandsListView extends StatelessWidget {
           end: AppConstants.screenHorizontalPaddingVal.w,
         ),
         scrollDirection: Axis.horizontal,
+        physics: const BouncingScrollPhysics(),
         itemCount: 12,
         itemBuilder: (_, index) => BlocSelector<HomeCubit, HomeState, int>(
           selector: (state) => state.currentSelectedTopDealBrand,

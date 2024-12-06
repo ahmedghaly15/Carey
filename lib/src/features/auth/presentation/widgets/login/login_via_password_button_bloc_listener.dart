@@ -91,7 +91,7 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
       context.replaceRoute(const AccountSetupRoute());
     } else {
       // User has filled his profile before
-      context.replaceRoute(const HomeRoute());
+      context.replaceRoute(const LayoutRoute());
     }
   }
 }

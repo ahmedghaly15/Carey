@@ -53,4 +53,25 @@ class AppConstants {
   ];
   static const String defaultCountryCode = 'EG';
   static const double screenHorizontalPaddingVal = 17;
+  static const List<Color> productColors = <Color>[
+    AppColors.colorD9D9D9,
+    AppColors.primaryColor,
+    Color(0xff4CA4D6),
+    Color(0xffB00D0D),
+    Color(0xff1A1151),
+  ];
+  static const double productDetailsStartPadVal = 23;
+  static const double pad19 = 19;
+  static Decoration get checkoutContainerDecoration => BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.r),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, 4.h),
+            blurRadius: 4.r,
+            spreadRadius: 0,
+            color: Colors.black.withOpacity(0.25),
+          ),
+        ],
+      );
 }
