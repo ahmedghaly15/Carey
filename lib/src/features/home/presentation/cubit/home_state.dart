@@ -1,4 +1,5 @@
 import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
+import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'home_state.freezed.dart';
@@ -10,6 +11,9 @@ enum HomeStateStatus {
   fetchHomeDataSuccess,
   fetchHomeDataFailure,
   switchShowAllBrands,
+  fetchSpecialOffersLoading,
+  fetchSpecialOffersSuccess,
+  fetchSpecialOffersError,
 }
 
 @freezed
@@ -20,6 +24,7 @@ sealed class HomeState with _$HomeState {
     HomeResponseData? homeData,
     String? error,
     @Default(false) bool showAllBrands,
+    FetchSpecialOffersResponse? specialOffers,
   }) = _HomeState;
 
   factory HomeState.initial() => const HomeState(
