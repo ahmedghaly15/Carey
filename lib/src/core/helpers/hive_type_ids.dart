@@ -6,4 +6,6 @@ class HiveTypeIds {
   static const int carBrandModel = 2;
   static const int carAttachment = 3;
   static const int carRate = 4;
+  static const int specialOffersData = 5;
+  static const int specialOffer = 6;
 }

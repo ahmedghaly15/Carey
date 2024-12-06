@@ -1,3 +1,4 @@
+import 'package:carey/src/core/models/car.dart';
 import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 

@@ -19,4 +19,6 @@ class EndPoints {
   static const String updateProfileImg = '${users}update-picture';
   static const String fetchHome = 'home';
   static const String fetchMyProfile = '${users}my-profile';
+  static const String offers = 'offers/';
+  static const String myOffers = '${offers}my-offers';
 }

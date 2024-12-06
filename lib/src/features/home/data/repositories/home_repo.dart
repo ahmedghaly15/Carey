@@ -1,3 +1,4 @@
+import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -26,6 +27,24 @@ class HomeRepo {
       });
     } else {
       return ApiResult.success(cachedHomeData);
+    }
+  }
+
+  Future<ApiResult<FetchSpecialOffersResponse>> fetchSpecialOffers([
+    CancelToken? cancelToken,
+  ]) async {
+    final cachedSpecialOffers =
+        await _homeLocalDataSource.retrieveCachedSpecialOffers();
+    if (cachedSpecialOffers == null) {
+      debugPrint('*#*#*#*#* NO CACHED SPECIAL OFFERS TO RETRIEVE *#*#*#*#*');
+      return executeAndHandleErrors<FetchSpecialOffersResponse>(() async {
+        final specialOffers =
+            await _homeApiService.fetchSpecialOffers(cancelToken);
+        await _homeLocalDataSource.cacheSpecialOffers(specialOffers);
+        return specialOffers;
+      });
+    } else {
+      return ApiResult.success(cachedSpecialOffers);
     }
   }
 }

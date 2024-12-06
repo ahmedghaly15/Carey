@@ -1,3 +1,4 @@
+import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -12,6 +13,11 @@ abstract class HomeApiService {
 
   @GET(EndPoints.fetchHome)
   Future<FetchHomeResponse> fetchHome([
+    @CancelRequest() CancelToken? cancelToken,
+  ]);
+
+  @GET(EndPoints.myOffers)
+  Future<FetchSpecialOffersResponse> fetchSpecialOffers([
     @CancelRequest() CancelToken? cancelToken,
   ]);
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:carey/src/core/models/car.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
-import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
 import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:carey/src/features/home/presentation/cubit/home_state.dart';
 import 'package:carey/src/features/home/presentation/widgets/car_brand.dart';
