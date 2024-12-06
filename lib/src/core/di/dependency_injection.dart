@@ -1,4 +1,7 @@
 import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
+import 'package:carey/src/features/wishlist/data/apis/wishlist_api_service.dart';
+import 'package:carey/src/features/wishlist/data/repos/wishlist_repo.dart';
+import 'package:carey/src/features/wishlist/presentation/cubits/wishlist_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -87,6 +90,9 @@ void _setupForApiServices() {
   getIt.registerLazySingleton<ResetPassApiService>(
     () => ResetPassApiService(dio),
   );
+  getIt.registerLazySingleton<WishlistApiService>(
+    () => WishlistApiService(dio),
+  );
 }
 
 void _setupForRepos() {
@@ -113,6 +119,9 @@ void _setupForRepos() {
   );
   getIt.registerLazySingleton<ResetPassRepo>(
     () => ResetPassRepo(getIt.get<ResetPassApiService>()),
+  );
+  getIt.registerLazySingleton<WishlistRepo>(
+    () => WishlistRepo(getIt.get<WishlistApiService>()),
   );
 }
 
@@ -165,4 +174,7 @@ void _setupForCubits() {
     () => ResetPassCubit(getIt.get<UpdatePasswordUseCase>()),
   );
   getIt.registerLazySingleton<HomeCubit>(() => HomeCubit());
+  getIt.registerLazySingleton<WishlistCubit>(
+    () => WishlistCubit(getIt.get<WishlistRepo>()),
+  );
 }
