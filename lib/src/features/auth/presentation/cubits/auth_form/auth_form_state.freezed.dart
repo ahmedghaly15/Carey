@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'form_attributes_state.dart';
+part of 'auth_form_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,43 +15,43 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$FormAttributesState {
-  FormAttributesStatus get status => throw _privateConstructorUsedError;
+mixin _$AuthFormState {
+  AuthFormStateStatus get status => throw _privateConstructorUsedError;
   bool get rememberMe => throw _privateConstructorUsedError;
   AutovalidateMode get autovalidateMode => throw _privateConstructorUsedError;
   bool get isPasswordObscured => throw _privateConstructorUsedError;
 
-  /// Create a copy of FormAttributesState
+  /// Create a copy of AuthFormState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $FormAttributesStateCopyWith<FormAttributesState> get copyWith =>
+  $AuthFormStateCopyWith<AuthFormState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FormAttributesStateCopyWith<$Res> {
-  factory $FormAttributesStateCopyWith(
-          FormAttributesState value, $Res Function(FormAttributesState) then) =
-      _$FormAttributesStateCopyWithImpl<$Res, FormAttributesState>;
+abstract class $AuthFormStateCopyWith<$Res> {
+  factory $AuthFormStateCopyWith(
+          AuthFormState value, $Res Function(AuthFormState) then) =
+      _$AuthFormStateCopyWithImpl<$Res, AuthFormState>;
   @useResult
   $Res call(
-      {FormAttributesStatus status,
+      {AuthFormStateStatus status,
       bool rememberMe,
       AutovalidateMode autovalidateMode,
       bool isPasswordObscured});
 }
 
 /// @nodoc
-class _$FormAttributesStateCopyWithImpl<$Res, $Val extends FormAttributesState>
-    implements $FormAttributesStateCopyWith<$Res> {
-  _$FormAttributesStateCopyWithImpl(this._value, this._then);
+class _$AuthFormStateCopyWithImpl<$Res, $Val extends AuthFormState>
+    implements $AuthFormStateCopyWith<$Res> {
+  _$AuthFormStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of FormAttributesState
+  /// Create a copy of AuthFormState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -65,7 +65,7 @@ class _$FormAttributesStateCopyWithImpl<$Res, $Val extends FormAttributesState>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as FormAttributesStatus,
+              as AuthFormStateStatus,
       rememberMe: null == rememberMe
           ? _value.rememberMe
           : rememberMe // ignore: cast_nullable_to_non_nullable
@@ -83,29 +83,29 @@ class _$FormAttributesStateCopyWithImpl<$Res, $Val extends FormAttributesState>
 }
 
 /// @nodoc
-abstract class _$$FormAttributesStateImplCopyWith<$Res>
-    implements $FormAttributesStateCopyWith<$Res> {
-  factory _$$FormAttributesStateImplCopyWith(_$FormAttributesStateImpl value,
-          $Res Function(_$FormAttributesStateImpl) then) =
-      __$$FormAttributesStateImplCopyWithImpl<$Res>;
+abstract class _$$AuthFormStateImplCopyWith<$Res>
+    implements $AuthFormStateCopyWith<$Res> {
+  factory _$$AuthFormStateImplCopyWith(
+          _$AuthFormStateImpl value, $Res Function(_$AuthFormStateImpl) then) =
+      __$$AuthFormStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {FormAttributesStatus status,
+      {AuthFormStateStatus status,
       bool rememberMe,
       AutovalidateMode autovalidateMode,
       bool isPasswordObscured});
 }
 
 /// @nodoc
-class __$$FormAttributesStateImplCopyWithImpl<$Res>
-    extends _$FormAttributesStateCopyWithImpl<$Res, _$FormAttributesStateImpl>
-    implements _$$FormAttributesStateImplCopyWith<$Res> {
-  __$$FormAttributesStateImplCopyWithImpl(_$FormAttributesStateImpl _value,
-      $Res Function(_$FormAttributesStateImpl) _then)
+class __$$AuthFormStateImplCopyWithImpl<$Res>
+    extends _$AuthFormStateCopyWithImpl<$Res, _$AuthFormStateImpl>
+    implements _$$AuthFormStateImplCopyWith<$Res> {
+  __$$AuthFormStateImplCopyWithImpl(
+      _$AuthFormStateImpl _value, $Res Function(_$AuthFormStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of FormAttributesState
+  /// Create a copy of AuthFormState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -115,11 +115,11 @@ class __$$FormAttributesStateImplCopyWithImpl<$Res>
     Object? autovalidateMode = null,
     Object? isPasswordObscured = null,
   }) {
-    return _then(_$FormAttributesStateImpl(
+    return _then(_$AuthFormStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as FormAttributesStatus,
+              as AuthFormStateStatus,
       rememberMe: null == rememberMe
           ? _value.rememberMe
           : rememberMe // ignore: cast_nullable_to_non_nullable
@@ -138,15 +138,15 @@ class __$$FormAttributesStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FormAttributesStateImpl implements _FormAttributesState {
-  const _$FormAttributesStateImpl(
+class _$AuthFormStateImpl implements _AuthFormState {
+  const _$AuthFormStateImpl(
       {required this.status,
       this.rememberMe = false,
       this.autovalidateMode = AutovalidateMode.disabled,
       this.isPasswordObscured = true});
 
   @override
-  final FormAttributesStatus status;
+  final AuthFormStateStatus status;
   @override
   @JsonKey()
   final bool rememberMe;
@@ -159,14 +159,14 @@ class _$FormAttributesStateImpl implements _FormAttributesState {
 
   @override
   String toString() {
-    return 'FormAttributesState(status: $status, rememberMe: $rememberMe, autovalidateMode: $autovalidateMode, isPasswordObscured: $isPasswordObscured)';
+    return 'AuthFormState(status: $status, rememberMe: $rememberMe, autovalidateMode: $autovalidateMode, isPasswordObscured: $isPasswordObscured)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FormAttributesStateImpl &&
+            other is _$AuthFormStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.rememberMe, rememberMe) ||
                 other.rememberMe == rememberMe) &&
@@ -180,25 +180,24 @@ class _$FormAttributesStateImpl implements _FormAttributesState {
   int get hashCode => Object.hash(
       runtimeType, status, rememberMe, autovalidateMode, isPasswordObscured);
 
-  /// Create a copy of FormAttributesState
+  /// Create a copy of AuthFormState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$FormAttributesStateImplCopyWith<_$FormAttributesStateImpl> get copyWith =>
-      __$$FormAttributesStateImplCopyWithImpl<_$FormAttributesStateImpl>(
-          this, _$identity);
+  _$$AuthFormStateImplCopyWith<_$AuthFormStateImpl> get copyWith =>
+      __$$AuthFormStateImplCopyWithImpl<_$AuthFormStateImpl>(this, _$identity);
 }
 
-abstract class _FormAttributesState implements FormAttributesState {
-  const factory _FormAttributesState(
-      {required final FormAttributesStatus status,
+abstract class _AuthFormState implements AuthFormState {
+  const factory _AuthFormState(
+      {required final AuthFormStateStatus status,
       final bool rememberMe,
       final AutovalidateMode autovalidateMode,
-      final bool isPasswordObscured}) = _$FormAttributesStateImpl;
+      final bool isPasswordObscured}) = _$AuthFormStateImpl;
 
   @override
-  FormAttributesStatus get status;
+  AuthFormStateStatus get status;
   @override
   bool get rememberMe;
   @override
@@ -206,10 +205,10 @@ abstract class _FormAttributesState implements FormAttributesState {
   @override
   bool get isPasswordObscured;
 
-  /// Create a copy of FormAttributesState
+  /// Create a copy of AuthFormState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FormAttributesStateImplCopyWith<_$FormAttributesStateImpl> get copyWith =>
+  _$$AuthFormStateImplCopyWith<_$AuthFormStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

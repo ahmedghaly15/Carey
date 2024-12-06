@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'form_attributes_state.freezed.dart';
+part 'auth_form_state.freezed.dart';
 
-enum FormAttributesStatus {
+enum AuthFormStateStatus {
   initial,
   toggleRememberMe,
   alwaysAutovalidateMode,
@@ -11,15 +11,15 @@ enum FormAttributesStatus {
 }
 
 @freezed
-class FormAttributesState with _$FormAttributesState {
-  const factory FormAttributesState({
-    required FormAttributesStatus status,
+class AuthFormState with _$AuthFormState {
+  const factory AuthFormState({
+    required AuthFormStateStatus status,
     @Default(false) bool rememberMe,
     @Default(AutovalidateMode.disabled) AutovalidateMode autovalidateMode,
     @Default(true) bool isPasswordObscured,
-  }) = _FormAttributesState;
+  }) = _AuthFormState;
 
-  factory FormAttributesState.initial() => const FormAttributesState(
-        status: FormAttributesStatus.initial,
+  factory AuthFormState.initial() => const AuthFormState(
+        status: AuthFormStateStatus.initial,
       );
 }
