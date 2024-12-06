@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
-import 'package:carey/src/features/home/presentation/widgets/special_offers_page_view.dart';
+import 'package:carey/src/features/home/presentation/widgets/special_offer_item.dart';
 
 @RoutePage()
 class SpecialOffersView extends StatelessWidget {
@@ -27,7 +27,7 @@ class SpecialOffersView extends StatelessWidget {
                 itemCount: 12,
                 itemBuilder: (_, index) => Container(
                   margin: EdgeInsets.only(bottom: 19.h),
-                  child: const SpecialOffersPageView(),
+                  child: const SpecialOfferItem(),
                 ),
               ),
             ),

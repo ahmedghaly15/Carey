@@ -10,7 +10,7 @@ import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
 import 'package:carey/src/features/home/presentation/widgets/car_brands_sliver_grid.dart';
 import 'package:carey/src/features/home/presentation/widgets/home_custom_search_field.dart';
 import 'package:carey/src/features/home/presentation/widgets/home_sliver_app_bar.dart';
-import 'package:carey/src/features/home/presentation/widgets/special_offers_page_view.dart';
+import 'package:carey/src/features/home/presentation/widgets/special_offer_item.dart';
 import 'package:carey/src/features/home/presentation/widgets/text_and_see_all.dart';
 import 'package:carey/src/features/home/presentation/widgets/top_deals_brands_list_view.dart';
 
@@ -51,7 +51,7 @@ class HomeBody extends StatelessWidget {
             horizontal: AppConstants.screenHorizontalPaddingVal.w,
           ),
           sliver: const SliverToBoxAdapter(
-            child: SpecialOffersPageView(),
+            child: SpecialOfferItem(),
           ),
         ),
         SliverPadding(

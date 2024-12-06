@@ -1,20 +1,31 @@
-import 'package:flutter/material.dart';
-
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
-import 'package:carey/src/features/home/presentation/widgets/custom_dots_indicators.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:carey/src/core/themes/app_colors.dart';
 
 class SpecialOfferItem extends StatelessWidget {
-  const SpecialOfferItem({super.key, required this.pageIndex});
-
-  final int pageIndex;
+  const SpecialOfferItem({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
+    return AspectRatio(
+      aspectRatio: 343 / 154,
+      child: Container(
+        padding: EdgeInsetsDirectional.only(
+          start: 20.w,
+          end: 16.w,
+          top: 20.h,
+        ),
+        decoration: BoxDecoration(
+          color: AppColors.colorD9D9D9,
+          borderRadius: BorderRadius.circular(40.r),
+        ),
+        child: Row(
           children: [
             Expanded(
               child: Column(
@@ -48,9 +59,7 @@ class SpecialOfferItem extends StatelessWidget {
             ),
           ],
         ),
-        MySizedBox.height16,
-        Flexible(child: CustomDotsIndicators(pageIndex: pageIndex)),
-      ],
+      ),
     );
   }
 }
