@@ -26,6 +26,8 @@ class HomeRepo {
         return response.data;
       });
     } else {
+      debugPrint(
+          '*#*#*#*#* CACHED HOME RESPONSE DATA HAS BEEN RETRIEVED *#*#*#*#*');
       return ApiResult.success(cachedHomeData);
     }
   }
@@ -44,6 +46,8 @@ class HomeRepo {
         return specialOffers;
       });
     } else {
+      debugPrint(
+          '*#*#*#*#* CACHED SPECIAL OFFERS HAS BEEN RETRIEVED *#*#*#*#*');
       return ApiResult.success(cachedSpecialOffers);
     }
   }

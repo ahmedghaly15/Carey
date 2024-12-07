@@ -19,8 +19,6 @@ class HomeLocalDataSource {
 
   Future<HomeResponseData?> retrieveCachedHomeData() async {
     final box = await Hive.openLazyBox<HomeResponseData>(HiveBoxes.home);
-    debugPrint(
-        '*#*#*#*#* CACHED HOME RESPONSE DATA HAS BEEN RETRIEVED *#*#*#*#*');
     return box.get(
       '${HiveKeys.homeResponseData}_${currentUserData!.user.email}',
     );
@@ -30,7 +28,7 @@ class HomeLocalDataSource {
     FetchSpecialOffersResponse specialOffers,
   ) async {
     final box = await Hive.openLazyBox<FetchSpecialOffersResponse>(
-      HiveBoxes.home,
+      HiveBoxes.specialOffers,
     );
     debugPrint('*#*#*#*#* SPECIAL OFFERS HAS BEEN CACHED *#*#*#*#*');
     await box.put(
@@ -41,9 +39,8 @@ class HomeLocalDataSource {
 
   Future<FetchSpecialOffersResponse?> retrieveCachedSpecialOffers() async {
     final box = await Hive.openLazyBox<FetchSpecialOffersResponse>(
-      HiveBoxes.home,
+      HiveBoxes.specialOffers,
     );
-    debugPrint('*#*#*#*#* CACHED SPECIAL OFFERS HAS BEEN RETRIEVED *#*#*#*#*');
     return box.get(
       '${HiveKeys.specialOffers}_${currentUserData!.user.email}',
     );

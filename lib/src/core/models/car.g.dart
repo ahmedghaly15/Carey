@@ -21,16 +21,17 @@ class CarAdapter extends TypeAdapter<Car> {
       name: fields[1] as String,
       type: fields[2] as String,
       price: fields[3] as String,
-      brand: fields[4] as CarBrandModel,
+      brand: fields[4] as CarBrandModel?,
       attachments: (fields[5] as List).cast<CarAttachment>(),
       rates: (fields[6] as List?)?.cast<CarRate>(),
+      user: fields[7] as CarUser?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Car obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -44,7 +45,9 @@ class CarAdapter extends TypeAdapter<Car> {
       ..writeByte(5)
       ..write(obj.attachments)
       ..writeByte(6)
-      ..write(obj.rates);
+      ..write(obj.rates)
+      ..writeByte(7)
+      ..write(obj.user);
   }
 
   @override
@@ -175,6 +178,40 @@ class CarRateAdapter extends TypeAdapter<CarRate> {
           typeId == other.typeId;
 }
 
+class CarUserAdapter extends TypeAdapter<CarUser> {
+  @override
+  final int typeId = 7;
+
+  @override
+  CarUser read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CarUser(
+      id: fields[0] as int,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CarUser obj) {
+    writer
+      ..writeByte(1)
+      ..writeByte(0)
+      ..write(obj.id);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CarUserAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
@@ -184,13 +221,18 @@ Car _$CarFromJson(Map<String, dynamic> json) => Car(
       name: json['name'] as String,
       type: json['type'] as String,
       price: json['price'] as String,
-      brand: CarBrandModel.fromJson(json['brand'] as Map<String, dynamic>),
+      brand: json['brand'] == null
+          ? null
+          : CarBrandModel.fromJson(json['brand'] as Map<String, dynamic>),
       attachments: (json['attachments'] as List<dynamic>)
           .map((e) => CarAttachment.fromJson(e as Map<String, dynamic>))
           .toList(),
       rates: (json['rates'] as List<dynamic>?)
           ?.map((e) => CarRate.fromJson(e as Map<String, dynamic>))
           .toList(),
+      user: json['user'] == null
+          ? null
+          : CarUser.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CarToJson(Car instance) => <String, dynamic>{
@@ -198,9 +240,10 @@ Map<String, dynamic> _$CarToJson(Car instance) => <String, dynamic>{
       'name': instance.name,
       'type': instance.type,
       'price': instance.price,
-      'brand': instance.brand.toJson(),
+      'brand': instance.brand?.toJson(),
       'attachments': instance.attachments.map((e) => e.toJson()).toList(),
       'rates': instance.rates?.map((e) => e.toJson()).toList(),
+      'user': instance.user?.toJson(),
     };
 
 CarBrandModel _$CarBrandModelFromJson(Map<String, dynamic> json) =>
@@ -239,4 +282,12 @@ CarRate _$CarRateFromJson(Map<String, dynamic> json) => CarRate(
 Map<String, dynamic> _$CarRateToJson(CarRate instance) => <String, dynamic>{
       'id': instance.id,
       'rate': instance.rate,
+    };
+
+CarUser _$CarUserFromJson(Map<String, dynamic> json) => CarUser(
+      id: (json['id'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$CarUserToJson(CarUser instance) => <String, dynamic>{
+      'id': instance.id,
     };

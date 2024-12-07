@@ -17,20 +17,23 @@ class Car {
   @HiveField(3)
   final String price;
   @HiveField(4)
-  final CarBrandModel brand;
+  final CarBrandModel? brand;
   @HiveField(5)
   final List<CarAttachment> attachments;
   @HiveField(6)
   final List<CarRate>? rates;
+  @HiveField(7)
+  final CarUser? user;
 
   Car({
     required this.id,
     required this.name,
     required this.type,
     required this.price,
-    required this.brand,
+    this.brand,
     required this.attachments,
     this.rates,
+    this.user,
   });
 
   factory Car.fromJson(Map<String, dynamic> json) => _$CarFromJson(json);
@@ -94,4 +97,17 @@ class CarRate {
       _$CarRateFromJson(json);
 
   Map<String, dynamic> toJson() => _$CarRateToJson(this);
+}
+
+@HiveType(typeId: HiveTypeIds.carUser)
+@JsonSerializable()
+class CarUser {
+  @HiveField(0)
+  final int id;
+
+  CarUser({required this.id});
+
+  factory CarUser.fromJson(Map<String, dynamic> json) =>
+      _$CarUserFromJson(json);
+  Map<String, dynamic> toJson() => _$CarUserToJson(this);
 }
