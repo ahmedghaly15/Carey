@@ -1,8 +1,8 @@
+import 'package:carey/src/core/models/car.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:carey/src/core/helpers/hive_type_ids.dart';
-import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
 
 part 'fetch_my_wishlist_response.g.dart';
 

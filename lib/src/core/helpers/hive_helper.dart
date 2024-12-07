@@ -1,10 +1,8 @@
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:carey/src/core/models/car.dart';
 import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
 import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-
-import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
 import 'package:carey/src/features/wishlist/data/models/fetch_my_wishlist_response.dart';
 
 class HiveHelper {
