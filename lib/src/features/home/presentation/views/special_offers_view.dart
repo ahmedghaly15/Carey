@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,7 +10,9 @@ import 'package:carey/src/features/home/presentation/widgets/special_offer_item.
 
 @RoutePage()
 class SpecialOffersView extends StatelessWidget {
-  const SpecialOffersView({super.key});
+  const SpecialOffersView({super.key, required this.specialOffers});
+
+  final FetchSpecialOffersResponse specialOffers;
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +27,12 @@ class SpecialOffersView extends StatelessWidget {
                 horizontal: AppConstants.screenHorizontalPaddingVal.w,
               ),
               sliver: SliverList.builder(
-                itemCount: 12,
+                itemCount: specialOffers.data.length,
                 itemBuilder: (_, index) => Container(
                   margin: EdgeInsets.only(bottom: 19.h),
-                  child: const SpecialOfferItem(),
+                  child: SpecialOfferItem(
+                    specialOffer: specialOffers.data[index],
+                  ),
                 ),
               ),
             ),
