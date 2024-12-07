@@ -16,8 +16,10 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<HomeCubit>.value(
-      value: getIt.get<HomeCubit>()..fetchHome(),
+    return BlocProvider<HomeCubit>(
+      create: (_) => getIt.get<HomeCubit>()
+        ..fetchSpecialOffers()
+        ..fetchHome(),
       child: this,
     );
   }
@@ -35,10 +37,16 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
               case HomeStateStatus.fetchHomeDataLoading:
                 return const HomeShimmerLoading();
               case HomeStateStatus.fetchHomeDataSuccess:
-                return HomeBody(data: state.homeData!);
+                return HomeBody(
+                  data: state.homeData!,
+                  specialOffers: state.specialOffers!,
+                );
               case HomeStateStatus.fetchHomeDataFailure:
                 return state.homeData != null
-                    ? HomeBody(data: state.homeData!)
+                    ? HomeBody(
+                        data: state.homeData!,
+                        specialOffers: state.specialOffers!,
+                      )
                     : CustomErrorWidget(
                         error: state.error!,
                         tryAgainOnPressed: () =>

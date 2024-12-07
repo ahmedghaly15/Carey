@@ -660,10 +660,17 @@ class SetFingerprintRouteArgs {
 
 /// generated route for
 /// [SpecialOffersView]
-class SpecialOffersRoute extends PageRouteInfo<void> {
-  const SpecialOffersRoute({List<PageRouteInfo>? children})
-      : super(
+class SpecialOffersRoute extends PageRouteInfo<SpecialOffersRouteArgs> {
+  SpecialOffersRoute({
+    Key? key,
+    required FetchSpecialOffersResponse specialOffers,
+    List<PageRouteInfo>? children,
+  }) : super(
           SpecialOffersRoute.name,
+          args: SpecialOffersRouteArgs(
+            key: key,
+            specialOffers: specialOffers,
+          ),
           initialChildren: children,
         );
 
@@ -672,9 +679,29 @@ class SpecialOffersRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const SpecialOffersView();
+      final args = data.argsAs<SpecialOffersRouteArgs>();
+      return SpecialOffersView(
+        key: args.key,
+        specialOffers: args.specialOffers,
+      );
     },
   );
+}
+
+class SpecialOffersRouteArgs {
+  const SpecialOffersRouteArgs({
+    this.key,
+    required this.specialOffers,
+  });
+
+  final Key? key;
+
+  final FetchSpecialOffersResponse specialOffers;
+
+  @override
+  String toString() {
+    return 'SpecialOffersRouteArgs{key: $key, specialOffers: $specialOffers}';
+  }
 }
 
 /// generated route for

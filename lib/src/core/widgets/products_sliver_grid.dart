@@ -1,8 +1,8 @@
-import 'package:carey/src/core/utils/app_constants.dart';
-import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:carey/src/core/models/car.dart';
+import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/features/home/presentation/widgets/top_deal_item.dart';
 
 class ProductsSliverGrid extends StatelessWidget {

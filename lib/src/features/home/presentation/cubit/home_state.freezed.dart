@@ -21,6 +21,8 @@ mixin _$HomeState {
   HomeResponseData? get homeData => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
   bool get showAllBrands => throw _privateConstructorUsedError;
+  FetchSpecialOffersResponse? get specialOffers =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -39,7 +41,8 @@ abstract class $HomeStateCopyWith<$Res> {
       int currentSelectedTopDealBrand,
       HomeResponseData? homeData,
       String? error,
-      bool showAllBrands});
+      bool showAllBrands,
+      FetchSpecialOffersResponse? specialOffers});
 }
 
 /// @nodoc
@@ -62,6 +65,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? homeData = freezed,
     Object? error = freezed,
     Object? showAllBrands = null,
+    Object? specialOffers = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -84,6 +88,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.showAllBrands
           : showAllBrands // ignore: cast_nullable_to_non_nullable
               as bool,
+      specialOffers: freezed == specialOffers
+          ? _value.specialOffers
+          : specialOffers // ignore: cast_nullable_to_non_nullable
+              as FetchSpecialOffersResponse?,
     ) as $Val);
   }
 }
@@ -101,7 +109,8 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       int currentSelectedTopDealBrand,
       HomeResponseData? homeData,
       String? error,
-      bool showAllBrands});
+      bool showAllBrands,
+      FetchSpecialOffersResponse? specialOffers});
 }
 
 /// @nodoc
@@ -122,6 +131,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? homeData = freezed,
     Object? error = freezed,
     Object? showAllBrands = null,
+    Object? specialOffers = freezed,
   }) {
     return _then(_$HomeStateImpl(
       status: null == status
@@ -144,6 +154,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.showAllBrands
           : showAllBrands // ignore: cast_nullable_to_non_nullable
               as bool,
+      specialOffers: freezed == specialOffers
+          ? _value.specialOffers
+          : specialOffers // ignore: cast_nullable_to_non_nullable
+              as FetchSpecialOffersResponse?,
     ));
   }
 }
@@ -156,7 +170,8 @@ class _$HomeStateImpl implements _HomeState {
       this.currentSelectedTopDealBrand = 0,
       this.homeData,
       this.error,
-      this.showAllBrands = false});
+      this.showAllBrands = false,
+      this.specialOffers});
 
   @override
   final HomeStateStatus status;
@@ -170,10 +185,12 @@ class _$HomeStateImpl implements _HomeState {
   @override
   @JsonKey()
   final bool showAllBrands;
+  @override
+  final FetchSpecialOffersResponse? specialOffers;
 
   @override
   String toString() {
-    return 'HomeState(status: $status, currentSelectedTopDealBrand: $currentSelectedTopDealBrand, homeData: $homeData, error: $error, showAllBrands: $showAllBrands)';
+    return 'HomeState(status: $status, currentSelectedTopDealBrand: $currentSelectedTopDealBrand, homeData: $homeData, error: $error, showAllBrands: $showAllBrands, specialOffers: $specialOffers)';
   }
 
   @override
@@ -190,12 +207,20 @@ class _$HomeStateImpl implements _HomeState {
                 other.homeData == homeData) &&
             (identical(other.error, error) || other.error == error) &&
             (identical(other.showAllBrands, showAllBrands) ||
-                other.showAllBrands == showAllBrands));
+                other.showAllBrands == showAllBrands) &&
+            (identical(other.specialOffers, specialOffers) ||
+                other.specialOffers == specialOffers));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status,
-      currentSelectedTopDealBrand, homeData, error, showAllBrands);
+  int get hashCode => Object.hash(
+      runtimeType,
+      status,
+      currentSelectedTopDealBrand,
+      homeData,
+      error,
+      showAllBrands,
+      specialOffers);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -212,7 +237,8 @@ abstract class _HomeState implements HomeState {
       final int currentSelectedTopDealBrand,
       final HomeResponseData? homeData,
       final String? error,
-      final bool showAllBrands}) = _$HomeStateImpl;
+      final bool showAllBrands,
+      final FetchSpecialOffersResponse? specialOffers}) = _$HomeStateImpl;
 
   @override
   HomeStateStatus get status;
@@ -224,6 +250,8 @@ abstract class _HomeState implements HomeState {
   String? get error;
   @override
   bool get showAllBrands;
+  @override
+  FetchSpecialOffersResponse? get specialOffers;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

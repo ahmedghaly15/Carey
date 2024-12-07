@@ -21,4 +21,6 @@ class EndPoints {
   static const String fetchHome = 'home';
   static const String fetchMyProfile = '${users}my-profile';
   static const String myWishlist = '${wishlist}my-wishlist';
+  static const String offers = 'offers/';
+  static const String myOffers = '${offers}my-offers';
 }

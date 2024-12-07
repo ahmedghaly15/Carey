@@ -44,6 +44,23 @@ class HomeCubit extends Cubit<HomeState> {
     ));
   }
 
+  Future<void> fetchSpecialOffers() async {
+    emit(state.copyWith(
+      status: HomeStateStatus.fetchSpecialOffersLoading,
+    ));
+    final result = await _homeRepo.fetchSpecialOffers(_cancelToken);
+    result.when(
+      success: (specialOffers) => emit(state.copyWith(
+        status: HomeStateStatus.fetchSpecialOffersSuccess,
+        specialOffers: specialOffers,
+      )),
+      failure: (failure) => emit(state.copyWith(
+        status: HomeStateStatus.fetchSpecialOffersError,
+        error: failure.error[0],
+      )),
+    );
+  }
+
   @override
   Future<void> close() {
     _cancelToken.cancel();

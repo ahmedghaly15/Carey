@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:carey/src/core/models/car.dart';
 import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
@@ -11,7 +12,6 @@ import 'package:carey/src/core/widgets/condition_label.dart';
 import 'package:carey/src/core/widgets/custom_cached_network_image.dart';
 import 'package:carey/src/core/widgets/favorite_icon_button.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
-import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
 
 class TopDealItem extends StatelessWidget {
   const TopDealItem({super.key, required this.car});
@@ -48,7 +48,7 @@ class TopDealItem extends StatelessWidget {
         Row(
           children: [
             RatingBar(
-              initialRating: car.rates[0].rate / 5,
+              initialRating: car.rates![0].rate / 5,
               direction: Axis.horizontal,
               itemCount: 1,
               glow: true,
@@ -71,7 +71,7 @@ class TopDealItem extends StatelessWidget {
               onRatingUpdate: (_) {},
             ),
             Text(
-              '${car.rates[0].rate}',
+              '${car.rates![0].rate}',
               style: AppTextStyles.font10Bold.copyWith(
                 color: AppColors.primaryColor.withOpacity(0.7),
               ),
