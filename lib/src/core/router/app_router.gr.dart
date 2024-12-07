@@ -277,17 +277,10 @@ class MakeOfferRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [MyWishlistView]
-class MyWishlistRoute extends PageRouteInfo<MyWishlistRouteArgs> {
-  MyWishlistRoute({
-    Key? key,
-    required List<Car> wishlistCars,
-    List<PageRouteInfo>? children,
-  }) : super(
+class MyWishlistRoute extends PageRouteInfo<void> {
+  const MyWishlistRoute({List<PageRouteInfo>? children})
+      : super(
           MyWishlistRoute.name,
-          args: MyWishlistRouteArgs(
-            key: key,
-            wishlistCars: wishlistCars,
-          ),
           initialChildren: children,
         );
 
@@ -296,29 +289,9 @@ class MyWishlistRoute extends PageRouteInfo<MyWishlistRouteArgs> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<MyWishlistRouteArgs>();
-      return MyWishlistView(
-        key: args.key,
-        wishlistCars: args.wishlistCars,
-      );
+      return const MyWishlistView();
     },
   );
-}
-
-class MyWishlistRouteArgs {
-  const MyWishlistRouteArgs({
-    this.key,
-    required this.wishlistCars,
-  });
-
-  final Key? key;
-
-  final List<Car> wishlistCars;
-
-  @override
-  String toString() {
-    return 'MyWishlistRouteArgs{key: $key, wishlistCars: $wishlistCars}';
-  }
 }
 
 /// generated route for

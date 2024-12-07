@@ -134,6 +134,10 @@ class Assets {
   /// assets/svgs/more-icon.svg
   static const String svgsMoreIcon = "assets/svgs/more-icon.svg";
 
+  /// Assets for svgsNoFavoriteIcon
+  /// assets/svgs/no-favorite-icon.svg
+  static const String svgsNoFavoriteIcon = "assets/svgs/no-favorite-icon.svg";
+
   /// Assets for svgsPenIcon
   /// assets/svgs/pen-icon.svg
   static const String svgsPenIcon = "assets/svgs/pen-icon.svg";

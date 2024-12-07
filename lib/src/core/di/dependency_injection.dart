@@ -1,5 +1,6 @@
 import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:carey/src/features/wishlist/data/apis/wishlist_api_service.dart';
+import 'package:carey/src/features/wishlist/data/datasource/wishlist_local_datasource.dart';
 import 'package:carey/src/features/wishlist/data/repos/wishlist_repo.dart';
 import 'package:carey/src/features/wishlist/presentation/cubits/wishlist_cubit.dart';
 import 'package:carey/src/features/home/data/datasource/home_local_datasource.dart';
@@ -105,6 +106,9 @@ void _setupForApiServices() {
 
 void _setupForLocalDataSources() {
   getIt.registerLazySingleton<HomeLocalDataSource>(() => HomeLocalDataSource());
+  getIt.registerLazySingleton<WishlistLocalDatasource>(
+    () => const WishlistLocalDatasource(),
+  );
 }
 
 void _setupForRepos() {
@@ -133,7 +137,10 @@ void _setupForRepos() {
     () => ResetPassRepo(getIt.get<ResetPassApiService>()),
   );
   getIt.registerLazySingleton<WishlistRepo>(
-    () => WishlistRepo(getIt.get<WishlistApiService>()),
+    () => WishlistRepo(
+      getIt.get<WishlistApiService>(),
+      getIt.get<WishlistLocalDatasource>(),
+    ),
   );
   getIt.registerLazySingleton<HomeRepo>(
     () => HomeRepo(
