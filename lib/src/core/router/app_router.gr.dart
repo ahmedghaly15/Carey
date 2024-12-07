@@ -766,13 +766,13 @@ class StartWelcomeRoute extends PageRouteInfo<void> {
 class TopDealsRoute extends PageRouteInfo<TopDealsRouteArgs> {
   TopDealsRoute({
     Key? key,
-    required List<Car> bestCars,
+    required HomeResponseData homeData,
     List<PageRouteInfo>? children,
   }) : super(
           TopDealsRoute.name,
           args: TopDealsRouteArgs(
             key: key,
-            bestCars: bestCars,
+            homeData: homeData,
           ),
           initialChildren: children,
         );
@@ -786,7 +786,7 @@ class TopDealsRoute extends PageRouteInfo<TopDealsRouteArgs> {
       return WrappedRoute(
           child: TopDealsView(
         key: args.key,
-        bestCars: args.bestCars,
+        homeData: args.homeData,
       ));
     },
   );
@@ -795,16 +795,16 @@ class TopDealsRoute extends PageRouteInfo<TopDealsRouteArgs> {
 class TopDealsRouteArgs {
   const TopDealsRouteArgs({
     this.key,
-    required this.bestCars,
+    required this.homeData,
   });
 
   final Key? key;
 
-  final List<Car> bestCars;
+  final HomeResponseData homeData;
 
   @override
   String toString() {
-    return 'TopDealsRouteArgs{key: $key, bestCars: $bestCars}';
+    return 'TopDealsRouteArgs{key: $key, homeData: $homeData}';
   }
 }
 
