@@ -277,17 +277,10 @@ class MakeOfferRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [MyWishlistView]
-class MyWishlistRoute extends PageRouteInfo<MyWishlistRouteArgs> {
-  MyWishlistRoute({
-    Key? key,
-    required List<Car> wishlistCars,
-    List<PageRouteInfo>? children,
-  }) : super(
+class MyWishlistRoute extends PageRouteInfo<void> {
+  const MyWishlistRoute({List<PageRouteInfo>? children})
+      : super(
           MyWishlistRoute.name,
-          args: MyWishlistRouteArgs(
-            key: key,
-            wishlistCars: wishlistCars,
-          ),
           initialChildren: children,
         );
 
@@ -296,29 +289,9 @@ class MyWishlistRoute extends PageRouteInfo<MyWishlistRouteArgs> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<MyWishlistRouteArgs>();
-      return MyWishlistView(
-        key: args.key,
-        wishlistCars: args.wishlistCars,
-      );
+      return const MyWishlistView();
     },
   );
-}
-
-class MyWishlistRouteArgs {
-  const MyWishlistRouteArgs({
-    this.key,
-    required this.wishlistCars,
-  });
-
-  final Key? key;
-
-  final List<Car> wishlistCars;
-
-  @override
-  String toString() {
-    return 'MyWishlistRouteArgs{key: $key, wishlistCars: $wishlistCars}';
-  }
 }
 
 /// generated route for
@@ -687,10 +660,17 @@ class SetFingerprintRouteArgs {
 
 /// generated route for
 /// [SpecialOffersView]
-class SpecialOffersRoute extends PageRouteInfo<void> {
-  const SpecialOffersRoute({List<PageRouteInfo>? children})
-      : super(
+class SpecialOffersRoute extends PageRouteInfo<SpecialOffersRouteArgs> {
+  SpecialOffersRoute({
+    Key? key,
+    required FetchSpecialOffersResponse specialOffers,
+    List<PageRouteInfo>? children,
+  }) : super(
           SpecialOffersRoute.name,
+          args: SpecialOffersRouteArgs(
+            key: key,
+            specialOffers: specialOffers,
+          ),
           initialChildren: children,
         );
 
@@ -699,9 +679,29 @@ class SpecialOffersRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const SpecialOffersView();
+      final args = data.argsAs<SpecialOffersRouteArgs>();
+      return SpecialOffersView(
+        key: args.key,
+        specialOffers: args.specialOffers,
+      );
     },
   );
+}
+
+class SpecialOffersRouteArgs {
+  const SpecialOffersRouteArgs({
+    this.key,
+    required this.specialOffers,
+  });
+
+  final Key? key;
+
+  final FetchSpecialOffersResponse specialOffers;
+
+  @override
+  String toString() {
+    return 'SpecialOffersRouteArgs{key: $key, specialOffers: $specialOffers}';
+  }
 }
 
 /// generated route for

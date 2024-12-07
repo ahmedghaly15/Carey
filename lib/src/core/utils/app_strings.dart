@@ -126,4 +126,6 @@ class AppStrings {
   static const String continueToPayment = 'Continue to Payment';
   static const String more = 'More';
   static const String less = 'Less';
+  static const String yourWishlistEmpty =
+      'Your wishlist is empty!\nStart adding cars you love.';
 }

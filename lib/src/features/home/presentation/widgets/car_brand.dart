@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:carey/src/core/models/car.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/widgets/custom_cached_network_image.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
-import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class CarBrand extends StatelessWidget {
   const CarBrand({
