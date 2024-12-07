@@ -11,4 +11,6 @@ class HiveTypeIds {
   static const int carUser = 7;
   static const int myWishlistResponse = 8;
   static const int wishlist = 9;
+  static const int carColors = 10;
+  static const int carWishlist = 11;
 }

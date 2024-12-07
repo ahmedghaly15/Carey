@@ -82,7 +82,7 @@ class TopDealItem extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 6.w),
               color: Colors.black,
             ),
-            const ConditionLabel(),
+            ConditionLabel(conditionLabel: car.status!),
           ],
         ),
         Text(

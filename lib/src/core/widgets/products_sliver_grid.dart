@@ -6,9 +6,10 @@ import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/features/home/presentation/widgets/top_deal_item.dart';
 
 class ProductsSliverGrid extends StatelessWidget {
-  const ProductsSliverGrid({super.key, required this.cars});
+  const ProductsSliverGrid({super.key, required this.cars, this.itemCount});
 
   final List<Car> cars;
+  final int? itemCount;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class ProductsSliverGrid extends StatelessWidget {
           mainAxisSpacing: 16.h,
           childAspectRatio: 167 / 194,
         ),
-        itemCount: cars.length,
+        itemCount: itemCount ?? 4,
         itemBuilder: (_, index) => TopDealItem(car: cars[index]),
       ),
     );
