@@ -1,4 +1,3 @@
-import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +6,7 @@ import 'package:carey/src/core/utils/functions/execute_and_handle_errors.dart';
 import 'package:carey/src/features/home/data/api/home_api_service.dart';
 import 'package:carey/src/features/home/data/datasource/home_local_datasource.dart';
 import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
+import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
 
 class HomeRepo {
   final HomeApiService _homeApiService;

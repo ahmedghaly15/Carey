@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
+import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
 import 'package:carey/src/features/home/presentation/widgets/special_offer_item.dart';
 
 @RoutePage()

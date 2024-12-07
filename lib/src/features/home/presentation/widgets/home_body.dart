@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,6 +7,7 @@ import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/products_sliver_grid.dart';
 import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
+import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
 import 'package:carey/src/features/home/presentation/widgets/car_brands_sliver_grid.dart';
 import 'package:carey/src/features/home/presentation/widgets/home_custom_search_field.dart';
 import 'package:carey/src/features/home/presentation/widgets/home_sliver_app_bar.dart';
