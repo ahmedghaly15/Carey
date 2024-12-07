@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$WishlistState {
   WishlistStateStatus get status => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
+  FetchMyWishlistResponse? get wishlist => throw _privateConstructorUsedError;
 
   /// Create a copy of WishlistState
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +33,10 @@ abstract class $WishlistStateCopyWith<$Res> {
           WishlistState value, $Res Function(WishlistState) then) =
       _$WishlistStateCopyWithImpl<$Res, WishlistState>;
   @useResult
-  $Res call({WishlistStateStatus status, String? error});
+  $Res call(
+      {WishlistStateStatus status,
+      String? error,
+      FetchMyWishlistResponse? wishlist});
 }
 
 /// @nodoc
@@ -52,6 +56,7 @@ class _$WishlistStateCopyWithImpl<$Res, $Val extends WishlistState>
   $Res call({
     Object? status = null,
     Object? error = freezed,
+    Object? wishlist = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -62,6 +67,10 @@ class _$WishlistStateCopyWithImpl<$Res, $Val extends WishlistState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
+      wishlist: freezed == wishlist
+          ? _value.wishlist
+          : wishlist // ignore: cast_nullable_to_non_nullable
+              as FetchMyWishlistResponse?,
     ) as $Val);
   }
 }
@@ -74,7 +83,10 @@ abstract class _$$WishlistStateImplCopyWith<$Res>
       __$$WishlistStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({WishlistStateStatus status, String? error});
+  $Res call(
+      {WishlistStateStatus status,
+      String? error,
+      FetchMyWishlistResponse? wishlist});
 }
 
 /// @nodoc
@@ -92,6 +104,7 @@ class __$$WishlistStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? error = freezed,
+    Object? wishlist = freezed,
   }) {
     return _then(_$WishlistStateImpl(
       status: null == status
@@ -102,6 +115,10 @@ class __$$WishlistStateImplCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
+      wishlist: freezed == wishlist
+          ? _value.wishlist
+          : wishlist // ignore: cast_nullable_to_non_nullable
+              as FetchMyWishlistResponse?,
     ));
   }
 }
@@ -109,16 +126,18 @@ class __$$WishlistStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$WishlistStateImpl implements _WishlistState {
-  const _$WishlistStateImpl({required this.status, this.error});
+  const _$WishlistStateImpl({required this.status, this.error, this.wishlist});
 
   @override
   final WishlistStateStatus status;
   @override
   final String? error;
+  @override
+  final FetchMyWishlistResponse? wishlist;
 
   @override
   String toString() {
-    return 'WishlistState(status: $status, error: $error)';
+    return 'WishlistState(status: $status, error: $error, wishlist: $wishlist)';
   }
 
   @override
@@ -127,11 +146,13 @@ class _$WishlistStateImpl implements _WishlistState {
         (other.runtimeType == runtimeType &&
             other is _$WishlistStateImpl &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.wishlist, wishlist) ||
+                other.wishlist == wishlist));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, error);
+  int get hashCode => Object.hash(runtimeType, status, error, wishlist);
 
   /// Create a copy of WishlistState
   /// with the given fields replaced by the non-null parameter values.
@@ -145,12 +166,15 @@ class _$WishlistStateImpl implements _WishlistState {
 abstract class _WishlistState implements WishlistState {
   const factory _WishlistState(
       {required final WishlistStateStatus status,
-      final String? error}) = _$WishlistStateImpl;
+      final String? error,
+      final FetchMyWishlistResponse? wishlist}) = _$WishlistStateImpl;
 
   @override
   WishlistStateStatus get status;
   @override
   String? get error;
+  @override
+  FetchMyWishlistResponse? get wishlist;
 
   /// Create a copy of WishlistState
   /// with the given fields replaced by the non-null parameter values.
