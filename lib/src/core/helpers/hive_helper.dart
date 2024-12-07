@@ -19,5 +19,6 @@ class HiveHelper {
     Hive.registerAdapter(SpecialOfferAdapter());
     Hive.registerAdapter(FetchMyWishlistResponseAdapter());
     Hive.registerAdapter(WishlistAdapter());
+    Hive.registerAdapter(CarWishlistAdapter());
   }
 }
