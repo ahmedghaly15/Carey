@@ -7,6 +7,9 @@ enum WishlistStateStatus {
   addToWishlistLoading,
   addToWishlistSuccess,
   addToWishlistError,
+  removeFromWishlistLoading,
+  removeFromWishlistSuccess,
+  removeFromWishlistError,
 }
 
 @freezed

@@ -43,7 +43,6 @@ import 'package:carey/src/features/auth/presentation/cubits/reset_pass/reset_pas
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_cubit.dart';
 import 'package:carey/src/features/home/data/api/home_api_service.dart';
 import 'package:carey/src/features/home/data/repositories/home_repo.dart';
-import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:carey/src/features/make_offer/presentation/cubit/make_offer_cubit.dart';
 import 'package:carey/src/features/product_reviews/presentation/cubit/product_reviews_cubit.dart';
 
@@ -135,6 +134,7 @@ void _setupForRepos() {
   );
   getIt.registerLazySingleton<WishlistRepo>(
     () => WishlistRepo(getIt.get<WishlistApiService>()),
+  );
   getIt.registerLazySingleton<HomeRepo>(
     () => HomeRepo(
       getIt.get<HomeApiService>(),
@@ -195,7 +195,9 @@ void _setupForCubits() {
   getIt.registerLazySingleton<ResetPassCubit>(
     () => ResetPassCubit(getIt.get<UpdatePasswordUseCase>()),
   );
-  getIt.registerLazySingleton<HomeCubit>(() => HomeCubit());
+  getIt.registerLazySingleton<HomeCubit>(
+    () => HomeCubit(getIt.get<HomeRepo>()),
+  );
   getIt.registerLazySingleton<WishlistCubit>(
     () => WishlistCubit(getIt.get<WishlistRepo>()),
   );

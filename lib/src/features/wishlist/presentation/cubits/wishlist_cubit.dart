@@ -22,4 +22,20 @@ class WishlistCubit extends Cubit<WishlistState> {
       )),
     );
   }
+
+  void removeFromWishlist(int wishlistId) async {
+    emit(state.copyWith(
+      status: WishlistStateStatus.removeFromWishlistLoading,
+    ));
+    final result = await _wishlistRepo.removeFromWishlist(wishlistId);
+    result.when(
+      success: (_) => emit(state.copyWith(
+        status: WishlistStateStatus.removeFromWishlistSuccess,
+      )),
+      failure: (error) => emit(state.copyWith(
+        status: WishlistStateStatus.removeFromWishlistError,
+        error: error.error[0],
+      )),
+    );
+  }
 }

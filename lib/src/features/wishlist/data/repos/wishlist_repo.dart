@@ -15,4 +15,10 @@ class WishlistRepo {
       ),
     );
   }
+
+  Future<ApiResult<void>> removeFromWishlist(int wishlistId) {
+    return executeAndHandleErrors<void>(
+      () async => await _wishlistApiService.removeFromWishlist(wishlistId),
+    );
+  }
 }
