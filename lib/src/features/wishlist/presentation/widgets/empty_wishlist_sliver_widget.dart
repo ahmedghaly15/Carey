@@ -18,10 +18,11 @@ class EmptyWishlistSliverWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SvgPicture.asset(Assets.svgsNoFavoriteIcon),
-          MySizedBox.height13,
+          MySizedBox.height32,
           Text(
             AppStrings.yourWishlistEmpty,
             style: AppTextStyles.font18Medium,
+            textAlign: TextAlign.center,
           ),
         ],
       ),

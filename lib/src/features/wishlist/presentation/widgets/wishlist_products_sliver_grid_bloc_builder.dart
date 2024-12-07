@@ -1,3 +1,4 @@
+import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,6 +8,7 @@ import 'package:carey/src/core/widgets/products_sliver_grid_shimmer.dart';
 import 'package:carey/src/features/wishlist/presentation/cubits/wishlist_cubit.dart';
 import 'package:carey/src/features/wishlist/presentation/cubits/wishlist_state.dart';
 import 'package:carey/src/features/wishlist/presentation/widgets/empty_wishlist_sliver_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WishlistProductsSliverGridBlocBuilder extends StatelessWidget {
   const WishlistProductsSliverGridBlocBuilder({super.key});
@@ -18,7 +20,13 @@ class WishlistProductsSliverGridBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         switch (state.status) {
           case WishlistStateStatus.fetchWishlistLoading:
-            return const ProductsSliverGridShimmer();
+            return SliverPadding(
+              padding: EdgeInsets.symmetric(
+                horizontal: AppConstants.screenHorizontalPaddingVal.w,
+                vertical: 19.h,
+              ),
+              sliver: const ProductsSliverGridShimmer(),
+            );
 
           case WishlistStateStatus.fetchWishlistSuccess:
             return state.wishlist!.data.isEmpty
@@ -40,7 +48,13 @@ class WishlistProductsSliverGridBlocBuilder extends StatelessWidget {
                   );
 
           default:
-            return const ProductsSliverGridShimmer();
+            return SliverPadding(
+              padding: EdgeInsets.symmetric(
+                horizontal: AppConstants.screenHorizontalPaddingVal.w,
+                vertical: 19.h,
+              ),
+              sliver: const ProductsSliverGridShimmer(),
+            );
         }
       },
     );

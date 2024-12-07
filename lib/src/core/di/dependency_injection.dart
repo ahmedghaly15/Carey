@@ -208,9 +208,6 @@ void _setupForCubits() {
   getIt.registerLazySingleton<WishlistCubit>(
     () => WishlistCubit(getIt.get<WishlistRepo>()),
   );
-  getIt.registerLazySingleton<HomeCubit>(
-    () => HomeCubit(getIt.get<HomeRepo>()),
-  );
   getIt.registerLazySingleton<ProductReviewsCubit>(() => ProductReviewsCubit());
   getIt.registerLazySingleton<MakeOfferCubit>(() => MakeOfferCubit());
 }

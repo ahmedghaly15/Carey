@@ -37,7 +37,7 @@ class _WishlistApiService implements WishlistApiService {
     )
         .compose(
           _dio.options,
-          'wishlist',
+          'wishlist/',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -62,7 +62,7 @@ class _WishlistApiService implements WishlistApiService {
     )
         .compose(
           _dio.options,
-          'wishlist/${wishlistId}',
+          'wishlist//${wishlistId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -87,7 +87,7 @@ class _WishlistApiService implements WishlistApiService {
     )
         .compose(
           _dio.options,
-          'wishlistmy-wishlist',
+          'wishlist/my-wishlist',
           queryParameters: queryParameters,
           data: _data,
         )
