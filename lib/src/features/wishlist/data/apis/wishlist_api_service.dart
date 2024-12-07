@@ -1,5 +1,6 @@
 import 'package:carey/src/core/api/end_points.dart';
 import 'package:carey/src/features/wishlist/data/models/add_to_wishlist_params.dart';
+import 'package:carey/src/features/wishlist/data/models/fetch_my_wishlist_response.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -16,4 +17,7 @@ abstract class WishlistApiService {
   Future<void> removeFromWishlist(
     @Path('wishlistId') int wishlistId,
   );
+
+  @GET(EndPoints.myWishlist)
+  Future<FetchMyWishlistResponse> fetchMyWishlist();
 }
