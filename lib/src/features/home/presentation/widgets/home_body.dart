@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,9 +16,14 @@ import 'package:carey/src/features/home/presentation/widgets/text_and_see_all.da
 import 'package:carey/src/features/home/presentation/widgets/top_deals_brands_list_view.dart';
 
 class HomeBody extends StatelessWidget {
-  const HomeBody({super.key, required this.data});
+  const HomeBody({
+    super.key,
+    required this.data,
+    required this.specialOffers,
+  });
 
   final HomeResponseData data;
+  final FetchSpecialOffersResponse specialOffers;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +48,7 @@ class HomeBody extends StatelessWidget {
           child: TextAndSeeAll(
             text: AppStrings.specialOffers,
             seeAllOnPressed: () => context.pushRoute(
-              const SpecialOffersRoute(),
+              SpecialOffersRoute(specialOffers: specialOffers),
             ),
           ),
         ),
@@ -50,8 +56,8 @@ class HomeBody extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: AppConstants.screenHorizontalPaddingVal.w,
           ),
-          sliver: const SliverToBoxAdapter(
-            child: SpecialOfferItem(),
+          sliver: SliverToBoxAdapter(
+            child: SpecialOfferItem(specialOffer: specialOffers.data[0]),
           ),
         ),
         SliverPadding(
