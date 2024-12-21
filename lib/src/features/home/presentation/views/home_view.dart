@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:carey/src/core/di/dependency_injection.dart';
+import 'package:carey/src/core/themes/app_colors.dart';
+import 'package:carey/src/core/widgets/custom_error_widget.dart';
 import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
+import 'package:carey/src/features/home/presentation/cubit/home_state.dart';
 import 'package:carey/src/features/home/presentation/widgets/home_body.dart';
+import 'package:carey/src/features/home/presentation/widgets/home_shimmer_loading.dart';
 
 @RoutePage()
 class HomeView extends StatelessWidget implements AutoRouteWrapper {
@@ -13,15 +17,53 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider<HomeCubit>(
-      create: (_) => getIt.get<HomeCubit>(),
+      create: (_) => getIt.get<HomeCubit>()
+        ..fetchSpecialOffers()
+        ..fetchHome(),
       child: this,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: HomeBody(),
+    return SafeArea(
+      child: RefreshIndicator(
+        color: AppColors.primaryColor,
+        onRefresh: () async => await context.read<HomeCubit>().fetchHome(),
+        child: BlocBuilder<HomeCubit, HomeState>(
+          buildWhen: (_, current) => _buildWhen(current.status),
+          builder: (_, state) {
+            switch (state.status) {
+              case HomeStateStatus.fetchHomeDataLoading:
+                return const HomeShimmerLoading();
+              case HomeStateStatus.fetchHomeDataSuccess:
+                return HomeBody(
+                  data: state.homeData!,
+                  specialOffers: state.specialOffers!,
+                );
+              case HomeStateStatus.fetchHomeDataFailure:
+                return state.homeData != null
+                    ? HomeBody(
+                        data: state.homeData!,
+                        specialOffers: state.specialOffers!,
+                      )
+                    : CustomErrorWidget(
+                        error: state.error!,
+                        tryAgainOnPressed: () =>
+                            context.read<HomeCubit>().fetchHome(),
+                      );
+              default:
+                return const HomeShimmerLoading();
+            }
+          },
+        ),
+      ),
     );
+  }
+
+  bool _buildWhen(HomeStateStatus currentStatus) {
+    return currentStatus == HomeStateStatus.fetchHomeDataLoading ||
+        currentStatus == HomeStateStatus.fetchHomeDataSuccess ||
+        currentStatus == HomeStateStatus.fetchHomeDataFailure;
   }
 }

@@ -23,6 +23,7 @@ class PrimaryButton extends StatelessWidget {
     this.margin,
     this.borderColor = AppColors.primaryColor,
     this.borderWidth = 1,
+    this.height,
   });
 
   final bool isInfinityWidth;
@@ -34,7 +35,7 @@ class PrimaryButton extends StatelessWidget {
   final Color? textColor;
   final void Function()? onPressed;
   final List<BoxShadow>? boxShadow;
-  final double? width;
+  final double? width, height;
   final EdgeInsetsGeometry? padding;
   final BoxBorder? border;
   final bool isOutlined;
@@ -46,7 +47,8 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: isInfinityWidth ? double.infinity : null,
+      height: height?.h,
+      width: width?.w ?? (isInfinityWidth ? double.infinity : null),
       margin: margin,
       decoration: BoxDecoration(
         color: isOutlined
@@ -72,19 +74,17 @@ class PrimaryButton extends StatelessWidget {
           ),
         ),
         child: child ??
-            FittedBox(
-              child: Text(
-                text!,
-                style: textStyle ??
-                    AppTextStyles.font20SemiBoldWhite.copyWith(
-                      fontSize: fontSize?.sp ?? 20.sp,
-                      color: isOutlined
-                          ? AppColors.primaryColor
-                          : textColor ?? Colors.white,
-                    ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
+            Text(
+              text!,
+              style: textStyle ??
+                  AppTextStyles.font20SemiBoldWhite.copyWith(
+                    fontSize: fontSize?.sp ?? 20.sp,
+                    color: isOutlined
+                        ? AppColors.primaryColor
+                        : textColor ?? Colors.white,
+                  ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
       ),
     );
