@@ -50,7 +50,7 @@ class _WishlistApiService implements WishlistApiService {
   }
 
   @override
-  Future<void> removeFromWishlist(int wishlistId) async {
+  Future<void> removeFromWishlist(int carId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -62,7 +62,7 @@ class _WishlistApiService implements WishlistApiService {
     )
         .compose(
           _dio.options,
-          'wishlist//${wishlistId}',
+          'wishlist//${carId}',
           queryParameters: queryParameters,
           data: _data,
         )

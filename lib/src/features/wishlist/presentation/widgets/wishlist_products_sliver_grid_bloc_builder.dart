@@ -46,7 +46,6 @@ class WishlistProductsSliverGridBlocBuilder extends StatelessWidget {
                           context.read<WishlistCubit>().fetchMyWishlist(),
                     ),
                   );
-
           default:
             return SliverPadding(
               padding: EdgeInsets.symmetric(

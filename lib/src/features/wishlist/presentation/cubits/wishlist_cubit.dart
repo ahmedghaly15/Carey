@@ -23,11 +23,11 @@ class WishlistCubit extends Cubit<WishlistState> {
     );
   }
 
-  void removeFromWishlist(int wishlistId) async {
+  void removeFromWishlist(int carId) async {
     emit(state.copyWith(
       status: WishlistStateStatus.removeFromWishlistLoading,
     ));
-    final result = await _wishlistRepo.removeFromWishlist(wishlistId);
+    final result = await _wishlistRepo.removeFromWishlist(carId);
     result.when(
       success: (_) => emit(state.copyWith(
         status: WishlistStateStatus.removeFromWishlistSuccess,
