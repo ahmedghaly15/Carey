@@ -38,6 +38,10 @@ class Assets {
   /// assets/fonts/Poppins/Poppins-SemiBold.ttf
   static const String fontsPoppinsPoppinsSemiBold = "assets/fonts/Poppins/Poppins-SemiBold.ttf";
 
+  /// Assets for imagesBmwIcon
+  /// assets/images/bmw-icon.png
+  static const String imagesBmwIcon = "assets/images/bmw-icon.png";
+
   /// Assets for imagesCarBrandTest
   /// assets/images/car-brand-test.png
   static const String imagesCarBrandTest = "assets/images/car-brand-test.png";
@@ -49,6 +53,22 @@ class Assets {
   /// Assets for imagesError
   /// assets/images/error.png
   static const String imagesError = "assets/images/error.png";
+
+  /// Assets for imagesGalleryPhotoTestpng
+  /// assets/images/gallery-photo-testpng.png
+  static const String imagesGalleryPhotoTestpng = "assets/images/gallery-photo-testpng.png";
+
+  /// Assets for imagesNoInternet
+  /// assets/images/no-internet.png
+  static const String imagesNoInternet = "assets/images/no-internet.png";
+
+  /// Assets for imagesOfferAccepted
+  /// assets/images/offer-accepted.png
+  static const String imagesOfferAccepted = "assets/images/offer-accepted.png";
+
+  /// Assets for imagesOfferRejected
+  /// assets/images/offer-rejected.png
+  static const String imagesOfferRejected = "assets/images/offer-rejected.png";
 
   /// Assets for imagesSplash
   /// assets/images/splash.png
@@ -69,6 +89,18 @@ class Assets {
   /// Assets for svgsArrowBackIcon
   /// assets/svgs/arrow-back-icon.svg
   static const String svgsArrowBackIcon = "assets/svgs/arrow-back-icon.svg";
+
+  /// Assets for svgsChatIcon
+  /// assets/svgs/chat-icon.svg
+  static const String svgsChatIcon = "assets/svgs/chat-icon.svg";
+
+  /// Assets for svgsChooseShippingCarIcon
+  /// assets/svgs/choose-shipping-car-icon.svg
+  static const String svgsChooseShippingCarIcon = "assets/svgs/choose-shipping-car-icon.svg";
+
+  /// Assets for svgsCollapseIcon
+  /// assets/svgs/collapse-icon.svg
+  static const String svgsCollapseIcon = "assets/svgs/collapse-icon.svg";
 
   /// Assets for svgsDefaultUserImage
   /// assets/svgs/default-user-image.svg
@@ -97,6 +129,18 @@ class Assets {
   /// Assets for svgsLockIcon
   /// assets/svgs/lock-icon.svg
   static const String svgsLockIcon = "assets/svgs/lock-icon.svg";
+
+  /// Assets for svgsMoreIcon
+  /// assets/svgs/more-icon.svg
+  static const String svgsMoreIcon = "assets/svgs/more-icon.svg";
+
+  /// Assets for svgsNoFavoriteIcon
+  /// assets/svgs/no-favorite-icon.svg
+  static const String svgsNoFavoriteIcon = "assets/svgs/no-favorite-icon.svg";
+
+  /// Assets for svgsPenIcon
+  /// assets/svgs/pen-icon.svg
+  static const String svgsPenIcon = "assets/svgs/pen-icon.svg";
 
   /// Assets for svgsResetPassImage
   /// assets/svgs/reset-pass-image.svg

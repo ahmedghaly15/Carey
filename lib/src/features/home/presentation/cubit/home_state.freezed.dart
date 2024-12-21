@@ -17,8 +17,13 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeState {
   HomeStateStatus get status => throw _privateConstructorUsedError;
-  int get currentSpecialOffer => throw _privateConstructorUsedError;
   int get currentSelectedTopDealBrand => throw _privateConstructorUsedError;
+  HomeResponseData? get homeData => throw _privateConstructorUsedError;
+  String? get error => throw _privateConstructorUsedError;
+  bool get showAllBrands => throw _privateConstructorUsedError;
+  FetchSpecialOffersResponse? get specialOffers =>
+      throw _privateConstructorUsedError;
+  List<Car>? get bestCars => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -34,8 +39,12 @@ abstract class $HomeStateCopyWith<$Res> {
   @useResult
   $Res call(
       {HomeStateStatus status,
-      int currentSpecialOffer,
-      int currentSelectedTopDealBrand});
+      int currentSelectedTopDealBrand,
+      HomeResponseData? homeData,
+      String? error,
+      bool showAllBrands,
+      FetchSpecialOffersResponse? specialOffers,
+      List<Car>? bestCars});
 }
 
 /// @nodoc
@@ -54,22 +63,42 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @override
   $Res call({
     Object? status = null,
-    Object? currentSpecialOffer = null,
     Object? currentSelectedTopDealBrand = null,
+    Object? homeData = freezed,
+    Object? error = freezed,
+    Object? showAllBrands = null,
+    Object? specialOffers = freezed,
+    Object? bestCars = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as HomeStateStatus,
-      currentSpecialOffer: null == currentSpecialOffer
-          ? _value.currentSpecialOffer
-          : currentSpecialOffer // ignore: cast_nullable_to_non_nullable
-              as int,
       currentSelectedTopDealBrand: null == currentSelectedTopDealBrand
           ? _value.currentSelectedTopDealBrand
           : currentSelectedTopDealBrand // ignore: cast_nullable_to_non_nullable
               as int,
+      homeData: freezed == homeData
+          ? _value.homeData
+          : homeData // ignore: cast_nullable_to_non_nullable
+              as HomeResponseData?,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
+      showAllBrands: null == showAllBrands
+          ? _value.showAllBrands
+          : showAllBrands // ignore: cast_nullable_to_non_nullable
+              as bool,
+      specialOffers: freezed == specialOffers
+          ? _value.specialOffers
+          : specialOffers // ignore: cast_nullable_to_non_nullable
+              as FetchSpecialOffersResponse?,
+      bestCars: freezed == bestCars
+          ? _value.bestCars
+          : bestCars // ignore: cast_nullable_to_non_nullable
+              as List<Car>?,
     ) as $Val);
   }
 }
@@ -84,8 +113,12 @@ abstract class _$$HomeStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {HomeStateStatus status,
-      int currentSpecialOffer,
-      int currentSelectedTopDealBrand});
+      int currentSelectedTopDealBrand,
+      HomeResponseData? homeData,
+      String? error,
+      bool showAllBrands,
+      FetchSpecialOffersResponse? specialOffers,
+      List<Car>? bestCars});
 }
 
 /// @nodoc
@@ -102,22 +135,42 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
-    Object? currentSpecialOffer = null,
     Object? currentSelectedTopDealBrand = null,
+    Object? homeData = freezed,
+    Object? error = freezed,
+    Object? showAllBrands = null,
+    Object? specialOffers = freezed,
+    Object? bestCars = freezed,
   }) {
     return _then(_$HomeStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as HomeStateStatus,
-      currentSpecialOffer: null == currentSpecialOffer
-          ? _value.currentSpecialOffer
-          : currentSpecialOffer // ignore: cast_nullable_to_non_nullable
-              as int,
       currentSelectedTopDealBrand: null == currentSelectedTopDealBrand
           ? _value.currentSelectedTopDealBrand
           : currentSelectedTopDealBrand // ignore: cast_nullable_to_non_nullable
               as int,
+      homeData: freezed == homeData
+          ? _value.homeData
+          : homeData // ignore: cast_nullable_to_non_nullable
+              as HomeResponseData?,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
+      showAllBrands: null == showAllBrands
+          ? _value.showAllBrands
+          : showAllBrands // ignore: cast_nullable_to_non_nullable
+              as bool,
+      specialOffers: freezed == specialOffers
+          ? _value.specialOffers
+          : specialOffers // ignore: cast_nullable_to_non_nullable
+              as FetchSpecialOffersResponse?,
+      bestCars: freezed == bestCars
+          ? _value._bestCars
+          : bestCars // ignore: cast_nullable_to_non_nullable
+              as List<Car>?,
     ));
   }
 }
@@ -127,21 +180,41 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 class _$HomeStateImpl implements _HomeState {
   const _$HomeStateImpl(
       {required this.status,
-      this.currentSpecialOffer = 0,
-      this.currentSelectedTopDealBrand = 0});
+      this.currentSelectedTopDealBrand = 0,
+      this.homeData,
+      this.error,
+      this.showAllBrands = false,
+      this.specialOffers,
+      final List<Car>? bestCars})
+      : _bestCars = bestCars;
 
   @override
   final HomeStateStatus status;
   @override
   @JsonKey()
-  final int currentSpecialOffer;
+  final int currentSelectedTopDealBrand;
+  @override
+  final HomeResponseData? homeData;
+  @override
+  final String? error;
   @override
   @JsonKey()
-  final int currentSelectedTopDealBrand;
+  final bool showAllBrands;
+  @override
+  final FetchSpecialOffersResponse? specialOffers;
+  final List<Car>? _bestCars;
+  @override
+  List<Car>? get bestCars {
+    final value = _bestCars;
+    if (value == null) return null;
+    if (_bestCars is EqualUnmodifiableListView) return _bestCars;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'HomeState(status: $status, currentSpecialOffer: $currentSpecialOffer, currentSelectedTopDealBrand: $currentSelectedTopDealBrand)';
+    return 'HomeState(status: $status, currentSelectedTopDealBrand: $currentSelectedTopDealBrand, homeData: $homeData, error: $error, showAllBrands: $showAllBrands, specialOffers: $specialOffers, bestCars: $bestCars)';
   }
 
   @override
@@ -150,17 +223,30 @@ class _$HomeStateImpl implements _HomeState {
         (other.runtimeType == runtimeType &&
             other is _$HomeStateImpl &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.currentSpecialOffer, currentSpecialOffer) ||
-                other.currentSpecialOffer == currentSpecialOffer) &&
             (identical(other.currentSelectedTopDealBrand,
                     currentSelectedTopDealBrand) ||
                 other.currentSelectedTopDealBrand ==
-                    currentSelectedTopDealBrand));
+                    currentSelectedTopDealBrand) &&
+            (identical(other.homeData, homeData) ||
+                other.homeData == homeData) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.showAllBrands, showAllBrands) ||
+                other.showAllBrands == showAllBrands) &&
+            (identical(other.specialOffers, specialOffers) ||
+                other.specialOffers == specialOffers) &&
+            const DeepCollectionEquality().equals(other._bestCars, _bestCars));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, status, currentSpecialOffer, currentSelectedTopDealBrand);
+      runtimeType,
+      status,
+      currentSelectedTopDealBrand,
+      homeData,
+      error,
+      showAllBrands,
+      specialOffers,
+      const DeepCollectionEquality().hash(_bestCars));
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -174,15 +260,27 @@ class _$HomeStateImpl implements _HomeState {
 abstract class _HomeState implements HomeState {
   const factory _HomeState(
       {required final HomeStateStatus status,
-      final int currentSpecialOffer,
-      final int currentSelectedTopDealBrand}) = _$HomeStateImpl;
+      final int currentSelectedTopDealBrand,
+      final HomeResponseData? homeData,
+      final String? error,
+      final bool showAllBrands,
+      final FetchSpecialOffersResponse? specialOffers,
+      final List<Car>? bestCars}) = _$HomeStateImpl;
 
   @override
   HomeStateStatus get status;
   @override
-  int get currentSpecialOffer;
-  @override
   int get currentSelectedTopDealBrand;
+  @override
+  HomeResponseData? get homeData;
+  @override
+  String? get error;
+  @override
+  bool get showAllBrands;
+  @override
+  FetchSpecialOffersResponse? get specialOffers;
+  @override
+  List<Car>? get bestCars;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

@@ -10,6 +10,7 @@ class CustomSliverAppBar extends StatelessWidget {
     this.titleWidget,
     this.leading,
     this.hasLeading = true,
+    this.backgroundColor,
   });
 
   final String? titleText;
@@ -17,10 +18,12 @@ class CustomSliverAppBar extends StatelessWidget {
   final Widget? titleWidget;
   final Widget? leading;
   final bool hasLeading;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      backgroundColor: backgroundColor,
       title: titleWidget ?? (titleText != null ? Text(titleText!) : null),
       leading: hasLeading ? leading ?? const ArrowBackIconButton() : null,
       actions: actions,

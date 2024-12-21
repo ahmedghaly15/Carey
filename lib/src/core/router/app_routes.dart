@@ -28,7 +28,41 @@ List<AutoRoute> get appRoutes => [
           _buildCustomRoute(page: ResetPasswordRoute.page),
         ],
       ),
-      _buildCustomRoute(page: HomeRoute.page),
+      AutoRoute(
+        // initial: true,
+        page: LayoutRoute.page,
+        children: [
+          AutoRoute(initial: true, page: HomeRoute.page),
+          AutoRoute(page: OrdersRoute.page),
+          AutoRoute(page: InboxRoute.page),
+          AutoRoute(page: WalletRoute.page),
+          AutoRoute(page: ProfileRoute.page),
+        ],
+      ),
+      _buildCustomRoute(page: SpecialOffersRoute.page),
+      _buildCustomRoute(page: TopDealsRoute.page),
+      _buildCustomRoute(page: MyWishlistRoute.page),
+      _buildCustomRoute(page: ProductDetailsRoute.page),
+      _buildCustomRoute(page: ProductReviewsRoute.page),
+      _buildCustomRoute(
+        page: OfferRoute.page,
+        children: [
+          _buildCustomRoute(
+            initial: true,
+            page: MakeOfferRoute.page,
+          ),
+          _buildCustomRoute(page: OfferStatusRoute.page),
+        ],
+      ),
+      _buildCustomRoute(
+        page: CheckoutProcessRoute.page,
+        children: [
+          _buildCustomRoute(
+            initial: true,
+            page: CheckoutRoute.page,
+          ),
+        ],
+      ),
     ];
 
 CustomRoute _buildCustomRoute({
@@ -42,7 +76,8 @@ CustomRoute _buildCustomRoute({
     CustomRoute(
       initial: initial,
       page: page,
-      transitionsBuilder: transitionsBuilder ?? TransitionsBuilders.fadeIn,
-      durationInMilliseconds: durationInMilliseconds ?? 400,
+      transitionsBuilder:
+          transitionsBuilder ?? TransitionsBuilders.slideRightWithFade,
+      durationInMilliseconds: durationInMilliseconds ?? 500,
       children: children,
     );
