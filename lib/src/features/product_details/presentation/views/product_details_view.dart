@@ -9,7 +9,7 @@ import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
-import 'package:carey/src/core/widgets/favorite_icon_button.dart';
+import 'package:carey/src/core/widgets/favorite_icon_button_bloc_listener.dart';
 import 'package:carey/src/features/product_details/presentation/widgets/gallery_photos_list_view.dart';
 import 'package:carey/src/features/product_details/presentation/widgets/price_and_make_offer_button.dart';
 import 'package:carey/src/features/product_details/presentation/widgets/product_colors.dart';
@@ -29,9 +29,14 @@ class ProductDetailsView extends StatelessWidget {
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            const CustomSliverAppBar(
+            CustomSliverAppBar(
               backgroundColor: AppColors.secondaryScaffoldBackgroundColor,
-              actions: [FavoriteIconButton()],
+              actions: [
+                FavoriteIconButtonBlocListener(
+                  carId: car.id,
+                  wishlistLength: car.wishlists?.length ?? 0,
+                ),
+              ],
             ),
             SliverToBoxAdapter(
               child: Image.asset(Assets.imagesCarTest, fit: BoxFit.cover),
