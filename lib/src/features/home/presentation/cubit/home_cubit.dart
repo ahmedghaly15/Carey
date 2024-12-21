@@ -29,6 +29,7 @@ class HomeCubit extends Cubit<HomeState> {
       success: (homeData) => emit(state.copyWith(
         status: HomeStateStatus.fetchHomeDataSuccess,
         homeData: homeData,
+        bestCars: homeData.bestCars,
       )),
       failure: (failure) => emit(state.copyWith(
         status: HomeStateStatus.fetchHomeDataFailure,
@@ -59,6 +60,22 @@ class HomeCubit extends Cubit<HomeState> {
         error: failure.error[0],
       )),
     );
+  }
+
+  void filterBestCarsByBrand(String brandName) {
+    if (brandName == 'All') {
+      emit(state.copyWith(
+        status: HomeStateStatus.filterBestCarsByBrand,
+        bestCars: state.homeData!.bestCars,
+      ));
+    } else {
+      emit(state.copyWith(
+        status: HomeStateStatus.filterBestCarsByBrand,
+        bestCars: state.homeData!.bestCars
+            .where((car) => car.brand!.name == brandName)
+            .toList(),
+      ));
+    }
   }
 
   @override
