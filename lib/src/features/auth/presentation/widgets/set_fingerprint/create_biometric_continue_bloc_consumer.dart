@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/utils/functions/animated_loading_or_text_widget.dart';
-import 'package:carey/src/core/widgets/custom_toast.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_cubit.dart';
@@ -48,11 +47,7 @@ class CreateBiometricContinueBlocConsumer extends StatelessWidget {
         });
         break;
       case BiometricStateStatus.createBiometricError:
-        CustomToast.show(
-          context,
-          type: CustomToastType.error,
-          description: state.error!,
-        );
+        context.showToast(state.error!);
         break;
       default:
         break;
