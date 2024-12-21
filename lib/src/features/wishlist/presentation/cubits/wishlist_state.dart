@@ -23,6 +23,7 @@ class WishlistState with _$WishlistState {
     required WishlistStateStatus status,
     String? error,
     FetchMyWishlistResponse? wishlist,
+    int? favAffectedItemId,
   }) = _WishlistState;
 
   factory WishlistState.initial() => const WishlistState(

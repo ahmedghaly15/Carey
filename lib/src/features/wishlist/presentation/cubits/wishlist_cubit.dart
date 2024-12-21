@@ -15,6 +15,7 @@ class WishlistCubit extends Cubit<WishlistState> {
     result.when(
       success: (_) => emit(state.copyWith(
         status: WishlistStateStatus.addToWishlistSuccess,
+        favAffectedItemId: carId,
       )),
       failure: (error) => emit(state.copyWith(
         status: WishlistStateStatus.addToWishlistError,
@@ -31,6 +32,7 @@ class WishlistCubit extends Cubit<WishlistState> {
     result.when(
       success: (_) => emit(state.copyWith(
         status: WishlistStateStatus.removeFromWishlistSuccess,
+        favAffectedItemId: carId,
       )),
       failure: (error) => emit(state.copyWith(
         status: WishlistStateStatus.removeFromWishlistError,
