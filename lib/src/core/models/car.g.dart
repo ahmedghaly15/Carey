@@ -260,21 +260,24 @@ class CarWishlistAdapter extends TypeAdapter<CarWishlist> {
     };
     return CarWishlist(
       id: fields[0] as int,
-      createdAt: fields[1] as String,
-      updatedAt: fields[2] as String,
+      createdAt: fields[1] as String?,
+      updatedAt: fields[2] as String?,
+      user: fields[3] as CarUser?,
     );
   }
 
   @override
   void write(BinaryWriter writer, CarWishlist obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.createdAt)
       ..writeByte(2)
-      ..write(obj.updatedAt);
+      ..write(obj.updatedAt)
+      ..writeByte(3)
+      ..write(obj.user);
   }
 
   @override
@@ -396,8 +399,11 @@ Map<String, dynamic> _$CarUserToJson(CarUser instance) => <String, dynamic>{
 
 CarWishlist _$CarWishlistFromJson(Map<String, dynamic> json) => CarWishlist(
       id: (json['id'] as num).toInt(),
-      createdAt: json['createdAt'] as String,
-      updatedAt: json['updatedAt'] as String,
+      createdAt: json['createdAt'] as String?,
+      updatedAt: json['updatedAt'] as String?,
+      user: json['user'] == null
+          ? null
+          : CarUser.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CarWishlistToJson(CarWishlist instance) =>
@@ -405,4 +411,5 @@ Map<String, dynamic> _$CarWishlistToJson(CarWishlist instance) =>
       'id': instance.id,
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
+      'user': instance.user?.toJson(),
     };
