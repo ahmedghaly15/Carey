@@ -10,7 +10,7 @@ import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/functions/format_int_with_commas.dart';
 import 'package:carey/src/core/widgets/condition_label.dart';
 import 'package:carey/src/core/widgets/custom_cached_network_image.dart';
-import 'package:carey/src/core/widgets/favorite_icon_button.dart';
+import 'package:carey/src/core/widgets/favorite_icon_button_bloc_listener.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
 
 class TopDealItem extends StatelessWidget {
@@ -23,9 +23,12 @@ class TopDealItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Align(
+        Align(
           alignment: AlignmentDirectional.centerEnd,
-          child: FavoriteIconButton(),
+          child: FavoriteIconButtonBlocListener(
+            wishlistLength: car.wishlists?.length ?? 0,
+            carId: car.id,
+          ),
         ),
         Flexible(
           child: GestureDetector(

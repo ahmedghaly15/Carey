@@ -8,7 +8,7 @@ import 'package:carey/src/features/wishlist/data/models/fetch_my_wishlist_respon
 class HiveHelper {
   HiveHelper._();
 
-  static Future<void> registerAdapters() async {
+  static void registerAdapters() {
     Hive.registerAdapter(HomeResponseDataAdapter());
     Hive.registerAdapter(CarBrandModelAdapter());
     Hive.registerAdapter(CarAdapter());
@@ -18,7 +18,6 @@ class HiveHelper {
     Hive.registerAdapter(FetchSpecialOffersResponseAdapter());
     Hive.registerAdapter(SpecialOfferAdapter());
     Hive.registerAdapter(FetchMyWishlistResponseAdapter());
-    Hive.registerAdapter(WishlistAdapter());
     Hive.registerAdapter(CarWishlistAdapter());
   }
 }

@@ -15,6 +15,7 @@ class WishlistCubit extends Cubit<WishlistState> {
     result.when(
       success: (_) => emit(state.copyWith(
         status: WishlistStateStatus.addToWishlistSuccess,
+        favAffectedItemId: carId,
       )),
       failure: (error) => emit(state.copyWith(
         status: WishlistStateStatus.addToWishlistError,
@@ -23,34 +24,18 @@ class WishlistCubit extends Cubit<WishlistState> {
     );
   }
 
-  void removeFromWishlist(int wishlistId) async {
+  void removeFromWishlist(int carId) async {
     emit(state.copyWith(
       status: WishlistStateStatus.removeFromWishlistLoading,
     ));
-    final result = await _wishlistRepo.removeFromWishlist(wishlistId);
+    final result = await _wishlistRepo.removeFromWishlist(carId);
     result.when(
       success: (_) => emit(state.copyWith(
         status: WishlistStateStatus.removeFromWishlistSuccess,
+        favAffectedItemId: carId,
       )),
       failure: (error) => emit(state.copyWith(
         status: WishlistStateStatus.removeFromWishlistError,
-        error: error.error[0],
-      )),
-    );
-  }
-
-  Future<void> fetchMyWishlist() async {
-    emit(state.copyWith(
-      status: WishlistStateStatus.fetchWishlistLoading,
-    ));
-    final result = await _wishlistRepo.fetchMyWishlist();
-    result.when(
-      success: (wishlist) => emit(state.copyWith(
-        status: WishlistStateStatus.fetchWishlistSuccess,
-        wishlist: wishlist,
-      )),
-      failure: (error) => emit(state.copyWith(
-        status: WishlistStateStatus.fetchWishlistError,
         error: error.error[0],
       )),
     );

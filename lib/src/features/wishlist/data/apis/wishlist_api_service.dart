@@ -13,9 +13,9 @@ abstract class WishlistApiService {
   @POST(EndPoints.wishlist)
   Future<void> addToWishlist(@Body() AddToWishlistParams params);
 
-  @DELETE('${EndPoints.wishlist}/{wishlistId}')
+  @DELETE('${EndPoints.wishlist}/{carId}')
   Future<void> removeFromWishlist(
-    @Path('wishlistId') int wishlistId,
+    @Path('carId') int carId,
   );
 
   @GET(EndPoints.myWishlist)

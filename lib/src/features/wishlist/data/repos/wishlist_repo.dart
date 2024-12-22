@@ -21,9 +21,9 @@ class WishlistRepo {
     );
   }
 
-  Future<ApiResult<void>> removeFromWishlist(int wishlistId) {
+  Future<ApiResult<void>> removeFromWishlist(int carId) {
     return executeAndHandleErrors<void>(
-      () async => await _wishlistApiService.removeFromWishlist(wishlistId),
+      () async => await _wishlistApiService.removeFromWishlist(carId),
     );
   }
 

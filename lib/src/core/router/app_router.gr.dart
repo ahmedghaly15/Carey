@@ -289,7 +289,7 @@ class MyWishlistRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const MyWishlistView();
+      return WrappedRoute(child: const MyWishlistView());
     },
   );
 }

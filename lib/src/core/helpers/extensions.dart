@@ -81,14 +81,14 @@ extension ShowResultDialog on BuildContext {
 extension ShowMyToast on BuildContext {
   void showToast(String message) => ScaffoldMessenger.of(this).showSnackBar(
         SnackBar(
-          backgroundColor: Colors.black26,
+          backgroundColor: Colors.black54,
           elevation: 0,
           duration: const Duration(seconds: 2),
           dismissDirection: DismissDirection.startToEnd,
           behavior: SnackBarBehavior.floating,
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.r),
+            borderRadius: BorderRadius.circular(24.r),
           ),
           content: Row(
             spacing: 8.w,

@@ -15,7 +15,7 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   final appDocumentDir = await getApplicationDocumentsDirectory();
   await Hive.initFlutter(appDocumentDir.path);
-  await HiveHelper.registerAdapters();
+  HiveHelper.registerAdapters();
   await setupDI();
   await checkIfUserIsLoggedIn();
   await checkIfCurrentUserAccountIsSet();

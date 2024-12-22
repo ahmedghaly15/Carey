@@ -2,6 +2,7 @@ import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:carey/src/features/wishlist/data/apis/wishlist_api_service.dart';
 import 'package:carey/src/features/wishlist/data/datasource/wishlist_local_datasource.dart';
 import 'package:carey/src/features/wishlist/data/repos/wishlist_repo.dart';
+import 'package:carey/src/features/wishlist/presentation/cubits/fetch_wishlist/fetch_wishlist_cubit.dart';
 import 'package:carey/src/features/wishlist/presentation/cubits/wishlist_cubit.dart';
 import 'package:carey/src/features/home/data/datasource/home_local_datasource.dart';
 import 'package:dio/dio.dart';
@@ -207,6 +208,9 @@ void _setupForCubits() {
   );
   getIt.registerLazySingleton<WishlistCubit>(
     () => WishlistCubit(getIt.get<WishlistRepo>()),
+  );
+  getIt.registerFactory<FetchWishlistCubit>(
+    () => FetchWishlistCubit(getIt.get<WishlistRepo>()),
   );
   getIt.registerLazySingleton<ProductReviewsCubit>(() => ProductReviewsCubit());
   getIt.registerLazySingleton<MakeOfferCubit>(() => MakeOfferCubit());
