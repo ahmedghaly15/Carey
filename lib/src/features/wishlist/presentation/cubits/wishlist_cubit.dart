@@ -40,21 +40,4 @@ class WishlistCubit extends Cubit<WishlistState> {
       )),
     );
   }
-
-  Future<void> fetchMyWishlist() async {
-    emit(state.copyWith(
-      status: WishlistStateStatus.fetchWishlistLoading,
-    ));
-    final result = await _wishlistRepo.fetchMyWishlist();
-    result.when(
-      success: (wishlist) => emit(state.copyWith(
-        status: WishlistStateStatus.fetchWishlistSuccess,
-        wishlist: wishlist,
-      )),
-      failure: (error) => emit(state.copyWith(
-        status: WishlistStateStatus.fetchWishlistError,
-        error: error.error[0],
-      )),
-    );
-  }
 }

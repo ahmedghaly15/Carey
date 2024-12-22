@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$WishlistState {
   WishlistStateStatus get status => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
-  FetchMyWishlistResponse? get wishlist => throw _privateConstructorUsedError;
   int? get favAffectedItemId => throw _privateConstructorUsedError;
 
   /// Create a copy of WishlistState
@@ -35,10 +34,7 @@ abstract class $WishlistStateCopyWith<$Res> {
       _$WishlistStateCopyWithImpl<$Res, WishlistState>;
   @useResult
   $Res call(
-      {WishlistStateStatus status,
-      String? error,
-      FetchMyWishlistResponse? wishlist,
-      int? favAffectedItemId});
+      {WishlistStateStatus status, String? error, int? favAffectedItemId});
 }
 
 /// @nodoc
@@ -58,7 +54,6 @@ class _$WishlistStateCopyWithImpl<$Res, $Val extends WishlistState>
   $Res call({
     Object? status = null,
     Object? error = freezed,
-    Object? wishlist = freezed,
     Object? favAffectedItemId = freezed,
   }) {
     return _then(_value.copyWith(
@@ -70,10 +65,6 @@ class _$WishlistStateCopyWithImpl<$Res, $Val extends WishlistState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
-      wishlist: freezed == wishlist
-          ? _value.wishlist
-          : wishlist // ignore: cast_nullable_to_non_nullable
-              as FetchMyWishlistResponse?,
       favAffectedItemId: freezed == favAffectedItemId
           ? _value.favAffectedItemId
           : favAffectedItemId // ignore: cast_nullable_to_non_nullable
@@ -91,10 +82,7 @@ abstract class _$$WishlistStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {WishlistStateStatus status,
-      String? error,
-      FetchMyWishlistResponse? wishlist,
-      int? favAffectedItemId});
+      {WishlistStateStatus status, String? error, int? favAffectedItemId});
 }
 
 /// @nodoc
@@ -112,7 +100,6 @@ class __$$WishlistStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? error = freezed,
-    Object? wishlist = freezed,
     Object? favAffectedItemId = freezed,
   }) {
     return _then(_$WishlistStateImpl(
@@ -124,10 +111,6 @@ class __$$WishlistStateImplCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
-      wishlist: freezed == wishlist
-          ? _value.wishlist
-          : wishlist // ignore: cast_nullable_to_non_nullable
-              as FetchMyWishlistResponse?,
       favAffectedItemId: freezed == favAffectedItemId
           ? _value.favAffectedItemId
           : favAffectedItemId // ignore: cast_nullable_to_non_nullable
@@ -140,23 +123,18 @@ class __$$WishlistStateImplCopyWithImpl<$Res>
 
 class _$WishlistStateImpl implements _WishlistState {
   const _$WishlistStateImpl(
-      {required this.status,
-      this.error,
-      this.wishlist,
-      this.favAffectedItemId});
+      {required this.status, this.error, this.favAffectedItemId});
 
   @override
   final WishlistStateStatus status;
   @override
   final String? error;
   @override
-  final FetchMyWishlistResponse? wishlist;
-  @override
   final int? favAffectedItemId;
 
   @override
   String toString() {
-    return 'WishlistState(status: $status, error: $error, wishlist: $wishlist, favAffectedItemId: $favAffectedItemId)';
+    return 'WishlistState(status: $status, error: $error, favAffectedItemId: $favAffectedItemId)';
   }
 
   @override
@@ -166,15 +144,13 @@ class _$WishlistStateImpl implements _WishlistState {
             other is _$WishlistStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.error, error) || other.error == error) &&
-            (identical(other.wishlist, wishlist) ||
-                other.wishlist == wishlist) &&
             (identical(other.favAffectedItemId, favAffectedItemId) ||
                 other.favAffectedItemId == favAffectedItemId));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, status, error, wishlist, favAffectedItemId);
+      Object.hash(runtimeType, status, error, favAffectedItemId);
 
   /// Create a copy of WishlistState
   /// with the given fields replaced by the non-null parameter values.
@@ -189,15 +165,12 @@ abstract class _WishlistState implements WishlistState {
   const factory _WishlistState(
       {required final WishlistStateStatus status,
       final String? error,
-      final FetchMyWishlistResponse? wishlist,
       final int? favAffectedItemId}) = _$WishlistStateImpl;
 
   @override
   WishlistStateStatus get status;
   @override
   String? get error;
-  @override
-  FetchMyWishlistResponse? get wishlist;
   @override
   int? get favAffectedItemId;
 
