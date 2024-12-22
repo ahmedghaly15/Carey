@@ -31,7 +31,7 @@ class FetchMyWishlistResponse {
   Map<String, dynamic> toJson() => _$FetchMyWishlistResponseToJson(this);
 }
 
-@HiveType(typeId: HiveTypeIds.wishlist)
+@HiveType(typeId: HiveTypeIds.wishlistResponseDataItem)
 @JsonSerializable(explicitToJson: true)
 class WishlistResponseDataItem {
   @HiveField(0)

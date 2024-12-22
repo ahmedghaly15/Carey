@@ -53,7 +53,7 @@ class FetchMyWishlistResponseAdapter
 class WishlistResponseDataItemAdapter
     extends TypeAdapter<WishlistResponseDataItem> {
   @override
-  final int typeId = 9;
+  final int typeId = 12;
 
   @override
   WishlistResponseDataItem read(BinaryReader reader) {
