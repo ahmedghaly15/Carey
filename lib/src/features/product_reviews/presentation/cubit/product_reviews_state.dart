@@ -6,7 +6,7 @@ part 'product_reviews_state.freezed.dart';
 
 enum ProductReviewsStateStatus {
   initial,
-  updateSelectedReviews,
+  updateSelectedRate,
   addReviewLoading,
   addReviewSuccess,
   addReviewError,
@@ -22,7 +22,7 @@ enum ProductReviewsStateStatus {
 class ProductReviewsState with _$ProductReviewsState {
   const factory ProductReviewsState({
     required ProductReviewsStateStatus status,
-    @Default(0) int selectedReviews,
+    @Default(0) int selectedRate,
     FetchRatesResponse? ratesResponse,
     String? error,
   }) = _ProductReviewsState;

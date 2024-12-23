@@ -1,3 +1,4 @@
+import 'package:carey/src/features/product_reviews/data/models/fetch_rates_response.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,11 +14,11 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
 
   final CancelToken _cancelToken = CancelToken();
 
-  void updateSelectedReviews(int index) {
-    if (state.selectedReviews != index) {
+  void updateSelectedRate(int index) {
+    if (state.selectedRate != index) {
       emit(state.copyWith(
-        status: ProductReviewsStateStatus.updateSelectedReviews,
-        selectedReviews: index,
+        status: ProductReviewsStateStatus.updateSelectedRate,
+        selectedRate: index,
       ));
     }
   }
@@ -66,6 +67,18 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
         status: ProductReviewsStateStatus.fetchRatesError,
         error: failure.error[0],
       )),
+    );
+  }
+
+  void updateRatesResponse(int rate) {
+    emit(
+      state.copyWith(
+        ratesResponse: state.ratesResponse!.copyWith(
+          rates: state.ratesResponse!.rates
+              .where((rateResponseItem) => rateResponseItem.rate == rate)
+              .toList(),
+        ),
+      ),
     );
   }
 
