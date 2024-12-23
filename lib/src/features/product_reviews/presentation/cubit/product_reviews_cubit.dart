@@ -1,12 +1,15 @@
 import 'package:carey/src/features/product_reviews/data/models/add_review_request_params.dart';
 import 'package:carey/src/features/product_reviews/data/repositories/product_reviews_repo.dart';
 import 'package:carey/src/features/product_reviews/presentation/cubit/product_reviews_state.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductReviewsCubit extends Cubit<ProductReviewsState> {
   final ProductReviewsRepo _repo;
 
   ProductReviewsCubit(this._repo) : super(ProductReviewsState.initial());
+
+  final CancelToken _cancelToken = CancelToken();
 
   void updateSelectedReviews(int index) {
     if (state.selectedReviews != index) {
@@ -28,5 +31,27 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
         error: failure.error[0],
       )),
     );
+  }
+
+  void deleteReview(int rateId) async {
+    emit(state.copyWith(
+      status: ProductReviewsStateStatus.deleteReviewLoading,
+    ));
+    final result = await _repo.deleteReview(rateId, _cancelToken);
+    result.when(
+      success: (_) => emit(state.copyWith(
+        status: ProductReviewsStateStatus.deleteReviewSuccess,
+      )),
+      failure: (failure) => emit(state.copyWith(
+        status: ProductReviewsStateStatus.deleteReviewError,
+        error: failure.error[0],
+      )),
+    );
+  }
+
+  @override
+  Future<void> close() {
+    _cancelToken.cancel();
+    return super.close();
   }
 }

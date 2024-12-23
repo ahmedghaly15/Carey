@@ -8,6 +8,9 @@ enum ProductReviewsStateStatus {
   addReviewLoading,
   addReviewSuccess,
   addReviewError,
+  deleteReviewLoading,
+  deleteReviewSuccess,
+  deleteReviewError,
 }
 
 @freezed
