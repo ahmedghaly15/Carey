@@ -1,4 +1,6 @@
 import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
+import 'package:carey/src/features/product_reviews/data/api/product_reviews_api_service.dart';
+import 'package:carey/src/features/product_reviews/data/repositories/product_reviews_repo.dart';
 import 'package:carey/src/features/wishlist/data/apis/wishlist_api_service.dart';
 import 'package:carey/src/features/wishlist/data/datasource/wishlist_local_datasource.dart';
 import 'package:carey/src/features/wishlist/data/repos/wishlist_repo.dart';
@@ -103,6 +105,9 @@ void _setupForApiServices() {
     () => WishlistApiService(dio),
   );
   getIt.registerLazySingleton<HomeApiService>(() => HomeApiService(dio));
+  getIt.registerLazySingleton<ProductReviewsApiService>(
+    () => ProductReviewsApiService(dio),
+  );
 }
 
 void _setupForLocalDataSources() {
@@ -148,6 +153,9 @@ void _setupForRepos() {
       getIt.get<HomeApiService>(),
       getIt.get<HomeLocalDataSource>(),
     ),
+  );
+  getIt.registerLazySingleton<ProductReviewsRepo>(
+    () => ProductReviewsRepo(getIt.get<ProductReviewsApiService>()),
   );
 }
 
@@ -212,6 +220,8 @@ void _setupForCubits() {
   getIt.registerFactory<FetchWishlistCubit>(
     () => FetchWishlistCubit(getIt.get<WishlistRepo>()),
   );
-  getIt.registerLazySingleton<ProductReviewsCubit>(() => ProductReviewsCubit());
+  getIt.registerFactory<ProductReviewsCubit>(
+    () => ProductReviewsCubit(getIt.get<ProductReviewsRepo>()),
+  );
   getIt.registerLazySingleton<MakeOfferCubit>(() => MakeOfferCubit());
 }

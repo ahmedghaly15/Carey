@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProductReviewsState {
   ProductReviewsStateStatus get status => throw _privateConstructorUsedError;
   int get selectedReviews => throw _privateConstructorUsedError;
+  String? get error => throw _privateConstructorUsedError;
 
   /// Create a copy of ProductReviewsState
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +33,8 @@ abstract class $ProductReviewsStateCopyWith<$Res> {
           ProductReviewsState value, $Res Function(ProductReviewsState) then) =
       _$ProductReviewsStateCopyWithImpl<$Res, ProductReviewsState>;
   @useResult
-  $Res call({ProductReviewsStateStatus status, int selectedReviews});
+  $Res call(
+      {ProductReviewsStateStatus status, int selectedReviews, String? error});
 }
 
 /// @nodoc
@@ -52,6 +54,7 @@ class _$ProductReviewsStateCopyWithImpl<$Res, $Val extends ProductReviewsState>
   $Res call({
     Object? status = null,
     Object? selectedReviews = null,
+    Object? error = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -62,6 +65,10 @@ class _$ProductReviewsStateCopyWithImpl<$Res, $Val extends ProductReviewsState>
           ? _value.selectedReviews
           : selectedReviews // ignore: cast_nullable_to_non_nullable
               as int,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -74,7 +81,8 @@ abstract class _$$ProductReviewsStateImplCopyWith<$Res>
       __$$ProductReviewsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ProductReviewsStateStatus status, int selectedReviews});
+  $Res call(
+      {ProductReviewsStateStatus status, int selectedReviews, String? error});
 }
 
 /// @nodoc
@@ -92,6 +100,7 @@ class __$$ProductReviewsStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? selectedReviews = null,
+    Object? error = freezed,
   }) {
     return _then(_$ProductReviewsStateImpl(
       status: null == status
@@ -102,6 +111,10 @@ class __$$ProductReviewsStateImplCopyWithImpl<$Res>
           ? _value.selectedReviews
           : selectedReviews // ignore: cast_nullable_to_non_nullable
               as int,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -110,17 +123,19 @@ class __$$ProductReviewsStateImplCopyWithImpl<$Res>
 
 class _$ProductReviewsStateImpl implements _ProductReviewsState {
   const _$ProductReviewsStateImpl(
-      {required this.status, this.selectedReviews = 0});
+      {required this.status, this.selectedReviews = 0, this.error});
 
   @override
   final ProductReviewsStateStatus status;
   @override
   @JsonKey()
   final int selectedReviews;
+  @override
+  final String? error;
 
   @override
   String toString() {
-    return 'ProductReviewsState(status: $status, selectedReviews: $selectedReviews)';
+    return 'ProductReviewsState(status: $status, selectedReviews: $selectedReviews, error: $error)';
   }
 
   @override
@@ -130,11 +145,12 @@ class _$ProductReviewsStateImpl implements _ProductReviewsState {
             other is _$ProductReviewsStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.selectedReviews, selectedReviews) ||
-                other.selectedReviews == selectedReviews));
+                other.selectedReviews == selectedReviews) &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, selectedReviews);
+  int get hashCode => Object.hash(runtimeType, status, selectedReviews, error);
 
   /// Create a copy of ProductReviewsState
   /// with the given fields replaced by the non-null parameter values.
@@ -149,12 +165,15 @@ class _$ProductReviewsStateImpl implements _ProductReviewsState {
 abstract class _ProductReviewsState implements ProductReviewsState {
   const factory _ProductReviewsState(
       {required final ProductReviewsStateStatus status,
-      final int selectedReviews}) = _$ProductReviewsStateImpl;
+      final int selectedReviews,
+      final String? error}) = _$ProductReviewsStateImpl;
 
   @override
   ProductReviewsStateStatus get status;
   @override
   int get selectedReviews;
+  @override
+  String? get error;
 
   /// Create a copy of ProductReviewsState
   /// with the given fields replaced by the non-null parameter values.
