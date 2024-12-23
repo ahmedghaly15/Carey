@@ -48,6 +48,44 @@ class AuthRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CheckoutProcess]
+class CheckoutProcessRoute extends PageRouteInfo<void> {
+  const CheckoutProcessRoute({List<PageRouteInfo>? children})
+      : super(
+          CheckoutProcessRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CheckoutProcessRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CheckoutProcess();
+    },
+  );
+}
+
+/// generated route for
+/// [CheckoutView]
+class CheckoutRoute extends PageRouteInfo<void> {
+  const CheckoutRoute({List<PageRouteInfo>? children})
+      : super(
+          CheckoutRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CheckoutRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CheckoutView();
+    },
+  );
+}
+
+/// generated route for
 /// [ForgotPasswordView]
 class ForgotPasswordRoute extends PageRouteInfo<ForgotPasswordRouteArgs> {
   ForgotPasswordRoute({
@@ -219,6 +257,25 @@ class LoginRouteArgs {
 }
 
 /// generated route for
+/// [MakeOfferView]
+class MakeOfferRoute extends PageRouteInfo<void> {
+  const MakeOfferRoute({List<PageRouteInfo>? children})
+      : super(
+          MakeOfferRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MakeOfferRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const MakeOfferView());
+    },
+  );
+}
+
+/// generated route for
 /// [MyWishlistView]
 class MyWishlistRoute extends PageRouteInfo<void> {
   const MyWishlistRoute({List<PageRouteInfo>? children})
@@ -232,9 +289,80 @@ class MyWishlistRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const MyWishlistView();
+      return WrappedRoute(child: const MyWishlistView());
     },
   );
+}
+
+/// generated route for
+/// [Offer]
+class OfferRoute extends PageRouteInfo<void> {
+  const OfferRoute({List<PageRouteInfo>? children})
+      : super(
+          OfferRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OfferRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const Offer();
+    },
+  );
+}
+
+/// generated route for
+/// [OfferStatusView]
+class OfferStatusRoute extends PageRouteInfo<OfferStatusRouteArgs> {
+  OfferStatusRoute({
+    Key? key,
+    required OfferStatus offerStatus,
+    required int offer,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OfferStatusRoute.name,
+          args: OfferStatusRouteArgs(
+            key: key,
+            offerStatus: offerStatus,
+            offer: offer,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OfferStatusRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<OfferStatusRouteArgs>();
+      return OfferStatusView(
+        key: args.key,
+        offerStatus: args.offerStatus,
+        offer: args.offer,
+      );
+    },
+  );
+}
+
+class OfferStatusRouteArgs {
+  const OfferStatusRouteArgs({
+    this.key,
+    required this.offerStatus,
+    required this.offer,
+  });
+
+  final Key? key;
+
+  final OfferStatus offerStatus;
+
+  final int offer;
+
+  @override
+  String toString() {
+    return 'OfferStatusRouteArgs{key: $key, offerStatus: $offerStatus, offer: $offer}';
+  }
 }
 
 /// generated route for
@@ -306,10 +434,17 @@ class PinCodeVerificationRouteArgs {
 
 /// generated route for
 /// [ProductDetailsView]
-class ProductDetailsRoute extends PageRouteInfo<void> {
-  const ProductDetailsRoute({List<PageRouteInfo>? children})
-      : super(
+class ProductDetailsRoute extends PageRouteInfo<ProductDetailsRouteArgs> {
+  ProductDetailsRoute({
+    Key? key,
+    required Car car,
+    List<PageRouteInfo>? children,
+  }) : super(
           ProductDetailsRoute.name,
+          args: ProductDetailsRouteArgs(
+            key: key,
+            car: car,
+          ),
           initialChildren: children,
         );
 
@@ -318,28 +453,29 @@ class ProductDetailsRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const ProductDetailsView();
+      final args = data.argsAs<ProductDetailsRouteArgs>();
+      return ProductDetailsView(
+        key: args.key,
+        car: args.car,
+      );
     },
   );
 }
 
-/// generated route for
-/// [ProductInfo]
-class ProductInfoRoute extends PageRouteInfo<void> {
-  const ProductInfoRoute({List<PageRouteInfo>? children})
-      : super(
-          ProductInfoRoute.name,
-          initialChildren: children,
-        );
+class ProductDetailsRouteArgs {
+  const ProductDetailsRouteArgs({
+    this.key,
+    required this.car,
+  });
 
-  static const String name = 'ProductInfoRoute';
+  final Key? key;
 
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const ProductInfo();
-    },
-  );
+  final Car car;
+
+  @override
+  String toString() {
+    return 'ProductDetailsRouteArgs{key: $key, car: $car}';
+  }
 }
 
 /// generated route for
@@ -524,10 +660,17 @@ class SetFingerprintRouteArgs {
 
 /// generated route for
 /// [SpecialOffersView]
-class SpecialOffersRoute extends PageRouteInfo<void> {
-  const SpecialOffersRoute({List<PageRouteInfo>? children})
-      : super(
+class SpecialOffersRoute extends PageRouteInfo<SpecialOffersRouteArgs> {
+  SpecialOffersRoute({
+    Key? key,
+    required FetchSpecialOffersResponse specialOffers,
+    List<PageRouteInfo>? children,
+  }) : super(
           SpecialOffersRoute.name,
+          args: SpecialOffersRouteArgs(
+            key: key,
+            specialOffers: specialOffers,
+          ),
           initialChildren: children,
         );
 
@@ -536,9 +679,29 @@ class SpecialOffersRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const SpecialOffersView();
+      final args = data.argsAs<SpecialOffersRouteArgs>();
+      return SpecialOffersView(
+        key: args.key,
+        specialOffers: args.specialOffers,
+      );
     },
   );
+}
+
+class SpecialOffersRouteArgs {
+  const SpecialOffersRouteArgs({
+    this.key,
+    required this.specialOffers,
+  });
+
+  final Key? key;
+
+  final FetchSpecialOffersResponse specialOffers;
+
+  @override
+  String toString() {
+    return 'SpecialOffersRouteArgs{key: $key, specialOffers: $specialOffers}';
+  }
 }
 
 /// generated route for
@@ -600,10 +763,17 @@ class StartWelcomeRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [TopDealsView]
-class TopDealsRoute extends PageRouteInfo<void> {
-  const TopDealsRoute({List<PageRouteInfo>? children})
-      : super(
+class TopDealsRoute extends PageRouteInfo<TopDealsRouteArgs> {
+  TopDealsRoute({
+    Key? key,
+    required HomeResponseData homeData,
+    List<PageRouteInfo>? children,
+  }) : super(
           TopDealsRoute.name,
+          args: TopDealsRouteArgs(
+            key: key,
+            homeData: homeData,
+          ),
           initialChildren: children,
         );
 
@@ -612,9 +782,30 @@ class TopDealsRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return WrappedRoute(child: const TopDealsView());
+      final args = data.argsAs<TopDealsRouteArgs>();
+      return WrappedRoute(
+          child: TopDealsView(
+        key: args.key,
+        homeData: args.homeData,
+      ));
     },
   );
+}
+
+class TopDealsRouteArgs {
+  const TopDealsRouteArgs({
+    this.key,
+    required this.homeData,
+  });
+
+  final Key? key;
+
+  final HomeResponseData homeData;
+
+  @override
+  String toString() {
+    return 'TopDealsRouteArgs{key: $key, homeData: $homeData}';
+  }
 }
 
 /// generated route for

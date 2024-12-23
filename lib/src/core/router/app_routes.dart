@@ -42,14 +42,25 @@ List<AutoRoute> get appRoutes => [
       _buildCustomRoute(page: SpecialOffersRoute.page),
       _buildCustomRoute(page: TopDealsRoute.page),
       _buildCustomRoute(page: MyWishlistRoute.page),
+      _buildCustomRoute(page: ProductDetailsRoute.page),
+      _buildCustomRoute(page: ProductReviewsRoute.page),
       _buildCustomRoute(
-        page: ProductInfoRoute.page,
+        page: OfferRoute.page,
         children: [
           _buildCustomRoute(
             initial: true,
-            page: ProductDetailsRoute.page,
+            page: MakeOfferRoute.page,
           ),
-          _buildCustomRoute(page: ProductReviewsRoute.page),
+          _buildCustomRoute(page: OfferStatusRoute.page),
+        ],
+      ),
+      _buildCustomRoute(
+        page: CheckoutProcessRoute.page,
+        children: [
+          _buildCustomRoute(
+            initial: true,
+            page: CheckoutRoute.page,
+          ),
         ],
       ),
     ];

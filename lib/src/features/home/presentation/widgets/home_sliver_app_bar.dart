@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/core/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/widgets/account_default_image.dart';

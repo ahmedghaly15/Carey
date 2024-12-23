@@ -62,4 +62,16 @@ class AppConstants {
   ];
   static const double productDetailsStartPadVal = 23;
   static const double pad19 = 19;
+  static Decoration get checkoutContainerDecoration => BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.r),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, 4.h),
+            blurRadius: 4.r,
+            spreadRadius: 0,
+            color: Colors.black.withOpacity(0.25),
+          ),
+        ],
+      );
 }

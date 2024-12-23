@@ -5,11 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
-import 'package:carey/src/features/home/presentation/widgets/special_offers_page_view.dart';
+import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
+import 'package:carey/src/features/home/presentation/widgets/special_offer_item.dart';
 
 @RoutePage()
 class SpecialOffersView extends StatelessWidget {
-  const SpecialOffersView({super.key});
+  const SpecialOffersView({super.key, required this.specialOffers});
+
+  final FetchSpecialOffersResponse specialOffers;
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +27,12 @@ class SpecialOffersView extends StatelessWidget {
                 horizontal: AppConstants.screenHorizontalPaddingVal.w,
               ),
               sliver: SliverList.builder(
-                itemCount: 12,
+                itemCount: specialOffers.data.length,
                 itemBuilder: (_, index) => Container(
                   margin: EdgeInsets.only(bottom: 19.h),
-                  child: const SpecialOffersPageView(),
+                  child: SpecialOfferItem(
+                    specialOffer: specialOffers.data[index],
+                  ),
                 ),
               ),
             ),

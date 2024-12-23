@@ -74,19 +74,17 @@ class PrimaryButton extends StatelessWidget {
           ),
         ),
         child: child ??
-            FittedBox(
-              child: Text(
-                text!,
-                style: textStyle ??
-                    AppTextStyles.font20SemiBoldWhite.copyWith(
-                      fontSize: fontSize?.sp ?? 20.sp,
-                      color: isOutlined
-                          ? AppColors.primaryColor
-                          : textColor ?? Colors.white,
-                    ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
+            Text(
+              text!,
+              style: textStyle ??
+                  AppTextStyles.font20SemiBoldWhite.copyWith(
+                    fontSize: fontSize?.sp ?? 20.sp,
+                    color: isOutlined
+                        ? AppColors.primaryColor
+                        : textColor ?? Colors.white,
+                  ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
       ),
     );

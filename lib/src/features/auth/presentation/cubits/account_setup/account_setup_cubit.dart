@@ -1,14 +1,15 @@
 import 'dart:io';
 
-import 'package:carey/src/core/services/location_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:carey/src/core/services/location_service.dart';
 import 'package:carey/src/core/usecase/api_usecase.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/features/auth/data/datasources/auth_local_data_source.dart';
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
+import 'package:carey/src/features/auth/domain/usecases/fetch_my_profile.dart';
 import 'package:carey/src/features/auth/domain/usecases/pick_compressed_img.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_details.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_img.dart';
@@ -18,11 +19,13 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
   final UpdateProfileDetails updateProfileDetailsUseCase;
   final UpdateProfileImg updateProfileImgUseCase;
   final PickCompressedImg pickCompressedImgUseCase;
+  final FetchMyProfile fetchMyProfileUseCase;
 
   AccountSetupCubit({
     required this.updateProfileDetailsUseCase,
     required this.updateProfileImgUseCase,
     required this.pickCompressedImgUseCase,
+    required this.fetchMyProfileUseCase,
   }) : super(AccountSetupState.initial()) {
     _initFormAttributes();
   }
@@ -63,7 +66,8 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
     );
     result.when(
       success: (_) async {
-        await _updateCurrentUserDataAndSecureIt();
+        _updateCurrentUserData();
+        await AuthLocalDataSource.secureUserData(currentUserData!);
         emit(
           state.copyWith(
             status: AccountSetupStateStatus.updateProfileSuccess,
@@ -80,17 +84,14 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
     );
   }
 
-  Future<void> _updateCurrentUserDataAndSecureIt() async {
-    currentUserData = currentUserData!.copyWith(
-      user: currentUserData!.user.copyWith(
-        fullName: fullNameController.text.trim(),
-        nickName: nickNameController.text.trim(),
-        address: addressController.text.trim(),
-        phone: phoneNumber,
-        gender: genderController.text,
-      ),
+  void _updateCurrentUserData() {
+    currentUserData = currentUserData!.copyWith.user(
+      fullName: fullNameController.text.trim(),
+      nickName: nickNameController.text.trim(),
+      address: addressController.text.trim(),
+      phone: phoneNumber,
+      gender: genderController.text,
     );
-    await AuthLocalDataSource.secureUserData(currentUserData!);
   }
 
   void pickProfileImg() async {
@@ -104,6 +105,23 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
     }
   }
 
+  Future<void> _fetchMyProfile() async {
+    emit(state.copyWith(
+      status: AccountSetupStateStatus.fetchMyProfileLoading,
+    ));
+    final result = await fetchMyProfileUseCase(const NoParams(), _cancelToken);
+    result.when(
+      success: (_) => emit(state.copyWith(
+        status: AccountSetupStateStatus.fetchMyProfileSuccess,
+        currentUserData: currentUserData,
+      )),
+      failure: (failure) => emit(state.copyWith(
+        status: AccountSetupStateStatus.fetchMyProfileError,
+        error: failure.error[0],
+      )),
+    );
+  }
+
   Future<void> updateProfileImg() async {
     emit(state.copyWith(
       status: AccountSetupStateStatus.updateProfileImgLoading,
@@ -113,9 +131,13 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
       _cancelToken,
     );
     result.when(
-      success: (_) => emit(state.copyWith(
-        status: AccountSetupStateStatus.updateProfileImgSuccess,
-      )),
+      success: (_) async {
+        await _fetchMyProfile();
+        await AuthLocalDataSource.secureUserData(currentUserData!);
+        emit(state.copyWith(
+          status: AccountSetupStateStatus.updateProfileImgSuccess,
+        ));
+      },
       failure: (failure) => emit(state.copyWith(
         status: AccountSetupStateStatus.updateProfileImgError,
         error: failure.error[0],
