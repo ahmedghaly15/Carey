@@ -1,3 +1,4 @@
+import 'package:carey/src/features/product_reviews/data/models/fetch_rates_response.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:carey/src/core/models/car.dart';
@@ -19,5 +20,7 @@ class HiveHelper {
     Hive.registerAdapter(SpecialOfferAdapter());
     Hive.registerAdapter(FetchMyWishlistResponseAdapter());
     Hive.registerAdapter(CarWishlistAdapter());
+    Hive.registerAdapter(RateResponseItemAdapter());
+    Hive.registerAdapter(FetchRatesResponseAdapter());
   }
 }

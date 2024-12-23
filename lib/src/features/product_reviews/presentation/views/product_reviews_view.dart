@@ -18,8 +18,8 @@ class ProductReviewsView extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<ProductReviewsCubit>.value(
-      value: getIt.get<ProductReviewsCubit>(),
+    return BlocProvider<ProductReviewsCubit>(
+      create: (_) => getIt.get<ProductReviewsCubit>(),
       child: this,
     );
   }

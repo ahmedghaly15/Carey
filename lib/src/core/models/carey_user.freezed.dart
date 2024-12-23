@@ -21,7 +21,7 @@ CareyUser _$CareyUserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CareyUser {
   int get id => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   UserRole? get role => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
   String? get fullName => throw _privateConstructorUsedError;
@@ -55,7 +55,7 @@ abstract class $CareyUserCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String email,
+      String? email,
       UserRole? role,
       String? password,
       String? fullName,
@@ -88,7 +88,7 @@ class _$CareyUserCopyWithImpl<$Res, $Val extends CareyUser>
   @override
   $Res call({
     Object? id = null,
-    Object? email = null,
+    Object? email = freezed,
     Object? role = freezed,
     Object? password = freezed,
     Object? fullName = freezed,
@@ -109,10 +109,10 @@ class _$CareyUserCopyWithImpl<$Res, $Val extends CareyUser>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -183,7 +183,7 @@ abstract class _$$CareyUserImplCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      String email,
+      String? email,
       UserRole? role,
       String? password,
       String? fullName,
@@ -214,7 +214,7 @@ class __$$CareyUserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? email = null,
+    Object? email = freezed,
     Object? role = freezed,
     Object? password = freezed,
     Object? fullName = freezed,
@@ -235,10 +235,10 @@ class __$$CareyUserImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -305,7 +305,7 @@ class __$$CareyUserImplCopyWithImpl<$Res>
 class _$CareyUserImpl implements _CareyUser {
   const _$CareyUserImpl(
       {required this.id,
-      required this.email,
+      this.email,
       this.role,
       this.password,
       this.fullName,
@@ -327,7 +327,7 @@ class _$CareyUserImpl implements _CareyUser {
   @override
   final int id;
   @override
-  final String email;
+  final String? email;
   @override
   final UserRole? role;
   @override
@@ -434,7 +434,7 @@ class _$CareyUserImpl implements _CareyUser {
 abstract class _CareyUser implements CareyUser {
   const factory _CareyUser(
       {required final int id,
-      required final String email,
+      final String? email,
       final UserRole? role,
       final String? password,
       final String? fullName,
@@ -456,7 +456,7 @@ abstract class _CareyUser implements CareyUser {
   @override
   int get id;
   @override
-  String get email;
+  String? get email;
   @override
   UserRole? get role;
   @override
