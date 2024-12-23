@@ -129,4 +129,5 @@ class AppStrings {
   static const String yourWishlistEmpty =
       'Your wishlist is empty!\nStart adding cars you love.';
   static const String thisBrandHasNoCars = 'This brand has no cars';
+  static const String all = 'All';
 }
