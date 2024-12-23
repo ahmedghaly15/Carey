@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:carey/src/features/home/data/datasource/home_local_datasource.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,7 +30,7 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
     return SafeArea(
       child: RefreshIndicator(
         color: AppColors.primaryColor,
-        onRefresh: () async => await context.read<HomeCubit>().fetchHome(),
+        onRefresh: () async => await _deleteCacheAndRefetchData(context),
         child: BlocBuilder<HomeCubit, HomeState>(
           buildWhen: (_, current) => _buildWhen(current.status),
           builder: (_, state) {
@@ -37,20 +38,23 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
               case HomeStateStatus.fetchHomeDataLoading:
                 return const HomeShimmerLoading();
               case HomeStateStatus.fetchHomeDataSuccess:
-                return HomeBody(
-                  data: state.homeData!,
-                  specialOffers: state.specialOffers!,
-                );
+                return state.specialOffers != null
+                    ? HomeBody(
+                        data: state.homeData!,
+                        specialOffers: state.specialOffers!,
+                      )
+                    : const HomeShimmerLoading();
               case HomeStateStatus.fetchHomeDataFailure:
-                return state.homeData != null
+              case HomeStateStatus.fetchSpecialOffersError:
+                return (state.homeData != null && state.specialOffers != null)
                     ? HomeBody(
                         data: state.homeData!,
                         specialOffers: state.specialOffers!,
                       )
                     : CustomErrorWidget(
                         error: state.error!,
-                        tryAgainOnPressed: () =>
-                            context.read<HomeCubit>().fetchHome(),
+                        tryAgainOnPressed: () async =>
+                            await _refetchHomeData(context),
                       );
               default:
                 return const HomeShimmerLoading();
@@ -61,9 +65,20 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
     );
   }
 
+  Future<void> _deleteCacheAndRefetchData(BuildContext context) async {
+    await HomeLocalDataSource.deleteCachedHomeData();
+    await _refetchHomeData(context);
+  }
+
+  Future<void> _refetchHomeData(BuildContext context) async {
+    await context.read<HomeCubit>().fetchHome();
+    await context.read<HomeCubit>().fetchSpecialOffers();
+  }
+
   bool _buildWhen(HomeStateStatus currentStatus) {
     return currentStatus == HomeStateStatus.fetchHomeDataLoading ||
         currentStatus == HomeStateStatus.fetchHomeDataSuccess ||
-        currentStatus == HomeStateStatus.fetchHomeDataFailure;
+        currentStatus == HomeStateStatus.fetchHomeDataFailure ||
+        currentStatus == HomeStateStatus.fetchSpecialOffersError;
   }
 }
