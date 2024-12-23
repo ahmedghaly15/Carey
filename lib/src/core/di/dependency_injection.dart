@@ -1,5 +1,6 @@
 import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:carey/src/features/product_reviews/data/api/product_reviews_api_service.dart';
+import 'package:carey/src/features/product_reviews/data/datasources/product_reviews_local_datasource.dart';
 import 'package:carey/src/features/product_reviews/data/repositories/product_reviews_repo.dart';
 import 'package:carey/src/features/wishlist/data/apis/wishlist_api_service.dart';
 import 'package:carey/src/features/wishlist/data/datasource/wishlist_local_datasource.dart';
@@ -115,6 +116,9 @@ void _setupForLocalDataSources() {
   getIt.registerLazySingleton<WishlistLocalDatasource>(
     () => const WishlistLocalDatasource(),
   );
+  getIt.registerLazySingleton<ProductReviewsLocalDatasource>(
+    () => const ProductReviewsLocalDatasource(),
+  );
 }
 
 void _setupForRepos() {
@@ -155,7 +159,10 @@ void _setupForRepos() {
     ),
   );
   getIt.registerLazySingleton<ProductReviewsRepo>(
-    () => ProductReviewsRepo(getIt.get<ProductReviewsApiService>()),
+    () => ProductReviewsRepo(
+      getIt.get<ProductReviewsApiService>(),
+      getIt.get<ProductReviewsLocalDatasource>(),
+    ),
   );
 }
 
