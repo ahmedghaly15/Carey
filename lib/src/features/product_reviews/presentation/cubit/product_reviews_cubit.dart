@@ -51,7 +51,7 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
     );
   }
 
-  void fetchRates(int carId) async {
+  Future<void> fetchRates(int carId) async {
     emit(state.copyWith(status: ProductReviewsStateStatus.fetchRatesLoading));
     final result = await _repo.fetchRates(
       FetchRatesRequestParams(carId: carId),

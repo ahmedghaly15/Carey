@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:carey/src/features/product_reviews/data/datasources/product_reviews_local_datasource.dart';
 import 'package:carey/src/features/product_reviews/data/models/product_reviews_view_params.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,20 +30,26 @@ class ProductReviewsView extends StatelessWidget implements AutoRouteWrapper {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            CustomSliverAppBar(titleText: params.rateAndReviewsCount),
-            const SliverToBoxAdapter(child: ReviewsListView()),
-            SliverPadding(
-              padding: EdgeInsetsDirectional.only(
-                start: AppConstants.pad19.w,
-                end: AppConstants.pad19.w,
-                top: 29.h,
+        child: RefreshIndicator.adaptive(
+          onRefresh: () async {
+            await ProductReviewsLocalDatasource.deleteRates(params.carId);
+            await context.read<ProductReviewsCubit>().fetchRates(params.carId);
+          },
+          child: CustomScrollView(
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              CustomSliverAppBar(titleText: params.rateAndReviewsCount),
+              const SliverToBoxAdapter(child: ReviewsListView()),
+              SliverPadding(
+                padding: EdgeInsetsDirectional.only(
+                  start: AppConstants.pad19.w,
+                  end: AppConstants.pad19.w,
+                  top: 29.h,
+                ),
+                sliver: const ReviewersSliverList(),
               ),
-              sliver: const ReviewersSliverList(),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
