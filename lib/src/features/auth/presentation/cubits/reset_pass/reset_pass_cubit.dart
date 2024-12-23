@@ -75,7 +75,7 @@ class ResetPassCubit extends Cubit<ResetPassState> {
   Future<void> handleRememberingEmailAndPassword() async {
     await RememberMeHelper.handleRememberingEmailAndPassword(
       isRemembered: state.rememberMe,
-      emailValue: currentUserData!.user.email,
+      emailValue: currentUserData!.user.email!,
       passwordValue: passController.text,
     );
   }

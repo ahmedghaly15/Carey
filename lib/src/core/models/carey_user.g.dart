@@ -19,7 +19,7 @@ Map<String, dynamic> _$UserRoleToJson(UserRole instance) => <String, dynamic>{
 _$CareyUserImpl _$$CareyUserImplFromJson(Map<String, dynamic> json) =>
     _$CareyUserImpl(
       id: (json['id'] as num).toInt(),
-      email: json['email'] as String,
+      email: json['email'] as String?,
       role: json['role'] == null
           ? null
           : UserRole.fromJson(json['role'] as Map<String, dynamic>),

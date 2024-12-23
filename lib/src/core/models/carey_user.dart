@@ -8,7 +8,7 @@ class CareyUser with _$CareyUser {
   @JsonSerializable(explicitToJson: true)
   const factory CareyUser({
     required int id,
-    required String email,
+    String? email,
     UserRole? role,
     String? password,
     String? fullName,
