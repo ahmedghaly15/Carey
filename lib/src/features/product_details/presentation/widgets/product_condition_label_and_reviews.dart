@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
-import 'package:carey/src/core/widgets/product_condition_label.dart';
+import 'package:carey/src/core/widgets/condition_label.dart';
 
 class ProductConditionLabelAndReviews extends StatelessWidget {
   const ProductConditionLabelAndReviews({super.key});
@@ -13,7 +13,7 @@ class ProductConditionLabelAndReviews extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const ProductConditionLabel(),
+        const ConditionLabel(),
         MySizedBox.width10,
         const Icon(
           Icons.star_half_rounded,

@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:carey/src/core/router/app_router.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carey/src/core/themes/app_text_styles.dart';
@@ -30,7 +32,7 @@ class PriceAndMakeOfferButton extends StatelessWidget {
         MySizedBox.width27,
         Expanded(
           child: PrimaryButton(
-            onPressed: () {},
+            onPressed: () => context.pushRoute(const OfferRoute()),
             text: AppStrings.makeAnOffer,
             borderRadius: 20,
           ),
