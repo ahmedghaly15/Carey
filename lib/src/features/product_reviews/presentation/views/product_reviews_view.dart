@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:carey/src/features/product_reviews/data/models/product_reviews_view_params.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,14 +13,14 @@ import 'package:carey/src/features/product_reviews/presentation/widgets/reviews_
 
 @RoutePage()
 class ProductReviewsView extends StatelessWidget implements AutoRouteWrapper {
-  const ProductReviewsView({super.key, required this.review});
+  const ProductReviewsView({super.key, required this.params});
 
-  final String review;
+  final ProductReviewsViewParams params;
 
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider<ProductReviewsCubit>(
-      create: (_) => getIt.get<ProductReviewsCubit>(),
+      create: (_) => getIt.get<ProductReviewsCubit>()..fetchRates(params.carId),
       child: this,
     );
   }
@@ -31,7 +32,7 @@ class ProductReviewsView extends StatelessWidget implements AutoRouteWrapper {
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
-            CustomSliverAppBar(titleText: review),
+            CustomSliverAppBar(titleText: params.rateAndReviewsCount),
             const SliverToBoxAdapter(child: ReviewsListView()),
             SliverPadding(
               padding: EdgeInsetsDirectional.only(
