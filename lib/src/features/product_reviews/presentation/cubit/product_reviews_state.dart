@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'package:carey/src/features/product_reviews/data/models/fetch_rates_response.dart';
+
 part 'product_reviews_state.freezed.dart';
 
 enum ProductReviewsStateStatus {
@@ -11,6 +13,9 @@ enum ProductReviewsStateStatus {
   deleteReviewLoading,
   deleteReviewSuccess,
   deleteReviewError,
+  fetchRatesLoading,
+  fetchRatesSuccess,
+  fetchRatesError,
 }
 
 @freezed
@@ -18,6 +23,7 @@ class ProductReviewsState with _$ProductReviewsState {
   const factory ProductReviewsState({
     required ProductReviewsStateStatus status,
     @Default(0) int selectedReviews,
+    FetchRatesResponse? ratesResponse,
     String? error,
   }) = _ProductReviewsState;
 

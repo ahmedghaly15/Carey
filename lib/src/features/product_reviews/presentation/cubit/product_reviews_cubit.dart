@@ -1,4 +1,5 @@
 import 'package:carey/src/features/product_reviews/data/models/add_review_request_params.dart';
+import 'package:carey/src/features/product_reviews/data/models/fetch_rates_request_params.dart';
 import 'package:carey/src/features/product_reviews/data/repositories/product_reviews_repo.dart';
 import 'package:carey/src/features/product_reviews/presentation/cubit/product_reviews_state.dart';
 import 'package:dio/dio.dart';
@@ -44,6 +45,24 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
       )),
       failure: (failure) => emit(state.copyWith(
         status: ProductReviewsStateStatus.deleteReviewError,
+        error: failure.error[0],
+      )),
+    );
+  }
+
+  void fetchRates(int carId) async {
+    emit(state.copyWith(status: ProductReviewsStateStatus.fetchRatesLoading));
+    final result = await _repo.fetchRates(
+      FetchRatesRequestParams(carId: carId),
+      _cancelToken,
+    );
+    result.when(
+      success: (ratesResponse) => emit(state.copyWith(
+        status: ProductReviewsStateStatus.fetchRatesSuccess,
+        ratesResponse: ratesResponse,
+      )),
+      failure: (failure) => emit(state.copyWith(
+        status: ProductReviewsStateStatus.fetchRatesError,
         error: failure.error[0],
       )),
     );
