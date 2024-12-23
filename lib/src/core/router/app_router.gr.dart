@@ -483,13 +483,13 @@ class ProductDetailsRouteArgs {
 class ProductReviewsRoute extends PageRouteInfo<ProductReviewsRouteArgs> {
   ProductReviewsRoute({
     Key? key,
-    required String review,
+    required ProductReviewsViewParams params,
     List<PageRouteInfo>? children,
   }) : super(
           ProductReviewsRoute.name,
           args: ProductReviewsRouteArgs(
             key: key,
-            review: review,
+            params: params,
           ),
           initialChildren: children,
         );
@@ -503,7 +503,7 @@ class ProductReviewsRoute extends PageRouteInfo<ProductReviewsRouteArgs> {
       return WrappedRoute(
           child: ProductReviewsView(
         key: args.key,
-        review: args.review,
+        params: args.params,
       ));
     },
   );
@@ -512,16 +512,16 @@ class ProductReviewsRoute extends PageRouteInfo<ProductReviewsRouteArgs> {
 class ProductReviewsRouteArgs {
   const ProductReviewsRouteArgs({
     this.key,
-    required this.review,
+    required this.params,
   });
 
   final Key? key;
 
-  final String review;
+  final ProductReviewsViewParams params;
 
   @override
   String toString() {
-    return 'ProductReviewsRouteArgs{key: $key, review: $review}';
+    return 'ProductReviewsRouteArgs{key: $key, params: $params}';
   }
 }
 

@@ -23,6 +23,7 @@ import 'package:carey/src/features/make_offer/presentation/views/make_offer_view
 import 'package:carey/src/features/make_offer/presentation/views/offer_status_view.dart';
 import 'package:carey/src/features/orders/orders_view.dart';
 import 'package:carey/src/features/product_details/presentation/views/product_details_view.dart';
+import 'package:carey/src/features/product_reviews/data/models/product_reviews_view_params.dart';
 import 'package:carey/src/features/product_reviews/presentation/views/product_reviews_view.dart';
 import 'package:carey/src/features/profile/profile_view.dart';
 import 'package:carey/src/features/splash/presentation/views/splash_view.dart';
