@@ -1,9 +1,10 @@
+import 'package:dio/dio.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:carey/src/features/product_reviews/data/models/add_review_request_params.dart';
 import 'package:carey/src/features/product_reviews/data/models/fetch_rates_request_params.dart';
 import 'package:carey/src/features/product_reviews/data/repositories/product_reviews_repo.dart';
 import 'package:carey/src/features/product_reviews/presentation/cubit/product_reviews_state.dart';
-import 'package:dio/dio.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductReviewsCubit extends Cubit<ProductReviewsState> {
   final ProductReviewsRepo _repo;

@@ -1,8 +1,9 @@
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:json_annotation/json_annotation.dart';
+
 import 'package:carey/src/core/helpers/hive_type_ids.dart';
 import 'package:carey/src/core/models/car.dart';
 import 'package:carey/src/core/models/carey_user.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'fetch_rates_response.g.dart';
 
