@@ -65,7 +65,7 @@ class RateResponseItemAdapter extends TypeAdapter<RateResponseItem> {
       comment: fields[2] as String,
       createdAt: fields[3] as String,
       user: fields[4] as CareyUser,
-      car: fields[5] as CarUser,
+      car: fields[5] as Car,
     );
   }
 
@@ -102,8 +102,9 @@ class RateResponseItemAdapter extends TypeAdapter<RateResponseItem> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-FetchRatesResponse _$FetchRatesResponseFromJson(Map<String, dynamic> json) =>
-    FetchRatesResponse(
+_$FetchRatesResponseImpl _$$FetchRatesResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$FetchRatesResponseImpl(
       totalItems: (json['totalItems'] as num).toInt(),
       totalPages: (json['totalPages'] as num).toInt(),
       currentPage: (json['currentPage'] as num).toInt(),
@@ -112,7 +113,8 @@ FetchRatesResponse _$FetchRatesResponseFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$FetchRatesResponseToJson(FetchRatesResponse instance) =>
+Map<String, dynamic> _$$FetchRatesResponseImplToJson(
+        _$FetchRatesResponseImpl instance) =>
     <String, dynamic>{
       'totalItems': instance.totalItems,
       'totalPages': instance.totalPages,
@@ -120,17 +122,19 @@ Map<String, dynamic> _$FetchRatesResponseToJson(FetchRatesResponse instance) =>
       'data': instance.rates.map((e) => e.toJson()).toList(),
     };
 
-RateResponseItem _$RateResponseItemFromJson(Map<String, dynamic> json) =>
-    RateResponseItem(
+_$RateResponseItemImpl _$$RateResponseItemImplFromJson(
+        Map<String, dynamic> json) =>
+    _$RateResponseItemImpl(
       id: (json['id'] as num).toInt(),
       rate: (json['rate'] as num).toInt(),
       comment: json['comment'] as String,
       createdAt: json['createdAt'] as String,
       user: CareyUser.fromJson(json['user'] as Map<String, dynamic>),
-      car: CarUser.fromJson(json['car'] as Map<String, dynamic>),
+      car: Car.fromJson(json['car'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$RateResponseItemToJson(RateResponseItem instance) =>
+Map<String, dynamic> _$$RateResponseItemImplToJson(
+        _$RateResponseItemImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'rate': instance.rate,
