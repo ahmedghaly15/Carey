@@ -24,10 +24,10 @@ jobs:
         with:
           flutter-version: '3.27.0' # Use the required Flutter version
       
-      - name: Create .env File
-        run: echo ${{ secrets.ENV_FILE_CONTENT }} > .env
+      - name: Create .env File using GitHub Secrets
+        run: echo ${{ secrets.ENV_FILE_CONTENT }} > ../../.env
 
-      - name: Clean up
+      - name: Clean up the project
         run: flutter clean
 
       - name: Install Dependencies
