@@ -6,7 +6,7 @@ import 'package:retrofit/retrofit.dart';
 
 part 'wishlist_api_service.g.dart';
 
-@RestApi(baseUrl: EndPoints.baseUrl)
+@RestApi()
 abstract class WishlistApiService {
   factory WishlistApiService(Dio dio, {String baseUrl}) = _WishlistApiService;
 
