@@ -1,11 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/features/home/data/datasource/home_local_datasource.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:carey/src/core/api/api_error_message.dart';
 import 'package:carey/src/core/di/dependency_injection.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/widgets/custom_error_widget.dart';
+import 'package:carey/src/features/home/data/datasource/home_local_datasource.dart';
 import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:carey/src/features/home/presentation/cubit/home_state.dart';
 import 'package:carey/src/features/home/presentation/widgets/home_body.dart';
@@ -38,15 +39,20 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
               case HomeStateStatus.fetchHomeDataLoading:
                 return const HomeShimmerLoading();
               case HomeStateStatus.fetchHomeDataSuccess:
-                return state.specialOffers != null
+              case HomeStateStatus.fetchSpecialOffersSuccess:
+                return (state.homeData != null || state.specialOffers != null)
                     ? HomeBody(
                         data: state.homeData!,
                         specialOffers: state.specialOffers!,
                       )
-                    : const HomeShimmerLoading();
+                    : CustomErrorWidget(
+                        error: ApiErrorMessage.defaultError,
+                        tryAgainOnPressed: () async =>
+                            await _refetchHomeData(context),
+                      );
               case HomeStateStatus.fetchHomeDataFailure:
               case HomeStateStatus.fetchSpecialOffersError:
-                return (state.homeData != null && state.specialOffers != null)
+                return (state.homeData != null || state.specialOffers != null)
                     ? HomeBody(
                         data: state.homeData!,
                         specialOffers: state.specialOffers!,
@@ -79,6 +85,7 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
     return currentStatus == HomeStateStatus.fetchHomeDataLoading ||
         currentStatus == HomeStateStatus.fetchHomeDataSuccess ||
         currentStatus == HomeStateStatus.fetchHomeDataFailure ||
+        currentStatus == HomeStateStatus.fetchSpecialOffersSuccess ||
         currentStatus == HomeStateStatus.fetchSpecialOffersError;
   }
 }
