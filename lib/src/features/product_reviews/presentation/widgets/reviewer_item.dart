@@ -1,21 +1,13 @@
 import 'package:carey/src/core/themes/app_text_styles.dart';
+import 'package:carey/src/core/utils/app_assets.dart';
+import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/widgets/custom_cached_network_image.dart';
-import 'package:carey/src/core/widgets/favorite_icon_button_bloc_listener.dart';
+import 'package:carey/src/core/widgets/list_outlined_button.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
+import 'package:carey/src/features/product_reviews/presentation/widgets/favorite_review_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-class ReviewersSliverList extends StatelessWidget {
-  const ReviewersSliverList({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverList.builder(
-      itemBuilder: (_, index) => const ReviewerItem(),
-      itemCount: 18,
-    );
-  }
-}
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ReviewerItem extends StatelessWidget {
   const ReviewerItem({super.key});
@@ -28,6 +20,7 @@ class ReviewerItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            spacing: 7.w,
             children: [
               CustomCachedNetworkImage(
                 imageUrl:
@@ -37,12 +30,49 @@ class ReviewerItem extends StatelessWidget {
                   backgroundImage: image,
                 ),
               ),
-              MySizedBox.width7,
               Text(
                 'Darlene Robertson',
                 style: AppTextStyles.font16Regular,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
+              ),
+              const Spacer(),
+              Container(
+                margin: EdgeInsetsDirectional.only(end: 6.w),
+                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(34.r),
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 1.w,
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 5.w,
+                  children: [
+                    Icon(
+                      Icons.star,
+                      size: 12.h,
+                    ),
+                    Text(
+                      '5',
+                      style: AppTextStyles.font16Regular,
+                    ),
+                  ],
+                ),
+              ),
+              IconButton(
+                style: IconButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  minimumSize: Size.zero,
+                  iconSize: 24.h,
+                ),
+                onPressed: () {},
+                icon: SvgPicture.asset(Assets.svgsExtraBoldMoreIcon),
               ),
             ],
           ),
@@ -52,12 +82,12 @@ class ReviewerItem extends StatelessWidget {
             style: AppTextStyles.font13Regular.copyWith(
               color: Colors.black.withOpacity(0.8),
             ),
+            textAlign: TextAlign.justify,
           ),
           MySizedBox.height13,
           Row(
             children: [
-              //  FavoriteIconButton(padding: EdgeInsets.zero, carId: car.id,
-              //     wishlistLength: car.wishlists?.length ?? 0,),
+              const FavoriteReviewIconButton(),
               MySizedBox.width5,
               Text(
                 '830',
