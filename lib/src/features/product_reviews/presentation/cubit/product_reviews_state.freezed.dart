@@ -17,8 +17,11 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ProductReviewsState {
   ProductReviewsStateStatus get status => throw _privateConstructorUsedError;
-  int get selectedRate => throw _privateConstructorUsedError;
+  int get selectedRateIndex => throw _privateConstructorUsedError;
   FetchRatesResponse? get ratesResponse => throw _privateConstructorUsedError;
+  FetchRatesResponse? get allRatesResponse =>
+      throw _privateConstructorUsedError;
+  int? get intendedToFetchCarId => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
 
   /// Create a copy of ProductReviewsState
@@ -36,11 +39,14 @@ abstract class $ProductReviewsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {ProductReviewsStateStatus status,
-      int selectedRate,
+      int selectedRateIndex,
       FetchRatesResponse? ratesResponse,
+      FetchRatesResponse? allRatesResponse,
+      int? intendedToFetchCarId,
       String? error});
 
   $FetchRatesResponseCopyWith<$Res>? get ratesResponse;
+  $FetchRatesResponseCopyWith<$Res>? get allRatesResponse;
 }
 
 /// @nodoc
@@ -59,8 +65,10 @@ class _$ProductReviewsStateCopyWithImpl<$Res, $Val extends ProductReviewsState>
   @override
   $Res call({
     Object? status = null,
-    Object? selectedRate = null,
+    Object? selectedRateIndex = null,
     Object? ratesResponse = freezed,
+    Object? allRatesResponse = freezed,
+    Object? intendedToFetchCarId = freezed,
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
@@ -68,14 +76,22 @@ class _$ProductReviewsStateCopyWithImpl<$Res, $Val extends ProductReviewsState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ProductReviewsStateStatus,
-      selectedRate: null == selectedRate
-          ? _value.selectedRate
-          : selectedRate // ignore: cast_nullable_to_non_nullable
+      selectedRateIndex: null == selectedRateIndex
+          ? _value.selectedRateIndex
+          : selectedRateIndex // ignore: cast_nullable_to_non_nullable
               as int,
       ratesResponse: freezed == ratesResponse
           ? _value.ratesResponse
           : ratesResponse // ignore: cast_nullable_to_non_nullable
               as FetchRatesResponse?,
+      allRatesResponse: freezed == allRatesResponse
+          ? _value.allRatesResponse
+          : allRatesResponse // ignore: cast_nullable_to_non_nullable
+              as FetchRatesResponse?,
+      intendedToFetchCarId: freezed == intendedToFetchCarId
+          ? _value.intendedToFetchCarId
+          : intendedToFetchCarId // ignore: cast_nullable_to_non_nullable
+              as int?,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -96,6 +112,20 @@ class _$ProductReviewsStateCopyWithImpl<$Res, $Val extends ProductReviewsState>
       return _then(_value.copyWith(ratesResponse: value) as $Val);
     });
   }
+
+  /// Create a copy of ProductReviewsState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FetchRatesResponseCopyWith<$Res>? get allRatesResponse {
+    if (_value.allRatesResponse == null) {
+      return null;
+    }
+
+    return $FetchRatesResponseCopyWith<$Res>(_value.allRatesResponse!, (value) {
+      return _then(_value.copyWith(allRatesResponse: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -108,12 +138,16 @@ abstract class _$$ProductReviewsStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {ProductReviewsStateStatus status,
-      int selectedRate,
+      int selectedRateIndex,
       FetchRatesResponse? ratesResponse,
+      FetchRatesResponse? allRatesResponse,
+      int? intendedToFetchCarId,
       String? error});
 
   @override
   $FetchRatesResponseCopyWith<$Res>? get ratesResponse;
+  @override
+  $FetchRatesResponseCopyWith<$Res>? get allRatesResponse;
 }
 
 /// @nodoc
@@ -130,8 +164,10 @@ class __$$ProductReviewsStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
-    Object? selectedRate = null,
+    Object? selectedRateIndex = null,
     Object? ratesResponse = freezed,
+    Object? allRatesResponse = freezed,
+    Object? intendedToFetchCarId = freezed,
     Object? error = freezed,
   }) {
     return _then(_$ProductReviewsStateImpl(
@@ -139,14 +175,22 @@ class __$$ProductReviewsStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ProductReviewsStateStatus,
-      selectedRate: null == selectedRate
-          ? _value.selectedRate
-          : selectedRate // ignore: cast_nullable_to_non_nullable
+      selectedRateIndex: null == selectedRateIndex
+          ? _value.selectedRateIndex
+          : selectedRateIndex // ignore: cast_nullable_to_non_nullable
               as int,
       ratesResponse: freezed == ratesResponse
           ? _value.ratesResponse
           : ratesResponse // ignore: cast_nullable_to_non_nullable
               as FetchRatesResponse?,
+      allRatesResponse: freezed == allRatesResponse
+          ? _value.allRatesResponse
+          : allRatesResponse // ignore: cast_nullable_to_non_nullable
+              as FetchRatesResponse?,
+      intendedToFetchCarId: freezed == intendedToFetchCarId
+          ? _value.intendedToFetchCarId
+          : intendedToFetchCarId // ignore: cast_nullable_to_non_nullable
+              as int?,
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -160,23 +204,29 @@ class __$$ProductReviewsStateImplCopyWithImpl<$Res>
 class _$ProductReviewsStateImpl implements _ProductReviewsState {
   const _$ProductReviewsStateImpl(
       {required this.status,
-      this.selectedRate = 0,
+      this.selectedRateIndex = 0,
       this.ratesResponse,
+      this.allRatesResponse,
+      this.intendedToFetchCarId,
       this.error});
 
   @override
   final ProductReviewsStateStatus status;
   @override
   @JsonKey()
-  final int selectedRate;
+  final int selectedRateIndex;
   @override
   final FetchRatesResponse? ratesResponse;
+  @override
+  final FetchRatesResponse? allRatesResponse;
+  @override
+  final int? intendedToFetchCarId;
   @override
   final String? error;
 
   @override
   String toString() {
-    return 'ProductReviewsState(status: $status, selectedRate: $selectedRate, ratesResponse: $ratesResponse, error: $error)';
+    return 'ProductReviewsState(status: $status, selectedRateIndex: $selectedRateIndex, ratesResponse: $ratesResponse, allRatesResponse: $allRatesResponse, intendedToFetchCarId: $intendedToFetchCarId, error: $error)';
   }
 
   @override
@@ -185,16 +235,20 @@ class _$ProductReviewsStateImpl implements _ProductReviewsState {
         (other.runtimeType == runtimeType &&
             other is _$ProductReviewsStateImpl &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.selectedRate, selectedRate) ||
-                other.selectedRate == selectedRate) &&
+            (identical(other.selectedRateIndex, selectedRateIndex) ||
+                other.selectedRateIndex == selectedRateIndex) &&
             (identical(other.ratesResponse, ratesResponse) ||
                 other.ratesResponse == ratesResponse) &&
+            (identical(other.allRatesResponse, allRatesResponse) ||
+                other.allRatesResponse == allRatesResponse) &&
+            (identical(other.intendedToFetchCarId, intendedToFetchCarId) ||
+                other.intendedToFetchCarId == intendedToFetchCarId) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, status, selectedRate, ratesResponse, error);
+  int get hashCode => Object.hash(runtimeType, status, selectedRateIndex,
+      ratesResponse, allRatesResponse, intendedToFetchCarId, error);
 
   /// Create a copy of ProductReviewsState
   /// with the given fields replaced by the non-null parameter values.
@@ -209,16 +263,22 @@ class _$ProductReviewsStateImpl implements _ProductReviewsState {
 abstract class _ProductReviewsState implements ProductReviewsState {
   const factory _ProductReviewsState(
       {required final ProductReviewsStateStatus status,
-      final int selectedRate,
+      final int selectedRateIndex,
       final FetchRatesResponse? ratesResponse,
+      final FetchRatesResponse? allRatesResponse,
+      final int? intendedToFetchCarId,
       final String? error}) = _$ProductReviewsStateImpl;
 
   @override
   ProductReviewsStateStatus get status;
   @override
-  int get selectedRate;
+  int get selectedRateIndex;
   @override
   FetchRatesResponse? get ratesResponse;
+  @override
+  FetchRatesResponse? get allRatesResponse;
+  @override
+  int? get intendedToFetchCarId;
   @override
   String? get error;
 

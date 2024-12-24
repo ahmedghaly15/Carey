@@ -22,8 +22,10 @@ enum ProductReviewsStateStatus {
 class ProductReviewsState with _$ProductReviewsState {
   const factory ProductReviewsState({
     required ProductReviewsStateStatus status,
-    @Default(0) int selectedRate,
+    @Default(0) int selectedRateIndex,
     FetchRatesResponse? ratesResponse,
+    FetchRatesResponse? allRatesResponse,
+    int? intendedToFetchCarId,
     String? error,
   }) = _ProductReviewsState;
 
