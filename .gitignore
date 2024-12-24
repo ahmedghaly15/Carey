@@ -47,4 +47,5 @@ windows
 web
 linux
 macos
-/lib/core/api/end_points.dart
+
+/lib/src/core/api/end_points.dart
