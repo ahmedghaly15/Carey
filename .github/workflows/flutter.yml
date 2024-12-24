@@ -23,12 +23,15 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.27.0' # Use the required Flutter version
+      
+      - name: Create .env File
+        run: echo "${{ secrets.ENV_FILE_CONTENT }}" > .env
 
       - name: Install Dependencies
         run: flutter pub get
 
       - name: Build release APK
-        run: flutter build apk --release
+        run: flutter build apk --release --no-tree-shake-icons
 
       - name: Upload release APK
         uses: actions/upload-artifact@v3
