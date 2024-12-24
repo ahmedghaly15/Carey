@@ -1,3 +1,4 @@
+import 'package:carey/src/core/models/carey_user.dart';
 import 'package:carey/src/features/product_reviews/data/models/fetch_rates_response.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -10,6 +11,8 @@ class HiveHelper {
   HiveHelper._();
 
   static void registerAdapters() {
+    Hive.registerAdapter(UserRoleAdapter());
+    Hive.registerAdapter(CareyUserAdapter());
     Hive.registerAdapter(HomeResponseDataAdapter());
     Hive.registerAdapter(CarBrandModelAdapter());
     Hive.registerAdapter(CarAdapter());

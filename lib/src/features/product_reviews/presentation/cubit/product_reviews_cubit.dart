@@ -1,3 +1,5 @@
+import 'package:carey/src/core/utils/app_constants.dart';
+import 'package:carey/src/features/product_reviews/data/models/fetch_rates_response.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,11 +15,11 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
 
   final CancelToken _cancelToken = CancelToken();
 
-  void updateSelectedReviews(int index) {
-    if (state.selectedReviews != index) {
+  void updateSelectedRate(int index) {
+    if (state.selectedRateIndex != index) {
       emit(state.copyWith(
-        status: ProductReviewsStateStatus.updateSelectedReviews,
-        selectedReviews: index,
+        status: ProductReviewsStateStatus.updateSelectedRate,
+        selectedRateIndex: index,
       ));
     }
   }
@@ -51,8 +53,12 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
     );
   }
 
-  void fetchRates(int carId) async {
-    emit(state.copyWith(status: ProductReviewsStateStatus.fetchRatesLoading));
+  FetchRatesResponse? get ratesResponse => state.ratesResponse;
+  Future<void> fetchRates(int carId) async {
+    emit(state.copyWith(
+      status: ProductReviewsStateStatus.fetchRatesLoading,
+      intendedToFetchCarId: carId,
+    ));
     final result = await _repo.fetchRates(
       FetchRatesRequestParams(carId: carId),
       _cancelToken,
@@ -61,11 +67,28 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
       success: (ratesResponse) => emit(state.copyWith(
         status: ProductReviewsStateStatus.fetchRatesSuccess,
         ratesResponse: ratesResponse,
+        allRatesResponse: ratesResponse,
       )),
       failure: (failure) => emit(state.copyWith(
         status: ProductReviewsStateStatus.fetchRatesError,
         error: failure.error[0],
       )),
+    );
+  }
+
+  void updateSelectedRateReviews() {
+    emit(
+      state.copyWith(
+        ratesResponse: state.selectedRateIndex != 0
+            ? state.ratesResponse!.copyWith(
+                rates: state.allRatesResponse!.rates
+                    .where((rateResponseItem) =>
+                        rateResponseItem.rate ==
+                        int.parse(AppConstants.rates[state.selectedRateIndex]))
+                    .toList(),
+              )
+            : state.allRatesResponse,
+      ),
     );
   }
 

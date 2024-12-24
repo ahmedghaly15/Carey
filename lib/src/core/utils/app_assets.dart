@@ -114,6 +114,10 @@ class Assets {
   /// assets/svgs/email-icon.svg
   static const String svgsEmailIcon = "assets/svgs/email-icon.svg";
 
+  /// Assets for svgsExtraBoldMoreIcon
+  /// assets/svgs/extra-bold-more-icon.svg
+  static const String svgsExtraBoldMoreIcon = "assets/svgs/extra-bold-more-icon.svg";
+
   /// Assets for svgsFacebook
   /// assets/svgs/facebook.svg
   static const String svgsFacebook = "assets/svgs/facebook.svg";

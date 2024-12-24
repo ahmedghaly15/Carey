@@ -73,6 +73,7 @@ class PrimaryButton extends StatelessWidget {
             borderRadius?.r ?? 30.0.r,
           ),
         ),
+        minWidth: 0,
         child: child ??
             Text(
               text!,

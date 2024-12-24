@@ -13,7 +13,8 @@ class ProductReviewsLocalDatasource {
     required int carId,
   }) async {
     final box = await Hive.openBox<FetchRatesResponse>(HiveBoxes.rates);
-    debugPrint('*#*#*#*#* RATES RESPONSE HAS BEEN CACHED *#*#*#*#*');
+    debugPrint(
+        '*#*#*#*#* RATES RESPONSE HAS BEEN CACHED for CAR ID $carId *#*#*#*#*');
     await box.put('${HiveKeys.fetchRatesResponse}_$carId', ratesResponse);
   }
 
@@ -25,7 +26,7 @@ class ProductReviewsLocalDatasource {
   static Future<void> deleteRates(int carId) async {
     final box = await Hive.openBox<FetchRatesResponse>(HiveBoxes.rates);
     debugPrint(
-        '*#*#*#*#* CACHED RATES RESPONSE DATA HAS BEEN DELETED *#*#*#*#*');
+        '*#*#*#*#* CACHED RATES RESPONSE DATA HAS BEEN DELETED for CAR ID $carId *#*#*#*#*');
     await box.delete('${HiveKeys.fetchRatesResponse}_$carId');
   }
 }

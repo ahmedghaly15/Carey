@@ -72,7 +72,9 @@ class HomeBody extends StatelessWidget {
             end: AppConstants.screenHorizontalPaddingVal.w,
           ),
           sliver: CarBrandsSliverGrid(
-            brands: data.brands.where((brand) => brand.name != 'All').toList(),
+            brands: data.brands
+                .where((brand) => brand.name != AppStrings.all)
+                .toList(),
           ),
         ),
         SliverToBoxAdapter(
@@ -86,8 +88,8 @@ class HomeBody extends StatelessWidget {
         SliverToBoxAdapter(
           child: TopDealsBrandsListView(
             brands: [
-              ...data.brands.where((brand) => brand.name == 'All'),
-              ...data.brands.where((brand) => brand.name != 'All'),
+              ...data.brands.where((brand) => brand.name == AppStrings.all),
+              ...data.brands.where((brand) => brand.name != AppStrings.all),
             ],
           ),
         ),

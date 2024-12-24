@@ -38,7 +38,8 @@ class ProductReviewsRepo {
     if (cachedRates == null) {
       return await _fetchRatesAndCacheIt(params, cancelToken);
     } else {
-      debugPrint('*#*#*#*#* CACHED RATES HAS BEEN RETRIEVED *#*#*#*#*');
+      debugPrint(
+          '*#*#*#*#* CACHED RATES HAS BEEN RETRIEVED for CAR ID ${params.carId} *#*#*#*#*');
       return ApiResult.success(cachedRates);
     }
   }

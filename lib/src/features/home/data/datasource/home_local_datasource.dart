@@ -45,4 +45,15 @@ class HomeLocalDataSource {
       '${HiveKeys.specialOffers}_${currentUserData!.user.email}',
     );
   }
+
+  static Future<void> deleteCachedHomeData() async {
+    final homeBox = await Hive.openLazyBox<HomeResponseData>(HiveBoxes.home);
+    await homeBox
+        .delete('${HiveKeys.homeResponseData}_${currentUserData!.user.email}');
+    final specialOffersBox = await Hive.openLazyBox<FetchSpecialOffersResponse>(
+      HiveBoxes.specialOffers,
+    );
+    await specialOffersBox
+        .delete('${HiveKeys.specialOffers}_${currentUserData!.user.email}');
+  }
 }

@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/core/models/car.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:carey/src/core/models/car.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
@@ -57,8 +57,11 @@ class ProductDetailsView extends StatelessWidget {
               padding: EdgeInsetsDirectional.only(
                 start: AppConstants.productDetailsStartPadVal.w,
               ),
-              sliver: const SliverToBoxAdapter(
-                child: ProductConditionLabelAndReviews(),
+              sliver: SliverToBoxAdapter(
+                child: ProductConditionLabelAndReviews(
+                  rates: car.rates,
+                  carId: car.id,
+                ),
               ),
             ),
             SliverPadding(
