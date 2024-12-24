@@ -36,14 +36,14 @@ class TopDealItem extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16.r),
               child: CustomCachedNetworkImage(
-                imageUrl: car.attachments[0].url,
+                imageUrl: car.attachments![0].url,
               ),
             ),
           ),
         ),
         MySizedBox.height12,
         Text(
-          car.name,
+          car.name!,
           style: AppTextStyles.font15Bold,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -89,7 +89,7 @@ class TopDealItem extends StatelessWidget {
           ],
         ),
         Text(
-          '\$${formatIntWithCommas(int.parse(car.price))}',
+          '\$${formatIntWithCommas(int.parse(car.price!))}',
           style: AppTextStyles.font15Bold,
         ),
       ],

@@ -8,13 +8,13 @@ class ListOutlinedButton extends StatelessWidget {
   const ListOutlinedButton({
     super.key,
     required this.isActive,
-    required this.onPressed,
+    this.onPressed,
     this.text,
     this.child,
   });
 
   final bool isActive;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String? text;
   final Widget? child;
 
@@ -23,19 +23,21 @@ class ListOutlinedButton extends StatelessWidget {
     return PrimaryButton(
       isOutlined: !isActive,
       isInfinityWidth: false,
-      padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 6.w),
-      // padding: EdgeInsets.symmetric(horizontal: 8.w),
-      backgroundColor: Colors.transparent,
+      padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 12.w),
+      backgroundColor: isActive ? Colors.black : Colors.white,
       borderRadius: 34,
       borderColor: _activeColor,
       onPressed: onPressed,
-      child: child ??
-          Text(
-            text!,
-            style: AppTextStyles.font16Regular.copyWith(
-              color: _activeColor,
+      child: FittedBox(
+        fit: BoxFit.cover,
+        child: child ??
+            Text(
+              text!,
+              style: AppTextStyles.font16Regular.copyWith(
+                color: _activeColor,
+              ),
             ),
-          ),
+      ),
     );
   }
 

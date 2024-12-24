@@ -18,10 +18,10 @@ class CarAdapter extends TypeAdapter<Car> {
     };
     return Car(
       id: fields[0] as int,
-      name: fields[1] as String,
-      type: fields[2] as String,
-      price: fields[3] as String,
-      attachments: (fields[5] as List).cast<CarAttachment>(),
+      name: fields[1] as String?,
+      type: fields[2] as String?,
+      price: fields[3] as String?,
+      attachments: (fields[5] as List?)?.cast<CarAttachment>(),
       brand: fields[4] as CarBrandModel?,
       rates: (fields[6] as List?)?.cast<CarRate>(),
       user: fields[7] as CarUser?,
@@ -297,11 +297,11 @@ class CarWishlistAdapter extends TypeAdapter<CarWishlist> {
 
 Car _$CarFromJson(Map<String, dynamic> json) => Car(
       id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      type: json['type'] as String,
-      price: json['price'] as String,
-      attachments: (json['attachments'] as List<dynamic>)
-          .map((e) => CarAttachment.fromJson(e as Map<String, dynamic>))
+      name: json['name'] as String?,
+      type: json['type'] as String?,
+      price: json['price'] as String?,
+      attachments: (json['attachments'] as List<dynamic>?)
+          ?.map((e) => CarAttachment.fromJson(e as Map<String, dynamic>))
           .toList(),
       brand: json['brand'] == null
           ? null
@@ -327,7 +327,7 @@ Map<String, dynamic> _$CarToJson(Car instance) => <String, dynamic>{
       'type': instance.type,
       'price': instance.price,
       'brand': instance.brand?.toJson(),
-      'attachments': instance.attachments.map((e) => e.toJson()).toList(),
+      'attachments': instance.attachments?.map((e) => e.toJson()).toList(),
       'rates': instance.rates?.map((e) => e.toJson()).toList(),
       'user': instance.user?.toJson(),
       'status': instance.status,
