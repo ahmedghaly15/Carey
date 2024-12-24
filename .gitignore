@@ -48,4 +48,3 @@ web
 linux
 macos
 .env
-*.g.dart
