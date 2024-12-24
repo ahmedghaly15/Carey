@@ -90,7 +90,6 @@ flutter:
     - assets/
     - assets/images/
     - assets/svgs/
-    - .env
 
   fonts:
     - family: Inter
