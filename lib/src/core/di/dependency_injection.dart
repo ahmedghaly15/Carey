@@ -1,3 +1,4 @@
+import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:carey/src/features/product_reviews/data/api/product_reviews_api_service.dart';
 import 'package:carey/src/features/product_reviews/data/datasources/product_reviews_local_datasource.dart';
@@ -9,6 +10,7 @@ import 'package:carey/src/features/wishlist/presentation/cubits/fetch_wishlist/f
 import 'package:carey/src/features/wishlist/presentation/cubits/wishlist_cubit.dart';
 import 'package:carey/src/features/home/data/datasource/home_local_datasource.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
@@ -83,31 +85,38 @@ void _setupDIForCore() {
 
 void _setupForApiServices() {
   final Dio dio = DioFactory.getDio();
-  getIt.registerLazySingleton<LoginApiService>(() => LoginApiService(dio));
+  final baseUrl =
+      dotenv.env[AppStrings.baseUrlEnvKey] ?? 'https://fallback-url.com/';
+
+  getIt.registerLazySingleton<LoginApiService>(
+    () => LoginApiService(dio, baseUrl: baseUrl),
+  );
   getIt.registerLazySingleton<RegisterApiService>(
-    () => RegisterApiService(dio),
+    () => RegisterApiService(dio, baseUrl: baseUrl),
   );
   getIt.registerLazySingleton<AccountSetupApiService>(
-    () => AccountSetupApiService(dio),
+    () => AccountSetupApiService(dio, baseUrl: baseUrl),
   );
   getIt.registerLazySingleton<BiometricApiService>(
-    () => BiometricApiService(dio),
+    () => BiometricApiService(dio, baseUrl: baseUrl),
   );
   getIt.registerLazySingleton<ForgotPasswordApiService>(
-    () => ForgotPasswordApiService(dio),
+    () => ForgotPasswordApiService(dio, baseUrl: baseUrl),
   );
   getIt.registerLazySingleton<PinCodeVerificationApiService>(
-    () => PinCodeVerificationApiService(dio),
+    () => PinCodeVerificationApiService(dio, baseUrl: baseUrl),
   );
   getIt.registerLazySingleton<ResetPassApiService>(
-    () => ResetPassApiService(dio),
+    () => ResetPassApiService(dio, baseUrl: baseUrl),
   );
   getIt.registerLazySingleton<WishlistApiService>(
-    () => WishlistApiService(dio),
+    () => WishlistApiService(dio, baseUrl: baseUrl),
   );
-  getIt.registerLazySingleton<HomeApiService>(() => HomeApiService(dio));
+  getIt.registerLazySingleton<HomeApiService>(
+    () => HomeApiService(dio, baseUrl: baseUrl),
+  );
   getIt.registerLazySingleton<ProductReviewsApiService>(
-    () => ProductReviewsApiService(dio),
+    () => ProductReviewsApiService(dio, baseUrl: baseUrl),
   );
 }
 

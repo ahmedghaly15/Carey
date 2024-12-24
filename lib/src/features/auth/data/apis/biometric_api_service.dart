@@ -5,7 +5,7 @@ import 'package:retrofit/retrofit.dart';
 
 part 'biometric_api_service.g.dart';
 
-@RestApi(baseUrl: EndPoints.baseUrl)
+@RestApi()
 abstract class BiometricApiService {
   factory BiometricApiService(Dio dio, {String baseUrl}) = _BiometricApiService;
 

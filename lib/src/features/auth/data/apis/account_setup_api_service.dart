@@ -9,7 +9,7 @@ import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
 
 part 'account_setup_api_service.g.dart';
 
-@RestApi(baseUrl: EndPoints.baseUrl)
+@RestApi()
 abstract class AccountSetupApiService {
   factory AccountSetupApiService(Dio dio, {String baseUrl}) =
       _AccountSetupApiService;

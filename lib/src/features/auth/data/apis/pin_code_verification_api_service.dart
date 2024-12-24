@@ -6,7 +6,7 @@ import 'package:retrofit/retrofit.dart';
 
 part 'pin_code_verification_api_service.g.dart';
 
-@RestApi(baseUrl: EndPoints.baseUrl)
+@RestApi()
 abstract class PinCodeVerificationApiService {
   factory PinCodeVerificationApiService(Dio dio, {String baseUrl}) =
       _PinCodeVerificationApiService;
