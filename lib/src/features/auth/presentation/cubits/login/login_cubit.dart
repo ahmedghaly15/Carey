@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/helpers/remember_me_helper.dart';
-import 'package:carey/src/features/auth/data/models/auth_via_password_request.dart';
+import 'package:carey/src/features/auth/data/models/auth_request_params.dart';
 import 'package:carey/src/features/auth/data/repositories/login_repo.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_state.dart';
 
@@ -15,6 +15,7 @@ class LoginCubit extends Cubit<LoginState> {
     this._loginRepo,
   ) : super(LoginState.initial()) {
     _initFormAttributes();
+    _assignRememberedEmailAndPass();
     _initRememberMe();
   }
 
@@ -26,18 +27,21 @@ class LoginCubit extends Cubit<LoginState> {
   late final FocusNode passwordFocusNode;
   late final GlobalKey<FormState> formKey;
 
-  void _initFormAttributes() async {
-    final rememberedEmail = await RememberMeHelper.getRememberedEmail();
-    final rememberedPassword = await RememberMeHelper.getRememberedPass();
+  void _initFormAttributes() {
     formKey = GlobalKey<FormState>();
-    emailController = TextEditingController(
-      text: rememberedEmail ?? '',
-    );
-    passwordController = TextEditingController(
-      text: rememberedPassword ?? '',
-    );
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
     emailFocusNode = FocusNode();
     passwordFocusNode = FocusNode();
+  }
+
+  void _assignRememberedEmailAndPass() async {
+    final rememberedEmail = await RememberMeHelper.getRememberedEmail();
+    final rememberedPassword = await RememberMeHelper.getRememberedPass();
+    if (!rememberedEmail.isNullOrEmpty) {
+      emailController.text = rememberedEmail!;
+      passwordController.text = rememberedPassword!;
+    }
   }
 
   void _initRememberMe() async {
@@ -67,7 +71,7 @@ class LoginCubit extends Cubit<LoginState> {
   void _loginViaPassword() async {
     emit(state.copyWith(status: LoginStateStatus.loginViaPasswordLoading));
     final result = await _loginRepo.loginViaPassword(
-      AuthViaPasswordRequest(
+      AuthRequestParams(
         email: emailController.text.trim(),
         password: passwordController.text,
       ),

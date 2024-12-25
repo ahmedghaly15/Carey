@@ -23,7 +23,7 @@ class _LoginApiService implements LoginApiService {
 
   @override
   Future<LoginResponse> loginViaPassword(
-    AuthViaPasswordRequest params, [
+    AuthRequestParams params, [
     CancelToken? cancelToken,
   ]) async {
     final _extra = <String, dynamic>{};
