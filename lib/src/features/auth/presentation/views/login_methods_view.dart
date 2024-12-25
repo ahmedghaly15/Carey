@@ -33,9 +33,11 @@ class LoginMethodsView extends StatelessWidget {
                   child: Image.asset(Assets.careyIcon),
                 ),
               ),
-              Text(
-                AppStrings.letsSignYouIn,
-                style: AppTextStyles.poppinsFont45Medium,
+              FittedBox(
+                child: Text(
+                  AppStrings.letsSignYouIn,
+                  style: AppTextStyles.poppinsFont45Medium,
+                ),
               ),
               Container(
                 margin: EdgeInsetsDirectional.only(top: 16.h, bottom: 48.h),
