@@ -1,20 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_via_password_request.dart';
+part of 'auth_request_params.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AuthViaPasswordRequest _$AuthViaPasswordRequestFromJson(
-        Map<String, dynamic> json) =>
-    AuthViaPasswordRequest(
+AuthRequestParams _$AuthRequestParamsFromJson(Map<String, dynamic> json) =>
+    AuthRequestParams(
       email: json['email'] as String,
-      password: json['password'] as String,
+      password: json['password'] as String?,
     );
 
-Map<String, dynamic> _$AuthViaPasswordRequestToJson(
-        AuthViaPasswordRequest instance) =>
+Map<String, dynamic> _$AuthRequestParamsToJson(AuthRequestParams instance) =>
     <String, dynamic>{
       'email': instance.email,
       'password': instance.password,
