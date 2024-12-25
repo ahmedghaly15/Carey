@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/features/auth/presentation/cubits/forgot_password/forgot_password_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/forgot_password/forgot_password_state.dart';
 import 'package:carey/src/features/auth/presentation/widgets/forgot_password/contact_details_item.dart';
@@ -19,7 +18,7 @@ class ContactDetailsList extends StatelessWidget {
       runAlignment: WrapAlignment.start,
       verticalDirection: VerticalDirection.down,
       children: List.generate(
-        AppConstants.forgotPassContactDetails.length,
+        context.read<ForgotPasswordCubit>().contactDetails!.length,
         (index) => BlocSelector<ForgotPasswordCubit, ForgotPasswordState, int>(
           selector: (state) => state.selectedContactDetailsIndex,
           builder: (context, selectedContactDetailsIndex) => ContactDetailsItem(

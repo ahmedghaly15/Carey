@@ -1,11 +1,9 @@
-import 'package:carey/src/features/auth/data/models/contact_details.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:carey/src/core/helpers/extensions.dart';
-import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/features/auth/data/models/auth_request_params.dart';
-import 'package:carey/src/features/auth/data/models/send_pin_params.dart';
+import 'package:carey/src/features/auth/data/models/contact_details.dart';
 import 'package:carey/src/features/auth/data/repositories/forgot_password_repo.dart';
 import 'package:carey/src/features/auth/presentation/cubits/forgot_password/forgot_password_state.dart';
 
@@ -33,7 +31,7 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
     emit(state.copyWith(
       status: ForgotPasswordStateStatus.getAccountByEmailLoading,
     ));
-    final result = await _forgotPasswordRepo.getForgotPassContactDetails(
+    final result = await _forgotPasswordRepo.getUserContactDetails(
       AuthRequestParams(email: email),
       _cancelToken,
     );
@@ -53,10 +51,11 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
 
   void sendPin() async {
     emit(state.copyWith(status: ForgotPasswordStateStatus.sendPinLoading));
-    final params = SendPinParams(userId: currentUserData!.user.id);
-    final result = state.selectedContactDetailsIndex == 0
-        ? await _forgotPasswordRepo.sendSmsPin(params, _cancelToken)
-        : await _forgotPasswordRepo.sendMailPin(params, _cancelToken);
+    final result = await _forgotPasswordRepo.sendPin(
+      pinSendMethod: state
+          .contactDetails![state.selectedContactDetailsIndex].pinSendMethod,
+      cancelToken: _cancelToken,
+    );
     result.when(
       success: (_) => emit(
           state.copyWith(status: ForgotPasswordStateStatus.sendPinSuccess)),
