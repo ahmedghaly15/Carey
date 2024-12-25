@@ -4,10 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
+import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
-import 'package:carey/src/core/widgets/slide_animated_carey_icon.dart';
+import 'package:carey/src/core/widgets/slide_animated_widget.dart';
 import 'package:carey/src/features/auth/presentation/widgets/auth_custom_divider_with_text.dart';
 import 'package:carey/src/features/auth/presentation/widgets/auth_switcher.dart';
 import 'package:carey/src/features/auth/presentation/widgets/login/social_login_buttons.dart';
@@ -25,7 +26,13 @@ class LoginMethodsView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SlideAnimatedCareyIcon(),
+              Container(
+                margin: EdgeInsets.only(top: 40.h),
+                child: SlideAnimatedWidget(
+                  begin: const Offset(-2, 0),
+                  child: Image.asset(Assets.careyIcon),
+                ),
+              ),
               Text(
                 AppStrings.letsSignYouIn,
                 style: AppTextStyles.poppinsFont45Medium,
@@ -42,8 +49,9 @@ class LoginMethodsView extends StatelessWidget {
               ),
               AuthSwitcher(
                 margin: EdgeInsetsDirectional.only(start: 53.w, end: 55.w),
-                onPressed: () => context
-                    .replaceRoute(RegisterRoute(isPushedFromLogin: false)),
+                onPressed: () {
+                  context.replaceRoute(RegisterRoute(isPushedFromLogin: false));
+                },
                 question: AppStrings.dontHaveAnAccount,
                 buttonText: AppStrings.signUp,
               ),
