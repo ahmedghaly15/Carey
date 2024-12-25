@@ -29,12 +29,11 @@ class ContactDetailsItem extends StatelessWidget {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       decoration: BoxDecoration(
-        color: AppColors.grey.withOpacity(0.25),
+        color: AppColors.grey.withAlpha(64),
         borderRadius: BorderRadius.circular(10.r),
         border: Border.all(
-          color: isSelected
-              ? AppColors.primaryColor
-              : Colors.black.withOpacity(0.1),
+          color:
+              isSelected ? AppColors.primaryColor : Colors.black.withAlpha(25),
           width: isSelected ? 2.5.w : 1.w,
         ),
       ),
@@ -67,7 +66,7 @@ class ContactDetailsItem extends StatelessWidget {
                   Text(
                     '${AppStrings.via} ${contact.name}:',
                     style: AppTextStyles.font13Regular.copyWith(
-                      color: Colors.black.withOpacity(0.56),
+                      color: Colors.black.withAlpha(143),
                     ),
                   ),
                   MySizedBox.height8,
