@@ -30,7 +30,7 @@ class SharedPrefHelper {
   }
 
   /// Gets a bool value from SharedPreferences with given [key].
-  static getBool(String key) async {
+  static Future<bool> getBool(String key) async {
     _logger.i('SharedPrefHelper : getBool with key : $key');
     return getIt.get<SharedPreferences>().getBool(key) ?? false;
   }
