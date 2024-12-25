@@ -19,6 +19,7 @@ class HomeShimmerLoading extends StatelessWidget {
         horizontal: AppConstants.screenHorizontalPaddingVal.w,
       ),
       child: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
         slivers: [
           CustomSliverAppBar(
             leading: ShimmerWidget(
@@ -37,11 +38,11 @@ class HomeShimmerLoading extends StatelessWidget {
               growable: false,
             ),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: ShimmerWidget(
               margin: EdgeInsetsDirectional.only(
-                top: 25.h,
-                bottom: 15.h,
+                top: 25,
+                bottom: 15,
               ),
               circularRadiusVal: 15,
               height: 51,
