@@ -18,7 +18,7 @@ List<AutoRoute> get appRoutes => [
       AutoRoute(
         page: AuthRoute.page,
         children: [
-          AutoRoute(initial: true, page: LoginMethodsRoute.page),
+          _buildCustomRoute(initial: true, page: LoginMethodsRoute.page),
           _buildCustomRoute(page: LoginRoute.page),
           _buildCustomRoute(page: RegisterRoute.page),
           _buildCustomRoute(page: AccountSetupRoute.page),
@@ -29,7 +29,6 @@ List<AutoRoute> get appRoutes => [
         ],
       ),
       AutoRoute(
-        // initial: true,
         page: LayoutRoute.page,
         children: [
           AutoRoute(initial: true, page: HomeRoute.page),
@@ -76,8 +75,7 @@ CustomRoute _buildCustomRoute({
     CustomRoute(
       initial: initial,
       page: page,
-      transitionsBuilder:
-          transitionsBuilder ?? TransitionsBuilders.slideRightWithFade,
+      transitionsBuilder: transitionsBuilder ?? TransitionsBuilders.fadeIn,
       durationInMilliseconds: durationInMilliseconds ?? 500,
       children: children,
     );

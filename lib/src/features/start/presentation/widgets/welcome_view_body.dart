@@ -26,6 +26,7 @@ class WelcomeViewBody extends StatelessWidget {
           bottom: 50.0.h,
           start: 16.0.w,
           child: SlideAnimatedWidget(
+            duration: const Duration(seconds: 1),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

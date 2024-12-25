@@ -39,7 +39,6 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
               case HomeStateStatus.fetchHomeDataLoading:
                 return const HomeShimmerLoading();
               case HomeStateStatus.fetchHomeDataSuccess:
-              case HomeStateStatus.fetchSpecialOffersSuccess:
                 return (state.homeData != null || state.specialOffers != null)
                     ? HomeBody(
                         data: state.homeData!,
@@ -85,7 +84,6 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
     return currentStatus == HomeStateStatus.fetchHomeDataLoading ||
         currentStatus == HomeStateStatus.fetchHomeDataSuccess ||
         currentStatus == HomeStateStatus.fetchHomeDataFailure ||
-        currentStatus == HomeStateStatus.fetchSpecialOffersSuccess ||
         currentStatus == HomeStateStatus.fetchSpecialOffersError;
   }
 }

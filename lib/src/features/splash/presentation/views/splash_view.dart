@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/core/utils/app_constants.dart';
-import 'package:carey/src/core/widgets/animated_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,6 +9,8 @@ import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/helpers/shared_pref_helper.dart';
 import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
+import 'package:carey/src/core/utils/app_constants.dart';
+import 'package:carey/src/core/widgets/animated_loading_indicator.dart';
 import 'package:carey/src/core/widgets/fade_transition_widget.dart';
 
 @RoutePage()
@@ -59,7 +59,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
 
   void _pushReplacementNextView() async {
     final isStartViewVisited =
-        await SharedPrefHelper.getBool(CacheKeys.isStartViewVisited) ?? false;
+        await SharedPrefHelper.getBool(CacheKeys.isStartViewVisited);
 
     if (isStartViewVisited) {
       if (isUserLoggedIn && isCurrentUserAccountSet) {

@@ -33,12 +33,15 @@ class ResetPassContinueBlocListener extends StatelessWidget {
     switch (state.status) {
       case ResetPassStateStatus.resetPassLoading:
         _unfocusKeyboardAndShowLoadingDialog(context);
+        break;
       case ResetPassStateStatus.resetPassSuccess:
         await _handleResetPassSuccessState(context);
+        break;
       case ResetPassStateStatus.resetPassError:
         _popTopAndShowErrorDialog(context, state.error!);
+        break;
       default:
-        context.showLoadingDialog();
+        break;
     }
   }
 
@@ -57,9 +60,8 @@ class ResetPassContinueBlocListener extends StatelessWidget {
     await context.read<ResetPassCubit>().handleRememberingEmailAndPassword();
     context.showResultDialog(
       contentText: AppStrings.passChangedSuccessfully,
-      okButtonOnPressed: () => context.router.pushAndPopUntil(
-        const AuthRoute(),
-        predicate: (route) => route.settings.name == ForgotPasswordRoute.name,
+      okButtonOnPressed: () => context.router.popUntil(
+        (route) => route.settings.name == LoginRoute.name,
       ),
     );
   }
