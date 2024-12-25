@@ -25,7 +25,7 @@ class _WelcomeViewState extends State<WelcomeView> {
 
   void _startDelay() {
     _timer = Timer(
-      const Duration(seconds: 2),
+      const Duration(milliseconds: 1500),
       () => context.replaceRoute(const StartRoute()),
     );
   }
