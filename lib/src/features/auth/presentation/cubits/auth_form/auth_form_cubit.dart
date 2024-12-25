@@ -18,24 +18,15 @@ class AuthFormCubit extends Cubit<AuthFormState> {
 
   void _initFormAttributes() {
     formKey = GlobalKey<FormState>();
-    _initControllers();
-    _initFocusNodes();
-  }
-
-  void _initFocusNodes() {
-    emailFocusNode = FocusNode();
-    passwordFocusNode = FocusNode();
-  }
-
-  void _initControllers() {
     emailController = TextEditingController();
     passwordController = TextEditingController();
+    emailFocusNode = FocusNode();
+    passwordFocusNode = FocusNode();
   }
 
   void assignRememberedEmailAndPass() async {
     final rememberedEmail = await RememberMeHelper.getRememberedEmail();
     final rememberedPassword = await RememberMeHelper.getRememberedPass();
-
     if (!rememberedEmail.isNullOrEmpty) {
       emailController.text = rememberedEmail!;
       passwordController.text = rememberedPassword!;
@@ -43,40 +34,25 @@ class AuthFormCubit extends Cubit<AuthFormState> {
   }
 
   void togglePassVisibility() {
-    emit(
-      state.copyWith(
-        status: AuthFormStateStatus.togglePasswordVisibility,
-        isPasswordObscured: !state.isPasswordObscured,
-      ),
-    );
+    emit(state.copyWith(
+      status: AuthFormStateStatus.togglePasswordVisibility,
+      isPasswordObscured: !state.isPasswordObscured,
+    ));
   }
 
   void toggleRememberMe() {
-    emit(
-      state.copyWith(
-        status: AuthFormStateStatus.toggleRememberMe,
-        rememberMe: !state.rememberMe,
-      ),
-    );
+    emit(state.copyWith(
+      status: AuthFormStateStatus.toggleRememberMe,
+      rememberMe: !state.rememberMe,
+    ));
   }
 
-  Future<void> initRememberMe() async {
+  void initRememberMe() async {
     final rememberedPass = await RememberMeHelper.getRememberedPass();
-    if (!rememberedPass.isNullOrEmpty) {
-      emit(
-        state.copyWith(
-          status: AuthFormStateStatus.toggleRememberMe,
-          rememberMe: true,
-        ),
-      );
-    } else {
-      emit(
-        state.copyWith(
-          status: AuthFormStateStatus.toggleRememberMe,
-          rememberMe: false,
-        ),
-      );
-    }
+    emit(state.copyWith(
+      status: AuthFormStateStatus.toggleRememberMe,
+      rememberMe: (!rememberedPass.isNullOrEmpty) ? true : false,
+    ));
   }
 
   void validateFormAndExecute(VoidCallback callback) {
@@ -88,12 +64,10 @@ class AuthFormCubit extends Cubit<AuthFormState> {
   }
 
   void _alwaysAutovalidateMode() {
-    emit(
-      state.copyWith(
-        status: AuthFormStateStatus.alwaysAutovalidateMode,
-        autovalidateMode: AutovalidateMode.always,
-      ),
-    );
+    emit(state.copyWith(
+      status: AuthFormStateStatus.alwaysAutovalidateMode,
+      autovalidateMode: AutovalidateMode.always,
+    ));
   }
 
   Future<void> handleRememberingEmailAndPassword() async {
@@ -105,18 +79,10 @@ class AuthFormCubit extends Cubit<AuthFormState> {
   }
 
   void _disposeFormAttributes() {
-    _disposeControllers();
-    _disposeFocusNodes();
-  }
-
-  void _disposeFocusNodes() {
-    emailFocusNode.dispose();
-    passwordFocusNode.dispose();
-  }
-
-  void _disposeControllers() {
     emailController.dispose();
     passwordController.dispose();
+    emailFocusNode.dispose();
+    passwordFocusNode.dispose();
   }
 
   @override
