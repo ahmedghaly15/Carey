@@ -40,9 +40,5 @@ jobs:
           serviceCredentialsFileContent: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
           groups: testers
           file: build/app/outputs/flutter-apk/app-release.apk
-          releaseNotesFile: |
-            Release Notes: 
-            - Bug Fixes
-            - Performance Improvements
-            - New Features
+          releaseNotesFile: release_notes.txt
     
