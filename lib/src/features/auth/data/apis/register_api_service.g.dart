@@ -23,7 +23,7 @@ class _RegisterApiService implements RegisterApiService {
 
   @override
   Future<RegisterResponse> register(
-    AuthViaPasswordRequest params, [
+    AuthRequestParams params, [
     CancelToken? cancelToken,
   ]) async {
     final _extra = <String, dynamic>{};

@@ -7,7 +7,7 @@ import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
-import 'package:carey/src/features/auth/presentation/widgets/forgot_password/contact_details_list_bloc_builder.dart';
+import 'package:carey/src/features/auth/presentation/widgets/forgot_password/contact_details_list.dart';
 import 'package:carey/src/features/auth/presentation/widgets/forgot_password/forgot_pass_continue_bloc_listener.dart';
 
 class ForgotPasswordViewBody extends StatelessWidget {
@@ -15,43 +15,41 @@ class ForgotPasswordViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: CustomScrollView(
-        slivers: [
-          const CustomSliverAppBar(titleText: AppStrings.forgotPassword),
-          SliverToBoxAdapter(
-            child: SvgPicture.asset(Assets.svgsSomethingWrong),
+    return CustomScrollView(
+      slivers: [
+        const CustomSliverAppBar(titleText: AppStrings.forgotPassword),
+        SliverToBoxAdapter(
+          child: SvgPicture.asset(Assets.svgsSomethingWrong),
+        ),
+        SliverPadding(
+          padding: AppConstants.screenHorizontalPadding.add(
+            EdgeInsets.only(top: 24.h),
           ),
-          SliverPadding(
-            padding: AppConstants.screenHorizontalPadding.add(
-              EdgeInsets.only(top: 24.h),
-            ),
-            sliver: SliverToBoxAdapter(
-              child: Text(
-                AppStrings.selectWhichContactDetails,
-                style: AppTextStyles.font16Regular,
-              ),
+          sliver: SliverToBoxAdapter(
+            child: Text(
+              AppStrings.selectWhichContactDetails,
+              style: AppTextStyles.font16Regular,
             ),
           ),
-          SliverPadding(
-            padding: AppConstants.screenHorizontalPadding.add(
-              EdgeInsets.symmetric(vertical: 24.h),
-            ),
-            sliver: const SliverToBoxAdapter(
-              child: ContactDetailsListBlocBuilder(),
-            ),
+        ),
+        SliverPadding(
+          padding: AppConstants.screenHorizontalPadding.add(
+            EdgeInsets.symmetric(vertical: 24.h),
           ),
-          const SliverFillRemaining(
-            hasScrollBody: false,
-            child: Column(
-              children: [
-                Spacer(),
-                ForgotPassContinueBlocListener(),
-              ],
-            ),
+          sliver: const SliverToBoxAdapter(
+            child: ContactDetailsList(),
           ),
-        ],
-      ),
+        ),
+        const SliverFillRemaining(
+          hasScrollBody: false,
+          child: Column(
+            children: [
+              Spacer(),
+              ForgotPassContinueBlocListener(),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

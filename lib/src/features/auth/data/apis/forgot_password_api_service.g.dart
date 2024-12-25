@@ -23,7 +23,7 @@ class _ForgotPasswordApiService implements ForgotPasswordApiService {
 
   @override
   Future<LoginResponse> getAccountByEmail(
-    GetAccountByEmailParams params, [
+    AuthRequestParams params, [
     CancelToken? cancelToken,
   ]) async {
     final _extra = <String, dynamic>{};

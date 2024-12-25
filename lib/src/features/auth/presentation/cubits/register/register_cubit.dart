@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:carey/src/features/auth/data/models/auth_via_password_request.dart';
+import 'package:carey/src/features/auth/data/models/auth_request_params.dart';
 import 'package:carey/src/features/auth/data/repositories/register_repo.dart';
 import 'package:carey/src/features/auth/presentation/cubits/register/register_state.dart';
 
@@ -32,7 +32,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   void _register() async {
     emit(state.copyWith(status: RegisterStateStatus.registerLoading));
     final result = await _registerRepo.register(
-      AuthViaPasswordRequest(
+      AuthRequestParams(
         email: emailController.text.trim(),
         password: passwordController.text,
       ),

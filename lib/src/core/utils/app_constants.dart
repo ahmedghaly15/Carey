@@ -1,10 +1,8 @@
-import 'package:carey/src/core/themes/app_colors.dart';
-import 'package:carey/src/core/utils/app_assets.dart';
-import 'package:carey/src/core/utils/app_strings.dart';
-import 'package:carey/src/features/auth/data/models/contact_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:carey/src/core/themes/app_colors.dart';
+import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
 
 AuthResponseEntity? currentUserData;
@@ -41,16 +39,6 @@ class AppConstants {
     ),
   ];
 
-  static const List<ContactDetails> forgotPassContactDetails = [
-    ContactDetails(
-      name: AppStrings.sms,
-      icon: Assets.svgsSmsIcon,
-    ),
-    ContactDetails(
-      name: AppStrings.email,
-      icon: Assets.svgsEmailIcon,
-    ),
-  ];
   static const String defaultCountryCode = 'EG';
   static const double screenHorizontalPaddingVal = 17;
   static const List<Color> productColors = <Color>[

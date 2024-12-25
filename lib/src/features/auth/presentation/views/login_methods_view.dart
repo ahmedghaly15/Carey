@@ -30,6 +30,8 @@ class LoginMethodsView extends StatelessWidget {
                 margin: EdgeInsets.only(top: 40.h),
                 child: SlideAnimatedWidget(
                   begin: const Offset(-2, 0),
+                  duration: const Duration(seconds: 2),
+                  curve: Curves.elasticInOut,
                   child: Image.asset(Assets.careyIcon),
                 ),
               ),
