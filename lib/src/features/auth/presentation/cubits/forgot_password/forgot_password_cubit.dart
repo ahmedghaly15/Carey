@@ -1,11 +1,13 @@
+import 'package:carey/src/features/auth/data/models/contact_details.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
-import 'package:carey/src/features/auth/data/models/get_account_by_email_params.dart';
+import 'package:carey/src/features/auth/data/models/auth_request_params.dart';
 import 'package:carey/src/features/auth/data/models/send_pin_params.dart';
 import 'package:carey/src/features/auth/data/repositories/forgot_password_repo.dart';
 import 'package:carey/src/features/auth/presentation/cubits/forgot_password/forgot_password_state.dart';
-import 'package:dio/dio.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
   final ForgotPasswordRepo _forgotPasswordRepo;
@@ -18,22 +20,21 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
 
   void updateSelectedContactDetails(int index) {
     if (state.selectedContactDetailsIndex != index) {
-      emit(
-        state.copyWith(
-          status: ForgotPasswordStateStatus.updateSelectedContactDetails,
-          selectedContactDetailsIndex: index,
-        ),
-      );
+      emit(state.copyWith(
+        status: ForgotPasswordStateStatus.updateSelectedContactDetails,
+        selectedContactDetailsIndex: index,
+      ));
     }
   }
 
-  void getForgotPassContactDetails(String email) async {
+  List<ContactDetails>? get contactDetails => state.contactDetails;
+
+  void getUserContactDetails(String email) async {
     emit(state.copyWith(
       status: ForgotPasswordStateStatus.getAccountByEmailLoading,
     ));
-    final params = GetAccountByEmailParams(email: email);
     final result = await _forgotPasswordRepo.getForgotPassContactDetails(
-      params,
+      AuthRequestParams(email: email),
       _cancelToken,
     );
     result.when(
