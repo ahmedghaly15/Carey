@@ -18,10 +18,10 @@ class CarAdapter extends TypeAdapter<Car> {
     };
     return Car(
       id: fields[0] as int,
-      name: fields[1] as String,
-      type: fields[2] as String,
-      price: fields[3] as String,
-      attachments: (fields[5] as List).cast<CarAttachment>(),
+      name: fields[1] as String?,
+      type: fields[2] as String?,
+      price: fields[3] as String?,
+      attachments: (fields[5] as List?)?.cast<CarAttachment>(),
       brand: fields[4] as CarBrandModel?,
       rates: (fields[6] as List?)?.cast<CarRate>(),
       user: fields[7] as CarUser?,
@@ -260,21 +260,24 @@ class CarWishlistAdapter extends TypeAdapter<CarWishlist> {
     };
     return CarWishlist(
       id: fields[0] as int,
-      createdAt: fields[1] as String,
-      updatedAt: fields[2] as String,
+      createdAt: fields[1] as String?,
+      updatedAt: fields[2] as String?,
+      user: fields[3] as CarUser?,
     );
   }
 
   @override
   void write(BinaryWriter writer, CarWishlist obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.createdAt)
       ..writeByte(2)
-      ..write(obj.updatedAt);
+      ..write(obj.updatedAt)
+      ..writeByte(3)
+      ..write(obj.user);
   }
 
   @override
@@ -294,11 +297,11 @@ class CarWishlistAdapter extends TypeAdapter<CarWishlist> {
 
 Car _$CarFromJson(Map<String, dynamic> json) => Car(
       id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      type: json['type'] as String,
-      price: json['price'] as String,
-      attachments: (json['attachments'] as List<dynamic>)
-          .map((e) => CarAttachment.fromJson(e as Map<String, dynamic>))
+      name: json['name'] as String?,
+      type: json['type'] as String?,
+      price: json['price'] as String?,
+      attachments: (json['attachments'] as List<dynamic>?)
+          ?.map((e) => CarAttachment.fromJson(e as Map<String, dynamic>))
           .toList(),
       brand: json['brand'] == null
           ? null
@@ -324,7 +327,7 @@ Map<String, dynamic> _$CarToJson(Car instance) => <String, dynamic>{
       'type': instance.type,
       'price': instance.price,
       'brand': instance.brand?.toJson(),
-      'attachments': instance.attachments.map((e) => e.toJson()).toList(),
+      'attachments': instance.attachments?.map((e) => e.toJson()).toList(),
       'rates': instance.rates?.map((e) => e.toJson()).toList(),
       'user': instance.user?.toJson(),
       'status': instance.status,
@@ -396,8 +399,11 @@ Map<String, dynamic> _$CarUserToJson(CarUser instance) => <String, dynamic>{
 
 CarWishlist _$CarWishlistFromJson(Map<String, dynamic> json) => CarWishlist(
       id: (json['id'] as num).toInt(),
-      createdAt: json['createdAt'] as String,
-      updatedAt: json['updatedAt'] as String,
+      createdAt: json['createdAt'] as String?,
+      updatedAt: json['updatedAt'] as String?,
+      user: json['user'] == null
+          ? null
+          : CarUser.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CarWishlistToJson(CarWishlist instance) =>
@@ -405,4 +411,5 @@ Map<String, dynamic> _$CarWishlistToJson(CarWishlist instance) =>
       'id': instance.id,
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
+      'user': instance.user?.toJson(),
     };

@@ -1,7 +1,11 @@
+import 'package:carey/src/core/utils/app_strings.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class EndPoints {
   EndPoints._();
 
-  static const String baseUrl = 'https://carey-production.up.railway.app/';
+  static final String baseUrl =
+      dotenv.env[AppStrings.baseUrlEnvKey] ?? 'https://fallback-url.com/';
   // static const String baseUrl = 'http://192.168.1.7:3000/';
   static const String auth = 'auth/';
   static const String login = '${auth}login';
@@ -23,4 +27,5 @@ class EndPoints {
   static const String myWishlist = '${wishlist}my-wishlist';
   static const String offers = 'offers/';
   static const String myOffers = '${offers}my-offers';
+  static const String rates = 'rates/';
 }

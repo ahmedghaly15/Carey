@@ -8,7 +8,7 @@ import 'package:carey/src/features/auth/data/models/login_response.dart';
 
 part 'forgot_password_api_service.g.dart';
 
-@RestApi(baseUrl: EndPoints.baseUrl)
+@RestApi()
 abstract class ForgotPasswordApiService {
   factory ForgotPasswordApiService(Dio dio, {String baseUrl}) =
       _ForgotPasswordApiService;

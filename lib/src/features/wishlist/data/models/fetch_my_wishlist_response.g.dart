@@ -18,16 +18,25 @@ class FetchMyWishlistResponseAdapter
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return FetchMyWishlistResponse(
-      data: (fields[0] as List).cast<Wishlist>(),
+      totalItems: fields[0] as int,
+      totalPages: fields[1] as int,
+      currentPage: fields[2] as int,
+      cars: (fields[3] as List).cast<Car>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, FetchMyWishlistResponse obj) {
     writer
-      ..writeByte(1)
+      ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.data);
+      ..write(obj.totalItems)
+      ..writeByte(1)
+      ..write(obj.totalPages)
+      ..writeByte(2)
+      ..write(obj.currentPage)
+      ..writeByte(3)
+      ..write(obj.cars);
   }
 
   @override
@@ -41,43 +50,6 @@ class FetchMyWishlistResponseAdapter
           typeId == other.typeId;
 }
 
-class WishlistAdapter extends TypeAdapter<Wishlist> {
-  @override
-  final int typeId = 9;
-
-  @override
-  Wishlist read(BinaryReader reader) {
-    final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{
-      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Wishlist(
-      id: fields[0] as int,
-      car: fields[1] as Car,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Wishlist obj) {
-    writer
-      ..writeByte(2)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.car);
-  }
-
-  @override
-  int get hashCode => typeId.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is WishlistAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
@@ -85,23 +57,19 @@ class WishlistAdapter extends TypeAdapter<Wishlist> {
 FetchMyWishlistResponse _$FetchMyWishlistResponseFromJson(
         Map<String, dynamic> json) =>
     FetchMyWishlistResponse(
-      data: (json['data'] as List<dynamic>)
-          .map((e) => Wishlist.fromJson(e as Map<String, dynamic>))
+      totalItems: (json['totalItems'] as num).toInt(),
+      totalPages: (json['totalPages'] as num).toInt(),
+      currentPage: (json['currentPage'] as num).toInt(),
+      cars: (json['data'] as List<dynamic>)
+          .map((e) => Car.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$FetchMyWishlistResponseToJson(
         FetchMyWishlistResponse instance) =>
     <String, dynamic>{
-      'data': instance.data.map((e) => e.toJson()).toList(),
-    };
-
-Wishlist _$WishlistFromJson(Map<String, dynamic> json) => Wishlist(
-      id: (json['id'] as num).toInt(),
-      car: Car.fromJson(json['car'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$WishlistToJson(Wishlist instance) => <String, dynamic>{
-      'id': instance.id,
-      'car': instance.car.toJson(),
+      'totalItems': instance.totalItems,
+      'totalPages': instance.totalPages,
+      'currentPage': instance.currentPage,
+      'data': instance.cars.map((e) => e.toJson()).toList(),
     };

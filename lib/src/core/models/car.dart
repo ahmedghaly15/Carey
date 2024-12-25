@@ -11,15 +11,15 @@ class Car {
   @HiveField(0)
   final int id;
   @HiveField(1)
-  final String name;
+  final String? name;
   @HiveField(2)
-  final String type;
+  final String? type;
   @HiveField(3)
-  final String price;
+  final String? price;
   @HiveField(4)
   final CarBrandModel? brand;
   @HiveField(5)
-  final List<CarAttachment> attachments;
+  final List<CarAttachment>? attachments;
   @HiveField(6)
   final List<CarRate>? rates;
   @HiveField(7)
@@ -37,10 +37,10 @@ class Car {
 
   Car({
     required this.id,
-    required this.name,
-    required this.type,
-    required this.price,
-    required this.attachments,
+    this.name,
+    this.type,
+    this.price,
+    this.attachments,
     this.brand,
     this.rates,
     this.user,
@@ -106,7 +106,6 @@ class CarAttachment {
 
   factory CarAttachment.fromJson(Map<String, dynamic> json) =>
       _$CarAttachmentFromJson(json);
-
   Map<String, dynamic> toJson() => _$CarAttachmentToJson(this);
 }
 
@@ -134,7 +133,6 @@ class CarRate {
 
   factory CarRate.fromJson(Map<String, dynamic> json) =>
       _$CarRateFromJson(json);
-
   Map<String, dynamic> toJson() => _$CarRateToJson(this);
 }
 
@@ -152,19 +150,22 @@ class CarUser {
 }
 
 @HiveType(typeId: HiveTypeIds.carWishlist)
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class CarWishlist {
   @HiveField(0)
   final int id;
   @HiveField(1)
-  final String createdAt;
+  final String? createdAt;
   @HiveField(2)
-  final String updatedAt;
+  final String? updatedAt;
+  @HiveField(3)
+  final CarUser? user;
 
   CarWishlist({
     required this.id,
-    required this.createdAt,
-    required this.updatedAt,
+    this.createdAt,
+    this.updatedAt,
+    this.user,
   });
 
   factory CarWishlist.fromJson(Map<String, dynamic> json) =>

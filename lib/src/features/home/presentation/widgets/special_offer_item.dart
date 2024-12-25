@@ -59,7 +59,7 @@ class SpecialOfferItem extends StatelessWidget {
             MySizedBox.width10,
             Expanded(
               child: CustomCachedNetworkImage(
-                imageUrl: specialOffer.car.attachments[0].url,
+                imageUrl: specialOffer.car.attachments![0].url,
                 imageBuilder: (_, image) => Container(
                     decoration: BoxDecoration(
                   borderRadius: BorderRadius.vertical(

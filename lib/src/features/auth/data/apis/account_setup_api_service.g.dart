@@ -13,9 +13,7 @@ class _AccountSetupApiService implements AccountSetupApiService {
     this._dio, {
     this.baseUrl,
     this.errorLogger,
-  }) {
-    baseUrl ??= 'https://carey-production.up.railway.app/';
-  }
+  });
 
   final Dio _dio;
 

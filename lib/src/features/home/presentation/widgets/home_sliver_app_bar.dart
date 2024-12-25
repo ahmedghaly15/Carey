@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:carey/src/core/router/app_router.dart';
@@ -9,7 +8,6 @@ import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/widgets/account_default_image.dart';
 import 'package:carey/src/core/widgets/custom_cached_network_image.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
-import 'package:carey/src/features/wishlist/presentation/cubits/wishlist_cubit.dart';
 
 class HomeSliverAppBar extends StatelessWidget {
   const HomeSliverAppBar({super.key});
@@ -37,10 +35,7 @@ class HomeSliverAppBar extends StatelessWidget {
           ),
         ),
         IconButton(
-          onPressed: () {
-            context.pushRoute(const MyWishlistRoute());
-            context.read<WishlistCubit>().fetchMyWishlist();
-          },
+          onPressed: () => context.pushRoute(const MyWishlistRoute()),
           icon: const Icon(Icons.favorite_outline),
         ),
       ],

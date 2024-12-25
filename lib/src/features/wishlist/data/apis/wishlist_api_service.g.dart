@@ -13,9 +13,7 @@ class _WishlistApiService implements WishlistApiService {
     this._dio, {
     this.baseUrl,
     this.errorLogger,
-  }) {
-    baseUrl ??= 'https://carey-production.up.railway.app/';
-  }
+  });
 
   final Dio _dio;
 
@@ -50,7 +48,7 @@ class _WishlistApiService implements WishlistApiService {
   }
 
   @override
-  Future<void> removeFromWishlist(int wishlistId) async {
+  Future<void> removeFromWishlist(int carId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -62,7 +60,7 @@ class _WishlistApiService implements WishlistApiService {
     )
         .compose(
           _dio.options,
-          'wishlist//${wishlistId}',
+          'wishlist//${carId}',
           queryParameters: queryParameters,
           data: _data,
         )

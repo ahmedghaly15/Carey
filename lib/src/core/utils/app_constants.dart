@@ -74,4 +74,13 @@ class AppConstants {
           ),
         ],
       );
+
+  static List<String> rates = [
+    AppStrings.all,
+    '5',
+    '4',
+    '3',
+    '2',
+    '1',
+  ];
 }

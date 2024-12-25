@@ -13,9 +13,7 @@ class _ResetPassApiService implements ResetPassApiService {
     this._dio, {
     this.baseUrl,
     this.errorLogger,
-  }) {
-    baseUrl ??= 'https://carey-production.up.railway.app/';
-  }
+  });
 
   final Dio _dio;
 

@@ -21,7 +21,7 @@ class WishlistLocalDatasource {
     return box.get(HiveKeys.myWishlistResponse);
   }
 
-  Future<void> deleteCachedWishlist() async {
+  static Future<void> deleteCachedWishlist() async {
     final box =
         await Hive.openLazyBox<FetchMyWishlistResponse>(HiveBoxes.wishlist);
     debugPrint('*#*#*#*#* WISHLIST HAS BEEN DELETED *#*#*#*#*');

@@ -1,3 +1,5 @@
+import 'package:carey/src/core/models/carey_user.dart';
+import 'package:carey/src/features/product_reviews/data/models/fetch_rates_response.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:carey/src/core/models/car.dart';
@@ -8,7 +10,9 @@ import 'package:carey/src/features/wishlist/data/models/fetch_my_wishlist_respon
 class HiveHelper {
   HiveHelper._();
 
-  static Future<void> registerAdapters() async {
+  static void registerAdapters() {
+    Hive.registerAdapter(UserRoleAdapter());
+    Hive.registerAdapter(CareyUserAdapter());
     Hive.registerAdapter(HomeResponseDataAdapter());
     Hive.registerAdapter(CarBrandModelAdapter());
     Hive.registerAdapter(CarAdapter());
@@ -18,7 +22,8 @@ class HiveHelper {
     Hive.registerAdapter(FetchSpecialOffersResponseAdapter());
     Hive.registerAdapter(SpecialOfferAdapter());
     Hive.registerAdapter(FetchMyWishlistResponseAdapter());
-    Hive.registerAdapter(WishlistAdapter());
     Hive.registerAdapter(CarWishlistAdapter());
+    Hive.registerAdapter(RateResponseItemAdapter());
+    Hive.registerAdapter(FetchRatesResponseAdapter());
   }
 }

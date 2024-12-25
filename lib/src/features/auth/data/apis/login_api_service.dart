@@ -7,7 +7,7 @@ import 'package:carey/src/features/auth/data/models/login_response.dart';
 
 part 'login_api_service.g.dart';
 
-@RestApi(baseUrl: EndPoints.baseUrl)
+@RestApi()
 abstract class LoginApiService {
   factory LoginApiService(Dio dio, {String baseUrl}) = _LoginApiService;
 
