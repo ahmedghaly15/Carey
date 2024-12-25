@@ -15,6 +15,7 @@ class LoginCubit extends Cubit<LoginState> {
     this._loginRepo,
   ) : super(LoginState.initial()) {
     _initFormAttributes();
+    _initRememberMe();
   }
 
   final CancelToken _cancelToken = CancelToken();
@@ -25,20 +26,27 @@ class LoginCubit extends Cubit<LoginState> {
   late final FocusNode passwordFocusNode;
   late final GlobalKey<FormState> formKey;
 
-  void _initFormAttributes() {
+  void _initFormAttributes() async {
+    final rememberedEmail = await RememberMeHelper.getRememberedEmail();
+    final rememberedPassword = await RememberMeHelper.getRememberedPass();
     formKey = GlobalKey<FormState>();
-    emailController = TextEditingController();
-    passwordController = TextEditingController();
+    emailController = TextEditingController(
+      text: rememberedEmail ?? '',
+    );
+    passwordController = TextEditingController(
+      text: rememberedPassword ?? '',
+    );
     emailFocusNode = FocusNode();
     passwordFocusNode = FocusNode();
   }
 
-  void assignRememberedEmailAndPass() async {
-    final rememberedEmail = await RememberMeHelper.getRememberedEmail();
-    final rememberedPassword = await RememberMeHelper.getRememberedPass();
-    if (!rememberedEmail.isNullOrEmpty) {
-      emailController.text = rememberedEmail!;
-      passwordController.text = rememberedPassword!;
+  void _initRememberMe() async {
+    final rememberedPass = await RememberMeHelper.getRememberedPass();
+    if (!rememberedPass.isNullOrEmpty) {
+      emit(state.copyWith(
+        status: LoginStateStatus.toggleRememberMe,
+        rememberMe: true,
+      ));
     }
   }
 
@@ -53,14 +61,6 @@ class LoginCubit extends Cubit<LoginState> {
     emit(state.copyWith(
       status: LoginStateStatus.toggleRememberMe,
       rememberMe: !state.rememberMe,
-    ));
-  }
-
-  void initRememberMe() async {
-    final rememberedPass = await RememberMeHelper.getRememberedPass();
-    emit(state.copyWith(
-      status: LoginStateStatus.toggleRememberMe,
-      rememberMe: (!rememberedPass.isNullOrEmpty) ? true : false,
     ));
   }
 
