@@ -50,22 +50,24 @@ class HomeBody extends StatelessWidget {
             child: HomeCustomSearchField(),
           ),
         ),
-        SliverToBoxAdapter(
-          child: TextAndSeeAll(
-            text: AppStrings.specialOffers,
-            seeAllOnPressed: () => context.pushRoute(
-              SpecialOffersRoute(specialOffers: specialOffers),
+        if (specialOffers.data.isNotEmpty)
+          SliverToBoxAdapter(
+            child: TextAndSeeAll(
+              text: AppStrings.specialOffers,
+              seeAllOnPressed: () => context.pushRoute(
+                SpecialOffersRoute(specialOffers: specialOffers),
+              ),
             ),
           ),
-        ),
-        SliverPadding(
-          padding: EdgeInsets.symmetric(
-            horizontal: AppConstants.screenHorizontalPaddingVal.w,
+        if (specialOffers.data.isNotEmpty)
+          SliverPadding(
+            padding: EdgeInsets.symmetric(
+              horizontal: AppConstants.screenHorizontalPaddingVal.w,
+            ),
+            sliver: SliverToBoxAdapter(
+              child: SpecialOfferItem(specialOffer: specialOffers.data[0]),
+            ),
           ),
-          sliver: SliverToBoxAdapter(
-            child: SpecialOfferItem(specialOffer: specialOffers.data[0]),
-          ),
-        ),
         SliverPadding(
           padding: EdgeInsetsDirectional.only(
             top: 16.h,
