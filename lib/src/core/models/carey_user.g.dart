@@ -33,13 +33,14 @@ class CareyUserAdapter extends TypeAdapter<CareyUser> {
       loginAppId: fields[13] as String?,
       emailVerified: fields[14] as bool?,
       phoneVerified: fields[15] as bool?,
+      biometricVerified: fields[16] as bool?,
     );
   }
 
   @override
   void write(BinaryWriter writer, CareyUser obj) {
     writer
-      ..writeByte(16)
+      ..writeByte(17)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -71,7 +72,9 @@ class CareyUserAdapter extends TypeAdapter<CareyUser> {
       ..writeByte(14)
       ..write(obj.emailVerified)
       ..writeByte(15)
-      ..write(obj.phoneVerified);
+      ..write(obj.phoneVerified)
+      ..writeByte(16)
+      ..write(obj.biometricVerified);
   }
 
   @override
@@ -156,6 +159,7 @@ _$CareyUserImpl _$$CareyUserImplFromJson(Map<String, dynamic> json) =>
       loginAppId: json['LoginAppId'] as String?,
       emailVerified: json['emailVerified'] as bool?,
       phoneVerified: json['phoneVerified'] as bool?,
+      biometricVerified: json['biometricVerified'] as bool?,
     );
 
 Map<String, dynamic> _$$CareyUserImplToJson(_$CareyUserImpl instance) =>
@@ -176,4 +180,5 @@ Map<String, dynamic> _$$CareyUserImplToJson(_$CareyUserImpl instance) =>
       'LoginAppId': instance.loginAppId,
       'emailVerified': instance.emailVerified,
       'phoneVerified': instance.phoneVerified,
+      'biometricVerified': instance.biometricVerified,
     };

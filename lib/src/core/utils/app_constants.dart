@@ -7,7 +7,7 @@ import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dar
 
 AuthResponseEntity? currentUserData;
 bool isUserLoggedIn = false;
-bool isCurrentUserAccountSet = false;
+bool isUserAccountSet = false;
 
 class AppConstants {
   AppConstants._();
