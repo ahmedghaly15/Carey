@@ -1,8 +1,9 @@
+import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
+
 import 'package:carey/src/core/api/end_points.dart';
 import 'package:carey/src/features/auth/data/models/login_response.dart';
 import 'package:carey/src/features/auth/data/models/pin_code_verification_params.dart';
-import 'package:dio/dio.dart';
-import 'package:retrofit/retrofit.dart';
 
 part 'pin_code_verification_api_service.g.dart';
 

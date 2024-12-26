@@ -217,7 +217,7 @@ void _setupForCubits() {
   getIt.registerFactory<ForgotPasswordCubit>(
     () => ForgotPasswordCubit(getIt.get<ForgotPasswordRepo>()),
   );
-  getIt.registerLazySingleton<PinCodeVerificationCubit>(
+  getIt.registerFactory<PinCodeVerificationCubit>(
     () => PinCodeVerificationCubit(getIt.get<PinCodeVerificationRepo>()),
   );
   getIt.registerFactory<ResetPassCubit>(

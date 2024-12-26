@@ -13,10 +13,9 @@ class PinCodePinPut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pinVerificationCubit = context.read<PinCodeVerificationCubit>();
     return Pinput(
       autofocus: true,
-      controller: pinVerificationCubit.pinController,
+      controller: context.read<PinCodeVerificationCubit>().pinController,
       pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
       showCursor: true,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -25,7 +24,7 @@ class PinCodePinPut extends StatelessWidget {
         height: 60.0.h,
         width: 60.0.w,
         decoration: BoxDecoration(
-          color: AppColors.colorD9D9D9.withOpacity(0.6),
+          color: AppColors.colorD9D9D9.withAlpha(153),
           borderRadius: BorderRadiusDirectional.circular(15.0),
         ),
       ),
@@ -34,7 +33,7 @@ class PinCodePinPut extends StatelessWidget {
         height: 60.0.h,
         width: 60.0.w,
         decoration: BoxDecoration(
-          color: AppColors.colorD9D9D9.withOpacity(0.6),
+          color: AppColors.colorD9D9D9.withAlpha(153),
           borderRadius: BorderRadiusDirectional.circular(15.0),
           border: Border.all(
             color: AppColors.primaryColor,
