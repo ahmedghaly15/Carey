@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:carey/src/core/utils/app_constants.dart';
-import 'package:carey/src/features/auth/data/datasources/auth_local_data_source.dart';
+import 'package:carey/src/core/datasources/user_local_data_source.dart';
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_state.dart';
 
@@ -72,7 +72,7 @@ class BiometricCubit extends Cubit<BiometricState> {
         gender: params.gender,
       ),
     );
-    await AuthLocalDataSource.secureUserData(currentUserData!);
+    await UserLocalDatasource.secureUserData(currentUserData!);
   }
 
   void setLocalBiometric() async {

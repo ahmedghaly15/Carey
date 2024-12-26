@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 import 'package:carey/src/core/helpers/extensions.dart';
@@ -9,7 +10,6 @@ import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_text_form_field.dart';
-import 'package:carey/src/core/widgets/my_sized_box.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_state.dart';
 
@@ -28,20 +28,21 @@ class AccountSetupFormBlocSelector extends StatelessWidget {
           key: accountSetupCubit.formKey,
           autovalidateMode: autovalidateMode,
           child: Column(
+            spacing: 16.h,
             children: [
               CustomTextFormField(
                 controller: accountSetupCubit.fullNameController,
-                focusNode: accountSetupCubit.fullNameFocusNode,
                 textCapitalization: TextCapitalization.words,
                 hintText: AppStrings.fullName,
                 autofillHints: const [AutofillHints.name],
                 onEditingComplete: () => context.requestFocus(
                   accountSetupCubit.nickNameFocusNode,
                 ),
-                validate: (value) => TextFormValidator.validateField(value,
-                    fieldName: AppStrings.fullName),
+                validate: (value) => TextFormValidator.validateField(
+                  value,
+                  fieldName: AppStrings.fullName,
+                ),
               ),
-              MySizedBox.height16,
               CustomTextFormField(
                 controller: accountSetupCubit.nickNameController,
                 focusNode: accountSetupCubit.nickNameFocusNode,
@@ -50,10 +51,11 @@ class AccountSetupFormBlocSelector extends StatelessWidget {
                 onEditingComplete: () => context.requestFocus(
                   accountSetupCubit.addressFocusNode,
                 ),
-                validate: (value) => TextFormValidator.validateField(value,
-                    fieldName: AppStrings.nickName),
+                validate: (value) => TextFormValidator.validateField(
+                  value,
+                  fieldName: AppStrings.nickName,
+                ),
               ),
-              MySizedBox.height16,
               CustomTextFormField(
                 controller: accountSetupCubit.addressController,
                 focusNode: accountSetupCubit.addressFocusNode,
@@ -67,18 +69,17 @@ class AccountSetupFormBlocSelector extends StatelessWidget {
                 validate: (value) => TextFormValidator.validateField(value,
                     fieldName: AppStrings.address),
               ),
-              MySizedBox.height16,
               BlocSelector<AccountSetupCubit, AccountSetupState, String>(
                 selector: (state) => state.countryCode,
                 builder: (context, countryCode) =>
                     InternationalPhoneNumberInput(
-                  onInputChanged: (phoneNumber) {
-                    accountSetupCubit
-                        .updatePhoneNumber(phoneNumber.phoneNumber!);
-                  },
+                  onInputChanged: (phoneNumber) =>
+                      accountSetupCubit.updatePhoneNumber(
+                    phoneNumber.phoneNumber!,
+                  ),
                   initialValue: PhoneNumber(isoCode: countryCode),
                   selectorConfig: const SelectorConfig(
-                    selectorType: PhoneInputSelectorType.DIALOG,
+                    selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
                     showFlags: true,
                     useEmoji: true,
                     trailingSpace: false,
@@ -108,7 +109,6 @@ class AccountSetupFormBlocSelector extends StatelessWidget {
                   ),
                 ),
               ),
-              MySizedBox.height16,
               DropdownButtonFormField<String>(
                 hint: Text(
                   AppStrings.gender,
@@ -127,7 +127,7 @@ class AccountSetupFormBlocSelector extends StatelessWidget {
                   disabledBorder: AppConstants.textFormFieldOutlineBorder,
                   contentPadding: AppConstants.textFormFieldHorizontalPadding,
                 ),
-                iconEnabledColor: AppColors.primaryColor.withOpacity(0.25),
+                iconEnabledColor: AppColors.primaryColor.withAlpha(64),
                 style: AppTextStyles.font13Regular.copyWith(
                   color: Colors.black,
                 ),

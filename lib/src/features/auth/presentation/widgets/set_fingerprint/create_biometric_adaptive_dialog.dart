@@ -35,16 +35,13 @@ class CreateBiometricAdaptiveDialog extends StatelessWidget {
         key: context.read<BiometricCubit>().formKey,
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 18.w),
-              child: BlocSelector<BiometricCubit, BiometricState, bool>(
-                selector: (state) => state.isPasswordObscured,
-                builder: (context, isPasswordObscured) => PassTextFormField(
-                  obscureText: isPasswordObscured,
-                  controller: context.read<BiometricCubit>().passwordController,
-                  passVisibilityOnTap: () =>
-                      context.read<BiometricCubit>().togglePassVisibility(),
-                ),
+            BlocSelector<BiometricCubit, BiometricState, bool>(
+              selector: (state) => state.isPasswordObscured,
+              builder: (context, isPasswordObscured) => PassTextFormField(
+                obscureText: isPasswordObscured,
+                controller: context.read<BiometricCubit>().passwordController,
+                passVisibilityOnTap: () =>
+                    context.read<BiometricCubit>().togglePassVisibility(),
               ),
             ),
             MySizedBox.height32,
@@ -56,7 +53,12 @@ class CreateBiometricAdaptiveDialog extends StatelessWidget {
           ],
         ),
       ),
-      contentPadding: EdgeInsets.only(top: 32.h, bottom: 16.h),
+      contentPadding: EdgeInsets.only(
+        top: 32.h,
+        bottom: 16.h,
+        left: 18.w,
+        right: 18.w,
+      ),
     );
   }
 }
