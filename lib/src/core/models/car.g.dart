@@ -30,13 +30,15 @@ class CarAdapter extends TypeAdapter<Car> {
       wishlists: (fields[12] as List?)?.cast<CarWishlist>(),
       createdAt: fields[10] as String?,
       updatedAt: fields[11] as String?,
+      description: fields[13] as String?,
+      colors: (fields[14] as List?)?.cast<String>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, Car obj) {
     writer
-      ..writeByte(13)
+      ..writeByte(15)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -62,7 +64,11 @@ class CarAdapter extends TypeAdapter<Car> {
       ..writeByte(11)
       ..write(obj.updatedAt)
       ..writeByte(12)
-      ..write(obj.wishlists);
+      ..write(obj.wishlists)
+      ..writeByte(13)
+      ..write(obj.description)
+      ..writeByte(14)
+      ..write(obj.colors);
   }
 
   @override
@@ -319,6 +325,9 @@ Car _$CarFromJson(Map<String, dynamic> json) => Car(
           .toList(),
       createdAt: json['createdAt'] as String?,
       updatedAt: json['updatedAt'] as String?,
+      description: json['description'] as String?,
+      colors:
+          (json['colors'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$CarToJson(Car instance) => <String, dynamic>{
@@ -335,6 +344,8 @@ Map<String, dynamic> _$CarToJson(Car instance) => <String, dynamic>{
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
       'wishlists': instance.wishlists?.map((e) => e.toJson()).toList(),
+      'description': instance.description,
+      'colors': instance.colors,
     };
 
 CarBrandModel _$CarBrandModelFromJson(Map<String, dynamic> json) =>
