@@ -133,4 +133,5 @@ class AppStrings {
   static const String noReviewsAvailable =
       'No reviews available. If you like to, be the first to share your thoughts!';
   static const String baseUrlEnvKey = 'BASE_URL';
+  static const String bestOffers = 'Best Offers';
 }

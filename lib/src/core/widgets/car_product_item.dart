@@ -13,15 +13,15 @@ import 'package:carey/src/core/widgets/custom_cached_network_image.dart';
 import 'package:carey/src/core/widgets/favorite_icon_button_bloc_listener.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
 
-class TopDealItem extends StatelessWidget {
-  const TopDealItem({super.key, required this.car});
+class CarProductItem extends StatelessWidget {
+  const CarProductItem({super.key, required this.car});
 
   final Car car;
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Align(
           alignment: AlignmentDirectional.centerEnd,
