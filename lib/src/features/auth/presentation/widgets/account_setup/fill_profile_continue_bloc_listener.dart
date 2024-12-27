@@ -5,11 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:carey/src/core/datasources/user_local_data_source.dart';
 import 'package:carey/src/core/helpers/extensions.dart';
+import 'package:carey/src/core/models/carey_user.dart';
 import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
-import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_state.dart';
 
@@ -42,6 +42,9 @@ class FillProfileContinueBlocListener extends StatelessWidget {
       case AccountSetupStateStatus.updateProfileSuccess:
         await _handleUpdateProfileSuccess(state, context);
         break;
+      case AccountSetupStateStatus.updateProfileImgSuccess:
+        await _secureUserAndGoBiometricRoute(state.careyUser!, context);
+        break;
       case AccountSetupStateStatus.updateProfileError:
       case AccountSetupStateStatus.updateProfileImgError:
         context.popTop();
@@ -56,29 +59,29 @@ class FillProfileContinueBlocListener extends StatelessWidget {
     AccountSetupState state,
     BuildContext context,
   ) async {
-    final accountSetupCubit = context.read<AccountSetupCubit>();
     if (state.pickedProfileImg != null) {
-      await accountSetupCubit.updateProfileImg();
+      await context.read<AccountSetupCubit>().updateProfileImg();
+    } else {
+      await _secureUserAndGoBiometricRoute(state.careyUser!, context);
     }
-    await UserLocalDatasource.updateAndSecureCurrentUser(state.careyUser!);
-    context.popTop();
-    context.pushRoute(
-      SetFingerprintRoute(
-        updateProfileParams: UpdateProfileParams(
-          fullName: accountSetupCubit.fullNameController.text,
-          nickName: accountSetupCubit.nickNameController.text,
-          gender: accountSetupCubit.genderController.text,
-          address: accountSetupCubit.addressController.text,
-          phone: accountSetupCubit.phoneNumber,
-        ),
-      ),
+  }
+
+  Future<void> _secureUserAndGoBiometricRoute(
+    CareyUser? careyUser,
+    BuildContext context,
+  ) async {
+    await UserLocalDatasource.updateAndSecureCurrentUser(
+      careyUser!,
     );
+    context.popTop();
+    context.pushRoute(const SetBiometricRoute());
   }
 
   bool _listenWhen(AccountSetupStateStatus currentStatus) {
     return currentStatus == AccountSetupStateStatus.updateProfileLoading ||
         currentStatus == AccountSetupStateStatus.updateProfileSuccess ||
         currentStatus == AccountSetupStateStatus.updateProfileError ||
-        currentStatus == AccountSetupStateStatus.updateProfileImgError;
+        currentStatus == AccountSetupStateStatus.updateProfileImgError ||
+        currentStatus == AccountSetupStateStatus.updateProfileImgSuccess;
   }
 }
