@@ -7,6 +7,9 @@ import 'package:carey/src/core/models/car.dart';
 import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
+import 'package:carey/src/core/widgets/car_product_item.dart';
+import 'package:carey/src/core/widgets/horizontal_separated_list_view.dart';
+import 'package:carey/src/core/widgets/my_sized_box.dart';
 import 'package:carey/src/core/widgets/products_sliver_grid.dart';
 import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
 import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
@@ -80,33 +83,56 @@ class HomeBody extends StatelessWidget {
                 .toList(),
           ),
         ),
-        SliverToBoxAdapter(
-          child: TextAndSeeAll(
-            text: AppStrings.topDeals,
-            seeAllOnPressed: () => context.pushRoute(
-              TopDealsRoute(homeData: data),
+        if (data.bestOffers.isNotEmpty)
+          SliverToBoxAdapter(
+            child: TextAndSeeAll(
+              text: AppStrings.bestOffers,
+              seeAllOnPressed: () => context.pushRoute(
+                BestOffersRoute(bestOffers: data.bestOffers),
+              ),
             ),
           ),
-        ),
-        SliverToBoxAdapter(
-          child: TopDealsBrandsListView(
-            brands: [
-              ...data.brands.where((brand) => brand.name == AppStrings.all),
-              ...data.brands.where((brand) => brand.name != AppStrings.all),
-            ],
+        if (data.bestOffers.isNotEmpty)
+          SliverToBoxAdapter(
+            child: HorizontalSeparatedListView(
+              height: AppConstants.carProductItemHeight,
+              itemBuilder: (_, index) => CarProductItem(
+                car: data.bestOffers[index],
+              ),
+              itemCount: 5,
+              separatorWidget: MySizedBox.width16,
+            ),
           ),
-        ),
-        BlocSelector<HomeCubit, HomeState, List<Car>?>(
-          selector: (state) => state.bestCars,
-          builder: (context, bestCars) => (bestCars ?? data.bestCars).isEmpty
-              ? const NoProductsWidget()
-              : ProductsSliverGrid(
-                  cars: bestCars ?? data.bestCars,
-                  itemCount: (bestCars ?? data.bestCars).length > 4
-                      ? 4
-                      : (bestCars ?? data.bestCars).length,
-                ),
-        ),
+        if (data.bestCars.isNotEmpty)
+          SliverToBoxAdapter(
+            child: TextAndSeeAll(
+              text: AppStrings.topDeals,
+              seeAllOnPressed: () => context.pushRoute(
+                TopDealsRoute(homeData: data),
+              ),
+            ),
+          ),
+        if (data.bestCars.isNotEmpty)
+          SliverToBoxAdapter(
+            child: TopDealsBrandsListView(
+              brands: [
+                ...data.brands.where((brand) => brand.name == AppStrings.all),
+                ...data.brands.where((brand) => brand.name != AppStrings.all),
+              ],
+            ),
+          ),
+        if (data.bestCars.isNotEmpty)
+          BlocSelector<HomeCubit, HomeState, List<Car>?>(
+            selector: (state) => state.bestCars,
+            builder: (context, bestCars) => (bestCars ?? data.bestCars).isEmpty
+                ? const NoProductsWidget()
+                : ProductsSliverGrid(
+                    cars: bestCars ?? data.bestCars,
+                    itemCount: (bestCars ?? data.bestCars).length > 4
+                        ? 4
+                        : (bestCars ?? data.bestCars).length,
+                  ),
+          ),
       ],
     );
   }
