@@ -14,9 +14,9 @@ class LoadingAdaptiveDialog extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: context.screenWidth * 0.3),
       child: AlertDialog.adaptive(
         backgroundColor: Colors.white,
-        contentPadding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
+        contentPadding: EdgeInsets.all(16.h),
         shape: AppConstants.dialogShape,
-        content: const AnimatedLoadingIndicator(),
+        content: const FittedBox(child: AnimatedLoadingIndicator()),
       ),
     );
   }

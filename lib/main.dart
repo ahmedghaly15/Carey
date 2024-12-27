@@ -10,7 +10,7 @@ import 'package:carey/src/carey_app.dart';
 import 'package:carey/src/core/di/dependency_injection.dart';
 import 'package:carey/src/core/helpers/bloc_observer.dart';
 import 'package:carey/src/core/helpers/hive_helper.dart';
-import 'package:carey/src/core/utils/functions/check_if_current_user_account_set.dart';
+import 'package:carey/src/core/utils/functions/check_if_user_account_is_set.dart';
 import 'package:carey/src/core/utils/functions/check_if_user_is_logged_in.dart';
 
 void main() async {
@@ -25,6 +25,6 @@ void main() async {
   HiveHelper.registerAdapters();
   await setupDI();
   await checkIfUserIsLoggedIn();
-  await checkIfCurrentUserAccountIsSet();
+  await checkIfUserAccountIsSet();
   runApp(const CareyApp());
 }

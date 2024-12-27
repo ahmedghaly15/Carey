@@ -1,5 +1,6 @@
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
+import 'package:carey/src/core/widgets/animated_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -90,4 +91,52 @@ class PrimaryButton extends StatelessWidget {
       ),
     );
   }
+
+  factory PrimaryButton.withAnimatedLoadingOrTextChild({
+    required bool isLoading,
+    required String text,
+    bool isInfinityWidth = true,
+    double? borderRadius,
+    TextStyle? textStyle,
+    Color? backgroundColor,
+    Color? textColor,
+    void Function()? onPressed,
+    List<BoxShadow>? boxShadow,
+    double? width,
+    height,
+    EdgeInsetsGeometry? padding,
+    BoxBorder? border,
+    bool isOutlined = false,
+    double? fontSize,
+    EdgeInsetsGeometry? margin,
+    Color borderColor = AppColors.primaryColor,
+    double borderWidth = 1,
+  }) =>
+      PrimaryButton(
+        onPressed: onPressed,
+        isInfinityWidth: isInfinityWidth,
+        borderRadius: borderRadius,
+        textStyle: textStyle,
+        backgroundColor: backgroundColor,
+        textColor: textColor,
+        boxShadow: boxShadow,
+        width: width,
+        height: height,
+        padding: padding,
+        border: border,
+        isOutlined: isOutlined,
+        fontSize: fontSize,
+        margin: margin,
+        borderColor: borderColor,
+        borderWidth: borderWidth,
+        child: isLoading
+            ? SizedBox.square(
+                dimension: 24.h,
+                child: const AnimatedLoadingIndicator(color: Colors.white),
+              )
+            : Text(
+                text,
+                style: AppTextStyles.font20SemiBoldWhite,
+              ),
+      );
 }

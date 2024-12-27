@@ -1,13 +1,24 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 import 'package:carey/src/core/api/dio_factory.dart';
 import 'package:carey/src/core/helpers/cache_keys.dart';
 import 'package:carey/src/core/helpers/secure_storage_helper.dart';
+import 'package:carey/src/core/models/carey_user.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
 
-class AuthLocalDataSource {
-  AuthLocalDataSource._();
+class UserLocalDatasource {
+  UserLocalDatasource._();
+
+  static Future<void> updateAndSecureCurrentUser(
+    CareyUser user,
+  ) async {
+    currentUserData = currentUserData!.copyWith(user: user);
+    debugPrint('CURRENT USER : ${currentUserData!.toJson()}');
+    await secureUserData(currentUserData!);
+  }
 
   static Future<void> secureUserData(AuthResponseEntity userData) async {
     await SecureStorageHelper.setSecuredString(

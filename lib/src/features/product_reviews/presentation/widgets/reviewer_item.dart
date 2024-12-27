@@ -1,8 +1,6 @@
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
-import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/widgets/custom_cached_network_image.dart';
-import 'package:carey/src/core/widgets/list_outlined_button.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
 import 'package:carey/src/features/product_reviews/presentation/widgets/favorite_review_icon_button.dart';
 import 'package:flutter/material.dart';

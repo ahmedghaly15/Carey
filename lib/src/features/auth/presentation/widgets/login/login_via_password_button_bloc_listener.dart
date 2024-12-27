@@ -6,7 +6,7 @@ import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
-import 'package:carey/src/features/auth/data/datasources/auth_local_data_source.dart';
+import 'package:carey/src/core/datasources/user_local_data_source.dart';
 import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_state.dart';
@@ -58,7 +58,7 @@ class LoginViaPasswordButtonBlocListener extends StatelessWidget {
     AuthResponseEntity authEntity,
   ) async {
     await context.read<LoginCubit>().handleRememberingEmailAndPassword();
-    await AuthLocalDataSource.setAndSecureUserDataAndSetTokenIntoHeaders(
+    await UserLocalDatasource.setAndSecureUserDataAndSetTokenIntoHeaders(
       authEntity,
     );
   }

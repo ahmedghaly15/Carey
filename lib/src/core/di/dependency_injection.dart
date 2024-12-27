@@ -194,7 +194,7 @@ void _setupForUseCases() {
 }
 
 void _setupForCubits() {
-  getIt.registerLazySingleton<LoginCubit>(
+  getIt.registerFactory<LoginCubit>(
     () => LoginCubit(getIt.get<LoginRepo>()),
   );
   getIt.registerFactory<RegisterCubit>(
@@ -217,7 +217,7 @@ void _setupForCubits() {
   getIt.registerFactory<ForgotPasswordCubit>(
     () => ForgotPasswordCubit(getIt.get<ForgotPasswordRepo>()),
   );
-  getIt.registerLazySingleton<PinCodeVerificationCubit>(
+  getIt.registerFactory<PinCodeVerificationCubit>(
     () => PinCodeVerificationCubit(getIt.get<PinCodeVerificationRepo>()),
   );
   getIt.registerFactory<ResetPassCubit>(

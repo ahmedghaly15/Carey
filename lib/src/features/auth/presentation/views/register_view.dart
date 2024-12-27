@@ -39,7 +39,7 @@ class RegisterView extends StatelessWidget implements AutoRouteWrapper {
           padding: AppConstants.screenHorizontalPadding,
           child: CustomScrollView(
             slivers: [
-              if (context.router.canPop()) const CustomSliverAppBar(),
+              if (isPushedFromLogin) const CustomSliverAppBar(),
               SliverToBoxAdapter(child: Image.asset(Assets.careyIcon)),
               const SliverToBoxAdapter(
                 child: AuthViewTitleText(title: AppStrings.createYourAccount),

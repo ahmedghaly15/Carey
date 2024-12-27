@@ -612,50 +612,22 @@ class ResetPasswordRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [SetFingerprintView]
-class SetFingerprintRoute extends PageRouteInfo<SetFingerprintRouteArgs> {
-  SetFingerprintRoute({
-    Key? key,
-    required UpdateProfileParams updateProfileParams,
-    List<PageRouteInfo>? children,
-  }) : super(
-          SetFingerprintRoute.name,
-          args: SetFingerprintRouteArgs(
-            key: key,
-            updateProfileParams: updateProfileParams,
-          ),
+/// [SetBiometricView]
+class SetBiometricRoute extends PageRouteInfo<void> {
+  const SetBiometricRoute({List<PageRouteInfo>? children})
+      : super(
+          SetBiometricRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'SetFingerprintRoute';
+  static const String name = 'SetBiometricRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<SetFingerprintRouteArgs>();
-      return WrappedRoute(
-          child: SetFingerprintView(
-        key: args.key,
-        updateProfileParams: args.updateProfileParams,
-      ));
+      return WrappedRoute(child: const SetBiometricView());
     },
   );
-}
-
-class SetFingerprintRouteArgs {
-  const SetFingerprintRouteArgs({
-    this.key,
-    required this.updateProfileParams,
-  });
-
-  final Key? key;
-
-  final UpdateProfileParams updateProfileParams;
-
-  @override
-  String toString() {
-    return 'SetFingerprintRouteArgs{key: $key, updateProfileParams: $updateProfileParams}';
-  }
 }
 
 /// generated route for

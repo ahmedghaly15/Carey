@@ -1,12 +1,12 @@
 import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 
-Future<void> checkIfCurrentUserAccountIsSet() async {
+Future<void> checkIfUserAccountIsSet() async {
   if (isUserLoggedIn) {
     if (currentUserData!.user.fullName.isNullOrEmpty) {
-      isCurrentUserAccountSet = false;
+      isUserAccountSet = false;
     } else {
-      isCurrentUserAccountSet = true;
+      isUserAccountSet = true;
     }
   }
 }

@@ -62,9 +62,9 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
         await SharedPrefHelper.getBool(CacheKeys.isStartViewVisited);
 
     if (isStartViewVisited) {
-      if (isUserLoggedIn && isCurrentUserAccountSet) {
+      if (isUserLoggedIn && isUserAccountSet) {
         context.replaceRoute(const HomeRoute());
-      } else if (isUserLoggedIn && !isCurrentUserAccountSet) {
+      } else if (isUserLoggedIn && !isUserAccountSet) {
         context.replaceRoute(const AccountSetupRoute());
       } else {
         context.replaceRoute(const AuthRoute());

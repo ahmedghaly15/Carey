@@ -1,4 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
@@ -6,9 +10,6 @@ import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/auth/presentation/cubits/reset_pass/reset_pass_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/reset_pass/reset_pass_state.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ResetPassContinueBlocListener extends StatelessWidget {
   const ResetPassContinueBlocListener({super.key});
@@ -32,27 +33,19 @@ class ResetPassContinueBlocListener extends StatelessWidget {
   Future<void> _listener(ResetPassState state, BuildContext context) async {
     switch (state.status) {
       case ResetPassStateStatus.resetPassLoading:
-        _unfocusKeyboardAndShowLoadingDialog(context);
+        context.unfocusKeyboard();
+        context.showLoadingDialog();
         break;
       case ResetPassStateStatus.resetPassSuccess:
         await _handleResetPassSuccessState(context);
         break;
       case ResetPassStateStatus.resetPassError:
-        _popTopAndShowErrorDialog(context, state.error!);
+        context.popTop();
+        context.showErrorDialog(state.error!);
         break;
       default:
         break;
     }
-  }
-
-  void _popTopAndShowErrorDialog(BuildContext context, String error) {
-    context.popTop();
-    context.showErrorDialog(error);
-  }
-
-  void _unfocusKeyboardAndShowLoadingDialog(BuildContext context) {
-    context.unfocusKeyboard();
-    context.showLoadingDialog();
   }
 
   Future<void> _handleResetPassSuccessState(BuildContext context) async {

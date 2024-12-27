@@ -22,7 +22,7 @@ List<AutoRoute> get appRoutes => [
           _buildCustomRoute(page: LoginRoute.page),
           _buildCustomRoute(page: RegisterRoute.page),
           _buildCustomRoute(page: AccountSetupRoute.page),
-          _buildCustomRoute(page: SetFingerprintRoute.page),
+          _buildCustomRoute(page: SetBiometricRoute.page),
           _buildCustomRoute(page: ForgotPasswordRoute.page),
           _buildCustomRoute(page: PinCodeVerificationRoute.page),
           _buildCustomRoute(page: ResetPasswordRoute.page),
