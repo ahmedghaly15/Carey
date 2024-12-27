@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
+import 'package:carey/src/core/models/carey_user.dart';
 
 part 'biometric_state.freezed.dart';
 
@@ -22,9 +22,9 @@ enum BiometricStateStatus {
 class BiometricState with _$BiometricState {
   const factory BiometricState({
     required BiometricStateStatus status,
-    AuthResponseEntity? currentUserData,
     @Default(false) bool fingerprintAuthenticated,
     String? error,
+    CareyUser? careyUser,
     @Default(true) bool isPasswordObscured,
   }) = _BiometricState;
 
