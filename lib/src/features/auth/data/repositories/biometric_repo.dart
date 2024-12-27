@@ -24,17 +24,21 @@ class BiometricRepo {
             return const ApiResult.success(true);
           case LocalAuthResult.cancelled:
             return ApiResult.failure(
-              LocalAuthErrorHandler.handleError('Authentication cancelled'),
+              LocalAuthErrorHandler.handleError(
+                LocalAuthErrorMessages.authenticationCanceled,
+              ),
             );
           case LocalAuthResult.error:
             return ApiResult.failure(
-              LocalAuthErrorHandler.handleError('Authentication failed'),
+              LocalAuthErrorHandler.handleError(
+                LocalAuthErrorMessages.authFailed,
+              ),
             );
         }
       } else {
         return ApiResult.failure(
           LocalAuthErrorHandler.handleError(
-            'Biometric authentication is not supported.',
+            LocalAuthErrorMessages.biometricAuthIsNotSupported,
           ),
         );
       }

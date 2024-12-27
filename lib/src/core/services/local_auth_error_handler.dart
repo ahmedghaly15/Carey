@@ -11,60 +11,61 @@ class LocalAuthErrorHandler {
       switch (error.code) {
         case 'auth_in_progress':
           return const ApiErrorModel(
-            error: [_LocalAuthErrorMessages.authInProgress],
+            error: [LocalAuthErrorMessages.authInProgress],
           );
         case 'UserCanceled' || 'authentication_canceled':
           return const ApiErrorModel(
-            error: [_LocalAuthErrorMessages.authenticationCanceled],
+            error: [LocalAuthErrorMessages.authenticationCanceled],
           );
         case auth_error.notAvailable:
           return const ApiErrorModel(
-            error: [_LocalAuthErrorMessages.notAvailable],
+            error: [LocalAuthErrorMessages.notAvailable],
           );
         case auth_error.biometricOnlyNotSupported:
           return const ApiErrorModel(
-            error: [_LocalAuthErrorMessages.biometricOnlyNotSupported],
+            error: [LocalAuthErrorMessages.biometricAuthIsNotSupported],
           );
         case auth_error.notEnrolled:
           return const ApiErrorModel(
-            error: [_LocalAuthErrorMessages.notEnrolled],
+            error: [LocalAuthErrorMessages.notEnrolled],
           );
         case auth_error.lockedOut:
-          return const ApiErrorModel(
-              error: [_LocalAuthErrorMessages.lockedOut]);
+          return const ApiErrorModel(error: [LocalAuthErrorMessages.lockedOut]);
         case auth_error.otherOperatingSystem:
           return const ApiErrorModel(
-            error: [_LocalAuthErrorMessages.otherOperatingSystem],
+            error: [LocalAuthErrorMessages.otherOperatingSystem],
           );
         case auth_error.passcodeNotSet:
           return const ApiErrorModel(
-            error: [_LocalAuthErrorMessages.passcodeNotSet],
+            error: [LocalAuthErrorMessages.passcodeNotSet],
           );
         case auth_error.permanentlyLockedOut:
           return const ApiErrorModel(
-            error: [_LocalAuthErrorMessages.permanentlyLockedOut],
+            error: [LocalAuthErrorMessages.permanentlyLockedOut],
           );
         default:
           return const ApiErrorModel(
-            error: [_LocalAuthErrorMessages.authenticationCanceled],
+            error: [LocalAuthErrorMessages.authenticationCanceled],
           );
       }
+    } else if (error is String) {
+      return ApiErrorModel(error: [error]);
     }
     return const ApiErrorModel(
-      error: [_LocalAuthErrorMessages.authenticationCanceled],
+      error: [LocalAuthErrorMessages.authenticationCanceled],
     );
   }
 }
 
-class _LocalAuthErrorMessages {
-  _LocalAuthErrorMessages._();
+class LocalAuthErrorMessages {
+  LocalAuthErrorMessages._();
 
   static const String authInProgress =
       'Biometric authentication is in progress.';
   static const String authenticationCanceled =
       'Biometric authentication is canceled.';
   static const String notAvailable = 'Local authentication is not available.';
-  static const String biometricOnlyNotSupported =
+  static const String biometricAuthIsNotSupported =
       'Biometric authentication is not supported.';
   static const String notEnrolled = 'Biometric authentication is not enrolled.';
   static const String lockedOut = 'Biometric authentication is locked out.';
@@ -73,4 +74,5 @@ class _LocalAuthErrorMessages {
   static const String passcodeNotSet = 'Passcode authentication is not set.';
   static const String permanentlyLockedOut =
       'Biometric authentication is permanently locked out.';
+  static const String authFailed = 'Authentication failed';
 }

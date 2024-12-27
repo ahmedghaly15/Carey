@@ -194,7 +194,7 @@ void _setupForUseCases() {
 }
 
 void _setupForCubits() {
-  getIt.registerLazySingleton<LoginCubit>(
+  getIt.registerFactory<LoginCubit>(
     () => LoginCubit(getIt.get<LoginRepo>()),
   );
   getIt.registerFactory<RegisterCubit>(
