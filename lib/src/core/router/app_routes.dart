@@ -38,6 +38,7 @@ List<AutoRoute> get appRoutes => [
           AutoRoute(page: ProfileRoute.page),
         ],
       ),
+      _buildCustomRoute(page: BestOffersRoute.page),
       _buildCustomRoute(page: SpecialOffersRoute.page),
       _buildCustomRoute(page: TopDealsRoute.page),
       _buildCustomRoute(page: MyWishlistRoute.page),

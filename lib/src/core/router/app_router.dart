@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:carey/src/features/home/presentation/views/best_offers_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carey/src/core/models/car.dart';

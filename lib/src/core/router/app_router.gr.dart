@@ -48,6 +48,52 @@ class AuthRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [BestOffersView]
+class BestOffersRoute extends PageRouteInfo<BestOffersRouteArgs> {
+  BestOffersRoute({
+    Key? key,
+    required List<Car> bestOffers,
+    List<PageRouteInfo>? children,
+  }) : super(
+          BestOffersRoute.name,
+          args: BestOffersRouteArgs(
+            key: key,
+            bestOffers: bestOffers,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'BestOffersRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<BestOffersRouteArgs>();
+      return BestOffersView(
+        key: args.key,
+        bestOffers: args.bestOffers,
+      );
+    },
+  );
+}
+
+class BestOffersRouteArgs {
+  const BestOffersRouteArgs({
+    this.key,
+    required this.bestOffers,
+  });
+
+  final Key? key;
+
+  final List<Car> bestOffers;
+
+  @override
+  String toString() {
+    return 'BestOffersRouteArgs{key: $key, bestOffers: $bestOffers}';
+  }
+}
+
+/// generated route for
 /// [CheckoutProcess]
 class CheckoutProcessRoute extends PageRouteInfo<void> {
   const CheckoutProcessRoute({List<PageRouteInfo>? children})
