@@ -76,7 +76,7 @@ class CarProductItem extends StatelessWidget {
             Text(
               '${car.rates![0].rate}',
               style: AppTextStyles.font10Bold.copyWith(
-                color: AppColors.primaryColor.withOpacity(0.7),
+                color: AppColors.primaryColor.withAlpha(179),
               ),
             ),
             Container(
