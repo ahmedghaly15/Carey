@@ -235,5 +235,5 @@ void _setupForCubits() {
   getIt.registerFactory<ProductReviewsCubit>(
     () => ProductReviewsCubit(getIt.get<ProductReviewsRepo>()),
   );
-  getIt.registerLazySingleton<MakeOfferCubit>(() => MakeOfferCubit());
+  getIt.registerFactory<MakeOfferCubit>(() => MakeOfferCubit());
 }
