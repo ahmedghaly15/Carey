@@ -1,3 +1,4 @@
+import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,7 +13,7 @@ class ProductsSliverGridShimmer extends StatelessWidget {
     return SliverGrid.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 167 / 194,
+        childAspectRatio: AppConstants.carProductAspectRatio,
         crossAxisSpacing: 12.w,
         mainAxisSpacing: 21.h,
       ),

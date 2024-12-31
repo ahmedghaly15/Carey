@@ -27,6 +27,7 @@ class CareyUser with _$CareyUser {
     @HiveField(13) @JsonKey(name: 'LoginAppId') String? loginAppId,
     @HiveField(14) bool? emailVerified,
     @HiveField(15) bool? phoneVerified,
+    @HiveField(16) bool? biometricVerified,
   }) = _CareyUser;
 
   factory CareyUser.fromJson(Map<String, dynamic> json) =>

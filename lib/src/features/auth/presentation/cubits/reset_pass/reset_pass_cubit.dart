@@ -23,18 +23,16 @@ class ResetPassCubit extends Cubit<ResetPassState> {
 
   void _initFormAttributes() {
     formKey = GlobalKey<FormState>();
-    _initControllers();
-  }
-
-  void _initControllers() {
     passController = TextEditingController();
     confirmPassController = TextEditingController();
   }
 
   void _resetPass() async {
     emit(state.copyWith(status: ResetPassStateStatus.resetPassLoading));
-    final params = UpdatePassParams(password: passController.text);
-    final result = await _updatePassUseCase(params, _cancelToken);
+    final result = await _updatePassUseCase(
+      UpdatePassParams(password: passController.text),
+      _cancelToken,
+    );
     result.when(
       success: (_) =>
           emit(state.copyWith(status: ResetPassStateStatus.resetPassSuccess)),

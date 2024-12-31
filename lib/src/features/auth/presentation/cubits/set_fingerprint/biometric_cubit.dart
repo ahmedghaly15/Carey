@@ -1,13 +1,12 @@
-import 'package:carey/src/features/auth/data/models/create_biometric_params.dart';
-import 'package:carey/src/features/auth/data/repositories/biometric_repo.dart';
-import 'package:carey/src/features/auth/domain/usecases/update_profile_details.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:carey/src/core/utils/app_constants.dart';
-import 'package:carey/src/features/auth/data/datasources/auth_local_data_source.dart';
+import 'package:carey/src/features/auth/data/models/create_biometric_params.dart';
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
+import 'package:carey/src/features/auth/data/repositories/biometric_repo.dart';
+import 'package:carey/src/features/auth/domain/usecases/update_profile_details.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_state.dart';
 
 class BiometricCubit extends Cubit<BiometricState> {
@@ -31,26 +30,23 @@ class BiometricCubit extends Cubit<BiometricState> {
     passwordController = TextEditingController();
   }
 
-  void updateProfile(UpdateProfileParams params) async {
-    emit(
-      state.copyWith(
-        status: BiometricStateStatus.updateProfileLoading,
-      ),
-    );
+  void updateProfile() async {
+    emit(state.copyWith(
+      status: BiometricStateStatus.updateProfileLoading,
+    ));
     final result = await updateProfileDetailsUseCase(
-      params,
+      UpdateProfileParams(
+        biometricVerified: state.fingerprintAuthenticated,
+      ),
       _cancelToken,
     );
     result.when(
-      success: (_) async {
-        await _updateCurrentUserDataAndSecureIt(params);
-        emit(
-          state.copyWith(
-            status: BiometricStateStatus.updateProfileSuccess,
-            currentUserData: currentUserData,
-          ),
-        );
-      },
+      success: (_) => emit(state.copyWith(
+        status: BiometricStateStatus.updateProfileSuccess,
+        careyUser: currentUserData!.user.copyWith(
+          biometricVerified: state.fingerprintAuthenticated,
+        ),
+      )),
       failure: (failure) => emit(
         state.copyWith(
           status: BiometricStateStatus.updateProfileError,
@@ -60,27 +56,10 @@ class BiometricCubit extends Cubit<BiometricState> {
     );
   }
 
-  Future<void> _updateCurrentUserDataAndSecureIt(
-    UpdateProfileParams params,
-  ) async {
-    currentUserData = currentUserData!.copyWith(
-      user: currentUserData!.user.copyWith(
-        fullName: params.fullName,
-        nickName: params.nickName,
-        address: params.address,
-        phone: params.phone,
-        gender: params.gender,
-      ),
-    );
-    await AuthLocalDataSource.secureUserData(currentUserData!);
-  }
-
   void setLocalBiometric() async {
-    emit(
-      state.copyWith(
-        status: BiometricStateStatus.setLocalBiometricLoading,
-      ),
-    );
+    emit(state.copyWith(
+      status: BiometricStateStatus.setLocalBiometricLoading,
+    ));
     final result = await biometricRepo.setLocalBiometric();
     result.when(
       success: (fingerprintAuthenticated) => emit(state.copyWith(
@@ -98,8 +77,9 @@ class BiometricCubit extends Cubit<BiometricState> {
     emit(state.copyWith(
       status: BiometricStateStatus.createBiometricLoading,
     ));
-    final params = CreateBiometricParams(password: password);
-    final result = await biometricRepo.createBiometric(params);
+    final result = await biometricRepo.createBiometric(
+      CreateBiometricParams(password: password),
+    );
     result.when(
       success: (_) => emit(state.copyWith(
         status: BiometricStateStatus.createBiometricSuccess,

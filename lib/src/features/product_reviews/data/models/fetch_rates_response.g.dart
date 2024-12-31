@@ -20,7 +20,7 @@ class FetchRatesResponseAdapter extends TypeAdapter<FetchRatesResponse> {
       totalItems: fields[0] as int,
       totalPages: fields[1] as int,
       currentPage: fields[2] as int,
-      rates: (fields[3] as List).cast<RateResponseItem>(),
+      reviews: (fields[3] as List).cast<RateResponseItem>(),
     );
   }
 
@@ -35,7 +35,7 @@ class FetchRatesResponseAdapter extends TypeAdapter<FetchRatesResponse> {
       ..writeByte(2)
       ..write(obj.currentPage)
       ..writeByte(3)
-      ..write(obj.rates);
+      ..write(obj.reviews);
   }
 
   @override
@@ -108,7 +108,7 @@ _$FetchRatesResponseImpl _$$FetchRatesResponseImplFromJson(
       totalItems: (json['totalItems'] as num).toInt(),
       totalPages: (json['totalPages'] as num).toInt(),
       currentPage: (json['currentPage'] as num).toInt(),
-      rates: (json['data'] as List<dynamic>)
+      reviews: (json['data'] as List<dynamic>)
           .map((e) => RateResponseItem.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -119,7 +119,7 @@ Map<String, dynamic> _$$FetchRatesResponseImplToJson(
       'totalItems': instance.totalItems,
       'totalPages': instance.totalPages,
       'currentPage': instance.currentPage,
-      'data': instance.rates.map((e) => e.toJson()).toList(),
+      'data': instance.reviews.map((e) => e.toJson()).toList(),
     };
 
 _$RateResponseItemImpl _$$RateResponseItemImplFromJson(

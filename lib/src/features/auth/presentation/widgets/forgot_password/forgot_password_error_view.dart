@@ -1,9 +1,11 @@
+import 'package:carey/src/core/api/api_error_message.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_error_widget.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
 import 'package:carey/src/features/auth/presentation/cubits/forgot_password/forgot_password_cubit.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ForgotPasswordErrorView extends StatelessWidget {
   const ForgotPasswordErrorView({
@@ -23,9 +25,12 @@ class ForgotPasswordErrorView extends StatelessWidget {
           hasScrollBody: false,
           child: CustomErrorWidget(
             error: error,
-            tryAgainOnPressed: () => context
-                .read<ForgotPasswordCubit>()
-                .getForgotPassContactDetails(email),
+            tryAgainOnPressed:
+                error == ApiErrorMessage.thereIsNoAccountWithThisEmail
+                    ? null
+                    : () => context
+                        .read<ForgotPasswordCubit>()
+                        .getUserContactDetails(email),
           ),
         ),
       ],

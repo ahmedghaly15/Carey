@@ -7,7 +7,7 @@ import 'package:carey/src/features/home/data/models/fetch_special_offers_respons
 
 part 'home_api_service.g.dart';
 
-@RestApi(baseUrl: EndPoints.baseUrl)
+@RestApi()
 abstract class HomeApiService {
   factory HomeApiService(Dio dio, {String baseUrl}) = _HomeApiService;
 

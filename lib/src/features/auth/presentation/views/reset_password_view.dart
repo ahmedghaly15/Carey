@@ -12,8 +12,9 @@ import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
 import 'package:carey/src/features/auth/presentation/cubits/reset_pass/reset_pass_cubit.dart';
+import 'package:carey/src/features/auth/presentation/cubits/reset_pass/reset_pass_state.dart';
+import 'package:carey/src/features/auth/presentation/widgets/remember_me_check_box_bloc_selector.dart';
 import 'package:carey/src/features/auth/presentation/widgets/reset_pass/reset_pass_continue_bloc_listener.dart';
-import 'package:carey/src/features/auth/presentation/widgets/reset_pass/reset_pass_remember_me_bloc_selector.dart';
 import 'package:carey/src/features/auth/presentation/widgets/reset_pass/reset_password_form.dart';
 
 @RoutePage()
@@ -22,8 +23,8 @@ class ResetPasswordView extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<ResetPassCubit>.value(
-      value: getIt.get<ResetPassCubit>(),
+    return BlocProvider<ResetPassCubit>(
+      create: (_) => getIt.get<ResetPassCubit>(),
       child: this,
     );
   }
@@ -56,7 +57,14 @@ class ResetPasswordView extends StatelessWidget implements AutoRouteWrapper {
               sliver: const SliverToBoxAdapter(child: ResetPasswordForm()),
             ),
             const SliverToBoxAdapter(child: MySizedBox.height33),
-            const SliverToBoxAdapter(child: ResetPassRememberMeBlocSelector()),
+            SliverToBoxAdapter(
+              child: RememberMeCheckBoxBlocSelector<ResetPassCubit,
+                  ResetPassState>(
+                selector: (state) => state.rememberMe,
+                onChanged: (_) =>
+                    context.read<ResetPassCubit>().toggleRememberMe(),
+              ),
+            ),
             const SliverFillRemaining(
               hasScrollBody: false,
               child: Column(

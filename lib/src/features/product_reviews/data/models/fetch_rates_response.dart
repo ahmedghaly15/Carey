@@ -16,7 +16,9 @@ class FetchRatesResponse with _$FetchRatesResponse {
     @HiveField(0) required int totalItems,
     @HiveField(1) required int totalPages,
     @HiveField(2) required int currentPage,
-    @HiveField(3) @JsonKey(name: 'data') required List<RateResponseItem> rates,
+    @HiveField(3)
+    @JsonKey(name: 'data')
+    required List<RateResponseItem> reviews,
   }) = _FetchRatesResponse;
 
   factory FetchRatesResponse.fromJson(Map<String, dynamic> json) =>

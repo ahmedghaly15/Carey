@@ -48,6 +48,52 @@ class AuthRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [BestOffersView]
+class BestOffersRoute extends PageRouteInfo<BestOffersRouteArgs> {
+  BestOffersRoute({
+    Key? key,
+    required List<Car> bestOffers,
+    List<PageRouteInfo>? children,
+  }) : super(
+          BestOffersRoute.name,
+          args: BestOffersRouteArgs(
+            key: key,
+            bestOffers: bestOffers,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'BestOffersRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<BestOffersRouteArgs>();
+      return BestOffersView(
+        key: args.key,
+        bestOffers: args.bestOffers,
+      );
+    },
+  );
+}
+
+class BestOffersRouteArgs {
+  const BestOffersRouteArgs({
+    this.key,
+    required this.bestOffers,
+  });
+
+  final Key? key;
+
+  final List<Car> bestOffers;
+
+  @override
+  String toString() {
+    return 'BestOffersRouteArgs{key: $key, bestOffers: $bestOffers}';
+  }
+}
+
+/// generated route for
 /// [CheckoutProcess]
 class CheckoutProcessRoute extends PageRouteInfo<void> {
   const CheckoutProcessRoute({List<PageRouteInfo>? children})
@@ -612,50 +658,22 @@ class ResetPasswordRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [SetFingerprintView]
-class SetFingerprintRoute extends PageRouteInfo<SetFingerprintRouteArgs> {
-  SetFingerprintRoute({
-    Key? key,
-    required UpdateProfileParams updateProfileParams,
-    List<PageRouteInfo>? children,
-  }) : super(
-          SetFingerprintRoute.name,
-          args: SetFingerprintRouteArgs(
-            key: key,
-            updateProfileParams: updateProfileParams,
-          ),
+/// [SetBiometricView]
+class SetBiometricRoute extends PageRouteInfo<void> {
+  const SetBiometricRoute({List<PageRouteInfo>? children})
+      : super(
+          SetBiometricRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'SetFingerprintRoute';
+  static const String name = 'SetBiometricRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<SetFingerprintRouteArgs>();
-      return WrappedRoute(
-          child: SetFingerprintView(
-        key: args.key,
-        updateProfileParams: args.updateProfileParams,
-      ));
+      return WrappedRoute(child: const SetBiometricView());
     },
   );
-}
-
-class SetFingerprintRouteArgs {
-  const SetFingerprintRouteArgs({
-    this.key,
-    required this.updateProfileParams,
-  });
-
-  final Key? key;
-
-  final UpdateProfileParams updateProfileParams;
-
-  @override
-  String toString() {
-    return 'SetFingerprintRouteArgs{key: $key, updateProfileParams: $updateProfileParams}';
-  }
 }
 
 /// generated route for

@@ -1,14 +1,5 @@
-import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
-import 'package:carey/src/features/product_reviews/data/api/product_reviews_api_service.dart';
-import 'package:carey/src/features/product_reviews/data/datasources/product_reviews_local_datasource.dart';
-import 'package:carey/src/features/product_reviews/data/repositories/product_reviews_repo.dart';
-import 'package:carey/src/features/wishlist/data/apis/wishlist_api_service.dart';
-import 'package:carey/src/features/wishlist/data/datasource/wishlist_local_datasource.dart';
-import 'package:carey/src/features/wishlist/data/repos/wishlist_repo.dart';
-import 'package:carey/src/features/wishlist/presentation/cubits/fetch_wishlist/fetch_wishlist_cubit.dart';
-import 'package:carey/src/features/wishlist/presentation/cubits/wishlist_cubit.dart';
-import 'package:carey/src/features/home/data/datasource/home_local_datasource.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
@@ -18,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:carey/src/core/api/dio_factory.dart';
 import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/services/local_auth.dart';
+import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/features/auth/data/apis/account_setup_api_service.dart';
 import 'package:carey/src/features/auth/data/apis/biometric_api_service.dart';
 import 'package:carey/src/features/auth/data/apis/forgot_password_api_service.dart';
@@ -39,7 +31,6 @@ import 'package:carey/src/features/auth/domain/usecases/update_password.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_details.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_img.dart';
 import 'package:carey/src/features/auth/presentation/cubits/account_setup/account_setup_cubit.dart';
-import 'package:carey/src/features/auth/presentation/cubits/auth_form/auth_form_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/forgot_password/forgot_password_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/pin_code_verification/pin_code_verification_cubit.dart';
@@ -47,9 +38,19 @@ import 'package:carey/src/features/auth/presentation/cubits/register/register_cu
 import 'package:carey/src/features/auth/presentation/cubits/reset_pass/reset_pass_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_cubit.dart';
 import 'package:carey/src/features/home/data/api/home_api_service.dart';
+import 'package:carey/src/features/home/data/datasource/home_local_datasource.dart';
 import 'package:carey/src/features/home/data/repositories/home_repo.dart';
+import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:carey/src/features/make_offer/presentation/cubit/make_offer_cubit.dart';
+import 'package:carey/src/features/product_reviews/data/api/product_reviews_api_service.dart';
+import 'package:carey/src/features/product_reviews/data/datasources/product_reviews_local_datasource.dart';
+import 'package:carey/src/features/product_reviews/data/repositories/product_reviews_repo.dart';
 import 'package:carey/src/features/product_reviews/presentation/cubit/product_reviews_cubit.dart';
+import 'package:carey/src/features/wishlist/data/apis/wishlist_api_service.dart';
+import 'package:carey/src/features/wishlist/data/datasource/wishlist_local_datasource.dart';
+import 'package:carey/src/features/wishlist/data/repos/wishlist_repo.dart';
+import 'package:carey/src/features/wishlist/presentation/cubits/fetch_wishlist/fetch_wishlist_cubit.dart';
+import 'package:carey/src/features/wishlist/presentation/cubits/wishlist_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -83,31 +84,38 @@ void _setupDIForCore() {
 
 void _setupForApiServices() {
   final Dio dio = DioFactory.getDio();
-  getIt.registerLazySingleton<LoginApiService>(() => LoginApiService(dio));
+  final baseUrl =
+      dotenv.env[AppStrings.baseUrlEnvKey] ?? 'https://fallback-url.com/';
+
+  getIt.registerLazySingleton<LoginApiService>(
+    () => LoginApiService(dio, baseUrl: baseUrl),
+  );
   getIt.registerLazySingleton<RegisterApiService>(
-    () => RegisterApiService(dio),
+    () => RegisterApiService(dio, baseUrl: baseUrl),
   );
   getIt.registerLazySingleton<AccountSetupApiService>(
-    () => AccountSetupApiService(dio),
+    () => AccountSetupApiService(dio, baseUrl: baseUrl),
   );
   getIt.registerLazySingleton<BiometricApiService>(
-    () => BiometricApiService(dio),
+    () => BiometricApiService(dio, baseUrl: baseUrl),
   );
   getIt.registerLazySingleton<ForgotPasswordApiService>(
-    () => ForgotPasswordApiService(dio),
+    () => ForgotPasswordApiService(dio, baseUrl: baseUrl),
   );
   getIt.registerLazySingleton<PinCodeVerificationApiService>(
-    () => PinCodeVerificationApiService(dio),
+    () => PinCodeVerificationApiService(dio, baseUrl: baseUrl),
   );
   getIt.registerLazySingleton<ResetPassApiService>(
-    () => ResetPassApiService(dio),
+    () => ResetPassApiService(dio, baseUrl: baseUrl),
   );
   getIt.registerLazySingleton<WishlistApiService>(
-    () => WishlistApiService(dio),
+    () => WishlistApiService(dio, baseUrl: baseUrl),
   );
-  getIt.registerLazySingleton<HomeApiService>(() => HomeApiService(dio));
+  getIt.registerLazySingleton<HomeApiService>(
+    () => HomeApiService(dio, baseUrl: baseUrl),
+  );
   getIt.registerLazySingleton<ProductReviewsApiService>(
-    () => ProductReviewsApiService(dio),
+    () => ProductReviewsApiService(dio, baseUrl: baseUrl),
   );
 }
 
@@ -186,13 +194,10 @@ void _setupForUseCases() {
 }
 
 void _setupForCubits() {
-  getIt.registerFactory<AuthFormCubit>(
-    () => AuthFormCubit(),
-  );
-  getIt.registerLazySingleton<LoginCubit>(
+  getIt.registerFactory<LoginCubit>(
     () => LoginCubit(getIt.get<LoginRepo>()),
   );
-  getIt.registerLazySingleton<RegisterCubit>(
+  getIt.registerFactory<RegisterCubit>(
     () => RegisterCubit(getIt.get<RegisterRepo>()),
   );
   getIt.registerLazySingleton<AccountSetupCubit>(
@@ -209,13 +214,13 @@ void _setupForCubits() {
       biometricRepo: getIt.get<BiometricRepo>(),
     ),
   );
-  getIt.registerLazySingleton<ForgotPasswordCubit>(
+  getIt.registerFactory<ForgotPasswordCubit>(
     () => ForgotPasswordCubit(getIt.get<ForgotPasswordRepo>()),
   );
-  getIt.registerLazySingleton<PinCodeVerificationCubit>(
+  getIt.registerFactory<PinCodeVerificationCubit>(
     () => PinCodeVerificationCubit(getIt.get<PinCodeVerificationRepo>()),
   );
-  getIt.registerLazySingleton<ResetPassCubit>(
+  getIt.registerFactory<ResetPassCubit>(
     () => ResetPassCubit(getIt.get<UpdatePasswordUseCase>()),
   );
   getIt.registerLazySingleton<HomeCubit>(
@@ -230,5 +235,5 @@ void _setupForCubits() {
   getIt.registerFactory<ProductReviewsCubit>(
     () => ProductReviewsCubit(getIt.get<ProductReviewsRepo>()),
   );
-  getIt.registerLazySingleton<MakeOfferCubit>(() => MakeOfferCubit());
+  getIt.registerFactory<MakeOfferCubit>(() => MakeOfferCubit());
 }

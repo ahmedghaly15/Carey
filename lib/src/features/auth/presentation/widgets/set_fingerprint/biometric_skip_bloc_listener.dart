@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:carey/src/core/datasources/user_local_data_source.dart';
 import 'package:carey/src/core/helpers/extensions.dart';
 import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
@@ -10,17 +11,11 @@ import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/animated_loading_indicator.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
-import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_state.dart';
 
 class BiometricSkipBlocListener extends StatelessWidget {
-  const BiometricSkipBlocListener({
-    super.key,
-    required this.updateProfileParams,
-  });
-
-  final UpdateProfileParams updateProfileParams;
+  const BiometricSkipBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +23,14 @@ class BiometricSkipBlocListener extends StatelessWidget {
       listenWhen: (_, current) => _listenWhen(current.status),
       listener: (context, state) => _listener(state, context),
       child: PrimaryButton(
-        margin: EdgeInsets.zero,
-        backgroundColor: AppColors.grey.withOpacity(0.76),
-        onPressed: () =>
-            context.read<BiometricCubit>().updateProfile(updateProfileParams),
+        backgroundColor: AppColors.grey.withAlpha(194),
+        onPressed: () {
+          final router = context.router;
+          router.pushAndPopUntil(
+            const LayoutRoute(),
+            predicate: (route) => route.settings.name == AccountSetupRoute.name,
+          );
+        },
         text: AppStrings.skip,
         textColor: Colors.black,
         borderRadius: 12,
@@ -39,27 +38,26 @@ class BiometricSkipBlocListener extends StatelessWidget {
     );
   }
 
-  void _listener(BiometricState state, BuildContext context) {
+  void _listener(BiometricState state, BuildContext context) async {
     switch (state.status) {
       case BiometricStateStatus.updateProfileLoading:
         context.showLoadingDialog();
         break;
       case BiometricStateStatus.updateProfileSuccess:
         context.popTop();
-        _showSuccessDialogAndGoHome(context);
+        _showSuccessDialog(context);
+        await UserLocalDatasource.updateAndSecureCurrentUser(
+          state.careyUser!,
+        );
+        _pushHomeAndPopUntilAccountSetup(context);
         break;
       case BiometricStateStatus.updateProfileError:
         context.popTop();
         context.showErrorDialog(state.error!);
         break;
       default:
-        context.showLoadingDialog();
+        break;
     }
-  }
-
-  void _showSuccessDialogAndGoHome(BuildContext context) {
-    _showSuccessDialog(context);
-    _pushHomeAndPopUntilAccountSetup(context);
   }
 
   void _showSuccessDialog(BuildContext context) {

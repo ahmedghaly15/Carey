@@ -8,7 +8,7 @@ class OrdersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('Orders screen'),
+      child: Text("Orders Screen"),
     );
   }
 }

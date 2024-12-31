@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:carey/src/core/api/api_result.dart';
 import 'package:carey/src/core/utils/functions/execute_and_handle_errors.dart';
 import 'package:carey/src/features/auth/data/apis/register_api_service.dart';
-import 'package:carey/src/features/auth/data/models/auth_via_password_request.dart';
+import 'package:carey/src/features/auth/data/models/auth_request_params.dart';
 import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
 
 class RegisterRepo {
@@ -12,7 +12,7 @@ class RegisterRepo {
   RegisterRepo(this._registerApiService);
 
   Future<ApiResult<AuthResponseEntity>> register(
-    AuthViaPasswordRequest params, [
+    AuthRequestParams params, [
     CancelToken? cancelToken,
   ]) {
     return executeAndHandleErrors(
@@ -21,7 +21,7 @@ class RegisterRepo {
   }
 
   Future<AuthResponseEntity> _registerAndMapResponse(
-    AuthViaPasswordRequest params,
+    AuthRequestParams params,
     CancelToken? cancelToken,
   ) async {
     final registerResponse = await _registerApiService.register(

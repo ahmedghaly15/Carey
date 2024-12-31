@@ -1,17 +1,17 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/core/di/dependency_injection.dart';
-import 'package:carey/src/core/helpers/text_mask_maker.dart';
-import 'package:carey/src/features/auth/presentation/cubits/pin_code_verification/pin_code_verification_cubit.dart';
-import 'package:carey/src/features/auth/presentation/widgets/pin_code_verification/verify_button_bloc_listener.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:carey/src/core/di/dependency_injection.dart';
+import 'package:carey/src/core/helpers/text_mask_maker.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
+import 'package:carey/src/features/auth/presentation/cubits/pin_code_verification/pin_code_verification_cubit.dart';
 import 'package:carey/src/features/auth/presentation/widgets/pin_code_verification/pin_code_pin_put.dart';
+import 'package:carey/src/features/auth/presentation/widgets/pin_code_verification/verify_button_bloc_listener.dart';
 
 @RoutePage()
 class PinCodeVerificationView extends StatelessWidget
@@ -25,8 +25,8 @@ class PinCodeVerificationView extends StatelessWidget
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<PinCodeVerificationCubit>.value(
-      value: getIt.get<PinCodeVerificationCubit>(),
+    return BlocProvider<PinCodeVerificationCubit>(
+      create: (_) => getIt.get<PinCodeVerificationCubit>(),
       child: this,
     );
   }

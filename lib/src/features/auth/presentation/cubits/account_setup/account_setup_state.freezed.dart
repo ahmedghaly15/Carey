@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AccountSetupState {
   AccountSetupStateStatus get status => throw _privateConstructorUsedError;
-  AuthResponseEntity? get currentUserData => throw _privateConstructorUsedError;
+  CareyUser? get careyUser => throw _privateConstructorUsedError;
   AutovalidateMode get autovalidateMode => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
   String get countryCode => throw _privateConstructorUsedError;
@@ -38,13 +38,13 @@ abstract class $AccountSetupStateCopyWith<$Res> {
   @useResult
   $Res call(
       {AccountSetupStateStatus status,
-      AuthResponseEntity? currentUserData,
+      CareyUser? careyUser,
       AutovalidateMode autovalidateMode,
       String? error,
       String countryCode,
       File? pickedProfileImg});
 
-  $AuthResponseEntityCopyWith<$Res>? get currentUserData;
+  $CareyUserCopyWith<$Res>? get careyUser;
 }
 
 /// @nodoc
@@ -63,7 +63,7 @@ class _$AccountSetupStateCopyWithImpl<$Res, $Val extends AccountSetupState>
   @override
   $Res call({
     Object? status = null,
-    Object? currentUserData = freezed,
+    Object? careyUser = freezed,
     Object? autovalidateMode = null,
     Object? error = freezed,
     Object? countryCode = null,
@@ -74,10 +74,10 @@ class _$AccountSetupStateCopyWithImpl<$Res, $Val extends AccountSetupState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as AccountSetupStateStatus,
-      currentUserData: freezed == currentUserData
-          ? _value.currentUserData
-          : currentUserData // ignore: cast_nullable_to_non_nullable
-              as AuthResponseEntity?,
+      careyUser: freezed == careyUser
+          ? _value.careyUser
+          : careyUser // ignore: cast_nullable_to_non_nullable
+              as CareyUser?,
       autovalidateMode: null == autovalidateMode
           ? _value.autovalidateMode
           : autovalidateMode // ignore: cast_nullable_to_non_nullable
@@ -101,13 +101,13 @@ class _$AccountSetupStateCopyWithImpl<$Res, $Val extends AccountSetupState>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $AuthResponseEntityCopyWith<$Res>? get currentUserData {
-    if (_value.currentUserData == null) {
+  $CareyUserCopyWith<$Res>? get careyUser {
+    if (_value.careyUser == null) {
       return null;
     }
 
-    return $AuthResponseEntityCopyWith<$Res>(_value.currentUserData!, (value) {
-      return _then(_value.copyWith(currentUserData: value) as $Val);
+    return $CareyUserCopyWith<$Res>(_value.careyUser!, (value) {
+      return _then(_value.copyWith(careyUser: value) as $Val);
     });
   }
 }
@@ -122,14 +122,14 @@ abstract class _$$AccountSetupStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {AccountSetupStateStatus status,
-      AuthResponseEntity? currentUserData,
+      CareyUser? careyUser,
       AutovalidateMode autovalidateMode,
       String? error,
       String countryCode,
       File? pickedProfileImg});
 
   @override
-  $AuthResponseEntityCopyWith<$Res>? get currentUserData;
+  $CareyUserCopyWith<$Res>? get careyUser;
 }
 
 /// @nodoc
@@ -146,7 +146,7 @@ class __$$AccountSetupStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
-    Object? currentUserData = freezed,
+    Object? careyUser = freezed,
     Object? autovalidateMode = null,
     Object? error = freezed,
     Object? countryCode = null,
@@ -157,10 +157,10 @@ class __$$AccountSetupStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as AccountSetupStateStatus,
-      currentUserData: freezed == currentUserData
-          ? _value.currentUserData
-          : currentUserData // ignore: cast_nullable_to_non_nullable
-              as AuthResponseEntity?,
+      careyUser: freezed == careyUser
+          ? _value.careyUser
+          : careyUser // ignore: cast_nullable_to_non_nullable
+              as CareyUser?,
       autovalidateMode: null == autovalidateMode
           ? _value.autovalidateMode
           : autovalidateMode // ignore: cast_nullable_to_non_nullable
@@ -186,7 +186,7 @@ class __$$AccountSetupStateImplCopyWithImpl<$Res>
 class _$AccountSetupStateImpl implements _AccountSetupState {
   const _$AccountSetupStateImpl(
       {required this.status,
-      this.currentUserData,
+      this.careyUser,
       this.autovalidateMode = AutovalidateMode.disabled,
       this.error,
       this.countryCode = AppConstants.defaultCountryCode,
@@ -195,7 +195,7 @@ class _$AccountSetupStateImpl implements _AccountSetupState {
   @override
   final AccountSetupStateStatus status;
   @override
-  final AuthResponseEntity? currentUserData;
+  final CareyUser? careyUser;
   @override
   @JsonKey()
   final AutovalidateMode autovalidateMode;
@@ -209,7 +209,7 @@ class _$AccountSetupStateImpl implements _AccountSetupState {
 
   @override
   String toString() {
-    return 'AccountSetupState(status: $status, currentUserData: $currentUserData, autovalidateMode: $autovalidateMode, error: $error, countryCode: $countryCode, pickedProfileImg: $pickedProfileImg)';
+    return 'AccountSetupState(status: $status, careyUser: $careyUser, autovalidateMode: $autovalidateMode, error: $error, countryCode: $countryCode, pickedProfileImg: $pickedProfileImg)';
   }
 
   @override
@@ -218,8 +218,8 @@ class _$AccountSetupStateImpl implements _AccountSetupState {
         (other.runtimeType == runtimeType &&
             other is _$AccountSetupStateImpl &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.currentUserData, currentUserData) ||
-                other.currentUserData == currentUserData) &&
+            (identical(other.careyUser, careyUser) ||
+                other.careyUser == careyUser) &&
             (identical(other.autovalidateMode, autovalidateMode) ||
                 other.autovalidateMode == autovalidateMode) &&
             (identical(other.error, error) || other.error == error) &&
@@ -230,7 +230,7 @@ class _$AccountSetupStateImpl implements _AccountSetupState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, currentUserData,
+  int get hashCode => Object.hash(runtimeType, status, careyUser,
       autovalidateMode, error, countryCode, pickedProfileImg);
 
   /// Create a copy of AccountSetupState
@@ -246,7 +246,7 @@ class _$AccountSetupStateImpl implements _AccountSetupState {
 abstract class _AccountSetupState implements AccountSetupState {
   const factory _AccountSetupState(
       {required final AccountSetupStateStatus status,
-      final AuthResponseEntity? currentUserData,
+      final CareyUser? careyUser,
       final AutovalidateMode autovalidateMode,
       final String? error,
       final String countryCode,
@@ -255,7 +255,7 @@ abstract class _AccountSetupState implements AccountSetupState {
   @override
   AccountSetupStateStatus get status;
   @override
-  AuthResponseEntity? get currentUserData;
+  CareyUser? get careyUser;
   @override
   AutovalidateMode get autovalidateMode;
   @override

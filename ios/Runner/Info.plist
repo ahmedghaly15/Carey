@@ -55,5 +55,11 @@
 		<string>Access Location</string>
 		<key>NSMicrophoneUsageDescription</key>
 		<string>Access Microphone</string>
+		<key>NSAppTransportSecurity</key>
+		<dict>
+			<key>NSAllowsArbitraryLoads</key>
+			<true/>
+		</dict>
+
 	</dict>
 </plist>

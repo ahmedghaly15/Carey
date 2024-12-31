@@ -9,11 +9,11 @@ import 'package:carey/src/core/utils/app_assets.dart';
 class EmptyWidget extends StatelessWidget {
   const EmptyWidget({
     super.key,
-    this.imgPath,
+    this.svgImg,
     required this.message,
   });
 
-  final String? imgPath;
+  final String? svgImg;
   final String message;
 
   @override
@@ -26,7 +26,7 @@ class EmptyWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SvgPicture.asset(
-            imgPath ?? Assets.svgsSomethingWrong,
+            svgImg ?? Assets.svgsSomethingWrong,
             height: context.screenHeight * 0.3,
           ),
           Text(

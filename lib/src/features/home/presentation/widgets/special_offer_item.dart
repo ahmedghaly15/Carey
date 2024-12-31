@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/widgets/custom_cached_network_image.dart';
-import 'package:carey/src/core/widgets/my_sized_box.dart';
 import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
 
 class SpecialOfferItem extends StatelessWidget {
@@ -30,6 +29,7 @@ class SpecialOfferItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(40.r),
         ),
         child: Row(
+          spacing: 10.w,
           children: [
             Expanded(
               child: Column(
@@ -56,21 +56,21 @@ class SpecialOfferItem extends StatelessWidget {
                 ],
               ),
             ),
-            MySizedBox.width10,
             Expanded(
               child: CustomCachedNetworkImage(
                 imageUrl: specialOffer.car.attachments![0].url,
                 imageBuilder: (_, image) => Container(
-                    decoration: BoxDecoration(
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(40.r),
-                    bottom: Radius.circular(40.r),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(40.r),
+                      bottom: Radius.circular(40.r),
+                    ),
+                    image: DecorationImage(
+                      image: image,
+                      fit: BoxFit.contain,
+                    ),
                   ),
-                  image: DecorationImage(
-                    image: image,
-                    fit: BoxFit.contain,
-                  ),
-                )),
+                ),
               ),
             ),
           ],

@@ -53,6 +53,8 @@ mixin _$CareyUser {
   bool? get emailVerified => throw _privateConstructorUsedError;
   @HiveField(15)
   bool? get phoneVerified => throw _privateConstructorUsedError;
+  @HiveField(16)
+  bool? get biometricVerified => throw _privateConstructorUsedError;
 
   /// Serializes this CareyUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -85,7 +87,8 @@ abstract class $CareyUserCopyWith<$Res> {
       @HiveField(12) String? updatedAt,
       @HiveField(13) @JsonKey(name: 'LoginAppId') String? loginAppId,
       @HiveField(14) bool? emailVerified,
-      @HiveField(15) bool? phoneVerified});
+      @HiveField(15) bool? phoneVerified,
+      @HiveField(16) bool? biometricVerified});
 }
 
 /// @nodoc
@@ -119,6 +122,7 @@ class _$CareyUserCopyWithImpl<$Res, $Val extends CareyUser>
     Object? loginAppId = freezed,
     Object? emailVerified = freezed,
     Object? phoneVerified = freezed,
+    Object? biometricVerified = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -185,6 +189,10 @@ class _$CareyUserCopyWithImpl<$Res, $Val extends CareyUser>
           ? _value.phoneVerified
           : phoneVerified // ignore: cast_nullable_to_non_nullable
               as bool?,
+      biometricVerified: freezed == biometricVerified
+          ? _value.biometricVerified
+          : biometricVerified // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -213,7 +221,8 @@ abstract class _$$CareyUserImplCopyWith<$Res>
       @HiveField(12) String? updatedAt,
       @HiveField(13) @JsonKey(name: 'LoginAppId') String? loginAppId,
       @HiveField(14) bool? emailVerified,
-      @HiveField(15) bool? phoneVerified});
+      @HiveField(15) bool? phoneVerified,
+      @HiveField(16) bool? biometricVerified});
 }
 
 /// @nodoc
@@ -245,6 +254,7 @@ class __$$CareyUserImplCopyWithImpl<$Res>
     Object? loginAppId = freezed,
     Object? emailVerified = freezed,
     Object? phoneVerified = freezed,
+    Object? biometricVerified = freezed,
   }) {
     return _then(_$CareyUserImpl(
       id: null == id
@@ -311,6 +321,10 @@ class __$$CareyUserImplCopyWithImpl<$Res>
           ? _value.phoneVerified
           : phoneVerified // ignore: cast_nullable_to_non_nullable
               as bool?,
+      biometricVerified: freezed == biometricVerified
+          ? _value.biometricVerified
+          : biometricVerified // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -335,7 +349,8 @@ class _$CareyUserImpl implements _CareyUser {
       @HiveField(12) this.updatedAt,
       @HiveField(13) @JsonKey(name: 'LoginAppId') this.loginAppId,
       @HiveField(14) this.emailVerified,
-      @HiveField(15) this.phoneVerified});
+      @HiveField(15) this.phoneVerified,
+      @HiveField(16) this.biometricVerified});
 
   factory _$CareyUserImpl.fromJson(Map<String, dynamic> json) =>
       _$$CareyUserImplFromJson(json);
@@ -389,10 +404,13 @@ class _$CareyUserImpl implements _CareyUser {
   @override
   @HiveField(15)
   final bool? phoneVerified;
+  @override
+  @HiveField(16)
+  final bool? biometricVerified;
 
   @override
   String toString() {
-    return 'CareyUser(id: $id, email: $email, role: $role, password: $password, fullName: $fullName, nickName: $nickName, phone: $phone, address: $address, pinCode: $pinCode, picture: $picture, gender: $gender, createdAt: $createdAt, updatedAt: $updatedAt, loginAppId: $loginAppId, emailVerified: $emailVerified, phoneVerified: $phoneVerified)';
+    return 'CareyUser(id: $id, email: $email, role: $role, password: $password, fullName: $fullName, nickName: $nickName, phone: $phone, address: $address, pinCode: $pinCode, picture: $picture, gender: $gender, createdAt: $createdAt, updatedAt: $updatedAt, loginAppId: $loginAppId, emailVerified: $emailVerified, phoneVerified: $phoneVerified, biometricVerified: $biometricVerified)';
   }
 
   @override
@@ -423,7 +441,9 @@ class _$CareyUserImpl implements _CareyUser {
             (identical(other.emailVerified, emailVerified) ||
                 other.emailVerified == emailVerified) &&
             (identical(other.phoneVerified, phoneVerified) ||
-                other.phoneVerified == phoneVerified));
+                other.phoneVerified == phoneVerified) &&
+            (identical(other.biometricVerified, biometricVerified) ||
+                other.biometricVerified == biometricVerified));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -445,7 +465,8 @@ class _$CareyUserImpl implements _CareyUser {
       updatedAt,
       loginAppId,
       emailVerified,
-      phoneVerified);
+      phoneVerified,
+      biometricVerified);
 
   /// Create a copy of CareyUser
   /// with the given fields replaced by the non-null parameter values.
@@ -480,7 +501,8 @@ abstract class _CareyUser implements CareyUser {
       @HiveField(12) final String? updatedAt,
       @HiveField(13) @JsonKey(name: 'LoginAppId') final String? loginAppId,
       @HiveField(14) final bool? emailVerified,
-      @HiveField(15) final bool? phoneVerified}) = _$CareyUserImpl;
+      @HiveField(15) final bool? phoneVerified,
+      @HiveField(16) final bool? biometricVerified}) = _$CareyUserImpl;
 
   factory _CareyUser.fromJson(Map<String, dynamic> json) =
       _$CareyUserImpl.fromJson;
@@ -534,6 +556,9 @@ abstract class _CareyUser implements CareyUser {
   @override
   @HiveField(15)
   bool? get phoneVerified;
+  @override
+  @HiveField(16)
+  bool? get biometricVerified;
 
   /// Create a copy of CareyUser
   /// with the given fields replaced by the non-null parameter values.

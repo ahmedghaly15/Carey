@@ -7,7 +7,7 @@ import 'package:carey/src/features/product_reviews/data/models/fetch_rates_respo
 
 part 'product_reviews_api_service.g.dart';
 
-@RestApi(baseUrl: EndPoints.baseUrl)
+@RestApi()
 abstract class ProductReviewsApiService {
   factory ProductReviewsApiService(Dio dio, {String baseUrl}) =
       _ProductReviewsApiService;
@@ -26,6 +26,7 @@ abstract class ProductReviewsApiService {
     @Query('carId') required int carId,
     @Query('page') int? page,
     @Query('perPage') int? perPage,
+    @Query('rate') int? rate,
     @CancelRequest() CancelToken? cancelToken,
   });
 }

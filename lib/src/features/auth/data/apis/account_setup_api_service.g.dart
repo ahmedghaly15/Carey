@@ -6,16 +6,14 @@ part of 'account_setup_api_service.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
 class _AccountSetupApiService implements AccountSetupApiService {
   _AccountSetupApiService(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
-  }) {
-    baseUrl ??= 'https://carey-production.up.railway.app/';
-  }
+  });
 
   final Dio _dio;
 

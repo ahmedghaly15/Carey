@@ -63,7 +63,7 @@ class AppStrings {
       'Scan your fingerprint or face to authenticate';
   static const String congratulations = 'Congratulations!';
   static const String yourAccountIsReady =
-      'Your account is ready to use.\nYou will be redirected to the home in a few seconds.....';
+      'Your account is ready to use.\nYou will be redirected to home in a few seconds.....';
   static const String cancel = 'Cancel';
   static const String info = 'Info';
   static const String somethingWentWrong = 'Something went wrong';
@@ -132,4 +132,6 @@ class AppStrings {
   static const String all = 'All';
   static const String noReviewsAvailable =
       'No reviews available. If you like to, be the first to share your thoughts!';
+  static const String baseUrlEnvKey = 'BASE_URL';
+  static const String bestOffers = 'Best Offers';
 }
