@@ -1,7 +1,7 @@
 name: carey
-description: "A new Flutter project."
+description: "A modern e-commerce Flutter app tailored for car enthusiasts. Whether you're looking to buy, sell, or explore a wide range of vehicles, Carey offers a seamless and engaging experience."
 publish_to: 'none'
-version: 0.1.0
+version: 0.1.1
 
 environment:
   sdk: ^3.5.3
