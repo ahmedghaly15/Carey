@@ -19,7 +19,7 @@ class ReviewsListViewBlocBuilder extends StatelessWidget {
       buildWhen: (_, current) => _buildWhen(current.status),
       builder: (context, state) {
         if (state.status == ProductReviewsStateStatus.fetchRatesSuccess) {
-          return state.ratesResponse!.rates.isNotEmpty
+          return state.ratesResponse!.reviews.isNotEmpty
               ? const ReviewsListView()
               : const SizedBox.shrink();
         } else {

@@ -2,13 +2,16 @@ import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/widgets/custom_cached_network_image.dart';
 import 'package:carey/src/core/widgets/my_sized_box.dart';
+import 'package:carey/src/features/product_reviews/data/models/fetch_rates_response.dart';
 import 'package:carey/src/features/product_reviews/presentation/widgets/favorite_review_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ReviewerItem extends StatelessWidget {
-  const ReviewerItem({super.key});
+  const ReviewerItem({super.key, required this.review});
+
+  final RateResponseItem review;
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +24,14 @@ class ReviewerItem extends StatelessWidget {
             spacing: 7.w,
             children: [
               CustomCachedNetworkImage(
-                imageUrl:
-                    'https://img.freepik.com/free-photo/young-bearded-man-with-white-t-shirt_273609-7190.jpg?t=st=1731853385~exp=1731856985~hmac=d89e474b5b17f704e8e5d303f7c7aa3d3fe706868fb823c616410360ed00247f&w=1060',
+                imageUrl: review.user.picture!,
                 imageBuilder: (_, image) => CircleAvatar(
                   radius: 22.r,
                   backgroundImage: image,
                 ),
               ),
               Text(
-                'Darlene Robertson',
+                review.user.fullName!,
                 style: AppTextStyles.font16Regular,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -56,7 +58,7 @@ class ReviewerItem extends StatelessWidget {
                       size: 12.h,
                     ),
                     Text(
-                      '5',
+                      '${review.rate}',
                       style: AppTextStyles.font16Regular,
                     ),
                   ],
@@ -76,9 +78,9 @@ class ReviewerItem extends StatelessWidget {
           ),
           MySizedBox.height9,
           Text(
-            'Elit exercitation sint quis commodo nulla adipisicing eu officia et tempor amet. Occaecat exercitation ipsum nulla eu velit magna labore et ipsum excepteur mollit. Elit fugiat commodo nulla incididunt velit est laborum enim. Excepteur enim amet irure aliqua. Aliqua labore nisi enim sint proident nisi Lorem non adipisicing. Magna in consectetur et duis sint magna est Lorem Lorem ea sit laboris laborum duis. Aliqua consequat irure consectetur deserunt dolore dolor in nostrud.',
+            review.comment,
             style: AppTextStyles.font13Regular.copyWith(
-              color: Colors.black.withOpacity(0.8),
+              color: Colors.black.withAlpha(204),
             ),
             textAlign: TextAlign.justify,
           ),
@@ -90,14 +92,14 @@ class ReviewerItem extends StatelessWidget {
               Text(
                 '830',
                 style: AppTextStyles.font13Regular.copyWith(
-                  color: Colors.black.withOpacity(0.8),
+                  color: Colors.black.withAlpha(204),
                 ),
               ),
               MySizedBox.width16,
               Text(
                 '6 days ago',
                 style: AppTextStyles.font13Regular.copyWith(
-                  color: Colors.black.withOpacity(0.8),
+                  color: Colors.black.withAlpha(204),
                 ),
               ),
             ],
