@@ -1,8 +1,7 @@
-import 'package:carey/src/core/utils/app_constants.dart';
-import 'package:carey/src/features/product_reviews/data/models/fetch_rates_response.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/features/product_reviews/data/models/add_review_request_params.dart';
 import 'package:carey/src/features/product_reviews/data/models/fetch_rates_request_params.dart';
 import 'package:carey/src/features/product_reviews/data/repositories/product_reviews_repo.dart';
@@ -53,7 +52,6 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
     );
   }
 
-  FetchRatesResponse? get ratesResponse => state.ratesResponse;
   Future<void> fetchRates(int carId) async {
     emit(state.copyWith(
       status: ProductReviewsStateStatus.fetchRatesLoading,

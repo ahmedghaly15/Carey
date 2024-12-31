@@ -53,6 +53,7 @@ class ProductReviewsRepo {
         carId: params.carId,
         page: params.page,
         perPage: params.perPage,
+        rate: params.rate,
         cancelToken: cancelToken,
       );
       await _localDatasource.cacheRates(
