@@ -1,3 +1,3 @@
 Release Notes:
-- Bug Fixes in auth features
+- Bug Fixes in Home and ProductReviews features
 - Performance Improvements in auth features
