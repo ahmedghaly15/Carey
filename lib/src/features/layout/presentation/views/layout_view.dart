@@ -32,7 +32,7 @@ class LayoutView extends StatelessWidget {
           CustomNavigationDestination(
             icon: Icons.shopping_cart_outlined,
             selectedIcon: Icons.shopping_cart,
-            label: "Device Token",
+            label: AppStrings.orders,
           ),
           CustomNavigationDestination(
             icon: Icons.inbox_outlined,

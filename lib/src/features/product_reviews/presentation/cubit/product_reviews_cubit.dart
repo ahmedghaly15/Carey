@@ -79,7 +79,7 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
       state.copyWith(
         ratesResponse: state.selectedRateIndex != 0
             ? state.ratesResponse!.copyWith(
-                rates: state.allRatesResponse!.rates
+                reviews: state.allRatesResponse!.reviews
                     .where((rateResponseItem) =>
                         rateResponseItem.rate ==
                         int.parse(AppConstants.rates[state.selectedRateIndex]))
