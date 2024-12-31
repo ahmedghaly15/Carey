@@ -27,13 +27,12 @@ class ProductReviewsView extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
-    final productReviewsCubit = context.read<ProductReviewsCubit>();
     return Scaffold(
       body: SafeArea(
         child: RefreshIndicator.adaptive(
           onRefresh: () async {
             await ProductReviewsLocalDatasource.deleteRates(params.carId);
-            await productReviewsCubit.fetchRates(params.carId);
+            await context.read<ProductReviewsCubit>().fetchRates(params.carId);
           },
           child: CustomScrollView(
             physics: const BouncingScrollPhysics(),

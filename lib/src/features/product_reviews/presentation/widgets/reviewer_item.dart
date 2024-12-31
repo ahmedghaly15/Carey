@@ -21,6 +21,7 @@ class ReviewerItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             spacing: 7.w,
             children: [
               CustomCachedNetworkImage(

@@ -71,9 +71,12 @@ class EmptyWishlistView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const EmptyWidget(
-      message: AppStrings.yourWishlistEmpty,
-      svgImg: Assets.svgsNoFavoriteIcon,
+    return SliverFillRemaining(
+      hasScrollBody: false,
+      child: const EmptyWidget(
+        message: AppStrings.yourWishlistEmpty,
+        svgImg: Assets.svgsNoFavoriteIcon,
+      ),
     );
   }
 }
