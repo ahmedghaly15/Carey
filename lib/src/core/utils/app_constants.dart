@@ -21,7 +21,7 @@ class AppConstants {
       OutlineInputBorder(
         borderRadius: BorderRadius.circular(20.r),
         borderSide: BorderSide(
-          color: AppColors.primaryColor.withOpacity(0.1),
+          color: AppColors.primaryColor.withAlpha(26),
           width: 1.w,
         ),
       );
@@ -58,7 +58,7 @@ class AppConstants {
             offset: Offset(0, 4.h),
             blurRadius: 4.r,
             spreadRadius: 0,
-            color: Colors.black.withOpacity(0.25),
+            color: Colors.black.withAlpha(64),
           ),
         ],
       );
@@ -71,4 +71,6 @@ class AppConstants {
     '2',
     '1',
   ];
+  static const double carProductItemHeight = 194;
+  static const double carProductAspectRatio = 167 / carProductItemHeight;
 }

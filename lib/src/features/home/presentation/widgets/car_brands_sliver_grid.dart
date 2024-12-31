@@ -27,7 +27,8 @@ class CarBrandsSliverGrid extends StatelessWidget {
           ),
           itemCount: showAllBrands ? brands.length : displayedBrands.length + 1,
           itemBuilder: (_, index) {
-            if (_isMoreButtonShown(showAllBrands, index, displayedBrands)) {
+            if (_isMoreButtonShown(
+                showAllBrands, index, displayedBrands.length)) {
               // "More" button as the 8th item || the last item
               return GestureDetector(
                 onTap: () => context.read<HomeCubit>().switchShowAllBrands(),
@@ -50,9 +51,9 @@ class CarBrandsSliverGrid extends StatelessWidget {
   bool _isMoreButtonShown(
     bool showAllBrands,
     int index,
-    List<CarBrandModel> displayedBrands,
+    int displayedBrandsLength,
   ) {
     return (!showAllBrands && index == 7) ||
-        (showAllBrands && index == displayedBrands.length - 1);
+        (showAllBrands && index == displayedBrandsLength - 1);
   }
 }

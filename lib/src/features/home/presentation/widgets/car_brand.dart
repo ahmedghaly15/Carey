@@ -6,7 +6,6 @@ import 'package:carey/src/core/models/car.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/widgets/custom_cached_network_image.dart';
-import 'package:carey/src/core/widgets/my_sized_box.dart';
 
 class CarBrand extends StatelessWidget {
   const CarBrand({
@@ -24,6 +23,7 @@ class CarBrand extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      spacing: 8.h,
       children: [
         Container(
           height: 60.h,
@@ -41,7 +41,6 @@ class CarBrand extends StatelessWidget {
                   fit: BoxFit.contain,
                 ),
         ),
-        MySizedBox.height8,
         Text(
           isSvgImg ? svgImgName! : brand!.name,
           style: AppTextStyles.font16Bold,

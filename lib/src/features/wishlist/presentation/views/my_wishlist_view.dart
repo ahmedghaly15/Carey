@@ -31,6 +31,7 @@ class MyWishlistView extends StatelessWidget implements AutoRouteWrapper {
             await context.read<FetchWishlistCubit>().fetchMyWishlist();
           },
           child: const CustomScrollView(
+            physics: BouncingScrollPhysics(),
             slivers: [
               CustomSliverAppBar(titleText: AppStrings.myWishlist),
               WishlistProductsSliverGridBlocBuilder(),

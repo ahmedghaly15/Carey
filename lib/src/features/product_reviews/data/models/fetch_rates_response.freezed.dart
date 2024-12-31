@@ -28,7 +28,7 @@ mixin _$FetchRatesResponse {
   int get currentPage => throw _privateConstructorUsedError;
   @HiveField(3)
   @JsonKey(name: 'data')
-  List<RateResponseItem> get rates => throw _privateConstructorUsedError;
+  List<RateResponseItem> get reviews => throw _privateConstructorUsedError;
 
   /// Serializes this FetchRatesResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ abstract class $FetchRatesResponseCopyWith<$Res> {
       {@HiveField(0) int totalItems,
       @HiveField(1) int totalPages,
       @HiveField(2) int currentPage,
-      @HiveField(3) @JsonKey(name: 'data') List<RateResponseItem> rates});
+      @HiveField(3) @JsonKey(name: 'data') List<RateResponseItem> reviews});
 }
 
 /// @nodoc
@@ -71,7 +71,7 @@ class _$FetchRatesResponseCopyWithImpl<$Res, $Val extends FetchRatesResponse>
     Object? totalItems = null,
     Object? totalPages = null,
     Object? currentPage = null,
-    Object? rates = null,
+    Object? reviews = null,
   }) {
     return _then(_value.copyWith(
       totalItems: null == totalItems
@@ -86,9 +86,9 @@ class _$FetchRatesResponseCopyWithImpl<$Res, $Val extends FetchRatesResponse>
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
               as int,
-      rates: null == rates
-          ? _value.rates
-          : rates // ignore: cast_nullable_to_non_nullable
+      reviews: null == reviews
+          ? _value.reviews
+          : reviews // ignore: cast_nullable_to_non_nullable
               as List<RateResponseItem>,
     ) as $Val);
   }
@@ -106,7 +106,7 @@ abstract class _$$FetchRatesResponseImplCopyWith<$Res>
       {@HiveField(0) int totalItems,
       @HiveField(1) int totalPages,
       @HiveField(2) int currentPage,
-      @HiveField(3) @JsonKey(name: 'data') List<RateResponseItem> rates});
+      @HiveField(3) @JsonKey(name: 'data') List<RateResponseItem> reviews});
 }
 
 /// @nodoc
@@ -125,7 +125,7 @@ class __$$FetchRatesResponseImplCopyWithImpl<$Res>
     Object? totalItems = null,
     Object? totalPages = null,
     Object? currentPage = null,
-    Object? rates = null,
+    Object? reviews = null,
   }) {
     return _then(_$FetchRatesResponseImpl(
       totalItems: null == totalItems
@@ -140,9 +140,9 @@ class __$$FetchRatesResponseImplCopyWithImpl<$Res>
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
               as int,
-      rates: null == rates
-          ? _value._rates
-          : rates // ignore: cast_nullable_to_non_nullable
+      reviews: null == reviews
+          ? _value._reviews
+          : reviews // ignore: cast_nullable_to_non_nullable
               as List<RateResponseItem>,
     ));
   }
@@ -158,8 +158,8 @@ class _$FetchRatesResponseImpl implements _FetchRatesResponse {
       @HiveField(2) required this.currentPage,
       @HiveField(3)
       @JsonKey(name: 'data')
-      required final List<RateResponseItem> rates})
-      : _rates = rates;
+      required final List<RateResponseItem> reviews})
+      : _reviews = reviews;
 
   factory _$FetchRatesResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$FetchRatesResponseImplFromJson(json);
@@ -173,19 +173,19 @@ class _$FetchRatesResponseImpl implements _FetchRatesResponse {
   @override
   @HiveField(2)
   final int currentPage;
-  final List<RateResponseItem> _rates;
+  final List<RateResponseItem> _reviews;
   @override
   @HiveField(3)
   @JsonKey(name: 'data')
-  List<RateResponseItem> get rates {
-    if (_rates is EqualUnmodifiableListView) return _rates;
+  List<RateResponseItem> get reviews {
+    if (_reviews is EqualUnmodifiableListView) return _reviews;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_rates);
+    return EqualUnmodifiableListView(_reviews);
   }
 
   @override
   String toString() {
-    return 'FetchRatesResponse(totalItems: $totalItems, totalPages: $totalPages, currentPage: $currentPage, rates: $rates)';
+    return 'FetchRatesResponse(totalItems: $totalItems, totalPages: $totalPages, currentPage: $currentPage, reviews: $reviews)';
   }
 
   @override
@@ -199,13 +199,13 @@ class _$FetchRatesResponseImpl implements _FetchRatesResponse {
                 other.totalPages == totalPages) &&
             (identical(other.currentPage, currentPage) ||
                 other.currentPage == currentPage) &&
-            const DeepCollectionEquality().equals(other._rates, _rates));
+            const DeepCollectionEquality().equals(other._reviews, _reviews));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, totalItems, totalPages,
-      currentPage, const DeepCollectionEquality().hash(_rates));
+      currentPage, const DeepCollectionEquality().hash(_reviews));
 
   /// Create a copy of FetchRatesResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -226,12 +226,13 @@ class _$FetchRatesResponseImpl implements _FetchRatesResponse {
 
 abstract class _FetchRatesResponse implements FetchRatesResponse {
   const factory _FetchRatesResponse(
-      {@HiveField(0) required final int totalItems,
-      @HiveField(1) required final int totalPages,
-      @HiveField(2) required final int currentPage,
-      @HiveField(3)
-      @JsonKey(name: 'data')
-      required final List<RateResponseItem> rates}) = _$FetchRatesResponseImpl;
+          {@HiveField(0) required final int totalItems,
+          @HiveField(1) required final int totalPages,
+          @HiveField(2) required final int currentPage,
+          @HiveField(3)
+          @JsonKey(name: 'data')
+          required final List<RateResponseItem> reviews}) =
+      _$FetchRatesResponseImpl;
 
   factory _FetchRatesResponse.fromJson(Map<String, dynamic> json) =
       _$FetchRatesResponseImpl.fromJson;
@@ -248,7 +249,7 @@ abstract class _FetchRatesResponse implements FetchRatesResponse {
   @override
   @HiveField(3)
   @JsonKey(name: 'data')
-  List<RateResponseItem> get rates;
+  List<RateResponseItem> get reviews;
 
   /// Create a copy of FetchRatesResponse
   /// with the given fields replaced by the non-null parameter values.

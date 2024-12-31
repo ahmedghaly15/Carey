@@ -26,6 +26,7 @@ abstract class ProductReviewsApiService {
     @Query('carId') required int carId,
     @Query('page') int? page,
     @Query('perPage') int? perPage,
+    @Query('rate') int? rate,
     @CancelRequest() CancelToken? cancelToken,
   });
 }

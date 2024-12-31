@@ -1,4 +1,3 @@
-import 'package:carey/src/core/widgets/shimmer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +6,7 @@ import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/widgets/horizontal_separated_list_view.dart';
 import 'package:carey/src/core/widgets/list_outlined_button.dart';
+import 'package:carey/src/core/widgets/shimmer_widget.dart';
 import 'package:carey/src/features/product_reviews/presentation/cubit/product_reviews_cubit.dart';
 import 'package:carey/src/features/product_reviews/presentation/cubit/product_reviews_state.dart';
 
@@ -19,11 +19,9 @@ class ReviewsListViewBlocBuilder extends StatelessWidget {
       buildWhen: (_, current) => _buildWhen(current.status),
       builder: (context, state) {
         if (state.status == ProductReviewsStateStatus.fetchRatesSuccess) {
-          return state.ratesResponse!.rates.isNotEmpty
+          return state.ratesResponse!.reviews.isNotEmpty
               ? const ReviewsListView()
               : const SizedBox.shrink();
-        } else if (state.status == ProductReviewsStateStatus.fetchRatesError) {
-          return const SizedBox.shrink();
         } else {
           return HorizontalSeparatedListView(
             itemBuilder: (_, __) => const ShimmerWidget(
@@ -40,7 +38,6 @@ class ReviewsListViewBlocBuilder extends StatelessWidget {
 
   bool _buildWhen(ProductReviewsStateStatus status) {
     return status == ProductReviewsStateStatus.fetchRatesSuccess ||
-        status == ProductReviewsStateStatus.fetchRatesError ||
         status == ProductReviewsStateStatus.fetchRatesLoading;
   }
 }

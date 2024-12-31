@@ -14,7 +14,7 @@ class ReviewersSliverWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ratesResponse.rates.isEmpty
+    return ratesResponse.reviews.isEmpty
         ? const SliverFillRemaining(
             hasScrollBody: false,
             child: EmptyWidget(
@@ -28,8 +28,10 @@ class ReviewersSliverWidget extends StatelessWidget {
               top: 29.h,
             ),
             sliver: SliverList.builder(
-              itemBuilder: (_, index) => const ReviewerItem(),
-              itemCount: ratesResponse.rates.length,
+              itemBuilder: (_, index) => ReviewerItem(
+                review: ratesResponse.reviews[index],
+              ),
+              itemCount: ratesResponse.reviews.length,
             ),
           );
   }

@@ -1,6 +1,7 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:carey/src/features/wishlist/data/repos/wishlist_repo.dart';
 import 'package:carey/src/features/wishlist/presentation/cubits/wishlist_state.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WishlistCubit extends Cubit<WishlistState> {
   final WishlistRepo _wishlistRepo;

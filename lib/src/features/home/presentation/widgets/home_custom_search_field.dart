@@ -11,8 +11,8 @@ class HomeCustomSearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomTextFormField(
       borderRadius: 15,
-      fillColor: AppColors.grey.withOpacity(0.76),
-      borderColor: AppColors.grey.withOpacity(0.76),
+      fillColor: AppColors.grey.withAlpha(194),
+      borderColor: AppColors.grey.withAlpha(194),
       prefixIcon: const Icon(Icons.search),
       hintText: AppStrings.search,
       suffixIcon: IconButton(

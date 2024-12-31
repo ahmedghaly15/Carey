@@ -34,6 +34,10 @@ class Car {
   final String? updatedAt;
   @HiveField(12)
   final List<CarWishlist>? wishlists;
+  @HiveField(13)
+  final String? description;
+  @HiveField(14)
+  final List<String>? colors;
 
   Car({
     required this.id,
@@ -49,6 +53,8 @@ class Car {
     this.wishlists,
     this.createdAt,
     this.updatedAt,
+    this.description,
+    this.colors,
   });
 
   factory Car.fromJson(Map<String, dynamic> json) => _$CarFromJson(json);
