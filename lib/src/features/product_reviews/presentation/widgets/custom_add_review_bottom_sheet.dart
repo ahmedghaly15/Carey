@@ -1,3 +1,4 @@
+import 'package:carey/src/core/helpers/text_form_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,8 +10,8 @@ import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_text_form_field.dart';
 import 'package:carey/src/core/widgets/horizontal_separated_list_view.dart';
-import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/product_reviews/presentation/cubit/product_reviews_cubit.dart';
+import 'package:carey/src/features/product_reviews/presentation/widgets/add_review_button_bloc_consumer.dart';
 import 'package:carey/src/features/product_reviews/presentation/widgets/rate_item_bloc_selector.dart';
 
 class CustomAddReviewBottomSheet extends StatelessWidget {
@@ -46,32 +47,35 @@ class CustomAddReviewBottomSheet extends StatelessWidget {
                   child: Container(
                     margin:
                         EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
-                    child: CustomTextFormField(
-                      fillColor: Colors.white,
-                      hintText: AppStrings.writeYourComment,
-                      hintStyle: AppTextStyles.font16Regular.copyWith(
-                        color: AppColors.primaryColor.withAlpha(64),
-                      ),
-                      style: AppTextStyles.font16Regular,
-                      maxLines: null,
-                      expands: true,
-                      textAlignVertical: TextAlignVertical.top,
-                      contentPadding:
-                          AppConstants.textFormFieldHorizontalPadding.add(
-                        EdgeInsets.symmetric(vertical: 16.h),
+                    child: Form(
+                      key: context.read<ProductReviewsCubit>().formKey,
+                      child: CustomTextFormField(
+                        controller: context
+                            .read<ProductReviewsCubit>()
+                            .reviewController,
+                        textCapitalization: TextCapitalization.sentences,
+                        fillColor: Colors.white,
+                        hintText: AppStrings.writeYourComment,
+                        hintStyle: AppTextStyles.font16Regular.copyWith(
+                          color: AppColors.primaryColor.withAlpha(64),
+                        ),
+                        style: AppTextStyles.font16Regular,
+                        maxLines: null,
+                        expands: true,
+                        textAlignVertical: TextAlignVertical.top,
+                        contentPadding:
+                            AppConstants.textFormFieldHorizontalPadding.add(
+                          EdgeInsets.symmetric(vertical: 16.h),
+                        ),
+                        validate: (value) => TextFormValidator.validateField(
+                          value,
+                          fieldName: AppStrings.review,
+                        ),
                       ),
                     ),
                   ),
                 ),
-                PrimaryButton(
-                  margin: EdgeInsets.only(
-                    bottom: 16.h,
-                    left: 16.w,
-                    right: 16.w,
-                  ),
-                  onPressed: () {},
-                  text: AppStrings.add,
-                ),
+                const AddReviewButtonBlocConsumer(),
               ],
             ),
           ),

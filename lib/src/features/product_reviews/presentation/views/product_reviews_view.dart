@@ -32,7 +32,7 @@ class ProductReviewsView extends StatelessWidget implements AutoRouteWrapper {
       body: SafeArea(
         child: RefreshIndicator.adaptive(
           onRefresh: () async {
-            await ProductReviewsLocalDatasource.deleteRates(params.carId);
+            await ProductReviewsLocalDatasource.deleteCachedRates(params.carId);
             await context.read<ProductReviewsCubit>().fetchRates(params.carId);
           },
           child: CustomScrollView(
