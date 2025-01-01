@@ -50,10 +50,6 @@ class Assets {
   /// assets/images/car-test.png
   static const String imagesCarTest = "assets/images/car-test.png";
 
-  /// Assets for imagesError
-  /// assets/images/error.png
-  static const String imagesError = "assets/images/error.png";
-
   /// Assets for imagesGalleryPhotoTestpng
   /// assets/images/gallery-photo-testpng.png
   static const String imagesGalleryPhotoTestpng = "assets/images/gallery-photo-testpng.png";

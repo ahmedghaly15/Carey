@@ -48,7 +48,7 @@ class SpecialOfferItem extends StatelessWidget {
                   Text(
                     specialOffer.description,
                     style: AppTextStyles.font12Bold.copyWith(
-                      color: Colors.black.withOpacity(0.7),
+                      color: Colors.black.withAlpha(179),
                     ),
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,

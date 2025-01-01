@@ -134,4 +134,10 @@ class AppStrings {
       'No reviews available. If you like to, be the first to share your thoughts!';
   static const String baseUrlEnvKey = 'BASE_URL';
   static const String bestOffers = 'Best Offers';
+  static const String writeYourComment = 'Write your comment here...';
+  static const String add = 'Add';
+  static const String reviewHasBeenSubmitted =
+      'Review has been submitted successfully';
+  static const String review = 'Review';
+  static const String rateMustBeChosen = 'You must choose a rating';
 }

@@ -75,7 +75,7 @@ class ProductDetailsView extends StatelessWidget {
                 child: Text(
                   'Consectetur qui elit reprehenderit dolore sit aliquip mollit eu proident exercitation amet ullamco. Tempor qui magna qui nulla duis sit in duis enim dolore proident sint. Amet cupidatat duis non incididunt.',
                   style: AppTextStyles.poppinsFont12Regular.copyWith(
-                    color: Colors.black.withOpacity(0.7),
+                    color: Colors.black.withAlpha(179),
                   ),
                 ),
               ),

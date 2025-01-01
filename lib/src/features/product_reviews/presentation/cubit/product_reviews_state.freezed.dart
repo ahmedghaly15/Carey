@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProductReviewsState {
   ProductReviewsStateStatus get status => throw _privateConstructorUsedError;
   int get selectedRateIndex => throw _privateConstructorUsedError;
+  int get bottomSheetSelectedRateIndex => throw _privateConstructorUsedError;
   FetchRatesResponse? get ratesResponse => throw _privateConstructorUsedError;
   FetchRatesResponse? get allRatesResponse =>
       throw _privateConstructorUsedError;
@@ -40,6 +41,7 @@ abstract class $ProductReviewsStateCopyWith<$Res> {
   $Res call(
       {ProductReviewsStateStatus status,
       int selectedRateIndex,
+      int bottomSheetSelectedRateIndex,
       FetchRatesResponse? ratesResponse,
       FetchRatesResponse? allRatesResponse,
       int? intendedToFetchCarId,
@@ -66,6 +68,7 @@ class _$ProductReviewsStateCopyWithImpl<$Res, $Val extends ProductReviewsState>
   $Res call({
     Object? status = null,
     Object? selectedRateIndex = null,
+    Object? bottomSheetSelectedRateIndex = null,
     Object? ratesResponse = freezed,
     Object? allRatesResponse = freezed,
     Object? intendedToFetchCarId = freezed,
@@ -79,6 +82,10 @@ class _$ProductReviewsStateCopyWithImpl<$Res, $Val extends ProductReviewsState>
       selectedRateIndex: null == selectedRateIndex
           ? _value.selectedRateIndex
           : selectedRateIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      bottomSheetSelectedRateIndex: null == bottomSheetSelectedRateIndex
+          ? _value.bottomSheetSelectedRateIndex
+          : bottomSheetSelectedRateIndex // ignore: cast_nullable_to_non_nullable
               as int,
       ratesResponse: freezed == ratesResponse
           ? _value.ratesResponse
@@ -139,6 +146,7 @@ abstract class _$$ProductReviewsStateImplCopyWith<$Res>
   $Res call(
       {ProductReviewsStateStatus status,
       int selectedRateIndex,
+      int bottomSheetSelectedRateIndex,
       FetchRatesResponse? ratesResponse,
       FetchRatesResponse? allRatesResponse,
       int? intendedToFetchCarId,
@@ -165,6 +173,7 @@ class __$$ProductReviewsStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? selectedRateIndex = null,
+    Object? bottomSheetSelectedRateIndex = null,
     Object? ratesResponse = freezed,
     Object? allRatesResponse = freezed,
     Object? intendedToFetchCarId = freezed,
@@ -178,6 +187,10 @@ class __$$ProductReviewsStateImplCopyWithImpl<$Res>
       selectedRateIndex: null == selectedRateIndex
           ? _value.selectedRateIndex
           : selectedRateIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      bottomSheetSelectedRateIndex: null == bottomSheetSelectedRateIndex
+          ? _value.bottomSheetSelectedRateIndex
+          : bottomSheetSelectedRateIndex // ignore: cast_nullable_to_non_nullable
               as int,
       ratesResponse: freezed == ratesResponse
           ? _value.ratesResponse
@@ -205,6 +218,7 @@ class _$ProductReviewsStateImpl implements _ProductReviewsState {
   const _$ProductReviewsStateImpl(
       {required this.status,
       this.selectedRateIndex = 0,
+      this.bottomSheetSelectedRateIndex = -1,
       this.ratesResponse,
       this.allRatesResponse,
       this.intendedToFetchCarId,
@@ -216,6 +230,9 @@ class _$ProductReviewsStateImpl implements _ProductReviewsState {
   @JsonKey()
   final int selectedRateIndex;
   @override
+  @JsonKey()
+  final int bottomSheetSelectedRateIndex;
+  @override
   final FetchRatesResponse? ratesResponse;
   @override
   final FetchRatesResponse? allRatesResponse;
@@ -226,7 +243,7 @@ class _$ProductReviewsStateImpl implements _ProductReviewsState {
 
   @override
   String toString() {
-    return 'ProductReviewsState(status: $status, selectedRateIndex: $selectedRateIndex, ratesResponse: $ratesResponse, allRatesResponse: $allRatesResponse, intendedToFetchCarId: $intendedToFetchCarId, error: $error)';
+    return 'ProductReviewsState(status: $status, selectedRateIndex: $selectedRateIndex, bottomSheetSelectedRateIndex: $bottomSheetSelectedRateIndex, ratesResponse: $ratesResponse, allRatesResponse: $allRatesResponse, intendedToFetchCarId: $intendedToFetchCarId, error: $error)';
   }
 
   @override
@@ -237,6 +254,10 @@ class _$ProductReviewsStateImpl implements _ProductReviewsState {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.selectedRateIndex, selectedRateIndex) ||
                 other.selectedRateIndex == selectedRateIndex) &&
+            (identical(other.bottomSheetSelectedRateIndex,
+                    bottomSheetSelectedRateIndex) ||
+                other.bottomSheetSelectedRateIndex ==
+                    bottomSheetSelectedRateIndex) &&
             (identical(other.ratesResponse, ratesResponse) ||
                 other.ratesResponse == ratesResponse) &&
             (identical(other.allRatesResponse, allRatesResponse) ||
@@ -247,8 +268,15 @@ class _$ProductReviewsStateImpl implements _ProductReviewsState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, selectedRateIndex,
-      ratesResponse, allRatesResponse, intendedToFetchCarId, error);
+  int get hashCode => Object.hash(
+      runtimeType,
+      status,
+      selectedRateIndex,
+      bottomSheetSelectedRateIndex,
+      ratesResponse,
+      allRatesResponse,
+      intendedToFetchCarId,
+      error);
 
   /// Create a copy of ProductReviewsState
   /// with the given fields replaced by the non-null parameter values.
@@ -264,6 +292,7 @@ abstract class _ProductReviewsState implements ProductReviewsState {
   const factory _ProductReviewsState(
       {required final ProductReviewsStateStatus status,
       final int selectedRateIndex,
+      final int bottomSheetSelectedRateIndex,
       final FetchRatesResponse? ratesResponse,
       final FetchRatesResponse? allRatesResponse,
       final int? intendedToFetchCarId,
@@ -273,6 +302,8 @@ abstract class _ProductReviewsState implements ProductReviewsState {
   ProductReviewsStateStatus get status;
   @override
   int get selectedRateIndex;
+  @override
+  int get bottomSheetSelectedRateIndex;
   @override
   FetchRatesResponse? get ratesResponse;
   @override

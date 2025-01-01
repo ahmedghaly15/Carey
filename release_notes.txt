@@ -1,3 +1,6 @@
 Release Notes:
-- Bug Fixes in Home and ProductReviews features
-- Performance Improvements in auth features
+- Bug Fixes home feature 
+- Enhancements in product-reviews feature
+- Integration of AddReview UI logic in product-reviews feature
+- Performance Improvements in some widgets
+

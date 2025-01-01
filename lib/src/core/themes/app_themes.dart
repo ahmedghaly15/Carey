@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class AppThemes {
   AppThemes._();
@@ -42,8 +44,19 @@ class AppThemes {
               return AppTextStyles.font15Bold;
             }
             return AppTextStyles.font15Bold
-                .copyWith(color: Colors.black.withOpacity(0.6));
+                .copyWith(color: Colors.black.withAlpha(153));
           }),
+        ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: AppColors.primaryColor,
+        ),
+        bottomSheetTheme: BottomSheetThemeData(
+          backgroundColor: Colors.white,
+          showDragHandle: true,
+          dragHandleColor: AppColors.primaryColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24.r),
+          ),
         ),
       );
 }

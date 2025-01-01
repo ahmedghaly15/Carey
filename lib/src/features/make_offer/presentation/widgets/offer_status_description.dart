@@ -24,7 +24,7 @@ class OfferStatusDescription extends StatelessWidget {
         OfferStatus.rejected => AppStrings.offerRejectedDescription,
       },
       style: AppTextStyles.poppinsFont16Regular.copyWith(
-        color: Colors.black.withOpacity(0.8),
+        color: Colors.black.withAlpha(204),
       ),
       textAlign: TextAlign.center,
     );

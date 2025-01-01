@@ -1,3 +1,4 @@
+import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -12,19 +13,26 @@ class WishlistLocalDatasource {
     final box =
         await Hive.openLazyBox<FetchMyWishlistResponse>(HiveBoxes.wishlist);
     debugPrint('*#*#*#*#* WISHLIST HAS BEEN CACHED *#*#*#*#*');
-    await box.put(HiveKeys.myWishlistResponse, wishlistResponse);
+    await box.put(
+      '${HiveKeys.myWishlistResponse}_${currentUserData!.user.email}',
+      wishlistResponse,
+    );
   }
 
   Future<FetchMyWishlistResponse?> retrieveCachedWishlist() async {
     final box =
         await Hive.openLazyBox<FetchMyWishlistResponse>(HiveBoxes.wishlist);
-    return box.get(HiveKeys.myWishlistResponse);
+    return box.get(
+      '${HiveKeys.myWishlistResponse}_${currentUserData!.user.email}',
+    );
   }
 
   static Future<void> deleteCachedWishlist() async {
     final box =
         await Hive.openLazyBox<FetchMyWishlistResponse>(HiveBoxes.wishlist);
     debugPrint('*#*#*#*#* WISHLIST HAS BEEN DELETED *#*#*#*#*');
-    await box.delete(HiveKeys.myWishlistResponse);
+    await box.delete(
+      '${HiveKeys.myWishlistResponse}_${currentUserData!.user.email}',
+    );
   }
 }

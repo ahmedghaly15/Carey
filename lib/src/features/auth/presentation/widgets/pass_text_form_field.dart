@@ -14,7 +14,8 @@ class PassTextFormField extends StatelessWidget {
     this.passVisibilityOnTap,
     this.keyboardType = TextInputType.visiblePassword,
     this.autofillHints = const [AutofillHints.password],
-    this.validate, this.hintText,
+    this.validate,
+    this.hintText,
   });
 
   final bool obscureText;
@@ -32,7 +33,7 @@ class PassTextFormField extends StatelessWidget {
       controller: controller,
       focusNode: focusNode,
       keyboardType: keyboardType,
-      hintText: hintText?? AppStrings.password,
+      hintText: hintText ?? AppStrings.password,
       autofillHints: autofillHints,
       obscureText: obscureText,
       prefixSvgIcon: Assets.svgsLockIcon,
@@ -42,7 +43,7 @@ class PassTextFormField extends StatelessWidget {
           obscureText
               ? Icons.visibility_outlined
               : Icons.visibility_off_outlined,
-          color: AppColors.primaryColor.withOpacity(0.7),
+          color: AppColors.primaryColor.withAlpha(179),
         ),
       ),
       validate: validate ??

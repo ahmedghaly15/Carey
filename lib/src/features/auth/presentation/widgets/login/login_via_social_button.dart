@@ -21,7 +21,7 @@ class LoginViaSocialButton extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadiusDirectional.circular(20.0.r),
         border: Border.all(
-          color: AppColors.primaryColor.withOpacity(0.1),
+          color: AppColors.primaryColor.withAlpha(26),
           width: 1.w,
         ),
       ),

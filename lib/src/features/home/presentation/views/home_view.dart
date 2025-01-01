@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:carey/src/core/api/api_error_message.dart';
 import 'package:carey/src/core/di/dependency_injection.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/widgets/custom_error_widget.dart';
@@ -39,19 +38,15 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
               case HomeStateStatus.fetchHomeDataLoading:
                 return const HomeShimmerLoading();
               case HomeStateStatus.fetchHomeDataSuccess:
-                return (state.homeData != null || state.specialOffers != null)
+                return (state.homeData != null && state.specialOffers != null)
                     ? HomeBody(
                         data: state.homeData!,
                         specialOffers: state.specialOffers!,
                       )
-                    : CustomErrorWidget(
-                        error: ApiErrorMessage.defaultError,
-                        tryAgainOnPressed: () async =>
-                            await _refetchHomeData(context),
-                      );
+                    : const HomeShimmerLoading();
               case HomeStateStatus.fetchHomeDataFailure:
               case HomeStateStatus.fetchSpecialOffersError:
-                return (state.homeData != null || state.specialOffers != null)
+                return (state.homeData != null && state.specialOffers != null)
                     ? HomeBody(
                         data: state.homeData!,
                         specialOffers: state.specialOffers!,

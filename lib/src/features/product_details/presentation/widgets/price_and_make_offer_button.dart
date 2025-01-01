@@ -20,7 +20,7 @@ class PriceAndMakeOfferButton extends StatelessWidget {
             Text(
               AppStrings.price,
               style: AppTextStyles.font15Regular.copyWith(
-                color: Colors.black.withOpacity(0.65),
+                color: Colors.black.withAlpha(166),
               ),
             ),
             Text(
