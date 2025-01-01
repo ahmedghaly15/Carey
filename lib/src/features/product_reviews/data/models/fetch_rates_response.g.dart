@@ -61,11 +61,11 @@ class RateResponseItemAdapter extends TypeAdapter<RateResponseItem> {
     };
     return RateResponseItem(
       id: fields[0] as int,
-      rate: fields[1] as int,
+      rate: fields[1] as int?,
       comment: fields[2] as String,
-      createdAt: fields[3] as String,
+      createdAt: fields[3] as String?,
       user: fields[4] as CareyUser,
-      car: fields[5] as Car,
+      reacts: (fields[5] as List).cast<RateReact>(),
     );
   }
 
@@ -84,7 +84,7 @@ class RateResponseItemAdapter extends TypeAdapter<RateResponseItem> {
       ..writeByte(4)
       ..write(obj.user)
       ..writeByte(5)
-      ..write(obj.car);
+      ..write(obj.reacts);
   }
 
   @override
@@ -98,9 +98,61 @@ class RateResponseItemAdapter extends TypeAdapter<RateResponseItem> {
           typeId == other.typeId;
 }
 
+class RateReactAdapter extends TypeAdapter<RateReact> {
+  @override
+  final int typeId = 16;
+
+  @override
+  RateReact read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return RateReact(
+      id: fields[0] as int,
+      react: fields[1] as String,
+      user: fields[2] as CareyUser,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, RateReact obj) {
+    writer
+      ..writeByte(3)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.react)
+      ..writeByte(2)
+      ..write(obj.user);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RateReactAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
+
+RateReact _$RateReactFromJson(Map<String, dynamic> json) => RateReact(
+      id: (json['id'] as num).toInt(),
+      react: json['react'] as String,
+      user: CareyUser.fromJson(json['user'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$RateReactToJson(RateReact instance) => <String, dynamic>{
+      'id': instance.id,
+      'react': instance.react,
+      'user': instance.user.toJson(),
+    };
 
 _$FetchRatesResponseImpl _$$FetchRatesResponseImplFromJson(
         Map<String, dynamic> json) =>
@@ -126,11 +178,13 @@ _$RateResponseItemImpl _$$RateResponseItemImplFromJson(
         Map<String, dynamic> json) =>
     _$RateResponseItemImpl(
       id: (json['id'] as num).toInt(),
-      rate: (json['rate'] as num).toInt(),
+      rate: (json['rate'] as num?)?.toInt(),
       comment: json['comment'] as String,
-      createdAt: json['createdAt'] as String,
+      createdAt: json['createdAt'] as String?,
       user: CareyUser.fromJson(json['user'] as Map<String, dynamic>),
-      car: Car.fromJson(json['car'] as Map<String, dynamic>),
+      reacts: (json['reacts'] as List<dynamic>)
+          .map((e) => RateReact.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$RateResponseItemImplToJson(
@@ -141,5 +195,5 @@ Map<String, dynamic> _$$RateResponseItemImplToJson(
       'comment': instance.comment,
       'createdAt': instance.createdAt,
       'user': instance.user.toJson(),
-      'car': instance.car.toJson(),
+      'reacts': instance.reacts.map((e) => e.toJson()).toList(),
     };

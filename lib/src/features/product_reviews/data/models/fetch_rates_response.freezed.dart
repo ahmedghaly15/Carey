@@ -268,15 +268,15 @@ mixin _$RateResponseItem {
   @HiveField(0)
   int get id => throw _privateConstructorUsedError;
   @HiveField(1)
-  int get rate => throw _privateConstructorUsedError;
+  int? get rate => throw _privateConstructorUsedError;
   @HiveField(2)
   String get comment => throw _privateConstructorUsedError;
   @HiveField(3)
-  String get createdAt => throw _privateConstructorUsedError;
+  String? get createdAt => throw _privateConstructorUsedError;
   @HiveField(4)
   CareyUser get user => throw _privateConstructorUsedError;
   @HiveField(5)
-  Car get car => throw _privateConstructorUsedError;
+  List<RateReact> get reacts => throw _privateConstructorUsedError;
 
   /// Serializes this RateResponseItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -296,11 +296,11 @@ abstract class $RateResponseItemCopyWith<$Res> {
   @useResult
   $Res call(
       {@HiveField(0) int id,
-      @HiveField(1) int rate,
+      @HiveField(1) int? rate,
       @HiveField(2) String comment,
-      @HiveField(3) String createdAt,
+      @HiveField(3) String? createdAt,
       @HiveField(4) CareyUser user,
-      @HiveField(5) Car car});
+      @HiveField(5) List<RateReact> reacts});
 
   $CareyUserCopyWith<$Res> get user;
 }
@@ -321,37 +321,37 @@ class _$RateResponseItemCopyWithImpl<$Res, $Val extends RateResponseItem>
   @override
   $Res call({
     Object? id = null,
-    Object? rate = null,
+    Object? rate = freezed,
     Object? comment = null,
-    Object? createdAt = null,
+    Object? createdAt = freezed,
     Object? user = null,
-    Object? car = null,
+    Object? reacts = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      rate: null == rate
+      rate: freezed == rate
           ? _value.rate
           : rate // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       comment: null == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: null == createdAt
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as CareyUser,
-      car: null == car
-          ? _value.car
-          : car // ignore: cast_nullable_to_non_nullable
-              as Car,
+      reacts: null == reacts
+          ? _value.reacts
+          : reacts // ignore: cast_nullable_to_non_nullable
+              as List<RateReact>,
     ) as $Val);
   }
 
@@ -376,11 +376,11 @@ abstract class _$$RateResponseItemImplCopyWith<$Res>
   @useResult
   $Res call(
       {@HiveField(0) int id,
-      @HiveField(1) int rate,
+      @HiveField(1) int? rate,
       @HiveField(2) String comment,
-      @HiveField(3) String createdAt,
+      @HiveField(3) String? createdAt,
       @HiveField(4) CareyUser user,
-      @HiveField(5) Car car});
+      @HiveField(5) List<RateReact> reacts});
 
   @override
   $CareyUserCopyWith<$Res> get user;
@@ -400,37 +400,37 @@ class __$$RateResponseItemImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? rate = null,
+    Object? rate = freezed,
     Object? comment = null,
-    Object? createdAt = null,
+    Object? createdAt = freezed,
     Object? user = null,
-    Object? car = null,
+    Object? reacts = null,
   }) {
     return _then(_$RateResponseItemImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      rate: null == rate
+      rate: freezed == rate
           ? _value.rate
           : rate // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       comment: null == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: null == createdAt
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as CareyUser,
-      car: null == car
-          ? _value.car
-          : car // ignore: cast_nullable_to_non_nullable
-              as Car,
+      reacts: null == reacts
+          ? _value._reacts
+          : reacts // ignore: cast_nullable_to_non_nullable
+              as List<RateReact>,
     ));
   }
 }
@@ -441,11 +441,12 @@ class __$$RateResponseItemImplCopyWithImpl<$Res>
 class _$RateResponseItemImpl implements _RateResponseItem {
   const _$RateResponseItemImpl(
       {@HiveField(0) required this.id,
-      @HiveField(1) required this.rate,
+      @HiveField(1) this.rate,
       @HiveField(2) required this.comment,
-      @HiveField(3) required this.createdAt,
+      @HiveField(3) this.createdAt,
       @HiveField(4) required this.user,
-      @HiveField(5) required this.car});
+      @HiveField(5) required final List<RateReact> reacts})
+      : _reacts = reacts;
 
   factory _$RateResponseItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$RateResponseItemImplFromJson(json);
@@ -455,23 +456,28 @@ class _$RateResponseItemImpl implements _RateResponseItem {
   final int id;
   @override
   @HiveField(1)
-  final int rate;
+  final int? rate;
   @override
   @HiveField(2)
   final String comment;
   @override
   @HiveField(3)
-  final String createdAt;
+  final String? createdAt;
   @override
   @HiveField(4)
   final CareyUser user;
+  final List<RateReact> _reacts;
   @override
   @HiveField(5)
-  final Car car;
+  List<RateReact> get reacts {
+    if (_reacts is EqualUnmodifiableListView) return _reacts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_reacts);
+  }
 
   @override
   String toString() {
-    return 'RateResponseItem(id: $id, rate: $rate, comment: $comment, createdAt: $createdAt, user: $user, car: $car)';
+    return 'RateResponseItem(id: $id, rate: $rate, comment: $comment, createdAt: $createdAt, user: $user, reacts: $reacts)';
   }
 
   @override
@@ -485,13 +491,13 @@ class _$RateResponseItemImpl implements _RateResponseItem {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.car, car) || other.car == car));
+            const DeepCollectionEquality().equals(other._reacts, _reacts));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, rate, comment, createdAt, user, car);
+  int get hashCode => Object.hash(runtimeType, id, rate, comment, createdAt,
+      user, const DeepCollectionEquality().hash(_reacts));
 
   /// Create a copy of RateResponseItem
   /// with the given fields replaced by the non-null parameter values.
@@ -512,12 +518,13 @@ class _$RateResponseItemImpl implements _RateResponseItem {
 
 abstract class _RateResponseItem implements RateResponseItem {
   const factory _RateResponseItem(
-      {@HiveField(0) required final int id,
-      @HiveField(1) required final int rate,
-      @HiveField(2) required final String comment,
-      @HiveField(3) required final String createdAt,
-      @HiveField(4) required final CareyUser user,
-      @HiveField(5) required final Car car}) = _$RateResponseItemImpl;
+          {@HiveField(0) required final int id,
+          @HiveField(1) final int? rate,
+          @HiveField(2) required final String comment,
+          @HiveField(3) final String? createdAt,
+          @HiveField(4) required final CareyUser user,
+          @HiveField(5) required final List<RateReact> reacts}) =
+      _$RateResponseItemImpl;
 
   factory _RateResponseItem.fromJson(Map<String, dynamic> json) =
       _$RateResponseItemImpl.fromJson;
@@ -527,19 +534,19 @@ abstract class _RateResponseItem implements RateResponseItem {
   int get id;
   @override
   @HiveField(1)
-  int get rate;
+  int? get rate;
   @override
   @HiveField(2)
   String get comment;
   @override
   @HiveField(3)
-  String get createdAt;
+  String? get createdAt;
   @override
   @HiveField(4)
   CareyUser get user;
   @override
   @HiveField(5)
-  Car get car;
+  List<RateReact> get reacts;
 
   /// Create a copy of RateResponseItem
   /// with the given fields replaced by the non-null parameter values.
