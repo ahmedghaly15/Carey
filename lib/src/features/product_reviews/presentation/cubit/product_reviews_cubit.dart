@@ -90,6 +90,15 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
     );
   }
 
+  void updateBottomSheetSelectedRate(int index) {
+    if (state.bottomSheetSelectedRateIndex != index) {
+      emit(state.copyWith(
+        status: ProductReviewsStateStatus.updateBottomSheetSelectedRate,
+        bottomSheetSelectedRateIndex: index,
+      ));
+    }
+  }
+
   @override
   Future<void> close() {
     _cancelToken.cancel();

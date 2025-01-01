@@ -46,7 +46,7 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
                     : const HomeShimmerLoading();
               case HomeStateStatus.fetchHomeDataFailure:
               case HomeStateStatus.fetchSpecialOffersError:
-                return (state.homeData != null || state.specialOffers != null)
+                return (state.homeData != null && state.specialOffers != null)
                     ? HomeBody(
                         data: state.homeData!,
                         specialOffers: state.specialOffers!,
