@@ -7,8 +7,9 @@ import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
 import 'package:carey/src/features/product_reviews/data/datasources/product_reviews_local_datasource.dart';
 import 'package:carey/src/features/product_reviews/data/models/product_reviews_view_params.dart';
 import 'package:carey/src/features/product_reviews/presentation/cubit/product_reviews_cubit.dart';
+import 'package:carey/src/features/product_reviews/presentation/widgets/add_review_fab.dart';
+import 'package:carey/src/features/product_reviews/presentation/widgets/rates_list_view_bloc_builder.dart';
 import 'package:carey/src/features/product_reviews/presentation/widgets/reviewers_sliver_list_bloc_builder.dart';
-import 'package:carey/src/features/product_reviews/presentation/widgets/reviews_list_view_bloc_builder.dart';
 import 'package:carey/src/features/product_reviews/presentation/widgets/update_selected_rate_bloc_listener.dart';
 
 @RoutePage()
@@ -39,7 +40,7 @@ class ProductReviewsView extends StatelessWidget implements AutoRouteWrapper {
             slivers: [
               CustomSliverAppBar(titleText: params.rateAndReviewsCount),
               const SliverToBoxAdapter(
-                child: ReviewsListViewBlocBuilder(),
+                child: RatesListViewBlocBuilder(),
               ),
               const SliverToBoxAdapter(
                 child: UpdateSelectedRateBlocListener(),
@@ -49,6 +50,7 @@ class ProductReviewsView extends StatelessWidget implements AutoRouteWrapper {
           ),
         ),
       ),
+      floatingActionButton: const AddReviewFAB(),
     );
   }
 }
