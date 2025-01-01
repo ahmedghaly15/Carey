@@ -31,7 +31,7 @@ class ChooseShippingTypeContainer extends StatelessWidget {
                 child: Text(
                   AppStrings.chooseShippingType,
                   style: AppTextStyles.poppinsFont15SemiBold.copyWith(
-                    color: Colors.black.withOpacity(0.75),
+                    color: Colors.black.withAlpha(192),
                   ),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,

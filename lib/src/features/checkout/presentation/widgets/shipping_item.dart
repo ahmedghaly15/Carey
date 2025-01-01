@@ -53,7 +53,7 @@ class ShippingItem extends StatelessWidget {
                     conditionLabel: AppStrings.defaultWord,
                     conditionTextStyle:
                         AppTextStyles.poppinsFont13Medium.copyWith(
-                      color: Colors.black.withOpacity(0.75),
+                      color: Colors.black.withAlpha(192),
                     ),
                     padding:
                         EdgeInsets.symmetric(horizontal: 13.w, vertical: 4.h),
@@ -69,7 +69,7 @@ class ShippingItem extends StatelessWidget {
           maxLines: 1,
         ),
         subtitleTextStyle: AppTextStyles.poppinsFont13Medium.copyWith(
-          color: Colors.black.withOpacity(0.6),
+          color: Colors.black.withAlpha(153),
         ),
         trailing: trailing,
       ),
