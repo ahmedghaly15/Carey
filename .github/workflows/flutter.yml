@@ -4,57 +4,44 @@ on:
   push:
     branches:
       - development
+  workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
+    if: contains(github.event.head_commit.message, 'Deploy android')
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout My Code 
         uses: actions/checkout@v3
 
-      - name: Check commit message
-        id: check_commit
-        run: |
-          if [[ "${{ github.event.head_commit.message }}" == *"Updated release notes"* ]]; then
-            echo "Commit message contains 'Updated release notes'"
-            echo "::set-output name=run_job::true"
-          else
-            echo "Commit message does not contain 'Updated release notes'"
-            echo "::set-output name=run_job::false"
-          fi
-
       - name: Create .env File using GitHub Secrets
-        if: steps.check_commit.outputs.run_job == 'true'
         run: echo ${{ secrets.ENV_FILE_CONTENT }} > .env
 
       - name: Setup Java 17
-        if: steps.check_commit.outputs.run_job == 'true'
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
+          distribution: 'temurin' # Use the Eclipse Temurin distribution
           java-version: '17'
 
       - name: Install Flutter Version 3.27.0
-        if: steps.check_commit.outputs.run_job == 'true'
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.27.0'
-
+          channel: 'stable'
+      
       - name: Install Dependencies
-        if: steps.check_commit.outputs.run_job == 'true'
         run: flutter pub get
 
       - name: Build release APK
-        if: steps.check_commit.outputs.run_job == 'true'
         run: flutter build apk --release --no-tree-shake-icons
 
-      - name: Upload release APK to Firebase App Distribution
-        if: steps.check_commit.outputs.run_job == 'true'
+      - name: Deploy to Firebase
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
-          appId: ${{ secrets.FIREBASE_APP_ID }}
-          serviceCredentialsFileContent: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          appId: ${{secrets.FIREBASE_APP_ID}} 
+          serviceCredentialsFileContent: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
           groups: testers
           file: build/app/outputs/flutter-apk/app-release.apk
           releaseNotesFile: release_notes.txt
+    
