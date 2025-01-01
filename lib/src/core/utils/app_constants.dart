@@ -63,7 +63,7 @@ class AppConstants {
         ],
       );
 
-  static List<String> rates = [
+  static const List<String> rates = [
     AppStrings.all,
     '5',
     '4',

@@ -128,7 +128,7 @@ class AppTextStyles {
         fontFamily: AppStrings.poppinsFontFamily,
       );
   static TextStyle get hintTextStyle => font13Regular.copyWith(
-        color: AppColors.primaryColor.withOpacity(0.25),
+        color: AppColors.primaryColor.withAlpha(64),
       );
   static TextStyle get font16Regular => TextStyle(
         fontSize: 16.sp,
