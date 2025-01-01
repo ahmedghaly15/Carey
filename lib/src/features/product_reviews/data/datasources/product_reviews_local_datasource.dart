@@ -29,7 +29,7 @@ class ProductReviewsLocalDatasource {
     );
   }
 
-  static Future<void> deleteRates(int carId) async {
+  static Future<void> deleteCachedRates(int carId) async {
     final box = await Hive.openBox<FetchRatesResponse>(HiveBoxes.rates);
     debugPrint(
         '*#*#*#*#* CACHED RATES RESPONSE DATA HAS BEEN DELETED for CAR ID $carId *#*#*#*#*');

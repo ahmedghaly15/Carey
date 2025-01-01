@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:carey/src/core/utils/app_constants.dart';
@@ -10,9 +11,18 @@ import 'package:carey/src/features/product_reviews/presentation/cubit/product_re
 class ProductReviewsCubit extends Cubit<ProductReviewsState> {
   final ProductReviewsRepo _repo;
 
-  ProductReviewsCubit(this._repo) : super(ProductReviewsState.initial());
+  ProductReviewsCubit(this._repo) : super(ProductReviewsState.initial()) {
+    _initFormAttributes();
+  }
 
+  late final TextEditingController reviewController;
+  late final GlobalKey<FormState> formKey;
   final CancelToken _cancelToken = CancelToken();
+
+  void _initFormAttributes() {
+    reviewController = TextEditingController();
+    formKey = GlobalKey<FormState>();
+  }
 
   void updateSelectedRate(int index) {
     if (state.selectedRateIndex != index) {
@@ -23,17 +33,33 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
     }
   }
 
-  void addReview(AddReviewRequestParams params) async {
+  void _addReview(int carId) async {
     emit(state.copyWith(status: ProductReviewsStateStatus.addReviewLoading));
-    final result = await _repo.addReview(params);
+    final result = await _repo.addReview(AddReviewRequestParams(
+      rate: int.parse(
+        AppConstants.rates.sublist(1)[state.bottomSheetSelectedRateIndex],
+      ),
+      carId: carId,
+      comment: reviewController.text.trim(),
+    ));
     result.when(
-      success: (_) => emit(
-          state.copyWith(status: ProductReviewsStateStatus.addReviewSuccess)),
+      success: (_) {
+        reviewController.clear();
+        emit(
+          state.copyWith(status: ProductReviewsStateStatus.addReviewSuccess),
+        );
+      },
       failure: (failure) => emit(state.copyWith(
         status: ProductReviewsStateStatus.addReviewError,
         error: failure.error[0],
       )),
     );
+  }
+
+  void validateFormAndAddReview(int carId) {
+    if (formKey.currentState!.validate()) {
+      _addReview(carId);
+    }
   }
 
   void deleteReview(int rateId) async {
@@ -90,6 +116,7 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
     );
   }
 
+  int get bottomSheetSelectedRate => state.bottomSheetSelectedRateIndex;
   void updateBottomSheetSelectedRate(int index) {
     if (state.bottomSheetSelectedRateIndex != index) {
       emit(state.copyWith(
@@ -102,6 +129,7 @@ class ProductReviewsCubit extends Cubit<ProductReviewsState> {
   @override
   Future<void> close() {
     _cancelToken.cancel();
+    reviewController.dispose();
     return super.close();
   }
 }

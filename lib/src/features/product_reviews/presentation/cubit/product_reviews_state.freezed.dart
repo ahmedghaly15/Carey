@@ -218,7 +218,7 @@ class _$ProductReviewsStateImpl implements _ProductReviewsState {
   const _$ProductReviewsStateImpl(
       {required this.status,
       this.selectedRateIndex = 0,
-      this.bottomSheetSelectedRateIndex = 0,
+      this.bottomSheetSelectedRateIndex = -1,
       this.ratesResponse,
       this.allRatesResponse,
       this.intendedToFetchCarId,

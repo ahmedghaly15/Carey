@@ -24,7 +24,7 @@ class ProductReviewsState with _$ProductReviewsState {
   const factory ProductReviewsState({
     required ProductReviewsStateStatus status,
     @Default(0) int selectedRateIndex,
-    @Default(0) int bottomSheetSelectedRateIndex,
+    @Default(-1) int bottomSheetSelectedRateIndex,
     FetchRatesResponse? ratesResponse,
     FetchRatesResponse? allRatesResponse,
     int? intendedToFetchCarId,
