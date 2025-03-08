@@ -20,19 +20,19 @@ class StartViewBody extends StatelessWidget {
         SliverFillRemaining(
           hasScrollBody: false,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Spacer(flex: 2),
               Image.asset(Assets.imagesStartScreenCar),
-              const Spacer(),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 18.0.w),
-                child: Text(
-                  AppStrings.startViewDescription,
-                  style: AppTextStyles.font35Bold,
-                  textAlign: TextAlign.center,
+                child: FittedBox(
+                  child: Text(
+                    AppStrings.startViewDescription,
+                    style: AppTextStyles.font35Bold,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
-              const Spacer(),
               Container(
                 width: 40.0.w,
                 height: 7.0.h,
@@ -41,7 +41,6 @@ class StartViewBody extends StatelessWidget {
                   borderRadius: BorderRadiusDirectional.circular(5.0.r),
                 ),
               ),
-              const Spacer(),
               PrimaryButton(
                 text: AppStrings.getStarted,
                 margin: EdgeInsetsDirectional.only(
