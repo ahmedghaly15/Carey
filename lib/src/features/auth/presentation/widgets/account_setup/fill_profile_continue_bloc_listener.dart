@@ -1,11 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/core/router/app_router.dart';
-import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:carey/src/core/datasources/user_local_data_source.dart';
 import 'package:carey/src/core/helpers/extensions.dart';
+import 'package:carey/src/core/models/carey_user.dart';
+import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
@@ -35,58 +36,52 @@ class FillProfileContinueBlocListener extends StatelessWidget {
   Future<void> _listener(AccountSetupState state, BuildContext context) async {
     switch (state.status) {
       case AccountSetupStateStatus.updateProfileLoading:
-        _handleUpdateProfileLoading(context);
+        context.unfocusKeyboard();
+        context.showLoadingDialog();
         break;
       case AccountSetupStateStatus.updateProfileSuccess:
         await _handleUpdateProfileSuccess(state, context);
         break;
-      case AccountSetupStateStatus.updateProfileError:
-        _handleUpdateProfileError(context, state);
+      case AccountSetupStateStatus.updateProfileImgSuccess:
+        await _secureUserAndGoBiometricRoute(state.careyUser!, context);
         break;
+      case AccountSetupStateStatus.updateProfileError:
       case AccountSetupStateStatus.updateProfileImgError:
-        _handleUpdateProfileError(context, state);
+        context.popTop();
+        context.showErrorDialog(state.error!);
         break;
       default:
         break;
     }
   }
 
-  void _handleUpdateProfileError(
-      BuildContext context, AccountSetupState state) {
-    context.popTop();
-    context.showErrorDialog(state.error!);
-  }
-
-  void _handleUpdateProfileLoading(BuildContext context) {
-    context.unfocusKeyboard();
-    context.showLoadingDialog();
-  }
-
   Future<void> _handleUpdateProfileSuccess(
     AccountSetupState state,
     BuildContext context,
   ) async {
-    final accountSetupCubit = context.read<AccountSetupCubit>();
     if (state.pickedProfileImg != null) {
-      await accountSetupCubit.updateProfileImg();
+      await context.read<AccountSetupCubit>().updateProfileImg();
+    } else {
+      await _secureUserAndGoBiometricRoute(state.careyUser!, context);
     }
+  }
+
+  Future<void> _secureUserAndGoBiometricRoute(
+    CareyUser? careyUser,
+    BuildContext context,
+  ) async {
+    await UserLocalDatasource.updateAndSecureCurrentUser(
+      careyUser!,
+    );
     context.popTop();
-    final updateProfileParams = UpdateProfileParams(
-      fullName: accountSetupCubit.fullNameController.text,
-      nickName: accountSetupCubit.nickNameController.text,
-      gender: accountSetupCubit.genderController.text,
-      address: accountSetupCubit.addressController.text,
-      phone: accountSetupCubit.phoneNumber,
-    );
-    context.pushRoute(
-      SetFingerprintRoute(updateProfileParams: updateProfileParams),
-    );
+    context.pushRoute(const SetBiometricRoute());
   }
 
   bool _listenWhen(AccountSetupStateStatus currentStatus) {
     return currentStatus == AccountSetupStateStatus.updateProfileLoading ||
         currentStatus == AccountSetupStateStatus.updateProfileSuccess ||
         currentStatus == AccountSetupStateStatus.updateProfileError ||
-        currentStatus == AccountSetupStateStatus.updateProfileImgError;
+        currentStatus == AccountSetupStateStatus.updateProfileImgError ||
+        currentStatus == AccountSetupStateStatus.updateProfileImgSuccess;
   }
 }

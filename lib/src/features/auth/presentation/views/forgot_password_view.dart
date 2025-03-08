@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:carey/src/core/di/dependency_injection.dart';
-import 'package:carey/src/core/widgets/animated_loading_indicator.dart';
 import 'package:carey/src/features/auth/presentation/cubits/forgot_password/forgot_password_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/forgot_password/forgot_password_state.dart';
 import 'package:carey/src/features/auth/presentation/widgets/forgot_password/forgot_password_error_view.dart';
@@ -18,9 +17,9 @@ class ForgotPasswordView extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<ForgotPasswordCubit>.value(
-      value: getIt.get<ForgotPasswordCubit>()
-        ..getForgotPassContactDetails(email),
+    return BlocProvider<ForgotPasswordCubit>(
+      create: (_) =>
+          getIt.get<ForgotPasswordCubit>()..getUserContactDetails(email),
       child: this,
     );
   }
@@ -28,20 +27,25 @@ class ForgotPasswordView extends StatelessWidget implements AutoRouteWrapper {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
-        buildWhen: (_, current) => _buildWhen(current),
-        builder: (context, state) {
-          switch (state.status) {
-            case ForgotPasswordStateStatus.getAccountByEmailLoading:
-              return const ForgotPasswordLoadingView();
-            case ForgotPasswordStateStatus.getAccountByEmailSuccess:
-              return const ForgotPasswordViewBody();
-            case ForgotPasswordStateStatus.getAccountByEmailError:
-              return ForgotPasswordErrorView(email: email, error: state.error!);
-            default:
-              return const Center(child: AnimatedLoadingIndicator());
-          }
-        },
+      body: SafeArea(
+        child: BlocBuilder<ForgotPasswordCubit, ForgotPasswordState>(
+          buildWhen: (_, current) => _buildWhen(current),
+          builder: (context, state) {
+            switch (state.status) {
+              case ForgotPasswordStateStatus.getAccountByEmailLoading:
+                return const ForgotPasswordLoadingView();
+              case ForgotPasswordStateStatus.getAccountByEmailSuccess:
+                return const ForgotPasswordViewBody();
+              case ForgotPasswordStateStatus.getAccountByEmailError:
+                return ForgotPasswordErrorView(
+                  email: email,
+                  error: state.error!,
+                );
+              default:
+                return const ForgotPasswordLoadingView();
+            }
+          },
+        ),
       ),
     );
   }

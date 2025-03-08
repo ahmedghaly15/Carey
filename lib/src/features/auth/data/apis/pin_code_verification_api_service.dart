@@ -1,12 +1,13 @@
-import 'package:carey/src/core/api/end_points.dart';
-import 'package:carey/src/features/auth/data/models/login_response.dart';
-import 'package:carey/src/features/auth/data/models/pin_code_verification_params.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
+import 'package:carey/src/core/api/end_points.dart';
+import 'package:carey/src/features/auth/data/models/login_response.dart';
+import 'package:carey/src/features/auth/data/models/pin_code_verification_params.dart';
+
 part 'pin_code_verification_api_service.g.dart';
 
-@RestApi(baseUrl: EndPoints.baseUrl)
+@RestApi()
 abstract class PinCodeVerificationApiService {
   factory PinCodeVerificationApiService(Dio dio, {String baseUrl}) =
       _PinCodeVerificationApiService;

@@ -21,7 +21,8 @@ class ApiErrorHandler {
           return const ApiErrorModel(error: [ApiErrorMessage.defaultError]);
         case DioExceptionType.connectionError:
           return const ApiErrorModel(
-              error: [ApiErrorMessage.noInternetConnection]);
+            error: [ApiErrorMessage.noInternetConnection],
+          );
         case DioExceptionType.badCertificate:
           return const ApiErrorModel(error: [ApiErrorMessage.defaultError]);
       }

@@ -1,8 +1,11 @@
+import 'package:carey/src/core/themes/app_text_styles.dart';
+import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carey/src/core/widgets/custom_error_adaptive_dialog.dart';
 import 'package:carey/src/core/widgets/loading_adaptive_dialog.dart';
 import 'package:carey/src/core/widgets/result_dialog.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 extension MediaQueryUtils on BuildContext {
   double get screenHeight => MediaQuery.sizeOf(this).height;
@@ -72,5 +75,34 @@ extension ShowResultDialog on BuildContext {
               hasOkButtonInActions: hasOkButtonInActions,
               actionsPadding: actionsPadding,
             ),
+      );
+}
+
+extension ShowMyToast on BuildContext {
+  void showToast(String message) => ScaffoldMessenger.of(this).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.black54,
+          elevation: 0,
+          duration: const Duration(seconds: 2),
+          dismissDirection: DismissDirection.startToEnd,
+          behavior: SnackBarBehavior.floating,
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24.r),
+          ),
+          content: Row(
+            spacing: 8.w,
+            children: [
+              Image.asset(Assets.careyIcon, height: 32.h, width: 32.h),
+              Expanded(
+                child: Text(
+                  message,
+                  style:
+                      AppTextStyles.font15Regular.copyWith(color: Colors.white),
+                ),
+              )
+            ],
+          ),
+        ),
       );
 }

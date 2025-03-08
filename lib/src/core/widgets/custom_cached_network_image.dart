@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 
 class CustomCachedNetworkImage extends StatelessWidget {
@@ -31,9 +30,9 @@ class CustomCachedNetworkImage extends StatelessWidget {
       imageBuilder: imageBuilder,
       fadeInDuration: fadeInDuration,
       fadeOutDuration: fadeOutDuration,
-      errorWidget: (_, __, ___) => Image.asset(
-        Assets.imagesError,
-        fit: BoxFit.cover,
+      errorWidget: (_, __, ___) => Icon(
+        Icons.error,
+        color: Colors.red.shade400,
       ),
     );
   }

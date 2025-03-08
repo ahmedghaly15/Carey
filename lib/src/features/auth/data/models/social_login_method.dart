@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
+
 import 'package:carey/src/core/api/end_points.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/utils/functions/launch_this_url.dart';
-import 'package:flutter/material.dart';
 
 class SocialLoginMethod {
   final String? name;

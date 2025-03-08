@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:carey/src/core/api/api_result.dart';
 import 'package:carey/src/core/utils/functions/execute_and_handle_errors.dart';
 import 'package:carey/src/features/auth/data/apis/login_api_service.dart';
-import 'package:carey/src/features/auth/data/models/auth_via_password_request.dart';
+import 'package:carey/src/features/auth/data/models/auth_request_params.dart';
 import 'package:carey/src/features/auth/domain/entities/auth_response_entity.dart';
 
 class LoginRepo {
@@ -12,7 +12,7 @@ class LoginRepo {
   LoginRepo(this._loginApiService);
 
   Future<ApiResult<AuthResponseEntity>> loginViaPassword(
-    AuthViaPasswordRequest params, [
+    AuthRequestParams params, [
     CancelToken? cancelToken,
   ]) {
     return executeAndHandleErrors<AuthResponseEntity>(
@@ -21,7 +21,7 @@ class LoginRepo {
   }
 
   Future<AuthResponseEntity> _loginAndMapLoginResponse(
-    AuthViaPasswordRequest params,
+    AuthRequestParams params,
   ) async {
     final loginResponse = await _loginApiService.loginViaPassword(params);
     final loginResponseEntity = AuthResponseEntity.toAuthEntity(
