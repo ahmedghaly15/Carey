@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/features/home/presentation/views/best_offers_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carey/src/core/models/car.dart';
@@ -12,8 +11,10 @@ import 'package:carey/src/features/auth/presentation/views/register_view.dart';
 import 'package:carey/src/features/auth/presentation/views/reset_password_view.dart';
 import 'package:carey/src/features/auth/presentation/views/set_biometric_view.dart';
 import 'package:carey/src/features/checkout/presentation/views/checkout_view.dart';
+import 'package:carey/src/features/checkout/presentation/views/shipping_address_view.dart';
 import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
 import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
+import 'package:carey/src/features/home/presentation/views/best_offers_view.dart';
 import 'package:carey/src/features/home/presentation/views/home_view.dart';
 import 'package:carey/src/features/home/presentation/views/special_offers_view.dart';
 import 'package:carey/src/features/home/presentation/views/top_deals_view.dart';

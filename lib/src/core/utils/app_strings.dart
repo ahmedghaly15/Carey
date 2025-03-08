@@ -140,4 +140,6 @@ class AppStrings {
       'Review has been submitted successfully';
   static const String review = 'Review';
   static const String rateMustBeChosen = 'You must choose a rating';
+  static const String addNewAddress = 'Add New Address';
+  static const String apply = 'Apply';
 }

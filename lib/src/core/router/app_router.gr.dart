@@ -365,7 +365,7 @@ class OfferStatusRoute extends PageRouteInfo<OfferStatusRouteArgs> {
   OfferStatusRoute({
     Key? key,
     required OfferStatus offerStatus,
-    required int offer,
+    int? offer,
     List<PageRouteInfo>? children,
   }) : super(
           OfferStatusRoute.name,
@@ -396,14 +396,14 @@ class OfferStatusRouteArgs {
   const OfferStatusRouteArgs({
     this.key,
     required this.offerStatus,
-    required this.offer,
+    this.offer,
   });
 
   final Key? key;
 
   final OfferStatus offerStatus;
 
-  final int offer;
+  final int? offer;
 
   @override
   String toString() {
@@ -672,6 +672,25 @@ class SetBiometricRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return WrappedRoute(child: const SetBiometricView());
+    },
+  );
+}
+
+/// generated route for
+/// [ShippingAddressView]
+class ShippingAddressRoute extends PageRouteInfo<void> {
+  const ShippingAddressRoute({List<PageRouteInfo>? children})
+      : super(
+          ShippingAddressRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ShippingAddressRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ShippingAddressView();
     },
   );
 }
