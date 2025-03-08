@@ -6,7 +6,6 @@ import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/condition_label.dart';
-import 'package:carey/src/core/widgets/my_sized_box.dart';
 
 class ShippingItem extends StatelessWidget {
   const ShippingItem({
@@ -24,14 +23,13 @@ class ShippingItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsetsDirectional.only(start: 29.w, end: 11.w),
-      padding: EdgeInsetsDirectional.symmetric(
-        horizontal: 7.w,
-        vertical: 19.h,
-      ),
+      margin: EdgeInsets.symmetric(horizontal: 29.w),
       decoration: AppConstants.checkoutContainerDecoration,
       child: ListTile(
-        contentPadding: EdgeInsets.zero,
+        contentPadding: EdgeInsetsDirectional.symmetric(
+          horizontal: 7.w,
+          vertical: 19.h,
+        ),
         leading: Container(
           padding: EdgeInsets.all(7.h),
           decoration: const BoxDecoration(
@@ -46,9 +44,9 @@ class ShippingItem extends StatelessWidget {
         ),
         title: (title == 'Home' && hasDefaultBadge)
             ? Row(
+                spacing: 10.w,
                 children: [
                   _buildTitleTextWidget(),
-                  MySizedBox.width10,
                   ConditionLabel(
                     conditionLabel: AppStrings.defaultWord,
                     conditionTextStyle:
@@ -61,7 +59,9 @@ class ShippingItem extends StatelessWidget {
                 ],
               )
             : _buildTitleTextWidget(),
-        titleTextStyle: AppTextStyles.poppinsFont15SemiBold,
+        titleTextStyle: AppTextStyles.poppinsFont15SemiBold.copyWith(
+          color: Colors.black,
+        ),
         titleAlignment: ListTileTitleAlignment.center,
         subtitle: Text(
           subTitle,

@@ -16,21 +16,18 @@ class AuthSwitcher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: margin,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            question,
-            style: AppTextStyles.poppinsFont14RegularDarkGrey,
-          ),
-          TextButton(
-            onPressed: onPressed,
-            child: Text(buttonText),
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          question,
+          style: AppTextStyles.poppinsFont14RegularDarkGrey,
+        ),
+        TextButton(
+          onPressed: onPressed,
+          child: Text(buttonText),
+        ),
+      ],
     );
   }
 }

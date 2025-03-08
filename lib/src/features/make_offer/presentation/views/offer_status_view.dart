@@ -14,12 +14,12 @@ enum OfferStatus { accepted, rejected }
 @RoutePage()
 class OfferStatusView extends StatelessWidget {
   final OfferStatus offerStatus;
-  final int offer;
+  final int? offer;
 
   const OfferStatusView({
     super.key,
     required this.offerStatus,
-    required this.offer,
+    this.offer,
   });
 
   @override

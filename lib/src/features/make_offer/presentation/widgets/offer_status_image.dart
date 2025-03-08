@@ -19,8 +19,11 @@ class OfferStatusImage extends StatelessWidget {
         OfferStatus.accepted => Assets.imagesOfferAccepted,
         OfferStatus.rejected => Assets.imagesOfferRejected,
       },
-      height: 194.h,
-      width: 168.w,
+      height: _offerStatusIsRejected ? 194.h : null,
+      width: _offerStatusIsRejected ? 168.w : null,
+      fit: _offerStatusIsRejected ? null : BoxFit.fill,
     );
   }
+
+  bool get _offerStatusIsRejected => offerStatus == OfferStatus.rejected;
 }

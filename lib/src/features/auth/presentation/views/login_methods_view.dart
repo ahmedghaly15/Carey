@@ -51,7 +51,6 @@ class LoginMethodsView extends StatelessWidget {
                 margin: EdgeInsets.only(top: 38.h, bottom: 24.h),
               ),
               AuthSwitcher(
-                margin: EdgeInsetsDirectional.only(start: 53.w, end: 55.w),
                 onPressed: () {
                   context.replaceRoute(RegisterRoute(isPushedFromLogin: false));
                 },
