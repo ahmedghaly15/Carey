@@ -41,7 +41,7 @@ class CheckoutView extends StatelessWidget {
               child: SectionTitle(
                 title: AppStrings.order,
                 margin: EdgeInsetsDirectional.only(
-                  start: 29.w,
+                  start: _horizontalPadding,
                   top: 23.h,
                   bottom: 9.h,
                 ),
@@ -52,7 +52,7 @@ class CheckoutView extends StatelessWidget {
               child: SectionTitle(
                 title: AppStrings.chooseShipping,
                 margin: EdgeInsetsDirectional.only(
-                  start: 29.w,
+                  start: _horizontalPadding,
                   top: 23.h,
                   bottom: 9.h,
                 ),
@@ -64,8 +64,8 @@ class CheckoutView extends StatelessWidget {
               child: PrimaryButton(
                 onPressed: () {},
                 margin: EdgeInsetsDirectional.only(
-                  start: 29.w,
-                  end: 29.w,
+                  start: _horizontalPadding,
+                  end: _horizontalPadding,
                   bottom: 16.h,
                 ),
                 text: AppStrings.continueToPayment,
@@ -76,4 +76,6 @@ class CheckoutView extends StatelessWidget {
       ),
     );
   }
+
+  double get _horizontalPadding => 29.w;
 }
