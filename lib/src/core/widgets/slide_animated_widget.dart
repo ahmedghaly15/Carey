@@ -26,15 +26,12 @@ class _SlideAnimatedWidgetState extends State<SlideAnimatedWidget>
   @override
   void initState() {
     super.initState();
-
     _initSlideAnimation();
   }
 
   void _initSlideAnimation() {
     _initController();
-
     _animateController();
-
     _animationController.forward();
   }
 

@@ -47,7 +47,7 @@ class CheckoutOrderItem extends StatelessWidget {
                       Text(
                         'Sliver',
                         style: AppTextStyles.poppinsFont13Medium.copyWith(
-                          color: Colors.black.withOpacity(0.6),
+                          color: Colors.black.withAlpha(153),
                         ),
                       ),
                     ],

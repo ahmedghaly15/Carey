@@ -20,23 +20,41 @@ CareyUser _$CareyUserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CareyUser {
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
+  @HiveField(1)
+  String? get email => throw _privateConstructorUsedError;
+  @HiveField(2)
   UserRole? get role => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get password => throw _privateConstructorUsedError;
+  @HiveField(4)
   String? get fullName => throw _privateConstructorUsedError;
+  @HiveField(5)
   String? get nickName => throw _privateConstructorUsedError;
+  @HiveField(6)
   String? get phone => throw _privateConstructorUsedError;
+  @HiveField(7)
   String? get address => throw _privateConstructorUsedError;
+  @HiveField(8)
   String? get pinCode => throw _privateConstructorUsedError;
+  @HiveField(9)
   String? get picture => throw _privateConstructorUsedError;
+  @HiveField(10)
   String? get gender => throw _privateConstructorUsedError;
+  @HiveField(11)
   String? get createdAt => throw _privateConstructorUsedError;
+  @HiveField(12)
   String? get updatedAt => throw _privateConstructorUsedError;
+  @HiveField(13)
   @JsonKey(name: 'LoginAppId')
   String? get loginAppId => throw _privateConstructorUsedError;
+  @HiveField(14)
   bool? get emailVerified => throw _privateConstructorUsedError;
+  @HiveField(15)
   bool? get phoneVerified => throw _privateConstructorUsedError;
+  @HiveField(16)
+  bool? get biometricVerified => throw _privateConstructorUsedError;
 
   /// Serializes this CareyUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,22 +72,23 @@ abstract class $CareyUserCopyWith<$Res> {
       _$CareyUserCopyWithImpl<$Res, CareyUser>;
   @useResult
   $Res call(
-      {int id,
-      String email,
-      UserRole? role,
-      String? password,
-      String? fullName,
-      String? nickName,
-      String? phone,
-      String? address,
-      String? pinCode,
-      String? picture,
-      String? gender,
-      String? createdAt,
-      String? updatedAt,
-      @JsonKey(name: 'LoginAppId') String? loginAppId,
-      bool? emailVerified,
-      bool? phoneVerified});
+      {@HiveField(0) int id,
+      @HiveField(1) String? email,
+      @HiveField(2) UserRole? role,
+      @HiveField(3) String? password,
+      @HiveField(4) String? fullName,
+      @HiveField(5) String? nickName,
+      @HiveField(6) String? phone,
+      @HiveField(7) String? address,
+      @HiveField(8) String? pinCode,
+      @HiveField(9) String? picture,
+      @HiveField(10) String? gender,
+      @HiveField(11) String? createdAt,
+      @HiveField(12) String? updatedAt,
+      @HiveField(13) @JsonKey(name: 'LoginAppId') String? loginAppId,
+      @HiveField(14) bool? emailVerified,
+      @HiveField(15) bool? phoneVerified,
+      @HiveField(16) bool? biometricVerified});
 }
 
 /// @nodoc
@@ -88,7 +107,7 @@ class _$CareyUserCopyWithImpl<$Res, $Val extends CareyUser>
   @override
   $Res call({
     Object? id = null,
-    Object? email = null,
+    Object? email = freezed,
     Object? role = freezed,
     Object? password = freezed,
     Object? fullName = freezed,
@@ -103,16 +122,17 @@ class _$CareyUserCopyWithImpl<$Res, $Val extends CareyUser>
     Object? loginAppId = freezed,
     Object? emailVerified = freezed,
     Object? phoneVerified = freezed,
+    Object? biometricVerified = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -169,6 +189,10 @@ class _$CareyUserCopyWithImpl<$Res, $Val extends CareyUser>
           ? _value.phoneVerified
           : phoneVerified // ignore: cast_nullable_to_non_nullable
               as bool?,
+      biometricVerified: freezed == biometricVerified
+          ? _value.biometricVerified
+          : biometricVerified // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -182,22 +206,23 @@ abstract class _$$CareyUserImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
-      String email,
-      UserRole? role,
-      String? password,
-      String? fullName,
-      String? nickName,
-      String? phone,
-      String? address,
-      String? pinCode,
-      String? picture,
-      String? gender,
-      String? createdAt,
-      String? updatedAt,
-      @JsonKey(name: 'LoginAppId') String? loginAppId,
-      bool? emailVerified,
-      bool? phoneVerified});
+      {@HiveField(0) int id,
+      @HiveField(1) String? email,
+      @HiveField(2) UserRole? role,
+      @HiveField(3) String? password,
+      @HiveField(4) String? fullName,
+      @HiveField(5) String? nickName,
+      @HiveField(6) String? phone,
+      @HiveField(7) String? address,
+      @HiveField(8) String? pinCode,
+      @HiveField(9) String? picture,
+      @HiveField(10) String? gender,
+      @HiveField(11) String? createdAt,
+      @HiveField(12) String? updatedAt,
+      @HiveField(13) @JsonKey(name: 'LoginAppId') String? loginAppId,
+      @HiveField(14) bool? emailVerified,
+      @HiveField(15) bool? phoneVerified,
+      @HiveField(16) bool? biometricVerified});
 }
 
 /// @nodoc
@@ -214,7 +239,7 @@ class __$$CareyUserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? email = null,
+    Object? email = freezed,
     Object? role = freezed,
     Object? password = freezed,
     Object? fullName = freezed,
@@ -229,16 +254,17 @@ class __$$CareyUserImplCopyWithImpl<$Res>
     Object? loginAppId = freezed,
     Object? emailVerified = freezed,
     Object? phoneVerified = freezed,
+    Object? biometricVerified = freezed,
   }) {
     return _then(_$CareyUserImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
@@ -295,6 +321,10 @@ class __$$CareyUserImplCopyWithImpl<$Res>
           ? _value.phoneVerified
           : phoneVerified // ignore: cast_nullable_to_non_nullable
               as bool?,
+      biometricVerified: freezed == biometricVerified
+          ? _value.biometricVerified
+          : biometricVerified // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -304,63 +334,83 @@ class __$$CareyUserImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$CareyUserImpl implements _CareyUser {
   const _$CareyUserImpl(
-      {required this.id,
-      required this.email,
-      this.role,
-      this.password,
-      this.fullName,
-      this.nickName,
-      this.phone,
-      this.address,
-      this.pinCode,
-      this.picture,
-      this.gender,
-      this.createdAt,
-      this.updatedAt,
-      @JsonKey(name: 'LoginAppId') this.loginAppId,
-      this.emailVerified,
-      this.phoneVerified});
+      {@HiveField(0) required this.id,
+      @HiveField(1) this.email,
+      @HiveField(2) this.role,
+      @HiveField(3) this.password,
+      @HiveField(4) this.fullName,
+      @HiveField(5) this.nickName,
+      @HiveField(6) this.phone,
+      @HiveField(7) this.address,
+      @HiveField(8) this.pinCode,
+      @HiveField(9) this.picture,
+      @HiveField(10) this.gender,
+      @HiveField(11) this.createdAt,
+      @HiveField(12) this.updatedAt,
+      @HiveField(13) @JsonKey(name: 'LoginAppId') this.loginAppId,
+      @HiveField(14) this.emailVerified,
+      @HiveField(15) this.phoneVerified,
+      @HiveField(16) this.biometricVerified});
 
   factory _$CareyUserImpl.fromJson(Map<String, dynamic> json) =>
       _$$CareyUserImplFromJson(json);
 
   @override
+  @HiveField(0)
   final int id;
   @override
-  final String email;
+  @HiveField(1)
+  final String? email;
   @override
+  @HiveField(2)
   final UserRole? role;
   @override
+  @HiveField(3)
   final String? password;
   @override
+  @HiveField(4)
   final String? fullName;
   @override
+  @HiveField(5)
   final String? nickName;
   @override
+  @HiveField(6)
   final String? phone;
   @override
+  @HiveField(7)
   final String? address;
   @override
+  @HiveField(8)
   final String? pinCode;
   @override
+  @HiveField(9)
   final String? picture;
   @override
+  @HiveField(10)
   final String? gender;
   @override
+  @HiveField(11)
   final String? createdAt;
   @override
+  @HiveField(12)
   final String? updatedAt;
   @override
+  @HiveField(13)
   @JsonKey(name: 'LoginAppId')
   final String? loginAppId;
   @override
+  @HiveField(14)
   final bool? emailVerified;
   @override
+  @HiveField(15)
   final bool? phoneVerified;
+  @override
+  @HiveField(16)
+  final bool? biometricVerified;
 
   @override
   String toString() {
-    return 'CareyUser(id: $id, email: $email, role: $role, password: $password, fullName: $fullName, nickName: $nickName, phone: $phone, address: $address, pinCode: $pinCode, picture: $picture, gender: $gender, createdAt: $createdAt, updatedAt: $updatedAt, loginAppId: $loginAppId, emailVerified: $emailVerified, phoneVerified: $phoneVerified)';
+    return 'CareyUser(id: $id, email: $email, role: $role, password: $password, fullName: $fullName, nickName: $nickName, phone: $phone, address: $address, pinCode: $pinCode, picture: $picture, gender: $gender, createdAt: $createdAt, updatedAt: $updatedAt, loginAppId: $loginAppId, emailVerified: $emailVerified, phoneVerified: $phoneVerified, biometricVerified: $biometricVerified)';
   }
 
   @override
@@ -391,7 +441,9 @@ class _$CareyUserImpl implements _CareyUser {
             (identical(other.emailVerified, emailVerified) ||
                 other.emailVerified == emailVerified) &&
             (identical(other.phoneVerified, phoneVerified) ||
-                other.phoneVerified == phoneVerified));
+                other.phoneVerified == phoneVerified) &&
+            (identical(other.biometricVerified, biometricVerified) ||
+                other.biometricVerified == biometricVerified));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -413,7 +465,8 @@ class _$CareyUserImpl implements _CareyUser {
       updatedAt,
       loginAppId,
       emailVerified,
-      phoneVerified);
+      phoneVerified,
+      biometricVerified);
 
   /// Create a copy of CareyUser
   /// with the given fields replaced by the non-null parameter values.
@@ -433,59 +486,79 @@ class _$CareyUserImpl implements _CareyUser {
 
 abstract class _CareyUser implements CareyUser {
   const factory _CareyUser(
-      {required final int id,
-      required final String email,
-      final UserRole? role,
-      final String? password,
-      final String? fullName,
-      final String? nickName,
-      final String? phone,
-      final String? address,
-      final String? pinCode,
-      final String? picture,
-      final String? gender,
-      final String? createdAt,
-      final String? updatedAt,
-      @JsonKey(name: 'LoginAppId') final String? loginAppId,
-      final bool? emailVerified,
-      final bool? phoneVerified}) = _$CareyUserImpl;
+      {@HiveField(0) required final int id,
+      @HiveField(1) final String? email,
+      @HiveField(2) final UserRole? role,
+      @HiveField(3) final String? password,
+      @HiveField(4) final String? fullName,
+      @HiveField(5) final String? nickName,
+      @HiveField(6) final String? phone,
+      @HiveField(7) final String? address,
+      @HiveField(8) final String? pinCode,
+      @HiveField(9) final String? picture,
+      @HiveField(10) final String? gender,
+      @HiveField(11) final String? createdAt,
+      @HiveField(12) final String? updatedAt,
+      @HiveField(13) @JsonKey(name: 'LoginAppId') final String? loginAppId,
+      @HiveField(14) final bool? emailVerified,
+      @HiveField(15) final bool? phoneVerified,
+      @HiveField(16) final bool? biometricVerified}) = _$CareyUserImpl;
 
   factory _CareyUser.fromJson(Map<String, dynamic> json) =
       _$CareyUserImpl.fromJson;
 
   @override
+  @HiveField(0)
   int get id;
   @override
-  String get email;
+  @HiveField(1)
+  String? get email;
   @override
+  @HiveField(2)
   UserRole? get role;
   @override
+  @HiveField(3)
   String? get password;
   @override
+  @HiveField(4)
   String? get fullName;
   @override
+  @HiveField(5)
   String? get nickName;
   @override
+  @HiveField(6)
   String? get phone;
   @override
+  @HiveField(7)
   String? get address;
   @override
+  @HiveField(8)
   String? get pinCode;
   @override
+  @HiveField(9)
   String? get picture;
   @override
+  @HiveField(10)
   String? get gender;
   @override
+  @HiveField(11)
   String? get createdAt;
   @override
+  @HiveField(12)
   String? get updatedAt;
   @override
+  @HiveField(13)
   @JsonKey(name: 'LoginAppId')
   String? get loginAppId;
   @override
+  @HiveField(14)
   bool? get emailVerified;
   @override
+  @HiveField(15)
   bool? get phoneVerified;
+  @override
+  @HiveField(16)
+  bool? get biometricVerified;
 
   /// Create a copy of CareyUser
   /// with the given fields replaced by the non-null parameter values.

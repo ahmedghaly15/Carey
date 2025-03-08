@@ -90,7 +90,7 @@ class AppTextStyles {
         fontFamily: AppStrings.poppinsFontFamily,
         fontSize: 14.sp,
         fontWeight: FontWeight.w400,
-        color: AppColors.closerToDark.withOpacity(0.63),
+        color: AppColors.closerToDark.withAlpha(161),
       );
   static TextStyle get poppinsFont14SemiBold => TextStyle(
         fontSize: 14.sp,
@@ -128,7 +128,7 @@ class AppTextStyles {
         fontFamily: AppStrings.poppinsFontFamily,
       );
   static TextStyle get hintTextStyle => font13Regular.copyWith(
-        color: AppColors.primaryColor.withOpacity(0.25),
+        color: AppColors.primaryColor.withAlpha(64),
       );
   static TextStyle get font16Regular => TextStyle(
         fontSize: 16.sp,

@@ -2,13 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:carey/src/core/models/car.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
-import 'package:carey/src/core/widgets/favorite_icon_button.dart';
+import 'package:carey/src/core/widgets/favorite_icon_button_bloc_listener.dart';
 import 'package:carey/src/features/product_details/presentation/widgets/gallery_photos_list_view.dart';
 import 'package:carey/src/features/product_details/presentation/widgets/price_and_make_offer_button.dart';
 import 'package:carey/src/features/product_details/presentation/widgets/product_colors.dart';
@@ -17,7 +18,9 @@ import 'package:carey/src/features/product_details/presentation/widgets/product_
 
 @RoutePage()
 class ProductDetailsView extends StatelessWidget {
-  const ProductDetailsView({super.key});
+  const ProductDetailsView({super.key, required this.car});
+
+  final Car car;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +29,14 @@ class ProductDetailsView extends StatelessWidget {
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            const CustomSliverAppBar(
+            CustomSliverAppBar(
               backgroundColor: AppColors.secondaryScaffoldBackgroundColor,
-              actions: [FavoriteIconButton()],
+              actions: [
+                FavoriteIconButtonBlocListener(
+                  carId: car.id,
+                  wishlistLength: car.wishlists?.length ?? 0,
+                ),
+              ],
             ),
             SliverToBoxAdapter(
               child: Image.asset(Assets.imagesCarTest, fit: BoxFit.cover),
@@ -49,8 +57,11 @@ class ProductDetailsView extends StatelessWidget {
               padding: EdgeInsetsDirectional.only(
                 start: AppConstants.productDetailsStartPadVal.w,
               ),
-              sliver: const SliverToBoxAdapter(
-                child: ProductConditionLabelAndReviews(),
+              sliver: SliverToBoxAdapter(
+                child: ProductConditionLabelAndReviews(
+                  rates: car.rates,
+                  carId: car.id,
+                ),
               ),
             ),
             SliverPadding(
@@ -64,7 +75,7 @@ class ProductDetailsView extends StatelessWidget {
                 child: Text(
                   'Consectetur qui elit reprehenderit dolore sit aliquip mollit eu proident exercitation amet ullamco. Tempor qui magna qui nulla duis sit in duis enim dolore proident sint. Amet cupidatat duis non incididunt.',
                   style: AppTextStyles.poppinsFont12Regular.copyWith(
-                    color: Colors.black.withOpacity(0.7),
+                    color: Colors.black.withAlpha(179),
                   ),
                 ),
               ),

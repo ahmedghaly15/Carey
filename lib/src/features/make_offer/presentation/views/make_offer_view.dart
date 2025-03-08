@@ -18,8 +18,8 @@ class MakeOfferView extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<MakeOfferCubit>.value(
-      value: getIt.get<MakeOfferCubit>(),
+    return BlocProvider<MakeOfferCubit>(
+      create: (_) => getIt.get<MakeOfferCubit>(),
       child: this,
     );
   }

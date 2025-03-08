@@ -1,5 +1,6 @@
-import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:flutter/material.dart';
+
+import 'package:carey/src/core/themes/app_text_styles.dart';
 
 class AuthViewTitleText extends StatelessWidget {
   const AuthViewTitleText({

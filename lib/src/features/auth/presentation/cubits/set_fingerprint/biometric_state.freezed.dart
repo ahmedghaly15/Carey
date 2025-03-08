@@ -17,9 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$BiometricState {
   BiometricStateStatus get status => throw _privateConstructorUsedError;
-  AuthResponseEntity? get currentUserData => throw _privateConstructorUsedError;
   bool get fingerprintAuthenticated => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
+  CareyUser? get careyUser => throw _privateConstructorUsedError;
   bool get isPasswordObscured => throw _privateConstructorUsedError;
 
   /// Create a copy of BiometricState
@@ -37,12 +37,12 @@ abstract class $BiometricStateCopyWith<$Res> {
   @useResult
   $Res call(
       {BiometricStateStatus status,
-      AuthResponseEntity? currentUserData,
       bool fingerprintAuthenticated,
       String? error,
+      CareyUser? careyUser,
       bool isPasswordObscured});
 
-  $AuthResponseEntityCopyWith<$Res>? get currentUserData;
+  $CareyUserCopyWith<$Res>? get careyUser;
 }
 
 /// @nodoc
@@ -61,9 +61,9 @@ class _$BiometricStateCopyWithImpl<$Res, $Val extends BiometricState>
   @override
   $Res call({
     Object? status = null,
-    Object? currentUserData = freezed,
     Object? fingerprintAuthenticated = null,
     Object? error = freezed,
+    Object? careyUser = freezed,
     Object? isPasswordObscured = null,
   }) {
     return _then(_value.copyWith(
@@ -71,10 +71,6 @@ class _$BiometricStateCopyWithImpl<$Res, $Val extends BiometricState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as BiometricStateStatus,
-      currentUserData: freezed == currentUserData
-          ? _value.currentUserData
-          : currentUserData // ignore: cast_nullable_to_non_nullable
-              as AuthResponseEntity?,
       fingerprintAuthenticated: null == fingerprintAuthenticated
           ? _value.fingerprintAuthenticated
           : fingerprintAuthenticated // ignore: cast_nullable_to_non_nullable
@@ -83,6 +79,10 @@ class _$BiometricStateCopyWithImpl<$Res, $Val extends BiometricState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
+      careyUser: freezed == careyUser
+          ? _value.careyUser
+          : careyUser // ignore: cast_nullable_to_non_nullable
+              as CareyUser?,
       isPasswordObscured: null == isPasswordObscured
           ? _value.isPasswordObscured
           : isPasswordObscured // ignore: cast_nullable_to_non_nullable
@@ -94,13 +94,13 @@ class _$BiometricStateCopyWithImpl<$Res, $Val extends BiometricState>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $AuthResponseEntityCopyWith<$Res>? get currentUserData {
-    if (_value.currentUserData == null) {
+  $CareyUserCopyWith<$Res>? get careyUser {
+    if (_value.careyUser == null) {
       return null;
     }
 
-    return $AuthResponseEntityCopyWith<$Res>(_value.currentUserData!, (value) {
-      return _then(_value.copyWith(currentUserData: value) as $Val);
+    return $CareyUserCopyWith<$Res>(_value.careyUser!, (value) {
+      return _then(_value.copyWith(careyUser: value) as $Val);
     });
   }
 }
@@ -115,13 +115,13 @@ abstract class _$$BiometricStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {BiometricStateStatus status,
-      AuthResponseEntity? currentUserData,
       bool fingerprintAuthenticated,
       String? error,
+      CareyUser? careyUser,
       bool isPasswordObscured});
 
   @override
-  $AuthResponseEntityCopyWith<$Res>? get currentUserData;
+  $CareyUserCopyWith<$Res>? get careyUser;
 }
 
 /// @nodoc
@@ -138,9 +138,9 @@ class __$$BiometricStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
-    Object? currentUserData = freezed,
     Object? fingerprintAuthenticated = null,
     Object? error = freezed,
+    Object? careyUser = freezed,
     Object? isPasswordObscured = null,
   }) {
     return _then(_$BiometricStateImpl(
@@ -148,10 +148,6 @@ class __$$BiometricStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as BiometricStateStatus,
-      currentUserData: freezed == currentUserData
-          ? _value.currentUserData
-          : currentUserData // ignore: cast_nullable_to_non_nullable
-              as AuthResponseEntity?,
       fingerprintAuthenticated: null == fingerprintAuthenticated
           ? _value.fingerprintAuthenticated
           : fingerprintAuthenticated // ignore: cast_nullable_to_non_nullable
@@ -160,6 +156,10 @@ class __$$BiometricStateImplCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
+      careyUser: freezed == careyUser
+          ? _value.careyUser
+          : careyUser // ignore: cast_nullable_to_non_nullable
+              as CareyUser?,
       isPasswordObscured: null == isPasswordObscured
           ? _value.isPasswordObscured
           : isPasswordObscured // ignore: cast_nullable_to_non_nullable
@@ -173,27 +173,27 @@ class __$$BiometricStateImplCopyWithImpl<$Res>
 class _$BiometricStateImpl implements _BiometricState {
   const _$BiometricStateImpl(
       {required this.status,
-      this.currentUserData,
       this.fingerprintAuthenticated = false,
       this.error,
+      this.careyUser,
       this.isPasswordObscured = true});
 
   @override
   final BiometricStateStatus status;
-  @override
-  final AuthResponseEntity? currentUserData;
   @override
   @JsonKey()
   final bool fingerprintAuthenticated;
   @override
   final String? error;
   @override
+  final CareyUser? careyUser;
+  @override
   @JsonKey()
   final bool isPasswordObscured;
 
   @override
   String toString() {
-    return 'BiometricState(status: $status, currentUserData: $currentUserData, fingerprintAuthenticated: $fingerprintAuthenticated, error: $error, isPasswordObscured: $isPasswordObscured)';
+    return 'BiometricState(status: $status, fingerprintAuthenticated: $fingerprintAuthenticated, error: $error, careyUser: $careyUser, isPasswordObscured: $isPasswordObscured)';
   }
 
   @override
@@ -202,19 +202,19 @@ class _$BiometricStateImpl implements _BiometricState {
         (other.runtimeType == runtimeType &&
             other is _$BiometricStateImpl &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.currentUserData, currentUserData) ||
-                other.currentUserData == currentUserData) &&
             (identical(
                     other.fingerprintAuthenticated, fingerprintAuthenticated) ||
                 other.fingerprintAuthenticated == fingerprintAuthenticated) &&
             (identical(other.error, error) || other.error == error) &&
+            (identical(other.careyUser, careyUser) ||
+                other.careyUser == careyUser) &&
             (identical(other.isPasswordObscured, isPasswordObscured) ||
                 other.isPasswordObscured == isPasswordObscured));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, currentUserData,
-      fingerprintAuthenticated, error, isPasswordObscured);
+  int get hashCode => Object.hash(runtimeType, status, fingerprintAuthenticated,
+      error, careyUser, isPasswordObscured);
 
   /// Create a copy of BiometricState
   /// with the given fields replaced by the non-null parameter values.
@@ -229,19 +229,19 @@ class _$BiometricStateImpl implements _BiometricState {
 abstract class _BiometricState implements BiometricState {
   const factory _BiometricState(
       {required final BiometricStateStatus status,
-      final AuthResponseEntity? currentUserData,
       final bool fingerprintAuthenticated,
       final String? error,
+      final CareyUser? careyUser,
       final bool isPasswordObscured}) = _$BiometricStateImpl;
 
   @override
   BiometricStateStatus get status;
   @override
-  AuthResponseEntity? get currentUserData;
-  @override
   bool get fingerprintAuthenticated;
   @override
   String? get error;
+  @override
+  CareyUser? get careyUser;
   @override
   bool get isPasswordObscured;
 

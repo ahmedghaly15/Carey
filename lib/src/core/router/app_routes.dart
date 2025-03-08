@@ -2,7 +2,7 @@ part of 'app_router.dart';
 
 List<AutoRoute> get appRoutes => [
       AutoRoute(
-        // initial: true,
+        initial: true,
         page: SplashRoute.page,
       ),
       AutoRoute(
@@ -18,18 +18,17 @@ List<AutoRoute> get appRoutes => [
       AutoRoute(
         page: AuthRoute.page,
         children: [
-          AutoRoute(initial: true, page: LoginMethodsRoute.page),
+          _buildCustomRoute(initial: true, page: LoginMethodsRoute.page),
           _buildCustomRoute(page: LoginRoute.page),
           _buildCustomRoute(page: RegisterRoute.page),
           _buildCustomRoute(page: AccountSetupRoute.page),
-          _buildCustomRoute(page: SetFingerprintRoute.page),
+          _buildCustomRoute(page: SetBiometricRoute.page),
           _buildCustomRoute(page: ForgotPasswordRoute.page),
           _buildCustomRoute(page: PinCodeVerificationRoute.page),
           _buildCustomRoute(page: ResetPasswordRoute.page),
         ],
       ),
       AutoRoute(
-        initial: true,
         page: LayoutRoute.page,
         children: [
           AutoRoute(initial: true, page: HomeRoute.page),
@@ -39,36 +38,30 @@ List<AutoRoute> get appRoutes => [
           AutoRoute(page: ProfileRoute.page),
         ],
       ),
+      _buildCustomRoute(page: BestOffersRoute.page),
       _buildCustomRoute(page: SpecialOffersRoute.page),
       _buildCustomRoute(page: TopDealsRoute.page),
       _buildCustomRoute(page: MyWishlistRoute.page),
+      _buildCustomRoute(page: ProductDetailsRoute.page),
+      _buildCustomRoute(page: ProductReviewsRoute.page),
       _buildCustomRoute(
-        page: ProductInfoRoute.page,
+        page: OfferRoute.page,
         children: [
           _buildCustomRoute(
             initial: true,
-            page: ProductDetailsRoute.page,
+            page: MakeOfferRoute.page,
           ),
-          _buildCustomRoute(page: ProductReviewsRoute.page),
+          _buildCustomRoute(page: OfferStatusRoute.page),
+        ],
+      ),
+      _buildCustomRoute(
+        page: CheckoutProcessRoute.page,
+        children: [
           _buildCustomRoute(
-            page: OfferRoute.page,
-            children: [
-              _buildCustomRoute(
-                initial: true,
-                page: MakeOfferRoute.page,
-              ),
-              _buildCustomRoute(page: OfferStatusRoute.page),
-            ],
+            initial: true,
+            page: CheckoutRoute.page,
           ),
-          _buildCustomRoute(
-            page: CheckoutProcessRoute.page,
-            children: [
-              _buildCustomRoute(
-                initial: true,
-                page: CheckoutRoute.page,
-              ),
-            ],
-          ),
+          _buildCustomRoute(page: ShippingAddressRoute.page),
         ],
       ),
     ];
@@ -84,8 +77,7 @@ CustomRoute _buildCustomRoute({
     CustomRoute(
       initial: initial,
       page: page,
-      transitionsBuilder:
-          transitionsBuilder ?? TransitionsBuilders.slideRightWithFade,
+      transitionsBuilder: transitionsBuilder ?? TransitionsBuilders.fadeIn,
       durationInMilliseconds: durationInMilliseconds ?? 500,
       children: children,
     );

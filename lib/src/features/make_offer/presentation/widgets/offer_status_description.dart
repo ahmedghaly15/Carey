@@ -9,22 +9,22 @@ class OfferStatusDescription extends StatelessWidget {
   const OfferStatusDescription({
     super.key,
     required this.offerStatus,
-    required this.offer,
+    this.offer,
   });
 
   final OfferStatus offerStatus;
-  final int offer;
+  final int? offer;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       switch (offerStatus) {
         OfferStatus.accepted =>
-          '${AppStrings.offerAcceptedDescription} \$${formatIntWithCommas(offer)}',
+          '${AppStrings.offerAcceptedDescription} \$${formatIntWithCommas(offer!)}',
         OfferStatus.rejected => AppStrings.offerRejectedDescription,
       },
       style: AppTextStyles.poppinsFont16Regular.copyWith(
-        color: Colors.black.withOpacity(0.8),
+        color: Colors.black.withAlpha(204),
       ),
       textAlign: TextAlign.center,
     );

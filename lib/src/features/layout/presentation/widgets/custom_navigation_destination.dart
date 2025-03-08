@@ -17,7 +17,7 @@ class CustomNavigationDestination extends StatelessWidget {
     return NavigationDestination(
       icon: Icon(
         icon,
-        color: AppColors.primaryColor.withOpacity(0.7),
+        color: AppColors.primaryColor.withAlpha(179),
       ),
       selectedIcon: Icon(
         selectedIcon,

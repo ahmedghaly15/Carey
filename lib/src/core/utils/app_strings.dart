@@ -63,7 +63,7 @@ class AppStrings {
       'Scan your fingerprint or face to authenticate';
   static const String congratulations = 'Congratulations!';
   static const String yourAccountIsReady =
-      'Your account is ready to use.\nYou will be redirected to the home in a few seconds.....';
+      'Your account is ready to use.\nYou will be redirected to home in a few seconds.....';
   static const String cancel = 'Cancel';
   static const String info = 'Info';
   static const String somethingWentWrong = 'Something went wrong';
@@ -124,4 +124,22 @@ class AppStrings {
   static const String defaultWord = 'Default';
   static const String chooseShippingType = 'Choose Shipping Type';
   static const String continueToPayment = 'Continue to Payment';
+  static const String more = 'More';
+  static const String less = 'Less';
+  static const String yourWishlistEmpty =
+      'Your wishlist is empty!\nStart adding cars you love.';
+  static const String thisBrandHasNoCars = 'This brand has no cars';
+  static const String all = 'All';
+  static const String noReviewsAvailable =
+      'No reviews available. If you like to, be the first to share your thoughts!';
+  static const String baseUrlEnvKey = 'BASE_URL';
+  static const String bestOffers = 'Best Offers';
+  static const String writeYourComment = 'Write your comment here...';
+  static const String add = 'Add';
+  static const String reviewHasBeenSubmitted =
+      'Review has been submitted successfully';
+  static const String review = 'Review';
+  static const String rateMustBeChosen = 'You must choose a rating';
+  static const String addNewAddress = 'Add New Address';
+  static const String apply = 'Apply';
 }

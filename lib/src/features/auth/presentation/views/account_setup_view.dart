@@ -17,8 +17,8 @@ class AccountSetupView extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<AccountSetupCubit>.value(
-      value: getIt.get<AccountSetupCubit>()..getCountryCode(),
+    return BlocProvider<AccountSetupCubit>(
+      create: (_) => getIt.get<AccountSetupCubit>()..getCountryCode(),
       child: this,
     );
   }

@@ -1,11 +1,19 @@
-import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:carey/src/features/home/presentation/widgets/top_deal_item.dart';
+import 'package:carey/src/core/models/car.dart';
+import 'package:carey/src/core/utils/app_constants.dart';
+import 'package:carey/src/core/widgets/car_product_item.dart';
 
 class ProductsSliverGrid extends StatelessWidget {
-  const ProductsSliverGrid({super.key});
+  const ProductsSliverGrid({
+    super.key,
+    required this.cars,
+    this.itemCount,
+  });
+
+  final List<Car> cars;
+  final int? itemCount;
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +26,11 @@ class ProductsSliverGrid extends StatelessWidget {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 12.w,
-          mainAxisSpacing: 21.h,
-          childAspectRatio: 167 / 194,
+          mainAxisSpacing: 16.h,
+          childAspectRatio: AppConstants.carProductAspectRatio,
         ),
-        itemCount: 10,
-        itemBuilder: (_, index) => const TopDealItem(),
+        itemCount: itemCount ?? cars.length,
+        itemBuilder: (_, index) => CarProductItem(car: cars[index]),
       ),
     );
   }

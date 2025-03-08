@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "364300700938",
+    "project_id": "fir-notifications-api",
+    "storage_bucket": "fir-notifications-api.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364300700938:android:9770be26e94f08349cbef3",
+        "android_client_info": {
+          "package_name": "com.example.carey"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKOhB50EAIIbtPcLSlns4CSjSlkiTqHiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364300700938:android:1c83f9182566f4679cbef3",
+        "android_client_info": {
+          "package_name": "com.notification.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKOhB50EAIIbtPcLSlns4CSjSlkiTqHiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

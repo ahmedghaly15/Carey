@@ -1,14 +1,14 @@
 import 'dart:io';
 
-import 'package:carey/src/core/services/location_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:carey/src/core/services/location_service.dart';
 import 'package:carey/src/core/usecase/api_usecase.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
-import 'package:carey/src/features/auth/data/datasources/auth_local_data_source.dart';
 import 'package:carey/src/features/auth/data/models/update_profile_params.dart';
+import 'package:carey/src/features/auth/domain/usecases/fetch_my_profile.dart';
 import 'package:carey/src/features/auth/domain/usecases/pick_compressed_img.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_details.dart';
 import 'package:carey/src/features/auth/domain/usecases/update_profile_img.dart';
@@ -18,11 +18,13 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
   final UpdateProfileDetails updateProfileDetailsUseCase;
   final UpdateProfileImg updateProfileImgUseCase;
   final PickCompressedImg pickCompressedImgUseCase;
+  final FetchMyProfile fetchMyProfileUseCase;
 
   AccountSetupCubit({
     required this.updateProfileDetailsUseCase,
     required this.updateProfileImgUseCase,
     required this.pickCompressedImgUseCase,
+    required this.fetchMyProfileUseCase,
   }) : super(AccountSetupState.initial()) {
     _initFormAttributes();
   }
@@ -35,7 +37,6 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
   late final TextEditingController nickNameController;
   late final TextEditingController addressController;
   late final TextEditingController genderController;
-  late final FocusNode fullNameFocusNode;
   late final FocusNode nickNameFocusNode;
   late final FocusNode addressFocusNode;
   late final FocusNode phoneFocusNode;
@@ -50,47 +51,32 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
 
   Future<void> _updateProfileDetails() async {
     emit(state.copyWith(status: AccountSetupStateStatus.updateProfileLoading));
-    final updateProfileParams = UpdateProfileParams(
-      fullName: fullNameController.text.trim(),
-      nickName: nickNameController.text.trim(),
-      address: addressController.text.trim(),
-      phone: phoneNumber,
-      gender: genderController.text,
-    );
     final result = await updateProfileDetailsUseCase(
-      updateProfileParams,
-      _cancelToken,
-    );
-    result.when(
-      success: (_) async {
-        await _updateCurrentUserDataAndSecureIt();
-        emit(
-          state.copyWith(
-            status: AccountSetupStateStatus.updateProfileSuccess,
-            currentUserData: currentUserData,
-          ),
-        );
-      },
-      failure: (failure) => emit(
-        state.copyWith(
-          status: AccountSetupStateStatus.updateProfileError,
-          error: failure.error[0],
-        ),
-      ),
-    );
-  }
-
-  Future<void> _updateCurrentUserDataAndSecureIt() async {
-    currentUserData = currentUserData!.copyWith(
-      user: currentUserData!.user.copyWith(
+      UpdateProfileParams(
         fullName: fullNameController.text.trim(),
         nickName: nickNameController.text.trim(),
         address: addressController.text.trim(),
         phone: phoneNumber,
         gender: genderController.text,
       ),
+      _cancelToken,
     );
-    await AuthLocalDataSource.secureUserData(currentUserData!);
+    result.when(
+      success: (_) => emit(state.copyWith(
+        careyUser: currentUserData!.user.copyWith(
+          fullName: fullNameController.text.trim(),
+          nickName: nickNameController.text.trim(),
+          address: addressController.text.trim(),
+          phone: phoneNumber,
+          gender: genderController.text,
+        ),
+        status: AccountSetupStateStatus.updateProfileSuccess,
+      )),
+      failure: (failure) => emit(state.copyWith(
+        status: AccountSetupStateStatus.updateProfileError,
+        error: failure.error[0],
+      )),
+    );
   }
 
   void pickProfileImg() async {
@@ -104,6 +90,23 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
     }
   }
 
+  Future<void> _fetchMyProfile() async {
+    emit(state.copyWith(
+      status: AccountSetupStateStatus.fetchMyProfileLoading,
+    ));
+    final result = await fetchMyProfileUseCase(const NoParams(), _cancelToken);
+    result.when(
+      success: (user) => emit(state.copyWith(
+        status: AccountSetupStateStatus.fetchMyProfileSuccess,
+        careyUser: user,
+      )),
+      failure: (failure) => emit(state.copyWith(
+        status: AccountSetupStateStatus.fetchMyProfileError,
+        error: failure.error[0],
+      )),
+    );
+  }
+
   Future<void> updateProfileImg() async {
     emit(state.copyWith(
       status: AccountSetupStateStatus.updateProfileImgLoading,
@@ -113,9 +116,12 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
       _cancelToken,
     );
     result.when(
-      success: (_) => emit(state.copyWith(
-        status: AccountSetupStateStatus.updateProfileImgSuccess,
-      )),
+      success: (_) async {
+        await _fetchMyProfile();
+        emit(state.copyWith(
+          status: AccountSetupStateStatus.updateProfileImgSuccess,
+        ));
+      },
       failure: (failure) => emit(state.copyWith(
         status: AccountSetupStateStatus.updateProfileImgError,
         error: failure.error[0],
@@ -132,12 +138,10 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
   }
 
   void _alwaysAutovalidateMode() {
-    emit(
-      state.copyWith(
-        status: AccountSetupStateStatus.alwaysAutovalidateMode,
-        autovalidateMode: AutovalidateMode.always,
-      ),
-    );
+    emit(state.copyWith(
+      status: AccountSetupStateStatus.alwaysAutovalidateMode,
+      autovalidateMode: AutovalidateMode.always,
+    ));
   }
 
   void updatePhoneNumber(String phone) {
@@ -150,38 +154,20 @@ class AccountSetupCubit extends Cubit<AccountSetupState> {
 
   void _initFormAttributes() {
     formKey = GlobalKey<FormState>();
-    _initControllers();
-    _initFocusNodes();
-  }
-
-  void _initFocusNodes() {
-    fullNameFocusNode = FocusNode();
+    fullNameController = TextEditingController();
+    nickNameController = TextEditingController();
+    addressController = TextEditingController();
+    genderController = TextEditingController();
     nickNameFocusNode = FocusNode();
     addressFocusNode = FocusNode();
     phoneFocusNode = FocusNode();
   }
 
-  void _initControllers() {
-    fullNameController = TextEditingController();
-    nickNameController = TextEditingController();
-    addressController = TextEditingController();
-    genderController = TextEditingController();
-  }
-
   void _disposeFormAttributes() {
-    _disposeControllers();
-    _disposeFocusNodes();
-  }
-
-  void _disposeControllers() {
     fullNameController.dispose();
     nickNameController.dispose();
     addressController.dispose();
     genderController.dispose();
-  }
-
-  void _disposeFocusNodes() {
-    fullNameFocusNode.dispose();
     nickNameFocusNode.dispose();
     addressFocusNode.dispose();
     phoneFocusNode.dispose();

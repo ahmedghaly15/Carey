@@ -1,20 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:carey/src/core/di/dependency_injection.dart';
+import 'package:carey/src/core/themes/app_colors.dart';
+import 'package:carey/src/core/widgets/custom_error_widget.dart';
+import 'package:carey/src/features/home/data/datasource/home_local_datasource.dart';
 import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
-import 'package:carey/src/core/router/app_router.dart';
-import 'package:carey/src/core/utils/app_constants.dart';
-import 'package:carey/src/core/utils/app_strings.dart';
-import 'package:carey/src/features/home/presentation/widgets/car_brands_sliver_grid.dart';
-import 'package:carey/src/features/home/presentation/widgets/home_custom_search_field.dart';
-import 'package:carey/src/features/home/presentation/widgets/home_sliver_app_bar.dart';
-import 'package:carey/src/features/home/presentation/widgets/special_offers_page_view.dart';
-import 'package:carey/src/features/home/presentation/widgets/text_and_see_all.dart';
-import 'package:carey/src/features/home/presentation/widgets/top_deals_brands_list_view.dart';
-import 'package:carey/src/core/widgets/products_sliver_grid.dart';
+import 'package:carey/src/features/home/presentation/cubit/home_state.dart';
+import 'package:carey/src/features/home/presentation/widgets/home_body.dart';
+import 'package:carey/src/features/home/presentation/widgets/home_shimmer_loading.dart';
 
 @RoutePage()
 class HomeView extends StatelessWidget implements AutoRouteWrapper {
@@ -22,8 +17,10 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<HomeCubit>.value(
-      value: getIt.get<HomeCubit>(),
+    return BlocProvider<HomeCubit>(
+      create: (_) => getIt.get<HomeCubit>()
+        ..fetchSpecialOffers()
+        ..fetchHome(),
       child: this,
     );
   }
@@ -31,59 +28,57 @@ class HomeView extends StatelessWidget implements AutoRouteWrapper {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverPadding(
-            padding: EdgeInsetsDirectional.symmetric(
-              vertical: 24.h,
-              horizontal: AppConstants.screenHorizontalPaddingVal.w,
-            ),
-            sliver: const HomeSliverAppBar(),
-          ),
-          SliverPadding(
-            padding: EdgeInsets.symmetric(
-              horizontal: AppConstants.screenHorizontalPaddingVal.w,
-            ),
-            sliver: const SliverToBoxAdapter(
-              child: HomeCustomSearchField(),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: TextAndSeeAll(
-              text: AppStrings.specialOffers,
-              seeAllOnPressed: () => context.pushRoute(
-                const SpecialOffersRoute(),
-              ),
-            ),
-          ),
-          SliverPadding(
-            padding: EdgeInsets.symmetric(
-              horizontal: AppConstants.screenHorizontalPaddingVal.w,
-            ),
-            sliver: const SliverToBoxAdapter(
-              child: SpecialOffersPageView(),
-            ),
-          ),
-          SliverPadding(
-            padding: EdgeInsetsDirectional.only(
-              top: 16.h,
-              start: AppConstants.screenHorizontalPaddingVal.w,
-              end: AppConstants.screenHorizontalPaddingVal.w,
-            ),
-            sliver: const CarBrandsSliverGrid(),
-          ),
-          SliverToBoxAdapter(
-            child: TextAndSeeAll(
-              text: AppStrings.topDeals,
-              seeAllOnPressed: () => context.pushRoute(const TopDealsRoute()),
-            ),
-          ),
-          const SliverToBoxAdapter(
-            child: TopDealsBrandsListView(),
-          ),
-          const ProductsSliverGrid(),
-        ],
+      child: RefreshIndicator(
+        color: AppColors.primaryColor,
+        onRefresh: () async => await _deleteCacheAndRefetchData(context),
+        child: BlocBuilder<HomeCubit, HomeState>(
+          buildWhen: (_, current) => _buildWhen(current.status),
+          builder: (_, state) {
+            switch (state.status) {
+              case HomeStateStatus.fetchHomeDataLoading:
+                return const HomeShimmerLoading();
+              case HomeStateStatus.fetchHomeDataSuccess:
+                return (state.homeData != null && state.specialOffers != null)
+                    ? HomeBody(
+                        data: state.homeData!,
+                        specialOffers: state.specialOffers!,
+                      )
+                    : const HomeShimmerLoading();
+              case HomeStateStatus.fetchHomeDataFailure:
+              case HomeStateStatus.fetchSpecialOffersError:
+                return (state.homeData != null && state.specialOffers != null)
+                    ? HomeBody(
+                        data: state.homeData!,
+                        specialOffers: state.specialOffers!,
+                      )
+                    : CustomErrorWidget(
+                        error: state.error!,
+                        tryAgainOnPressed: () async =>
+                            await _refetchHomeData(context),
+                      );
+              default:
+                return const HomeShimmerLoading();
+            }
+          },
+        ),
       ),
     );
+  }
+
+  Future<void> _deleteCacheAndRefetchData(BuildContext context) async {
+    await HomeLocalDataSource.deleteCachedHomeData();
+    await _refetchHomeData(context);
+  }
+
+  Future<void> _refetchHomeData(BuildContext context) async {
+    await context.read<HomeCubit>().fetchHome();
+    await context.read<HomeCubit>().fetchSpecialOffers();
+  }
+
+  bool _buildWhen(HomeStateStatus currentStatus) {
+    return currentStatus == HomeStateStatus.fetchHomeDataLoading ||
+        currentStatus == HomeStateStatus.fetchHomeDataSuccess ||
+        currentStatus == HomeStateStatus.fetchHomeDataFailure ||
+        currentStatus == HomeStateStatus.fetchSpecialOffersError;
   }
 }

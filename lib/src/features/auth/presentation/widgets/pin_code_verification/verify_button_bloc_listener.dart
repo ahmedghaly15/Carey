@@ -33,22 +33,20 @@ class VerifyButtonBlocListener extends StatelessWidget {
   ) {
     state.whenOrNull(
       verifyLoading: () => context.showLoadingDialog(),
-      verifyError: (error) => _popTopAndShowErrorDialog(context, error),
+      verifyError: (error) {
+        context.popTop();
+        context.showErrorDialog(error);
+      },
       verifySuccess: (token) => _handleVerifySuccess(token, context),
     );
   }
 
-  void _handleVerifySuccess(String token, BuildContext context) {
+  void _handleVerifySuccess(String token, BuildContext context) async {
     DioFactory.setTokenIntoHeaders(token);
     context.popTop();
     Future.delayed(const Duration(milliseconds: 200), () {
       context.pushRoute(const ResetPasswordRoute());
     });
-  }
-
-  void _popTopAndShowErrorDialog(BuildContext context, String error) {
-    context.popTop();
-    context.showErrorDialog(error);
   }
 
   bool _listenWhen(PinCodeVerificationState<dynamic> current) {
