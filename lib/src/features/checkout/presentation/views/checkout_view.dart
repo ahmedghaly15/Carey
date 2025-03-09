@@ -12,6 +12,7 @@ import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/checkout/data/models/shipping_item.dart';
 import 'package:carey/src/features/checkout/presentation/cubit/checkout_cubit.dart';
+import 'package:carey/src/features/checkout/presentation/cubit/checkout_state.dart';
 import 'package:carey/src/features/checkout/presentation/widgets/checkout_details_container.dart';
 import 'package:carey/src/features/checkout/presentation/widgets/checkout_order_item.dart';
 import 'package:carey/src/features/checkout/presentation/widgets/choose_shipping_type_container.dart';
@@ -43,15 +44,26 @@ class CheckoutView extends StatelessWidget implements AutoRouteWrapper {
             SliverToBoxAdapter(
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 29.w),
-                child: ShippingItemWidget(
-                  shippingItem: const ShippingItem(
-                    title: 'Home',
-                    subTitle: '53322 Sunbtook park,PC 5678',
-                  ),
-                  trailing: IconButton(
-                    onPressed: () =>
-                        context.pushRoute(const ShippingAddressRoute()),
-                    icon: SvgPicture.asset(Assets.svgsPenIcon),
+                child: BlocSelector<CheckoutCubit, CheckoutState, ShippingItem>(
+                  selector: (state) {
+                    return state.selectedShippingAddress ??
+                        ShippingItem(
+                          title: 'Home',
+                          subTitle: '53322 Sunbtook park,PC 5678',
+                          hasDefaultBadge: true,
+                        );
+                  },
+                  builder: (context, selectedShippingAddress) =>
+                      ShippingItemWidget(
+                    shippingItem: selectedShippingAddress,
+                    trailing: IconButton(
+                      onPressed: () => context.pushRoute(
+                        ShippingAddressRoute(
+                          checkoutCubit: context.read<CheckoutCubit>(),
+                        ),
+                      ),
+                      icon: SvgPicture.asset(Assets.svgsPenIcon),
+                    ),
                   ),
                 ),
               ),
