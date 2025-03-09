@@ -1,16 +1,28 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
+import 'package:carey/src/features/checkout/presentation/cubit/checkout_cubit.dart';
 import 'package:carey/src/features/checkout/presentation/widgets/shipping_address_sliver_list.dart';
 
 @RoutePage()
-class ShippingAddressView extends StatelessWidget {
-  const ShippingAddressView({super.key});
+class ShippingAddressView extends StatelessWidget implements AutoRouteWrapper {
+  const ShippingAddressView({super.key, required this.checkoutCubit});
+
+  final CheckoutCubit checkoutCubit;
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return BlocProvider.value(
+      value: checkoutCubit,
+      child: this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

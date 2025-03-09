@@ -678,10 +678,17 @@ class SetBiometricRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ShippingAddressView]
-class ShippingAddressRoute extends PageRouteInfo<void> {
-  const ShippingAddressRoute({List<PageRouteInfo>? children})
-      : super(
+class ShippingAddressRoute extends PageRouteInfo<ShippingAddressRouteArgs> {
+  ShippingAddressRoute({
+    Key? key,
+    required CheckoutCubit checkoutCubit,
+    List<PageRouteInfo>? children,
+  }) : super(
           ShippingAddressRoute.name,
+          args: ShippingAddressRouteArgs(
+            key: key,
+            checkoutCubit: checkoutCubit,
+          ),
           initialChildren: children,
         );
 
@@ -690,9 +697,30 @@ class ShippingAddressRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const ShippingAddressView();
+      final args = data.argsAs<ShippingAddressRouteArgs>();
+      return WrappedRoute(
+          child: ShippingAddressView(
+        key: args.key,
+        checkoutCubit: args.checkoutCubit,
+      ));
     },
   );
+}
+
+class ShippingAddressRouteArgs {
+  const ShippingAddressRouteArgs({
+    this.key,
+    required this.checkoutCubit,
+  });
+
+  final Key? key;
+
+  final CheckoutCubit checkoutCubit;
+
+  @override
+  String toString() {
+    return 'ShippingAddressRouteArgs{key: $key, checkoutCubit: $checkoutCubit}';
+  }
 }
 
 /// generated route for
