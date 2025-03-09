@@ -60,7 +60,7 @@ class ShippingAddressView extends StatelessWidget implements AutoRouteWrapper {
                       bottom: 26.h,
                     ),
                     text: AppStrings.apply,
-                    onPressed: () {},
+                    onPressed: () => context.maybePop(),
                   ),
                 ],
               ),

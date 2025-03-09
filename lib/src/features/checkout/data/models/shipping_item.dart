@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'shipping_item.freezed.dart';
@@ -6,7 +7,9 @@ part 'shipping_item.freezed.dart';
 sealed class ShippingItem with _$ShippingItem {
   const factory ShippingItem({
     required String title,
-    required String subTitle,
+    String? subTitleText,
+    Widget? subTitleWidget,
+    String? imgPath,
     @Default(false) bool hasDefaultBadge,
   }) = _ShippingItem;
 }

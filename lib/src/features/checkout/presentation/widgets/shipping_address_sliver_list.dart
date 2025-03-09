@@ -63,19 +63,19 @@ class ShippingAddressSliverList extends StatelessWidget {
 List<ShippingItem> _shippingAddresses = const [
   ShippingItem(
     title: 'Home',
-    subTitle: '53322 Sunbtook park,PC 5678',
+    subTitleText: '53322 Sunbtook park,PC 5678',
     hasDefaultBadge: true,
   ),
   ShippingItem(
     title: 'Work',
-    subTitle: '53322 Sunbtook park,PC 5678',
+    subTitleText: '53322 Sunbtook park,PC 5678',
   ),
   ShippingItem(
     title: 'Apartment',
-    subTitle: '53322 Sunbtook park,PC 5678',
+    subTitleText: '53322 Sunbtook park,PC 5678',
   ),
   ShippingItem(
     title: 'Other',
-    subTitle: '53322 Sunbtook park,PC 5678',
+    subTitleText: '53322 Sunbtook park,PC 5678',
   ),
 ];

@@ -49,7 +49,7 @@ class CheckoutView extends StatelessWidget implements AutoRouteWrapper {
                     return state.selectedShippingAddress ??
                         ShippingItem(
                           title: 'Home',
-                          subTitle: '53322 Sunbtook park,PC 5678',
+                          subTitleText: '53322 Sunbtook park,PC 5678',
                           hasDefaultBadge: true,
                         );
                   },

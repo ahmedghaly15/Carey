@@ -17,7 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ShippingItem {
   String get title => throw _privateConstructorUsedError;
-  String get subTitle => throw _privateConstructorUsedError;
+  String? get subTitleText => throw _privateConstructorUsedError;
+  Widget? get subTitleWidget => throw _privateConstructorUsedError;
+  String? get imgPath => throw _privateConstructorUsedError;
   bool get hasDefaultBadge => throw _privateConstructorUsedError;
 
   /// Create a copy of ShippingItem
@@ -33,7 +35,12 @@ abstract class $ShippingItemCopyWith<$Res> {
           ShippingItem value, $Res Function(ShippingItem) then) =
       _$ShippingItemCopyWithImpl<$Res, ShippingItem>;
   @useResult
-  $Res call({String title, String subTitle, bool hasDefaultBadge});
+  $Res call(
+      {String title,
+      String? subTitleText,
+      Widget? subTitleWidget,
+      String? imgPath,
+      bool hasDefaultBadge});
 }
 
 /// @nodoc
@@ -52,7 +59,9 @@ class _$ShippingItemCopyWithImpl<$Res, $Val extends ShippingItem>
   @override
   $Res call({
     Object? title = null,
-    Object? subTitle = null,
+    Object? subTitleText = freezed,
+    Object? subTitleWidget = freezed,
+    Object? imgPath = freezed,
     Object? hasDefaultBadge = null,
   }) {
     return _then(_value.copyWith(
@@ -60,10 +69,18 @@ class _$ShippingItemCopyWithImpl<$Res, $Val extends ShippingItem>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      subTitle: null == subTitle
-          ? _value.subTitle
-          : subTitle // ignore: cast_nullable_to_non_nullable
-              as String,
+      subTitleText: freezed == subTitleText
+          ? _value.subTitleText
+          : subTitleText // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subTitleWidget: freezed == subTitleWidget
+          ? _value.subTitleWidget
+          : subTitleWidget // ignore: cast_nullable_to_non_nullable
+              as Widget?,
+      imgPath: freezed == imgPath
+          ? _value.imgPath
+          : imgPath // ignore: cast_nullable_to_non_nullable
+              as String?,
       hasDefaultBadge: null == hasDefaultBadge
           ? _value.hasDefaultBadge
           : hasDefaultBadge // ignore: cast_nullable_to_non_nullable
@@ -80,7 +97,12 @@ abstract class _$$ShippingItemImplCopyWith<$Res>
       __$$ShippingItemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String subTitle, bool hasDefaultBadge});
+  $Res call(
+      {String title,
+      String? subTitleText,
+      Widget? subTitleWidget,
+      String? imgPath,
+      bool hasDefaultBadge});
 }
 
 /// @nodoc
@@ -97,7 +119,9 @@ class __$$ShippingItemImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? subTitle = null,
+    Object? subTitleText = freezed,
+    Object? subTitleWidget = freezed,
+    Object? imgPath = freezed,
     Object? hasDefaultBadge = null,
   }) {
     return _then(_$ShippingItemImpl(
@@ -105,10 +129,18 @@ class __$$ShippingItemImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      subTitle: null == subTitle
-          ? _value.subTitle
-          : subTitle // ignore: cast_nullable_to_non_nullable
-              as String,
+      subTitleText: freezed == subTitleText
+          ? _value.subTitleText
+          : subTitleText // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subTitleWidget: freezed == subTitleWidget
+          ? _value.subTitleWidget
+          : subTitleWidget // ignore: cast_nullable_to_non_nullable
+              as Widget?,
+      imgPath: freezed == imgPath
+          ? _value.imgPath
+          : imgPath // ignore: cast_nullable_to_non_nullable
+              as String?,
       hasDefaultBadge: null == hasDefaultBadge
           ? _value.hasDefaultBadge
           : hasDefaultBadge // ignore: cast_nullable_to_non_nullable
@@ -122,20 +154,26 @@ class __$$ShippingItemImplCopyWithImpl<$Res>
 class _$ShippingItemImpl implements _ShippingItem {
   const _$ShippingItemImpl(
       {required this.title,
-      required this.subTitle,
+      this.subTitleText,
+      this.subTitleWidget,
+      this.imgPath,
       this.hasDefaultBadge = false});
 
   @override
   final String title;
   @override
-  final String subTitle;
+  final String? subTitleText;
+  @override
+  final Widget? subTitleWidget;
+  @override
+  final String? imgPath;
   @override
   @JsonKey()
   final bool hasDefaultBadge;
 
   @override
   String toString() {
-    return 'ShippingItem(title: $title, subTitle: $subTitle, hasDefaultBadge: $hasDefaultBadge)';
+    return 'ShippingItem(title: $title, subTitleText: $subTitleText, subTitleWidget: $subTitleWidget, imgPath: $imgPath, hasDefaultBadge: $hasDefaultBadge)';
   }
 
   @override
@@ -144,15 +182,18 @@ class _$ShippingItemImpl implements _ShippingItem {
         (other.runtimeType == runtimeType &&
             other is _$ShippingItemImpl &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.subTitle, subTitle) ||
-                other.subTitle == subTitle) &&
+            (identical(other.subTitleText, subTitleText) ||
+                other.subTitleText == subTitleText) &&
+            (identical(other.subTitleWidget, subTitleWidget) ||
+                other.subTitleWidget == subTitleWidget) &&
+            (identical(other.imgPath, imgPath) || other.imgPath == imgPath) &&
             (identical(other.hasDefaultBadge, hasDefaultBadge) ||
                 other.hasDefaultBadge == hasDefaultBadge));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, title, subTitle, hasDefaultBadge);
+  int get hashCode => Object.hash(runtimeType, title, subTitleText,
+      subTitleWidget, imgPath, hasDefaultBadge);
 
   /// Create a copy of ShippingItem
   /// with the given fields replaced by the non-null parameter values.
@@ -166,13 +207,19 @@ class _$ShippingItemImpl implements _ShippingItem {
 abstract class _ShippingItem implements ShippingItem {
   const factory _ShippingItem(
       {required final String title,
-      required final String subTitle,
+      final String? subTitleText,
+      final Widget? subTitleWidget,
+      final String? imgPath,
       final bool hasDefaultBadge}) = _$ShippingItemImpl;
 
   @override
   String get title;
   @override
-  String get subTitle;
+  String? get subTitleText;
+  @override
+  Widget? get subTitleWidget;
+  @override
+  String? get imgPath;
   @override
   bool get hasDefaultBadge;
 

@@ -66,11 +66,12 @@ class ShippingItemWidget extends StatelessWidget {
           color: Colors.black,
         ),
         titleAlignment: ListTileTitleAlignment.center,
-        subtitle: Text(
-          shippingItem.subTitle,
-          overflow: TextOverflow.ellipsis,
-          maxLines: 1,
-        ),
+        subtitle: shippingItem.subTitleWidget ??
+            Text(
+              shippingItem.subTitleText!,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
         subtitleTextStyle: AppTextStyles.poppinsFont13Medium.copyWith(
           color: Colors.black.withAlpha(153),
         ),
