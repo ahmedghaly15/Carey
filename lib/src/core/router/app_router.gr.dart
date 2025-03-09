@@ -126,7 +126,7 @@ class CheckoutRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const CheckoutView();
+      return WrappedRoute(child: const CheckoutView());
     },
   );
 }

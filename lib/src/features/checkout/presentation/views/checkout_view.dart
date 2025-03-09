@@ -1,14 +1,17 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/core/router/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:carey/src/core/di/dependency_injection.dart';
+import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/checkout/data/models/shipping_item.dart';
+import 'package:carey/src/features/checkout/presentation/cubit/checkout_cubit.dart';
 import 'package:carey/src/features/checkout/presentation/widgets/checkout_details_container.dart';
 import 'package:carey/src/features/checkout/presentation/widgets/checkout_order_item.dart';
 import 'package:carey/src/features/checkout/presentation/widgets/choose_shipping_type_container.dart';
@@ -16,8 +19,16 @@ import 'package:carey/src/features/checkout/presentation/widgets/section_title.d
 import 'package:carey/src/features/checkout/presentation/widgets/shipping_item_widget.dart';
 
 @RoutePage()
-class CheckoutView extends StatelessWidget {
+class CheckoutView extends StatelessWidget implements AutoRouteWrapper {
   const CheckoutView({super.key});
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return BlocProvider<CheckoutCubit>(
+      create: (_) => getIt.get<CheckoutCubit>(),
+      child: this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

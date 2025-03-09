@@ -1,3 +1,4 @@
+import 'package:carey/src/features/checkout/presentation/cubit/checkout_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -236,4 +237,5 @@ void _setupForCubits() {
     () => ProductReviewsCubit(getIt.get<ProductReviewsRepo>()),
   );
   getIt.registerFactory<MakeOfferCubit>(() => MakeOfferCubit());
+  getIt.registerFactory<CheckoutCubit>(() => CheckoutCubit());
 }
