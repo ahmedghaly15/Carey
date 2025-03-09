@@ -126,7 +126,7 @@ class CheckoutRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const CheckoutView();
+      return WrappedRoute(child: const CheckoutView());
     },
   );
 }
@@ -365,7 +365,7 @@ class OfferStatusRoute extends PageRouteInfo<OfferStatusRouteArgs> {
   OfferStatusRoute({
     Key? key,
     required OfferStatus offerStatus,
-    required int offer,
+    int? offer,
     List<PageRouteInfo>? children,
   }) : super(
           OfferStatusRoute.name,
@@ -396,14 +396,14 @@ class OfferStatusRouteArgs {
   const OfferStatusRouteArgs({
     this.key,
     required this.offerStatus,
-    required this.offer,
+    this.offer,
   });
 
   final Key? key;
 
   final OfferStatus offerStatus;
 
-  final int offer;
+  final int? offer;
 
   @override
   String toString() {
@@ -674,6 +674,53 @@ class SetBiometricRoute extends PageRouteInfo<void> {
       return WrappedRoute(child: const SetBiometricView());
     },
   );
+}
+
+/// generated route for
+/// [ShippingAddressView]
+class ShippingAddressRoute extends PageRouteInfo<ShippingAddressRouteArgs> {
+  ShippingAddressRoute({
+    Key? key,
+    required CheckoutCubit checkoutCubit,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ShippingAddressRoute.name,
+          args: ShippingAddressRouteArgs(
+            key: key,
+            checkoutCubit: checkoutCubit,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ShippingAddressRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ShippingAddressRouteArgs>();
+      return WrappedRoute(
+          child: ShippingAddressView(
+        key: args.key,
+        checkoutCubit: args.checkoutCubit,
+      ));
+    },
+  );
+}
+
+class ShippingAddressRouteArgs {
+  const ShippingAddressRouteArgs({
+    this.key,
+    required this.checkoutCubit,
+  });
+
+  final Key? key;
+
+  final CheckoutCubit checkoutCubit;
+
+  @override
+  String toString() {
+    return 'ShippingAddressRouteArgs{key: $key, checkoutCubit: $checkoutCubit}';
+  }
 }
 
 /// generated route for

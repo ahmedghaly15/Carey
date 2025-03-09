@@ -6,26 +6,29 @@ import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/condition_label.dart';
+import 'package:carey/src/features/checkout/data/models/shipping_item.dart';
 
-class ShippingItem extends StatelessWidget {
-  const ShippingItem({
+class ShippingItemWidget extends StatelessWidget {
+  const ShippingItemWidget({
     super.key,
-    required this.title,
-    required this.subTitle,
-    this.hasDefaultBadge = false,
+    required this.shippingItem,
     this.trailing,
+    this.onTap,
   });
 
-  final String title, subTitle;
+  final ShippingItem shippingItem;
   final Widget? trailing;
-  final bool hasDefaultBadge;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 29.w),
+    return DecoratedBox(
       decoration: AppConstants.checkoutContainerDecoration,
       child: ListTile(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.r),
+        ),
+        onTap: onTap,
         contentPadding: EdgeInsetsDirectional.symmetric(
           horizontal: 7.w,
           vertical: 19.h,
@@ -42,7 +45,7 @@ class ShippingItem extends StatelessWidget {
             child: const Icon(Icons.location_on, color: Colors.white),
           ),
         ),
-        title: (title == 'Home' && hasDefaultBadge)
+        title: (shippingItem.title == 'Home' && shippingItem.hasDefaultBadge)
             ? Row(
                 spacing: 10.w,
                 children: [
@@ -63,11 +66,12 @@ class ShippingItem extends StatelessWidget {
           color: Colors.black,
         ),
         titleAlignment: ListTileTitleAlignment.center,
-        subtitle: Text(
-          subTitle,
-          overflow: TextOverflow.ellipsis,
-          maxLines: 1,
-        ),
+        subtitle: shippingItem.subTitleWidget ??
+            Text(
+              shippingItem.subTitleText!,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
         subtitleTextStyle: AppTextStyles.poppinsFont13Medium.copyWith(
           color: Colors.black.withAlpha(153),
         ),
@@ -78,7 +82,7 @@ class ShippingItem extends StatelessWidget {
 
   Text _buildTitleTextWidget() {
     return Text(
-      title,
+      shippingItem.title,
       overflow: TextOverflow.ellipsis,
       maxLines: 1,
     );
