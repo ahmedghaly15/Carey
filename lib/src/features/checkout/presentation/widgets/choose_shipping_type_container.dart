@@ -1,11 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:carey/src/core/router/app_router.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
+import 'package:carey/src/features/checkout/presentation/cubit/checkout_cubit.dart';
 
 class ChooseShippingTypeContainer extends StatelessWidget {
   const ChooseShippingTypeContainer({super.key});
@@ -16,7 +20,9 @@ class ChooseShippingTypeContainer extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 29.w),
       decoration: AppConstants.checkoutContainerDecoration,
       child: MaterialButton(
-        onPressed: () {},
+        onPressed: () => context.pushRoute(ShippingMethodRoute(
+          checkoutCubit: context.read<CheckoutCubit>(),
+        )),
         padding: EdgeInsets.symmetric(horizontal: 19.w, vertical: 19.h),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.r),

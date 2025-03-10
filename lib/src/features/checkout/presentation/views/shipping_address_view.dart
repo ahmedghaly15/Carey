@@ -8,6 +8,7 @@ import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/checkout/presentation/cubit/checkout_cubit.dart';
+import 'package:carey/src/features/checkout/presentation/widgets/fill_remaining_apply_button.dart';
 import 'package:carey/src/features/checkout/presentation/widgets/shipping_address_sliver_list.dart';
 
 @RoutePage()
@@ -33,7 +34,7 @@ class ShippingAddressView extends StatelessWidget implements AutoRouteWrapper {
             const CustomSliverAppBar(titleText: AppStrings.shippingAddress),
             SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: 19.w),
-              sliver: ShippingAddressSliverList(),
+              sliver: const ShippingAddressSliverList(),
             ),
             SliverToBoxAdapter(
               child: PrimaryButton(
@@ -48,23 +49,7 @@ class ShippingAddressView extends StatelessWidget implements AutoRouteWrapper {
                 onPressed: () {},
               ),
             ),
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: Column(
-                children: [
-                  Spacer(),
-                  PrimaryButton(
-                    margin: EdgeInsetsDirectional.only(
-                      start: 31.w,
-                      end: 31.w,
-                      bottom: 26.h,
-                    ),
-                    text: AppStrings.apply,
-                    onPressed: () => context.maybePop(),
-                  ),
-                ],
-              ),
-            ),
+            const FillRemainingApplyButton(),
           ],
         ),
       ),
