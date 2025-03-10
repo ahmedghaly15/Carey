@@ -724,29 +724,29 @@ class ShippingAddressRouteArgs {
 }
 
 /// generated route for
-/// [ShippingMethodView]
-class ShippingMethodRoute extends PageRouteInfo<ShippingMethodRouteArgs> {
-  ShippingMethodRoute({
+/// [ShippingMethodsView]
+class ShippingMethodsRoute extends PageRouteInfo<ShippingMethodsRouteArgs> {
+  ShippingMethodsRoute({
     Key? key,
     required CheckoutCubit checkoutCubit,
     List<PageRouteInfo>? children,
   }) : super(
-          ShippingMethodRoute.name,
-          args: ShippingMethodRouteArgs(
+          ShippingMethodsRoute.name,
+          args: ShippingMethodsRouteArgs(
             key: key,
             checkoutCubit: checkoutCubit,
           ),
           initialChildren: children,
         );
 
-  static const String name = 'ShippingMethodRoute';
+  static const String name = 'ShippingMethodsRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<ShippingMethodRouteArgs>();
+      final args = data.argsAs<ShippingMethodsRouteArgs>();
       return WrappedRoute(
-          child: ShippingMethodView(
+          child: ShippingMethodsView(
         key: args.key,
         checkoutCubit: args.checkoutCubit,
       ));
@@ -754,8 +754,8 @@ class ShippingMethodRoute extends PageRouteInfo<ShippingMethodRouteArgs> {
   );
 }
 
-class ShippingMethodRouteArgs {
-  const ShippingMethodRouteArgs({
+class ShippingMethodsRouteArgs {
+  const ShippingMethodsRouteArgs({
     this.key,
     required this.checkoutCubit,
   });
@@ -766,7 +766,7 @@ class ShippingMethodRouteArgs {
 
   @override
   String toString() {
-    return 'ShippingMethodRouteArgs{key: $key, checkoutCubit: $checkoutCubit}';
+    return 'ShippingMethodsRouteArgs{key: $key, checkoutCubit: $checkoutCubit}';
   }
 }
 

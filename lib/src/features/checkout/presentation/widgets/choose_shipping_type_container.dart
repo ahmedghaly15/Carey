@@ -20,7 +20,7 @@ class ChooseShippingTypeContainer extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 29.w),
       decoration: AppConstants.checkoutContainerDecoration,
       child: MaterialButton(
-        onPressed: () => context.pushRoute(ShippingMethodRoute(
+        onPressed: () => context.pushRoute(ShippingMethodsRoute(
           checkoutCubit: context.read<CheckoutCubit>(),
         )),
         padding: EdgeInsets.symmetric(horizontal: 19.w, vertical: 19.h),
