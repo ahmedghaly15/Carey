@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:carey/src/features/checkout/presentation/cubit/checkout_cubit.dart';
+import 'package:carey/src/features/checkout/presentation/views/shipping_methods_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carey/src/core/models/car.dart';

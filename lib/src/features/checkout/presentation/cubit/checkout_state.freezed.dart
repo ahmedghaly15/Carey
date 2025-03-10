@@ -17,7 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CheckoutState {
   CheckoutStateStatus get status => throw _privateConstructorUsedError;
-  ShippingItem? get selectedShippingAddress =>
+  ShippingAddress? get selectedShippingAddress =>
+      throw _privateConstructorUsedError;
+  ShippingMethod? get selectedShippingMethod =>
       throw _privateConstructorUsedError;
 
   /// Create a copy of CheckoutState
@@ -34,9 +36,12 @@ abstract class $CheckoutStateCopyWith<$Res> {
       _$CheckoutStateCopyWithImpl<$Res, CheckoutState>;
   @useResult
   $Res call(
-      {CheckoutStateStatus status, ShippingItem? selectedShippingAddress});
+      {CheckoutStateStatus status,
+      ShippingAddress? selectedShippingAddress,
+      ShippingMethod? selectedShippingMethod});
 
-  $ShippingItemCopyWith<$Res>? get selectedShippingAddress;
+  $ShippingAddressCopyWith<$Res>? get selectedShippingAddress;
+  $ShippingMethodCopyWith<$Res>? get selectedShippingMethod;
 }
 
 /// @nodoc
@@ -56,6 +61,7 @@ class _$CheckoutStateCopyWithImpl<$Res, $Val extends CheckoutState>
   $Res call({
     Object? status = null,
     Object? selectedShippingAddress = freezed,
+    Object? selectedShippingMethod = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -65,7 +71,11 @@ class _$CheckoutStateCopyWithImpl<$Res, $Val extends CheckoutState>
       selectedShippingAddress: freezed == selectedShippingAddress
           ? _value.selectedShippingAddress
           : selectedShippingAddress // ignore: cast_nullable_to_non_nullable
-              as ShippingItem?,
+              as ShippingAddress?,
+      selectedShippingMethod: freezed == selectedShippingMethod
+          ? _value.selectedShippingMethod
+          : selectedShippingMethod // ignore: cast_nullable_to_non_nullable
+              as ShippingMethod?,
     ) as $Val);
   }
 
@@ -73,14 +83,29 @@ class _$CheckoutStateCopyWithImpl<$Res, $Val extends CheckoutState>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ShippingItemCopyWith<$Res>? get selectedShippingAddress {
+  $ShippingAddressCopyWith<$Res>? get selectedShippingAddress {
     if (_value.selectedShippingAddress == null) {
       return null;
     }
 
-    return $ShippingItemCopyWith<$Res>(_value.selectedShippingAddress!,
+    return $ShippingAddressCopyWith<$Res>(_value.selectedShippingAddress!,
         (value) {
       return _then(_value.copyWith(selectedShippingAddress: value) as $Val);
+    });
+  }
+
+  /// Create a copy of CheckoutState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ShippingMethodCopyWith<$Res>? get selectedShippingMethod {
+    if (_value.selectedShippingMethod == null) {
+      return null;
+    }
+
+    return $ShippingMethodCopyWith<$Res>(_value.selectedShippingMethod!,
+        (value) {
+      return _then(_value.copyWith(selectedShippingMethod: value) as $Val);
     });
   }
 }
@@ -94,10 +119,14 @@ abstract class _$$CheckoutStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {CheckoutStateStatus status, ShippingItem? selectedShippingAddress});
+      {CheckoutStateStatus status,
+      ShippingAddress? selectedShippingAddress,
+      ShippingMethod? selectedShippingMethod});
 
   @override
-  $ShippingItemCopyWith<$Res>? get selectedShippingAddress;
+  $ShippingAddressCopyWith<$Res>? get selectedShippingAddress;
+  @override
+  $ShippingMethodCopyWith<$Res>? get selectedShippingMethod;
 }
 
 /// @nodoc
@@ -115,6 +144,7 @@ class __$$CheckoutStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? selectedShippingAddress = freezed,
+    Object? selectedShippingMethod = freezed,
   }) {
     return _then(_$CheckoutStateImpl(
       status: null == status
@@ -124,7 +154,11 @@ class __$$CheckoutStateImplCopyWithImpl<$Res>
       selectedShippingAddress: freezed == selectedShippingAddress
           ? _value.selectedShippingAddress
           : selectedShippingAddress // ignore: cast_nullable_to_non_nullable
-              as ShippingItem?,
+              as ShippingAddress?,
+      selectedShippingMethod: freezed == selectedShippingMethod
+          ? _value.selectedShippingMethod
+          : selectedShippingMethod // ignore: cast_nullable_to_non_nullable
+              as ShippingMethod?,
     ));
   }
 }
@@ -133,16 +167,20 @@ class __$$CheckoutStateImplCopyWithImpl<$Res>
 
 class _$CheckoutStateImpl implements _CheckoutState {
   const _$CheckoutStateImpl(
-      {required this.status, this.selectedShippingAddress});
+      {required this.status,
+      this.selectedShippingAddress,
+      this.selectedShippingMethod});
 
   @override
   final CheckoutStateStatus status;
   @override
-  final ShippingItem? selectedShippingAddress;
+  final ShippingAddress? selectedShippingAddress;
+  @override
+  final ShippingMethod? selectedShippingMethod;
 
   @override
   String toString() {
-    return 'CheckoutState(status: $status, selectedShippingAddress: $selectedShippingAddress)';
+    return 'CheckoutState(status: $status, selectedShippingAddress: $selectedShippingAddress, selectedShippingMethod: $selectedShippingMethod)';
   }
 
   @override
@@ -153,11 +191,14 @@ class _$CheckoutStateImpl implements _CheckoutState {
             (identical(other.status, status) || other.status == status) &&
             (identical(
                     other.selectedShippingAddress, selectedShippingAddress) ||
-                other.selectedShippingAddress == selectedShippingAddress));
+                other.selectedShippingAddress == selectedShippingAddress) &&
+            (identical(other.selectedShippingMethod, selectedShippingMethod) ||
+                other.selectedShippingMethod == selectedShippingMethod));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, selectedShippingAddress);
+  int get hashCode => Object.hash(
+      runtimeType, status, selectedShippingAddress, selectedShippingMethod);
 
   /// Create a copy of CheckoutState
   /// with the given fields replaced by the non-null parameter values.
@@ -171,12 +212,15 @@ class _$CheckoutStateImpl implements _CheckoutState {
 abstract class _CheckoutState implements CheckoutState {
   const factory _CheckoutState(
       {required final CheckoutStateStatus status,
-      final ShippingItem? selectedShippingAddress}) = _$CheckoutStateImpl;
+      final ShippingAddress? selectedShippingAddress,
+      final ShippingMethod? selectedShippingMethod}) = _$CheckoutStateImpl;
 
   @override
   CheckoutStateStatus get status;
   @override
-  ShippingItem? get selectedShippingAddress;
+  ShippingAddress? get selectedShippingAddress;
+  @override
+  ShippingMethod? get selectedShippingMethod;
 
   /// Create a copy of CheckoutState
   /// with the given fields replaced by the non-null parameter values.

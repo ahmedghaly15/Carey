@@ -142,4 +142,5 @@ class AppStrings {
   static const String rateMustBeChosen = 'You must choose a rating';
   static const String addNewAddress = 'Add New Address';
   static const String apply = 'Apply';
+  static const String shippingMethod = 'Shipping Method';
 }

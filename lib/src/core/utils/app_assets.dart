@@ -98,6 +98,10 @@ class Assets {
   /// assets/svgs/collapse-icon.svg
   static const String svgsCollapseIcon = "assets/svgs/collapse-icon.svg";
 
+  /// Assets for svgsContainerShip
+  /// assets/svgs/container-ship.svg
+  static const String svgsContainerShip = "assets/svgs/container-ship.svg";
+
   /// Assets for svgsDefaultUserImage
   /// assets/svgs/default-user-image.svg
   static const String svgsDefaultUserImage = "assets/svgs/default-user-image.svg";
@@ -142,6 +146,10 @@ class Assets {
   /// assets/svgs/pen-icon.svg
   static const String svgsPenIcon = "assets/svgs/pen-icon.svg";
 
+  /// Assets for svgsPlane
+  /// assets/svgs/plane.svg
+  static const String svgsPlane = "assets/svgs/plane.svg";
+
   /// Assets for svgsResetPassImage
   /// assets/svgs/reset-pass-image.svg
   static const String svgsResetPassImage = "assets/svgs/reset-pass-image.svg";
@@ -157,5 +165,13 @@ class Assets {
   /// Assets for svgsSuccessDialogImage
   /// assets/svgs/success-dialog-image.svg
   static const String svgsSuccessDialogImage = "assets/svgs/success-dialog-image.svg";
+
+  /// Assets for svgsTrain
+  /// assets/svgs/train.svg
+  static const String svgsTrain = "assets/svgs/train.svg";
+
+  /// Assets for svgsTruck
+  /// assets/svgs/truck.svg
+  static const String svgsTruck = "assets/svgs/truck.svg";
 }
 

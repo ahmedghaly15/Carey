@@ -62,6 +62,7 @@ List<AutoRoute> get appRoutes => [
             page: CheckoutRoute.page,
           ),
           _buildCustomRoute(page: ShippingAddressRoute.page),
+          _buildCustomRoute(page: ShippingMethodsRoute.page),
         ],
       ),
     ];
