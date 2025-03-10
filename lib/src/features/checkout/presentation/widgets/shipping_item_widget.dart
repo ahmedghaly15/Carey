@@ -4,20 +4,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:carey/src/core/themes/app_colors.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_constants.dart';
-import 'package:carey/src/core/utils/app_strings.dart';
-import 'package:carey/src/core/widgets/condition_label.dart';
-import 'package:carey/src/features/checkout/data/models/shipping_item.dart';
 
 class ShippingItemWidget extends StatelessWidget {
   const ShippingItemWidget({
     super.key,
-    required this.shippingItem,
+    required this.title,
+    required this.subTitle,
     this.trailing,
     this.onTap,
+    this.leading,
   });
 
-  final ShippingItem shippingItem;
-  final Widget? trailing;
+  final Widget title, subTitle;
+  final Widget? trailing, leading;
   final VoidCallback? onTap;
 
   @override
@@ -42,49 +41,20 @@ class ShippingItemWidget extends StatelessWidget {
           child: CircleAvatar(
             radius: 20.r,
             backgroundColor: AppColors.primaryColor,
-            child: const Icon(Icons.location_on, color: Colors.white),
+            child: leading,
           ),
         ),
-        title: (shippingItem.title == 'Home' && shippingItem.hasDefaultBadge)
-            ? Row(
-                spacing: 10.w,
-                children: [
-                  _buildTitleTextWidget(),
-                  ConditionLabel(
-                    conditionLabel: AppStrings.defaultWord,
-                    conditionTextStyle:
-                        AppTextStyles.poppinsFont13Medium.copyWith(
-                      color: Colors.black.withAlpha(192),
-                    ),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 13.w, vertical: 4.h),
-                  ),
-                ],
-              )
-            : _buildTitleTextWidget(),
+        title: title,
         titleTextStyle: AppTextStyles.poppinsFont15SemiBold.copyWith(
           color: Colors.black,
         ),
         titleAlignment: ListTileTitleAlignment.center,
-        subtitle: shippingItem.subTitleWidget ??
-            Text(
-              shippingItem.subTitleText!,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-            ),
+        subtitle: subTitle,
         subtitleTextStyle: AppTextStyles.poppinsFont13Medium.copyWith(
           color: Colors.black.withAlpha(153),
         ),
         trailing: trailing,
       ),
-    );
-  }
-
-  Text _buildTitleTextWidget() {
-    return Text(
-      shippingItem.title,
-      overflow: TextOverflow.ellipsis,
-      maxLines: 1,
     );
   }
 }
