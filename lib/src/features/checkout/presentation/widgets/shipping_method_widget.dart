@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/features/checkout/data/models/shipping_method.dart';
 import 'package:carey/src/features/checkout/presentation/widgets/selectable_circular_indicator.dart';
-import 'package:carey/src/features/checkout/presentation/widgets/shipping_item_widget.dart';
+import 'package:carey/src/core/widgets/decorated_list_tile.dart';
 
 class ShippingMethodWidget extends StatelessWidget {
   const ShippingMethodWidget({
@@ -21,9 +21,9 @@ class ShippingMethodWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShippingItemWidget(
+    return DecoratedListTile(
       onTap: onTap,
-      leading: SvgPicture.asset(shippingMethod.img),
+      circularLeading: SvgPicture.asset(shippingMethod.img),
       title: Text(
         shippingMethod.name,
         overflow: TextOverflow.ellipsis,

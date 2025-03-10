@@ -8,7 +8,7 @@ import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
 import 'package:carey/src/features/checkout/presentation/cubit/checkout_cubit.dart';
-import 'package:carey/src/features/checkout/presentation/widgets/fill_remaining_apply_button.dart';
+import 'package:carey/src/features/checkout/presentation/widgets/sliver_fill_remaining_button.dart';
 import 'package:carey/src/features/checkout/presentation/widgets/shipping_address_sliver_list.dart';
 
 @RoutePage()
@@ -49,7 +49,10 @@ class ShippingAddressView extends StatelessWidget implements AutoRouteWrapper {
                 onPressed: () {},
               ),
             ),
-            const FillRemainingApplyButton(),
+            SliverFillRemainingButton(
+              text: AppStrings.apply,
+              onTap: () => context.maybePop(),
+            ),
           ],
         ),
       ),

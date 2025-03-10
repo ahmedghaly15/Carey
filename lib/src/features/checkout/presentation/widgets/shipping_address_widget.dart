@@ -5,7 +5,7 @@ import 'package:carey/src/core/themes/app_text_styles.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/condition_label.dart';
 import 'package:carey/src/features/checkout/data/models/shipping_address.dart';
-import 'package:carey/src/features/checkout/presentation/widgets/shipping_item_widget.dart';
+import 'package:carey/src/core/widgets/decorated_list_tile.dart';
 
 class ShippingAddressWidget extends StatelessWidget {
   const ShippingAddressWidget({
@@ -21,9 +21,9 @@ class ShippingAddressWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShippingItemWidget(
+    return DecoratedListTile(
       onTap: onTap,
-      leading: const Icon(Icons.location_on, color: Colors.white),
+      circularLeading: const Icon(Icons.location_on, color: Colors.white),
       title:
           (shippingAddress.title == 'Home' && shippingAddress.hasDefaultBadge)
               ? Row(
