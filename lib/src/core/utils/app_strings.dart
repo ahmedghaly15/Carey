@@ -143,4 +143,7 @@ class AppStrings {
   static const String addNewAddress = 'Add New Address';
   static const String apply = 'Apply';
   static const String shippingMethod = 'Shipping Method';
+  static const String paymentMethods = 'Payment Methods';
+  static const String selectThePaymentMethod =
+      'Select the payment method you want to use.';
 }

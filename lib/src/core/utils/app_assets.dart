@@ -82,6 +82,10 @@ class Assets {
   /// assets/images/welcome-screen-car.jpg
   static const String imagesWelcomeScreenCar = "assets/images/welcome-screen-car.jpg";
 
+  /// Assets for svgsApplyPay
+  /// assets/svgs/apply_pay.svg
+  static const String svgsApplyPay = "assets/svgs/apply_pay.svg";
+
   /// Assets for svgsArrowBackIcon
   /// assets/svgs/arrow-back-icon.svg
   static const String svgsArrowBackIcon = "assets/svgs/arrow-back-icon.svg";
@@ -130,9 +134,17 @@ class Assets {
   /// assets/svgs/google.svg
   static const String svgsGoogle = "assets/svgs/google.svg";
 
+  /// Assets for svgsGooglePay
+  /// assets/svgs/google_pay.svg
+  static const String svgsGooglePay = "assets/svgs/google_pay.svg";
+
   /// Assets for svgsLockIcon
   /// assets/svgs/lock-icon.svg
   static const String svgsLockIcon = "assets/svgs/lock-icon.svg";
+
+  /// Assets for svgsMastercard
+  /// assets/svgs/mastercard.svg
+  static const String svgsMastercard = "assets/svgs/mastercard.svg";
 
   /// Assets for svgsMoreIcon
   /// assets/svgs/more-icon.svg
@@ -141,6 +153,10 @@ class Assets {
   /// Assets for svgsNoFavoriteIcon
   /// assets/svgs/no-favorite-icon.svg
   static const String svgsNoFavoriteIcon = "assets/svgs/no-favorite-icon.svg";
+
+  /// Assets for svgsPaypal
+  /// assets/svgs/paypal.svg
+  static const String svgsPaypal = "assets/svgs/paypal.svg";
 
   /// Assets for svgsPenIcon
   /// assets/svgs/pen-icon.svg
@@ -173,5 +189,9 @@ class Assets {
   /// Assets for svgsTruck
   /// assets/svgs/truck.svg
   static const String svgsTruck = "assets/svgs/truck.svg";
+
+  /// Assets for svgsWallet
+  /// assets/svgs/wallet.svg
+  static const String svgsWallet = "assets/svgs/wallet.svg";
 }
 
