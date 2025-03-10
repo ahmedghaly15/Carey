@@ -724,6 +724,53 @@ class ShippingAddressRouteArgs {
 }
 
 /// generated route for
+/// [ShippingMethodView]
+class ShippingMethodRoute extends PageRouteInfo<ShippingMethodRouteArgs> {
+  ShippingMethodRoute({
+    Key? key,
+    required CheckoutCubit checkoutCubit,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ShippingMethodRoute.name,
+          args: ShippingMethodRouteArgs(
+            key: key,
+            checkoutCubit: checkoutCubit,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ShippingMethodRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ShippingMethodRouteArgs>();
+      return WrappedRoute(
+          child: ShippingMethodView(
+        key: args.key,
+        checkoutCubit: args.checkoutCubit,
+      ));
+    },
+  );
+}
+
+class ShippingMethodRouteArgs {
+  const ShippingMethodRouteArgs({
+    this.key,
+    required this.checkoutCubit,
+  });
+
+  final Key? key;
+
+  final CheckoutCubit checkoutCubit;
+
+  @override
+  String toString() {
+    return 'ShippingMethodRouteArgs{key: $key, checkoutCubit: $checkoutCubit}';
+  }
+}
+
+/// generated route for
 /// [SpecialOffersView]
 class SpecialOffersRoute extends PageRouteInfo<SpecialOffersRouteArgs> {
   SpecialOffersRoute({
