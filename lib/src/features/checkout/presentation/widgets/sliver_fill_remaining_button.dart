@@ -1,12 +1,17 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
 
-class FillRemainingApplyButton extends StatelessWidget {
-  const FillRemainingApplyButton({super.key});
+class SliverFillRemainingButton extends StatelessWidget {
+  const SliverFillRemainingButton({
+    super.key,
+    required this.text,
+    required this.onTap,
+  });
+
+  final VoidCallback onTap;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +26,8 @@ class FillRemainingApplyButton extends StatelessWidget {
               end: 31.w,
               bottom: 26.h,
             ),
-            text: AppStrings.apply,
-            onPressed: () => context.maybePop(),
+            text: text,
+            onPressed: onTap,
           ),
         ],
       ),

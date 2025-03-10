@@ -94,7 +94,7 @@ class CheckoutView extends StatelessWidget implements AutoRouteWrapper {
             const SliverToBoxAdapter(child: CheckoutDetailsContainer()),
             SliverToBoxAdapter(
               child: PrimaryButton(
-                onPressed: () {},
+                onPressed: () => context.pushRoute(const PaymentProcessRoute()),
                 margin: EdgeInsetsDirectional.only(
                   start: _horizontalPadding,
                   end: _horizontalPadding,

@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
 import 'package:carey/src/features/checkout/presentation/cubit/checkout_cubit.dart';
-import 'package:carey/src/features/checkout/presentation/widgets/fill_remaining_apply_button.dart';
+import 'package:carey/src/features/checkout/presentation/widgets/sliver_fill_remaining_button.dart';
 import 'package:carey/src/features/checkout/presentation/widgets/shipping_methods_sliver_list.dart';
 
 @RoutePage()
@@ -34,7 +34,10 @@ class ShippingMethodsView extends StatelessWidget implements AutoRouteWrapper {
               padding: EdgeInsets.symmetric(horizontal: 19.w),
               sliver: const ShippingMethodsSliverList(),
             ),
-            const FillRemainingApplyButton(),
+            SliverFillRemainingButton(
+              text: AppStrings.continueWord,
+              onTap: () {},
+            ),
           ],
         ),
       ),

@@ -1,6 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:carey/src/features/checkout/presentation/cubit/checkout_cubit.dart';
-import 'package:carey/src/features/checkout/presentation/views/shipping_methods_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carey/src/core/models/car.dart';
@@ -12,8 +10,10 @@ import 'package:carey/src/features/auth/presentation/views/pin_code_verification
 import 'package:carey/src/features/auth/presentation/views/register_view.dart';
 import 'package:carey/src/features/auth/presentation/views/reset_password_view.dart';
 import 'package:carey/src/features/auth/presentation/views/set_biometric_view.dart';
+import 'package:carey/src/features/checkout/presentation/cubit/checkout_cubit.dart';
 import 'package:carey/src/features/checkout/presentation/views/checkout_view.dart';
 import 'package:carey/src/features/checkout/presentation/views/shipping_address_view.dart';
+import 'package:carey/src/features/checkout/presentation/views/shipping_methods_view.dart';
 import 'package:carey/src/features/home/data/models/fetch_home_response.dart';
 import 'package:carey/src/features/home/data/models/fetch_special_offers_response.dart';
 import 'package:carey/src/features/home/presentation/views/best_offers_view.dart';
@@ -25,6 +25,7 @@ import 'package:carey/src/features/layout/presentation/views/layout_view.dart';
 import 'package:carey/src/features/make_offer/presentation/views/make_offer_view.dart';
 import 'package:carey/src/features/make_offer/presentation/views/offer_status_view.dart';
 import 'package:carey/src/features/orders/orders_view.dart';
+import 'package:carey/src/features/payment_methods/presentation/views/payment_methods_view.dart';
 import 'package:carey/src/features/product_details/presentation/views/product_details_view.dart';
 import 'package:carey/src/features/product_reviews/data/models/product_reviews_view_params.dart';
 import 'package:carey/src/features/product_reviews/presentation/views/product_reviews_view.dart';
@@ -65,4 +66,9 @@ class Offer extends AutoRouter {
 @RoutePage(name: 'CheckoutProcessRoute')
 class CheckoutProcess extends AutoRouter {
   const CheckoutProcess({super.key});
+}
+
+@RoutePage(name: 'PaymentProcessRoute')
+class PaymentProcess extends AutoRouter {
+  const PaymentProcess({super.key});
 }
