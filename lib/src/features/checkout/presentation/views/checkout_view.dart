@@ -10,14 +10,14 @@ import 'package:carey/src/core/utils/app_assets.dart';
 import 'package:carey/src/core/utils/app_strings.dart';
 import 'package:carey/src/core/widgets/custom_sliver_app_bar.dart';
 import 'package:carey/src/core/widgets/primary_button.dart';
-import 'package:carey/src/features/checkout/data/models/shipping_item.dart';
+import 'package:carey/src/features/checkout/data/models/shipping_address.dart';
 import 'package:carey/src/features/checkout/presentation/cubit/checkout_cubit.dart';
 import 'package:carey/src/features/checkout/presentation/cubit/checkout_state.dart';
 import 'package:carey/src/features/checkout/presentation/widgets/checkout_details_container.dart';
 import 'package:carey/src/features/checkout/presentation/widgets/checkout_order_item.dart';
 import 'package:carey/src/features/checkout/presentation/widgets/choose_shipping_type_container.dart';
 import 'package:carey/src/features/checkout/presentation/widgets/section_title.dart';
-import 'package:carey/src/features/checkout/presentation/widgets/shipping_item_widget.dart';
+import 'package:carey/src/features/checkout/presentation/widgets/shipping_address_widget.dart';
 
 @RoutePage()
 class CheckoutView extends StatelessWidget implements AutoRouteWrapper {
@@ -44,18 +44,19 @@ class CheckoutView extends StatelessWidget implements AutoRouteWrapper {
             SliverToBoxAdapter(
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 29.w),
-                child: BlocSelector<CheckoutCubit, CheckoutState, ShippingItem>(
+                child:
+                    BlocSelector<CheckoutCubit, CheckoutState, ShippingAddress>(
                   selector: (state) {
                     return state.selectedShippingAddress ??
-                        ShippingItem(
+                        const ShippingAddress(
                           title: 'Home',
-                          subTitleText: '53322 Sunbtook park,PC 5678',
+                          description: '53322 Sunbtook park,PC 5678',
                           hasDefaultBadge: true,
                         );
                   },
                   builder: (context, selectedShippingAddress) =>
-                      ShippingItemWidget(
-                    shippingItem: selectedShippingAddress,
+                      ShippingAddressWidget(
+                    shippingAddress: selectedShippingAddress,
                     trailing: IconButton(
                       onPressed: () => context.pushRoute(
                         ShippingAddressRoute(
