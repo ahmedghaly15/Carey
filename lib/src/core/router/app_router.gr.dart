@@ -431,6 +431,44 @@ class OrdersRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [PaymentMethodsView]
+class PaymentMethodsRoute extends PageRouteInfo<void> {
+  const PaymentMethodsRoute({List<PageRouteInfo>? children})
+      : super(
+          PaymentMethodsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PaymentMethodsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return WrappedRoute(child: const PaymentMethodsView());
+    },
+  );
+}
+
+/// generated route for
+/// [PaymentProcess]
+class PaymentProcessRoute extends PageRouteInfo<void> {
+  const PaymentProcessRoute({List<PageRouteInfo>? children})
+      : super(
+          PaymentProcessRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PaymentProcessRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const PaymentProcess();
+    },
+  );
+}
+
+/// generated route for
 /// [PinCodeVerificationView]
 class PinCodeVerificationRoute
     extends PageRouteInfo<PinCodeVerificationRouteArgs> {

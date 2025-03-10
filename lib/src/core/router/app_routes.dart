@@ -65,6 +65,15 @@ List<AutoRoute> get appRoutes => [
           _buildCustomRoute(page: ShippingMethodsRoute.page),
         ],
       ),
+      _buildCustomRoute(
+        page: PaymentProcessRoute.page,
+        children: [
+          _buildCustomRoute(
+            initial: true,
+            page: PaymentMethodsRoute.page,
+          ),
+        ],
+      ),
     ];
 
 CustomRoute _buildCustomRoute({

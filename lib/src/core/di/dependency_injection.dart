@@ -1,4 +1,3 @@
-import 'package:carey/src/features/checkout/presentation/cubit/checkout_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -38,11 +37,13 @@ import 'package:carey/src/features/auth/presentation/cubits/pin_code_verificatio
 import 'package:carey/src/features/auth/presentation/cubits/register/register_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/reset_pass/reset_pass_cubit.dart';
 import 'package:carey/src/features/auth/presentation/cubits/set_fingerprint/biometric_cubit.dart';
+import 'package:carey/src/features/checkout/presentation/cubit/checkout_cubit.dart';
 import 'package:carey/src/features/home/data/api/home_api_service.dart';
 import 'package:carey/src/features/home/data/datasource/home_local_datasource.dart';
 import 'package:carey/src/features/home/data/repositories/home_repo.dart';
 import 'package:carey/src/features/home/presentation/cubit/home_cubit.dart';
 import 'package:carey/src/features/make_offer/presentation/cubit/make_offer_cubit.dart';
+import 'package:carey/src/features/payment_methods/presentation/cubit/payment_methods_cubit.dart';
 import 'package:carey/src/features/product_reviews/data/api/product_reviews_api_service.dart';
 import 'package:carey/src/features/product_reviews/data/datasources/product_reviews_local_datasource.dart';
 import 'package:carey/src/features/product_reviews/data/repositories/product_reviews_repo.dart';
@@ -238,4 +239,5 @@ void _setupForCubits() {
   );
   getIt.registerFactory<MakeOfferCubit>(() => MakeOfferCubit());
   getIt.registerFactory<CheckoutCubit>(() => CheckoutCubit());
+  getIt.registerFactory<PaymentMethodsCubit>(() => PaymentMethodsCubit());
 }
